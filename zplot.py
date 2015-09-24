@@ -28,7 +28,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import time, math, os, stat, sys, sqlite3, re
+import time, math, os, stat, sys, sqlite3, re, socket, random
 from types import *
 from string import Template
 
@@ -56,6 +56,9 @@ class postscript:
         if len(u) > 1:
             return float(u[0]) * 72.0
         return float(unitStr)
+
+    def comment(self, comments):
+        self.comments += comments
 
     def __out(self, outStr):
         self.commands.append(outStr)
@@ -402,7 +405,8 @@ class postscript:
     # initialize everything for this particular canvas
     # (one drawing surface per PS canvas, saved to exactly one file, of course)
     # 
-    def __init__(self, title='default.eps', dimensions=['3in','2in'], font='Helvetica'):
+    def __init__(self, title='default.eps', dimensions=['3in','2in'], font='Helvetica', script=__file__):
+        self.comments = ''
         self.commands = []
         
         self.program = 'zplot'
@@ -573,7 +577,7 @@ class postscript:
         __out = self.__out
         __out('%!PS-Adobe-2.0 EPSF-2.0')
         __out('%%Title: ' + str(self.title))
-        __out('%%Creator: '+ str(self.program) + ' version:' + str(self.version))
+        __out('%%Creator: '+ str(self.program) + ' version:' + str(self.version) + ' script:' + os.path.abspath(script) + ' host:'+socket.gethostname())
         __out('%%CreationDate: ' + str(self.date))
         __out('%%DocumentFonts: (atend)')
         __out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + str(self.height))
@@ -627,6 +631,8 @@ class postscript:
 
         # generic eps trailer
         __out = self.__out
+        for ln in self.comments.split('\n'):
+            __out('% '+ln)
         __out('% zdraw epilogue')
         __out('end')
         __out('showpage')
@@ -684,6 +690,7 @@ class postscript:
               size      = 3.0,     # size of shape
               linecolor = 'black', # color of the line of the marker
               linewidth = 1.0,     # width of lines used to draw the marker
+              linedash  = 0,       # dash pattern - 0 means no dashes
               fill      = False,   # for some shapes, filling makes sense; if desired, mark this true
               fillcolor = 'black', # if filling, use this fill color
               fillstyle = 'solid', # if filling, which fill style to use
@@ -717,7 +724,7 @@ class postscript:
 	    self.line(coord=[[x-size,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth) 
 	    self.line(coord=[[x-size,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth) 
 	elif style == 'hline': 
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth, linedash=linedash)
 	elif style == 'vline': 
 	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor, linewidth=linewidth)
         elif style == 'hvline':
@@ -830,7 +837,6 @@ class postscript:
                 abort('arrow feature clearly broken')
 
             angle = math.degrees(angle)
-            # print 'vx, vy, angle', vx, vy, angle
 
             aw = arrowheadwidth/2.0
             al = arrowheadlength
@@ -1320,10 +1326,8 @@ class drawable:
                 tmp = gscale.split('log')
                 assert(len(tmp) == 2)
                 self.logbase[axisnum] = float(tmp[1])
-                # print 'LOG', self.logbase[axisnum], grange[0], grange[1]
 
                 self.scaletype[axisnum]  = 'log'
-                # print 'DEBUG', grange[0], self.logbase[axisnum]
 
                 assert(float(grange[0]) > 0)
                 assert(float(grange[1]) > 0)
@@ -1366,7 +1370,6 @@ class drawable:
         if scale == 'linear':
             return value
         elif scale == 'log':
-            # print 'mapping', value
             return math.log(value, self.logbase[axisnum])
         else:
             abort('unknown mapping scale')
@@ -1469,7 +1472,7 @@ class table:
         return self.cnames
     
     def __init__(self,
-                 file  = '/no/such/file',
+                 file  = '',
                  table = '',
                  where = '',
                  separator = '',
@@ -1494,9 +1497,9 @@ class table:
                     count = count + 1
                 data.append(element)
             
-            # extract unique number from file, somehow
-            self.dbname = 'tmp2' + str(os.stat(self.file)[stat.ST_INO])
-        else:
+            # generate unique name
+            self.dbname = 'tmp' + str(random.randint(0,9999999))
+        elif self.file != '':
             # first, look for schema
             fd = open(self.file, 'r')
             line = fd.readline().strip()
@@ -1533,7 +1536,12 @@ class table:
             fd.close()
 
             # extract unique number from file, somehow
-            self.dbname = 'tmp' + str(os.stat(self.file)[stat.ST_INO])
+            self.dbname = 'tmp' + str(random.randint(0,9999999))
+        else:
+            self.cnames  = ['rownumber']
+            self.columns = 1
+            self.file    = ''
+            self.dbname = 'tmp' + str(random.randint(0,9999999))
         # END: if ...
 
         # make an in-memory database
@@ -1542,9 +1550,11 @@ class table:
 
         # XXX: calling each column cXXX where XXX is the row number
         create = 'create table %s (' % self.dbname
-        for i in range(0, self.columns - 1):
-            create = ('%s%s text, ' % (create, self.cnames[i]))
-        create = '%s %s text)' % (create, self.cnames[self.columns - 1])
+        for i in range(0, self.columns):
+            if i != 0:
+                create += ', '
+            create += '%s text' % self.cnames[i]
+        create += ')'
 
         # create reverse index of column names
         self.rindex  = {}
@@ -1586,14 +1596,38 @@ class table:
         # print 'RETURNING rlist', rlist
         return rlist
    
-    def dump(self):
-        print '*DUMP*', 
+    def dump(self, title='', canvas=None):
+        s = ''
+        if title:
+            s += title + '\n'
+        s += '*DUMP* '
         for name in self.cnames:
-            print name,
-        print ''
+            s += name + ' '
+        s += '\n'
         self.cursor.execute('select * from %s' % (self.dbname))
         for row in self.cursor:
-            print '*DUMP*', row
+            s += '*DUMP* ' + str(row) + '\n'
+        if canvas:
+            canvas.comment(s)
+        else:
+            print s
+
+    # INSERT INTO table_name
+    # SET column1=value, column2=value2,...
+    # WHERE some_column=some_value
+    def insert(self,keyValues={}):
+        keys = sorted(keyValues.keys())
+        values = ["'%s'" % keyValues[x] for x in keys]
+        rownumber = self.cursor.execute('select count(*) from %s' % self.dbname)
+        rownumber = rownumber.fetchone()[0] + 1
+
+        query = ('insert into %s (rownumber, %s)'
+                 'values (%d, %s)' % (
+                self.dbname,
+                ', '.join(keys),
+                rownumber,
+                ', '.join(values)))
+        self.cursor.execute(query)
 
     # UPDATE table_name
     # SET column1=value, column2=value2,...
@@ -1673,25 +1707,16 @@ class table:
     def getname(self):
         return self.dbname
 
-    # Andrea wants ORDERBY
-    def query2(self, where, orderby=''):
-        if where == '':
-            if orderby == '':
-                self.cursor.execute('select * from %s' % self.dbname)
-            else:
-                self.cursor.execute('select * from %s order by CAST(%s AS INTEGER)' % (self.dbname, orderby))
-        else:
-            if orderby == '':
-                self.cursor.execute('select * from %s where %s' % (self.dbname, where))
-            else:
-                self.cursor.execute('select * from %s where %s order by CAST(%s AS INTEGER)' % (self.dbname, where, orderby))
-        return
+    def query(self, where='', order='', select='*', group=''):
+        q = 'select %s from %s' % (select, self.dbname)
+        if where != '':
+            q += ' where %s' % where
+        if order != '':
+            q += ' order by %s' % order
+        if group != '':
+            q += ' group by %s' % group
 
-    def query(self, where):
-        if where == '':
-            self.cursor.execute('select * from %s' % self.dbname)
-        else:
-            self.cursor.execute('select * from %s where %s' % (self.dbname, where))
+        self.cursor.execute(q)
 
         # key: adding 'rownumber' as the first element of each row 
         results = []
@@ -1700,6 +1725,11 @@ class table:
             results.append(row)
             counter = counter + 1
         return results
+
+    def addcolumns(self, *args):
+        for cn in args:
+            self.addcolumn(cn)
+        return self
 
     def addcolumn(self,
                   column='',
@@ -1764,6 +1794,7 @@ class plotter:
                labelbgcolor    = '',        # if using labels, put a background color behind each
                legend          = '',        # which legend?
                legendtext      = '',        # text to add to legend
+               stackfields     = [],        # fields to add to yfield to determine y coord
                ):
         # timing notes (from TCL): 
         #   just getting values :   30ms / 2000pts
@@ -1787,8 +1818,13 @@ class plotter:
 
         # iterate...
         for r in table.query(where):
+            unscaledy = float(r[yindex])
+            for stackfield in stackfields:
+                unscaledy += float(r[rindex[stackfield]])
+
             x = drawable.translate('x', r[xindex])
-            y = drawable.translate('y', r[yindex])
+            y = drawable.translate('y', unscaledy)
+
             if sizefield != '':
                 # non-empty -> sizefield should be used (i.e., ignore use(size))
                 size = float(r[sizeindex]) / float(sizediv)
@@ -1845,6 +1881,7 @@ class plotter:
                        bgcolor   = '',
                        legend     = '',        # which legend?
                        legendtext = '',        # text to add to legend
+                       stackfields     = [],   # fields to add to yfield to determine y coord
                        ):
         if drawable == '':
             drawable = self.drawable
@@ -1860,12 +1897,18 @@ class plotter:
         for r in table.query(where):
             x = r[xindex]
             y = r[yindex]
-            # print '  plot x %s and y %s' % (x, y)
             if xloval == '':
                 # XXX: should be min of the yrange
                 xlo = 0.0
             else:
                 xlo = xloval
+
+            if len(stackfields) > 0:
+                xlo = 0
+                for stackfield in stackfields:
+                    inc = float(r[rindex[stackfield]])
+                    xlo += inc
+                    x = float(x)+inc
 
             bwidth = drawable.scale('y', barwidth)
 
@@ -1927,6 +1970,7 @@ class plotter:
                      xfield        = 'c0',
                      yfield        = 'c1', 
                      ylofield      = '',        # if specified, table column with ylo data; use if bars don't start at the minimum of the range
+                     stackfields     = [],      # fields to add to yfield to determine y coord
                      yloval        = '',        # if there is no ylofield, use this value to fill down to; if empty, just use min of yrange
                      barwidth      = 1.0,       # bar width
                      cluster       = [0,1],     # of the form n,m; thus, each x-axis data point actually will have 'm' bars plotted upon it; 'n' specifies which cluster of the 'm' this one is (from 0 to m-1); width of each bar is 'barwidth/m'; normal bar plots (without clusters) are just the default, '0,1'
@@ -1993,6 +2037,12 @@ class plotter:
             if ylofield != '':
                 ylo = r[yloindex]
 
+            if len(stackfields) > 0:
+                ylo = 0
+                for stackfield in stackfields:
+                    inc = float(r[rindex[stackfield]])
+                    ylo += inc
+                    y = float(y)+inc
 
             x1 = drawable.translate('x', x) - (barwidth/2.0) + (ubarwidth * n)
             y1 = drawable.translate('y', ylo)
@@ -2017,6 +2067,8 @@ class plotter:
                             font=labelfont, size=labelsize, color=labelcolor, bgcolor=labelbgcolor)
 
         if legend != '':
+            if fillcolor=='white' and linewidth==0:
+                linewidth=1
             s = 'canvas.box(coord=[[$__Xmm,$__Ymm],[$__Xpm,$__Ypm]], fill=' + str(fill) + ', fillcolor=\'' + str(fillcolor) + '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=\'' + str(fillsize) + '\', fillskip=\'' + str(fillskip) + '\', linewidth=\'' + str(linewidth/2.0) + '\', linecolor=\'' + str(linecolor) + '\')'
             t = Template(s)
             legend.add(text=legendtext, picture=t)
@@ -2056,11 +2108,19 @@ class plotter:
              labeloffset  = 3.0,      # if using labels, how much to offset from point by
              legend       = '',       # which legend?
              legendtext   = '',       # text to add to legend
+             symbstyle    = '',
+             symbsize     = 2,
+             symbfill     = False,
              ):
 
         if drawable == '':
             drawable = self.drawable
         assert(drawable != '')
+
+        if symbstyle:
+            self.points(drawable=drawable, table=table, style=symbstyle,
+                        xfield=xfield, yfield=yfield, size=symbsize, fill=symbfill,
+                        linecolor=linecolor, fillcolor=linecolor)
 
         # get some things straight before looping
         if labelplace == 'n':
@@ -2108,9 +2168,7 @@ class plotter:
                     linedash=linedash, linecap=linecap, linejoin=linejoin)
 
         if legend != '':
-            s = 'canvas.line(coord=[[$__Xmw,$__Yy],[$__Xpw,$__Yy]], linewidth=%s, linecolor=\'%s\', linedash=%s)' % (linewidth, linecolor, linedash)
-            # print 'LEGEND', s
-            # LegendAdd -text $use(legend) -picture PsLine -coord __Xmw,__Yy:__Xpw,__Yy -linewidth=linewidth -color $use(linecolor) -linedash $use(linedash) 
+            s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+str(linecolor)+'\', linewidth='+str(linewidth)+', linedash='+str(linedash)+')'
             t = Template(s)
             legend.add(text=legendtext, picture=t)
         
@@ -3120,7 +3178,7 @@ class legend:
     # Use this to draw a legend given the current entries in the legend. Lots of options are available, including: xxx
     # 
     def draw(self,
-             drawable    = '',        # which drawable to place this on (canvas can be specified too
+             canvas      = '',        # 
              coord       = '',        # where to place the legend (lower left point)
              style       = 'right',   # which side to place the text on, right or left?
              width       = 10.0,      # width of the picture to be drawn in the legend
@@ -3133,11 +3191,13 @@ class legend:
              font        = 'default', # which font face to use
              fontsize    = 10,        # size of font of legend
              fontcolor   = 'black',   # color of font
+             order       = [],
              ):
-        assert(drawable != '')
+
+        assert(canvas != '')
         assert(len(coord) == 2)
-        x = drawable.translate('x', coord[0])
-        y = drawable.translate('y', coord[1])
+        x = coord[0]
+        y = coord[1]
         w = width
         h = height
 
@@ -3146,10 +3206,11 @@ class legend:
         else:
             minval = h
 
-        canvas = drawable.canvas
-
         overcounter = 0
         for i in range(0, len(self.info)):
+            if(len(order) > 0):
+                i = order[i]
+
             if style == 'left':
 		cx = x + hspace + (w/2.0)
 		tx = x
@@ -3164,28 +3225,17 @@ class legend:
             text   = legend[0]
             pic    = legend[1]
 
-            mapped = pic.substitute(__Xx=cx, __Yy=y,
-                                    __Ww=w, __Hh=h,
-                                    __Mm=minval,
-                                    __W2=(w/2.0), __H2=(h/2.0),
-                                    __M2=(minval/2.0),
-                                    __Xmm=(cx-(w/2.0)), __Xpm=cx+(w/2.0),
-                                    __Ymm=(y-(h/2.0)),  __Ypm=(y+(h/2.0)), 
-                                    __Xmw=cx-(w/2.0),   __Xpw=(cx+(w/2.0)),
-                                    __Ymh=(y-(h/2.0)),  __Yph=(y+(h/2.0)))
-
-            # WAS
-            #   __Xmm=(cx-(minval/2.0)), __Xpm=cx+(minval/2.0), __Ymm=(y-(minval/2.0)), __Ypm=(y+(minval/2.0)),
-            # NOW IS (after Lanyue bug fix):
-            #   __Xmm=(cx-(w/2.0)), __Xpm=cx+(w/2.0), __Ymm=(y-(h/2.0)), __Ypm=(y+(h/2.0)), 
+            mapped = pic.substitute(__Xx=cx, __Yy=y, __Ww=w, __Hh=h, __Mm=minval, __W2=(w/2.0), __H2=(h/2.0),
+                                    __M2=(minval/2.0), __Xmm=(cx-(minval/2.0)), __Xpm=cx+(minval/2.0),
+                                    __Ymm=(y-(minval/2.0)), __Ypm=(y+(minval/2.0)), __Xmw=cx-(w/2.0),
+                                    __Xpw=(cx+(w/2.0)), __Ymh=(y-(h/2.0)), __Yph=(y+(h/2.0)))
 
             if style == 'left':
 		canvas.text(coord=[tx,y], anchor='r,c', text=text, font=font, color=fontcolor, size=fontsize)
-                # print 'EVAL', mapped
 		eval(mapped)
             elif style == 'right':
-                # print 'EVAL', mapped
-		eval(mapped)
+                for m in mapped.split(';'):
+                    eval(m)
 		canvas.text(coord=[tx,y], anchor='l,c', text=text, font=font, color=fontcolor, size=fontsize)
 
             if down == True:
@@ -3196,8 +3246,11 @@ class legend:
             if skipnext != '':
                 overcounter = overcounter + 1
                 if overcounter >= skipnext:
-                    x = x + skipspace
-                    y = drawable.translate('y', coord[1])
+                    if type(skipspace) == list:
+                        x += skipspace.pop(0)
+                    else:
+                        x = x + skipspace
+                    y = coord[1]
                     overcounter = 0
         # END: for i in range...
         return
