@@ -1,0 +1,9 @@
+Create plotter examples for these:
+
+line.py (add legend)
+verticalbars.py
+horizontalbars.py
+verticalintervals.py
+horizontalintervals.py
+verticalfill.py
+function.py

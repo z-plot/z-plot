@@ -1286,8 +1286,8 @@ class drawable:
         coord[1] = str(coord[1])
 
         if dimensions == []:
-            dimensions = [canvas.width-float(coord[0])-10,
-                          canvas.height-float(coord[1])-10]
+            dimensions = [canvas.width-float(coord[0])-15,
+                          canvas.height-float(coord[1])-15]
         assert(len(dimensions) == 2)
         dimensions[0] = str(dimensions[0])
         dimensions[1] = str(dimensions[1])
