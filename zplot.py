@@ -1267,7 +1267,7 @@ class postscript:
 class drawable:
     def __init__(self,
                  canvas     = '',
-                 dimensions = ['3in','2.5in'],
+                 dimensions = [],
                  coord      = [],
                  xrange     = [],
                  yrange     = [],
@@ -1280,17 +1280,19 @@ class drawable:
         
         # now, check if height and width have been specified
         if coord == []:
-            coord = ['40','40']
-
+            coord = [40, 40]
+        assert(len(coord) == 2)
         coord[0] = str(coord[0])
         coord[1] = str(coord[1])
 
+        if dimensions == []:
+            dimensions = [canvas.width-float(coord[0])-10,
+                          canvas.height-float(coord[1])-10]
         assert(len(dimensions) == 2)
         dimensions[0] = str(dimensions[0])
         dimensions[1] = str(dimensions[1])
         self.width = [canvas.convert(dimensions[0]), canvas.convert(dimensions[1])]
 
-        assert(len(coord) == 2)
         # 0 -> xaxis, 1 -> yaxis
         self.offset = [canvas.convert(coord[0]), canvas.convert(coord[1])]
 
