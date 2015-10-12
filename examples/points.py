@@ -33,6 +33,7 @@ def main():
              style='circle', fill=True, fillcolor='red',
              size=3, linewidth=0.5)
   
+    # save to eps file
     canvas.render()
 
 if __name__ == '__main__':

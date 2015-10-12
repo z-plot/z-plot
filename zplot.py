@@ -1278,23 +1278,22 @@ class drawable:
         assert(canvas != '')
         self.canvas = canvas
         
-        # now, check if height and width have been specified
+        # check if x and y have been specified
         if coord == []:
-            coord = [40, 40]
+            coord = ['0.5in', '0.5in']
         assert(len(coord) == 2)
         coord[0] = str(coord[0])
         coord[1] = str(coord[1])
+        self.offset = [canvas.convert(coord[0]), canvas.convert(coord[1])]
 
+        # now, check if height and width have been specified
         if dimensions == []:
-            dimensions = [canvas.width-float(coord[0])-15,
-                          canvas.height-float(coord[1])-15]
+            dimensions = [canvas.width-float(self.offset[0])-15,
+                          canvas.height-float(self.offset[1])-15]
         assert(len(dimensions) == 2)
         dimensions[0] = str(dimensions[0])
         dimensions[1] = str(dimensions[1])
-        self.width = [canvas.convert(dimensions[0]), canvas.convert(dimensions[1])]
-
-        # 0 -> xaxis, 1 -> yaxis
-        self.offset = [canvas.convert(coord[0]), canvas.convert(coord[1])]
+        self.dimensions = [canvas.convert(dimensions[0]), canvas.convert(dimensions[1])]
 
         self.scaletype = ['blank', 'blank']
         self.logbase = [0, 0]
@@ -1378,7 +1377,7 @@ class drawable:
 
     def scaleNum(self, axisnum, value):
         # print '    scalenum: %s %s' % (axisnum, value)
-        width  = self.width[axisnum]
+        width  = self.dimensions[axisnum]
         lrange = self.linearRange[axisnum]
         result = float(value) * (width / lrange)
         # print '    scalenum: %s %s --> RESULT %s' % (axisnum, value, result)
@@ -1461,9 +1460,21 @@ class drawable:
         ucoord = [self.translate('x', float(coord[0])), self.translate('y', float(coord[1]))]
         return ucoord
 
-    def getwidth(self, axis):
+    def getsize(self, axis):
         axisnum = self.axismap[axis]
-        return self.width[axisnum]
+        return self.dimensions[axisnum]
+
+    def bottom(self):
+        return self.offset[1]
+
+    def top(self):
+        return self.offset[1] + self.dimensions[1]
+
+    def left(self):
+        return self.offset[0]
+
+    def right(self):
+        return self.offset[0] + self.dimensions[0]
 
     # END: class drawable
     def LAST(self):
@@ -2604,7 +2615,7 @@ class axis:
                         vmax):
         # XXX 3.5 is pretty random
         ticsperinch = 3.5 
-        width = drawable.getwidth(axis) / 72.0
+        width = drawable.getsize(axis) / 72.0
         tics  = width * ticsperinch
         step  = 1 + int((vmax - vmin) / tics)
         return step

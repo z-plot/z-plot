@@ -29,18 +29,27 @@ def main():
     # drawable.
     p = plotter()
 
+    # each thing we plot can be added to the legend
+    leg = legend()
+
     # for line color, we use a string that is 'red,green,blue'.
     # A primary color can range from 0 to 1, so '1,1,1' is white,
     # '0,0,0' is black, and '1,0,0' is red.
     p.line(d, t, xfield='size', yfield='disk_time',
-           linewidth=2, linecolor='0.6,0.6,0.6')
+           linewidth=2, linecolor='0.6,0.6,0.6',
+           legend=leg, legendtext='disk')
 
     # for the linedash pattern, we specify [LINE,SPACE].  So in this
     # case, the line will consist of 3-pixel dashes, each separated by
     # a 1-pixel space.
     p.line(d, t, xfield='size', yfield='ssd_time',
-           linedash=[3,1])
-  
+           linedash=[3,1],
+           legend=leg, legendtext='SSD')
+
+    # draw legend near top-left of drawable
+    leg.draw(canvas, coord=[d.left()+20, d.top()-10])
+
+    # save to eps file
     canvas.render()
 
 if __name__ == '__main__':
