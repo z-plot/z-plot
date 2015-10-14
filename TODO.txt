@@ -1,5 +1,4 @@
 Create plotter examples for these:
 
-horizontalintervals.py
 verticalfill.py
 function.py
