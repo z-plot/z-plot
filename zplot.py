@@ -28,9 +28,17 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import time, math, os, stat, sys, sqlite3, re, socket, random
-from types import *
-from string import Template
+import time
+import math
+import os
+import stat
+import sys
+import sqlite3
+import re
+import socket
+import random
+import types
+import string
 
 def abort(str):
     print 'Abort! Reason: (%s)' % str
@@ -1433,10 +1441,10 @@ class drawable:
 
     #
     def map(self, coord):
-        if type(coord) == ListType:
+        if type(coord) == types.ListType:
             # need to figure out: is this a simple list, or a list of lists?
             first = coord[0]
-            if type(first) == ListType:
+            if type(first) == types.ListType:
                 return self.translatecoord(coord)
             else:
                 return self.translatecoordsingle(coord)
@@ -1869,7 +1877,7 @@ class plotter:
 
         if legend != '':
             s = 'canvas.shape(style=\''+style+'\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+str(linecolor)+'\', linewidth='+str(linewidth)+', fill='+str(fill)+', fillcolor=\''+str(fillcolor)+'\', fillstyle=\''+str(fillstyle)+'\', fillsize='+str(fillsize)+', fillskip='+str(fillskip)+')'
-            t = Template(s)
+            t = string.Template(s)
             legend.add(text=legendtext, picture=t)
     # END: points()
 
@@ -2083,7 +2091,7 @@ class plotter:
             if fillcolor=='white' and linewidth==0:
                 linewidth=1
             s = 'canvas.box(coord=[[$__Xmm,$__Ymm],[$__Xpm,$__Ypm]], fill=' + str(fill) + ', fillcolor=\'' + str(fillcolor) + '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=\'' + str(fillsize) + '\', fillskip=\'' + str(fillskip) + '\', linewidth=\'' + str(linewidth/2.0) + '\', linecolor=\'' + str(linecolor) + '\')'
-            t = Template(s)
+            t = string.Template(s)
             legend.add(text=legendtext, picture=t)
 
     # END: verticalbars()
@@ -2182,7 +2190,7 @@ class plotter:
 
         if legend != '':
             s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+str(linecolor)+'\', linewidth='+str(linewidth)+', linedash='+str(linedash)+')'
-            t = Template(s)
+            t = string.Template(s)
             legend.add(text=legendtext, picture=t)
         
         return
@@ -2222,7 +2230,7 @@ class plotter:
 
         if legend != '':
             s = 'canvas.line(coord=[[$__Xmw,$__Yy],[$__Xpw,$__Yy]], linewidth=%s, linecolor=\'%s\', linedash=%s)' % (linewidth, linecolor, linedash)
-            t = Template(s)
+            t = string.Template(s)
             legend.add(text=legendtext, picture=t)
 
         return
