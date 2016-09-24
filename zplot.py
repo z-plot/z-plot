@@ -104,7 +104,8 @@ class postscript:
     def __setfont(self, face, size):
         if face == 'default':
             face = self.default
-        self.__out('(' + face + ') findfont ' + str(size) + ' scalefont setfont')
+        self.__out('(' + face + ') findfont ' + str(size) +
+                   ' scalefont setfont')
 
     def __gsave(self):
         self.__out('gs')
@@ -183,8 +184,8 @@ class postscript:
         self.__out(str(x) + ' ' + str(y) + ' scale')
 
     def __arc(self, x, y, radius, start, end):
-        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + str(start) \
-                   + ' ' + str(end) + ' arc')
+        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + \
+                   str(start) + ' ' + str(end) + ' arc')
 
     def __clip(self):
         self.__out('clip')
@@ -998,7 +999,7 @@ class postscript:
             # move a line up by the height of characters + border
             self.__out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')
             # move back down and closepath to finish
-            self.__out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')           
+            self.__out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')
             self.__closepath()
             self.__fill()
             if rotate != 0:
@@ -1443,7 +1444,7 @@ class drawable:
 
     #
     # VALUES have three possible types
-    #   Virtual    : what they are in the specifed scale type (log, linear, etc.)
+    #   Virtual    : what they are in the specifed scale type (log, linear)
     #   Linear     : what they are once the mapping has been applied
     #                (log(virtual), etc.)
     #   Scaled     : in Postscript points, scaled as if the drawable is at 0,0
@@ -1876,7 +1877,7 @@ class plotter:
     #
     # points()
     #
-    # Use this to draw points onto the drawing surface. Lots and lots of options!
+    # Use this to draw points onto the drawing surface. Lots of options...
     #
     def points(self,
                drawable        = '',        # name of the drawable area
@@ -1901,7 +1902,7 @@ class plotter:
                fill            = False,     # for some shapes, filling makes
                                             # sense; if desired, mark this true
                fillcolor       = 'black',   # if filling, use this fill color
-               fillstyle       = 'solid',   # if filling, which fill style to use
+               fillstyle       = 'solid',   # if filling, which fill style 
                fillsize        = 3.0,       # size of object in pattern
                fillskip        = 4.0,       # space between object in pattern
                labelfield      = '',        # if specified, table column with
@@ -1975,9 +1976,10 @@ class plotter:
 		
             else:
                 canvas.shape(style=style, x=x+shift[0], y=y+shift[1], size=size,
-                             linecolor=linecolor, linewidth=linewidth, fill=fill,
-                             fillcolor=fillcolor, fillstyle=fillstyle,
-                             fillsize=fillsize, fillskip=fillskip)
+                             linecolor=linecolor, linewidth=linewidth,
+                             fill=fill, fillcolor=fillcolor,
+                             fillstyle=fillstyle, fillsize=fillsize,
+                             fillskip=fillskip)
 
         if legend != '':
             s = 'canvas.shape(style=\'' + style + \
@@ -2024,7 +2026,7 @@ class plotter:
                        fillsize    = 3,
                        fillskip    = 4,
 
-                       # background color for legend text, and other legend stuff
+                       # background color for legend text, + other legend stuff
                        bgcolor     = '',
                        legend      = '',
                        legendtext  = '',
@@ -2303,7 +2305,7 @@ class plotter:
     # line()
     # 
     # Use this function to plot lines. It is one of the simplest routines there
-    # is -- basically, it takes the x and y fields and plots a line through them.
+    # is -- basically, it takes the x and y fields and plots a line thru them.
     # It does NOT sort them, though, so you might need to do that first if you
     # want the line to look pretty. The usual line arguments can be used,
     # including color, width, and dash pattern.
@@ -2405,8 +2407,8 @@ class plotter:
                     linedash=linedash, linecap=linecap, linejoin=linejoin)
 
         if legend != '':
-            s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2,' + \
-                'linecolor=\'' + str(linecolor) + '\', linewidth=' + \
+            s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2,' \
+                + 'linecolor=\'' + str(linecolor) + '\', linewidth=' + \
                 str(linewidth) + ', linedash=' + str(linedash) + ')'
             t = string.Template(s)
             legend.add(text=legendtext, picture=t)
@@ -2434,7 +2436,7 @@ class plotter:
                  # values the function is evaluated and a line is drawn to
                  step       = 1,
 
-                 # if given, limit function to values between low and hi y values
+                 # if given, limit function to values between low/hi y values
                  ylimit     = ['',''],
 
                  # line width, color, and dash pattern
@@ -2490,7 +2492,7 @@ class plotter:
                             yfield    = '', # table column with y data
                             xlofield  = '', # table column with xlo data
                             xhifield  = '', # table column with xhi data
-                            align     = 'c', # c-center, u-upper, l-lower, n-none
+                            align     = 'c', # c-center u-upper l-lower n-none
                             linecolor = 'black', # color of the line
                             linewidth = 1,  # width of all lines
                             devwidth  = 3,  # width of interval marker on top
@@ -2556,7 +2558,7 @@ class plotter:
                           xfield      = 'c0', # table column with x data
                           ylofield    = 'c1', # table column with ylo data
                           yhifield    = 'c2', # table column with yhi data
-                          align       = 'c',  # c-center, l-left, r-right, n-none
+                          align       = 'c',  # c-center l-left r-right n-none
                           linecolor   = 'black', # color of the line
                           linewidth   = 1,    # width of all lines
                           devwidth    = 3,    # width of interval marker on top
@@ -2767,7 +2769,7 @@ class axis:
                  # the routine will fill in a guess (either the min or max of
                  # the range, or a guess for the step), e.g., 0,,2 means start
                  # at 0, fill in the max of the xrange for a max value, and
-                 # set the step to 2. The default is to guess all of these values
+                 # set the step to 2. The default is to guess these values.
                  xauto         = ['','',''],
 
                  # specify labels/majortics by hand with a list of form:
@@ -2974,21 +2976,25 @@ class axis:
             if style == 'box':
                 if doxmajortics:
                     self.__maketics(drawable=drawable, axis='x',
-                                    axispos=tvalues['yaxis,min'], labels=xlabels,
-                                    ticstyle=ticstyle, ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
+                                    axispos=tvalues['yaxis,min'],
+                                    labels=xlabels, ticstyle=ticstyle,
+                                    ticsize=ticmajorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
                     self.__maketics(drawable=drawable, axis='x',
-                                    axispos=tvalues['yaxis,max'], labels=xlabels,
+                                    axispos=tvalues['yaxis,max'],
+                                    labels=xlabels,
                                     ticstyle=self.__toggle(ticstyle),
                                     ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
                 if doymajortics:
                     self.__maketics(drawable=drawable, axis='y',
-                                    axispos=tvalues['xaxis,min'], labels=ylabels,
-                                    ticstyle=ticstyle, ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
+                                    axispos=tvalues['xaxis,min'],
+                                    labels=ylabels, ticstyle=ticstyle,
+                                    ticsize=ticmajorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
                     self.__maketics(drawable=drawable, axis='y',
-                                    axispos=tvalues['xaxis,max'], labels=ylabels,
+                                    axispos=tvalues['xaxis,max'],
+                                    labels=ylabels,
                                     ticstyle=self.__toggle(ticstyle),
                                     ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
@@ -3536,7 +3542,7 @@ class grid:
 
                  # dash parameters; will make axes dashed, but not tic marks
                  linedash  = 0,
-                 # specify false to turn off grid in x direction (vertical lines)
+                 # specify false to turn off grid in x direction (vert. lines)
                  x         = True,
                  # specify false to turn off grid in y direction (horiz. lines)
                  y         = True,
