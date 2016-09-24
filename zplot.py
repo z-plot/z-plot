@@ -2702,93 +2702,157 @@ class plotter:
 # 
 class axis:
     def __init__(self,
-                 drawable      = '',        # the relevant drawable
+                 drawable      = '',        
                  linecolor     = 'black',   # color of axis line
                  linewidth     = 1.0,       # width of axis line
-                 linedash      = 0,         # dash parameters; will make axes dashed, but not tic marks
-                 style         = 'xy',      # which axes to draw: 'xy', 'x', 'y', 'box' are options
-                 labelstyle    = 'out',     # labels 'in'or'out'? for xaxis, 'out' means below/'in' above; for yaxis,'out' means left/'in' right
-                 ticstyle      = 'out',     # are tics 'in', 'out', or 'centered'? (inside the axes, outside them, or centered upon the axes)
-                 doaxis        = True,      # whether to draw the actual axes or not
-                 dolabels      = True,      # whether to put labels on or not; useful to set to false, for example, when ...
-                 domajortics   = True,      # whether to put majortics on axes or not
-                 doxmajortics  = True,      # whether to put major tics on x-axis
-                 doymajortics  = True,      # whether to put major tics on y-axis
-                 dominortics   = False,     # whether to put minortics on axes or not
-                 doxminortics  = True,      # whether to put major tics on x-axis
-                 doyminortics  = True,      # whether to put major tics on y-axis
-                 doxlabels     = True,      # whether to put labels on x-axis
-                 doylabels     = True,      # whether to put labels on y-axis
 
-                 xaxisrange    = '',        # min and max values to draw xaxis between; empty means whole range
-                 yaxisrange    = '',        # min and max values to draw yaxis between; empty means whole range
-                 xaxisposition = '',        # which y value x-axis is located at; if empty, min of range; ignored by 'box' style
-                 yaxisposition = '',        # which x value y-axis is located at; if empty, min of range; ignored by 'box' style
+                 # dash parameters; will make axes dashed, but not tic marks
+                 linedash      = 0,
 
-                 xauto         = ['','',''],# [x1,x2,step] (will put labels and major tics from x1 to x2 with step between each); can leave any of these empty and the routine will fill in a guess (either the min or max of the range, or a guess for the step), e.g., 0,,2 means start at 0, fill in the max of the xrange for a max value, and set the step to 2. The default is to guess all of these values
-                 xmanual       = '',        # specify labels/majortics by hand with a list of form: [[x1,'label1'],[x2,'label2']...]
-                 yauto         = ['','',''],# similar to xauto, but for the yaxis
-                 ymanual       = '',        # similar to xmanual, but for the yaxis
+                 # which axes to draw: 'xy', 'x', 'y', 'box' are options
+                 style         = 'xy',
 
-                 ticmajorsize  = 4.0,       # size of the major tics
-                 ticminorsize  = 2.5,       # size of the minor tics
+                 # labels 'in'or'out'? for xaxis, 'out' means below/'in' above;
+                 # for yaxis,'out' means left/'in' right
+                 labelstyle    = 'out',
 
-                 xminorticcnt  = 1,         # how many minor tics between each major tic (x axis)
-                 yminorticcnt  = 1,         # how many minor tics between each major tic (y axis)
+                 # are tics 'in', 'out', or 'centered'? (inside the axes,
+                 # outside them, or centered upon the axes)
+                 ticstyle      = 'out',
+
+                 # whether to draw the actual axes or not
+                 doaxis        = True,
+
+                 # whether to put labels on or not
+                 dolabels      = True,
+
+                 # whether to put majortics on axes or not
+                 domajortics   = True,
+
+                 # whether to put major tics on x-axis
+                 doxmajortics  = True,
+
+                 # whether to put major tics on y-axis
+                 doymajortics  = True,
+
+                 # whether to put minortics on axes or not
+                 dominortics   = False,
+
+                 # whether to put major tics on x-axis
+                 doxminortics  = True,
+
+                 # whether to put major tics on y-axis
+                 doyminortics  = True,
+
+                 # whether to put labels on x-axis
+                 doxlabels     = True,
+
+                 # whether to put labels on y-axis
+                 doylabels     = True,      
+
+                 # min/max values to draw xaxis between; empty means whole range
+                 xaxisrange    = '',
+
+                 # min/max values to draw yaxis between; empty means whole range
+                 yaxisrange    = '',
+
+                 # y value x-axis is located at; empty->min; ignored by 'box'
+                 xaxisposition = '',
+
+                 # x value y-axis is located at; empty->min; ignored by 'box'
+                 yaxisposition = '',        
+
+                 # [x1,x2,step] (will put labels and major tics from x1 to x2
+                 # with step between each); can leave any of these empty and
+                 # the routine will fill in a guess (either the min or max of
+                 # the range, or a guess for the step), e.g., 0,,2 means start
+                 # at 0, fill in the max of the xrange for a max value, and
+                 # set the step to 2. The default is to guess all of these values
+                 xauto         = ['','',''],
+
+                 # specify labels/majortics by hand with a list of form:
+                 # [[x1,'label1'],[x2,'label2']...]
+                 xmanual       = '',        
+
+                 # similar to xauto/xmanual, but for the yaxis
+                 yauto         = ['','',''],
+                 ymanual       = '',        
+
+                 # size of the major tics, size of the minor tics
+                 ticmajorsize  = 4.0,       
+                 ticminorsize  = 2.5,       
+
+                 # how many minor tics between each major tic (x axis)
+                 # how many minor tics between each major tic (y axis)
+                 xminorticcnt  = 1,
+                 yminorticcnt  = 1,         
 
                  xlabelfont      = 'default', # font to use (if any)
                  xlabelfontsize  = 10.0,      # font size of labels (if any)
                  xlabelfontcolor = 'black',   # font color
-                 xlabelrotate   = 0,          # use specified rotation for x labels
-                 xlabelbgcolor = '',        # if non-empty, put a background colored square behind the xlabels
-                 xlabelanchor   = '',         # text anchor for labels along the x axis; empty means routine should guess
-                 xlabelformat   = '',         # format string for xlabels; e.g., %d for ints; empty (default) implies best guess; can also use this to add decoration to the label, e.g., '%i %%' will add a percent sign to each integer label, and so forth
+                 xlabelrotate   = 0,          # rotation for x labels
+
+                 # if non-empty, put a background colored square behind xlabels
+                 xlabelbgcolor = '',
+                 # text anchor for labels along the x axis; empty means guess
+                 xlabelanchor   = '',
+
+                 # format string for xlabels; e.g., %d for ints; empty (default)
+                 # implies best guess; can also use this to add decoration to
+                 # the label, e.g., '%i %%' will add a percent sign to each
+                 # integer label, and so forth.
+                 xlabelformat   = '',         
 
                  ylabelfont      = 'default', # font to use (if any)
                  ylabelfontsize  = 10.0,      # font size of labels (if any)
                  ylabelfontcolor = 'black',   # font color
-                 ylabelrotate   = 0,          # use specified rotation for y labels
-                 ylabelbgcolor = '',          # just like xbgcolor, but for ylabels
-                 ylabelanchor   = '',         # same as xanchor, but for labels along the y axis
-                 ylabelformat   = '',         # similar to xformat, but for ylabels
+                 ylabelrotate   = 0,          # specified rotation for y labels
+                 ylabelbgcolor = '',          # just like xbgcolor
+                 ylabelanchor   = '',         # just like xanchor
+                 ylabelformat   = '',         # just like xformat
 
-                 xlabeltimes   = 1,           # what to multiple xlabel by; e.g., if 10, 1->10, 2->20, etc., if 0.1, 1->0.1, etc.
-                 ylabeltimes   = 1,           # similar to xmul, but for ylabels
+                 # what to multiple xlabel by; e.g., if 10, 1->10, 2->20, etc.
+                 xlabeltimes   = 1,           
+                 # similar to xmul, but for ylabels
+                 ylabeltimes   = 1,           
 
-                 xlabelshift   = [0,0],       # shift xlabels left/right, up/down (e.g., +4,-3 -> shift right 4, shift down 3)
-                 ylabelshift   = [0,0],       # similar to xshift, but for ylabels
+                 # shift xlabels left/right, up/down (+4,-3 -> right 4, down 3)
+                 xlabelshift   = [0,0],
+                 # similar to xshift, but for ylabels
+                 ylabelshift   = [0,0],       
 
                  xtitle        = '',          # title along the x axis
                  xtitlefont    = 'default',   # xtitle font to use
                  xtitlesize    = 10,          # xtitle font size
                  xtitlecolor   = 'black',     # xtitle font color
                  xtitleplace   = 'c',         # c - center, l - left, r - right
-                 xtitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -xtitleshift)
-                 xtitleshift   = [0,0],       # use this to micro-adjust the placement of the title
+                 xtitlecoord   = '',          # coordinates of title; if empty,
+                                              # guess (adjust with -xtitleshift)
+                 xtitleshift   = [0,0],       # use this to adjust title place
                  xtitlerotate  = 0,           # how much to rotate the title
-                 xtitleanchor  = '',          # how to anchor the text; empty means we will guess
-                 xtitlebgcolor = '',          # if not-empty, put this color behind the title
+                 xtitleanchor  = '',          # how to anchor text; empty->guess
+                 xtitlebgcolor = '',          # if not-empty, color behind title
 
-                 ytitle        = '',          # title along the y axis
-                 ytitlefont    = 'default',   # ytitle font to use
-                 ytitlesize    = 10,          # ytitle font size
-                 ytitlecolor   = 'black',     # ytitle font color
-                 ytitleplace   = 'c',         # c - center, l - lower, u - upper
-                 ytitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -titleshift)
-                 ytitleshift   = [0,0],       # use this to micro-adjust the placement of the title
-                 ytitlerotate  = 90.0,        # how much to rotate the title
-                 ytitleanchor  = '',          # how to anchor the text; empty means we will guess
-                 ytitlebgcolor = '',          # if not-empty, put this color behind the title
+                 ytitle        = '',          # as above
+                 ytitlefont    = 'default',   # 
+                 ytitlesize    = 10,          # 
+                 ytitlecolor   = 'black',     # 
+                 ytitleplace   = 'c',         # 
+                 ytitlecoord   = '',          # 
+                 ytitleshift   = [0,0],       # 
+                 ytitlerotate  = 90.0,        # 
+                 ytitleanchor  = '',          # 
+                 ytitlebgcolor = '',          # 
 
-                 title         = '',          # title along the y axis
-                 titlefont     = 'default',   # title font to use
-                 titlesize     = 10.0,        # title font size
-                 titlecolor    = 'black',     # title font color
-                 titleplace    = 'c',         # c - center, l - left, r - right
-                 titleshift    = [0,0],       # use this to micro-adjust the placement of the title
-                 titlerotate   = 0,           # how much to rotate the title
-                 titleanchor   = '',          # how to anchor the text; empty means we will guess
-                 titlebgcolor  = '',          # if not-empty, put this color behind the title
+                 title         = '',          # main title of axis
+                 titlefont     = 'default',   # rest are as above
+                 titlesize     = 10.0,        # 
+                 titlecolor    = 'black',     # 
+                 titleplace    = 'c',         # 
+                 titleshift    = [0,0],       # 
+                 titlerotate   = 0,           # 
+                 titleanchor   = '',          # 
+                 titlebgcolor  = '',          # 
                  ):
         assert(drawable != '')
 
@@ -2828,9 +2892,11 @@ class axis:
 
         # translate each of these values into points
         tvalues = {}
-        for v in ['xaxis,min', 'xaxis,max', 'xrange,min', 'xrange,max', 'yaxis,xpos']:
+        for v in ['xaxis,min', 'xaxis,max', 'xrange,min', 'xrange,max',
+                  'yaxis,xpos']:
             tvalues[v] = drawable.translate('x', values[v])
-        for v in ['yaxis,min', 'yaxis,max', 'yrange,min', 'yrange,max', 'xaxis,ypos']:
+        for v in ['yaxis,min', 'yaxis,max', 'yrange,min', 'yrange,max',
+                  'xaxis,ypos']:
             tvalues[v] = drawable.translate('y', values[v])
 
         # adjust for linewidths
@@ -2843,83 +2909,138 @@ class axis:
 
         if doaxis == True:
             if style == 'x' or style == 'xy':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['xaxis,ypos']],[tvalues['xaxis,max']+half,tvalues['xaxis,ypos']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                                    tvalues['xaxis,ypos']],
+                                   [tvalues['xaxis,max']+half,
+                                    tvalues['xaxis,ypos']]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
             if style == 'y' or style == 'xy':
-		canvas.line(coord=[[tvalues['yaxis,xpos'],tvalues['yaxis,min']-half],[tvalues['yaxis,xpos'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['yaxis,xpos'],
+                                    tvalues['yaxis,min']-half],
+                                   [tvalues['yaxis,xpos'],
+                                    tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
 
             if style == 'box':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,min']],[tvalues['xaxis,max']+half,tvalues['yrange,min']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,min'],tvalues['yaxis,min']-half],[tvalues['xrange,min'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,max']],[tvalues['xaxis,max']+half,tvalues['yrange,max']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,max'],tvalues['yaxis,min']-half],[tvalues['xrange,max'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                                    tvalues['yrange,min']],
+                                   [tvalues['xaxis,max']+half,
+                                    tvalues['yrange,min']]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
+		canvas.line(coord=[[tvalues['xrange,min'],
+                                    tvalues['yaxis,min']-half],
+                                   [tvalues['xrange,min'],
+                                    tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
+		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                                    tvalues['yrange,max']],
+                                   [tvalues['xaxis,max']+half,
+                                    tvalues['yrange,max']]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
+		canvas.line(coord=[[tvalues['xrange,max'],
+                                    tvalues['yaxis,min']-half],
+                                   [tvalues['xrange,max'],
+                                    tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
 
-        # unpack the (complex) args and put useful things into labels and values arrays
+        # unpack the (complex) args and put useful things into labels and
+        # values arrays
         xlabels = []
         ylabels = []
-        self.__unpackargs(drawable, axis='x', values=values, labels=xlabels, manual=xmanual, auto=xauto,
+        self.__unpackargs(drawable, axis='x', values=values, labels=xlabels,
+                          manual=xmanual, auto=xauto,
                           labelformat=xlabelformat, labeltimes=xlabeltimes)
-        self.__unpackargs(drawable, axis='y', values=values, labels=ylabels, manual=ymanual, auto=yauto,
+        self.__unpackargs(drawable, axis='y', values=values, labels=ylabels,
+                          manual=ymanual, auto=yauto,
                           labelformat=ylabelformat, labeltimes=ylabeltimes)
 
         if domajortics == True:
             if doxmajortics and (style == 'x' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=xlabels,
+                self.__maketics(drawable=drawable, axis='x',
+                                axispos=tvalues['xaxis,ypos'], labels=xlabels,
                                 ticstyle=ticstyle, ticsize=ticmajorsize,
                                 linecolor=linecolor, linewidth=linewidth)
             if doymajortics and (style == 'y' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=ylabels,
+                self.__maketics(drawable=drawable, axis='y',
+                                axispos=tvalues['yaxis,xpos'], labels=ylabels,
                                 ticstyle=ticstyle, ticsize=ticmajorsize,
                                 linecolor=linecolor, linewidth=linewidth)
             if style == 'box':
                 if doxmajortics:
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=xlabels,
+                    self.__maketics(drawable=drawable, axis='x',
+                                    axispos=tvalues['yaxis,min'], labels=xlabels,
                                     ticstyle=ticstyle, ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=xlabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
+                    self.__maketics(drawable=drawable, axis='x',
+                                    axispos=tvalues['yaxis,max'], labels=xlabels,
+                                    ticstyle=self.__toggle(ticstyle),
+                                    ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
                 if doymajortics:
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=ylabels,
+                    self.__maketics(drawable=drawable, axis='y',
+                                    axispos=tvalues['xaxis,min'], labels=ylabels,
                                     ticstyle=ticstyle, ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=ylabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
+                    self.__maketics(drawable=drawable, axis='y',
+                                    axispos=tvalues['xaxis,max'], labels=ylabels,
+                                    ticstyle=self.__toggle(ticstyle),
+                                    ticsize=ticmajorsize,
                                     linecolor=linecolor, linewidth=linewidth)
                 
         if dolabels == True:
-            if (style == 'x' or style == 'xy' or style == 'box') and doxlabels == True:
+            if (style == 'x' or style == 'xy' or style == 'box') and \
+                   doxlabels == True:
                 self.__makelabels(drawable=drawable, values=values, 
                                   axis='x', axispos=tvalues['xaxis,ypos'],
                                   labels=xlabels, labelstyle=labelstyle,
                                   ticstyle=ticstyle, ticmajorsize=ticmajorsize,
-                                  font=xlabelfont, fontsize=xlabelfontsize, fontcolor=xlabelfontcolor,
-                                  labelanchor=xlabelanchor, labelrotate=xlabelrotate, labelshift=xlabelshift, labelbgcolor=xlabelbgcolor)
-            if (style == 'y' or style == 'xy' or style == 'box') and doylabels == True:
+                                  font=xlabelfont, fontsize=xlabelfontsize,
+                                  fontcolor=xlabelfontcolor,
+                                  labelanchor=xlabelanchor,
+                                  labelrotate=xlabelrotate,
+                                  labelshift=xlabelshift,
+                                  labelbgcolor=xlabelbgcolor)
+            if (style == 'y' or style == 'xy' or style == 'box') and \
+                   doylabels == True:
                 self.__makelabels(drawable=drawable, values=values,
                                   axis='y', axispos=tvalues['yaxis,xpos'],
                                   labels=ylabels, labelstyle=labelstyle,
                                   ticstyle=ticstyle, ticmajorsize=ticmajorsize,
-                                  font=ylabelfont, fontsize=ylabelfontsize, fontcolor=ylabelfontcolor,
-                                  labelanchor=ylabelanchor, labelrotate=ylabelrotate, labelshift=ylabelshift, labelbgcolor=ylabelbgcolor)
+                                  font=ylabelfont, fontsize=ylabelfontsize,
+                                  fontcolor=ylabelfontcolor,
+                                  labelanchor=ylabelanchor,
+                                  labelrotate=ylabelrotate,
+                                  labelshift=ylabelshift,
+                                  labelbgcolor=ylabelbgcolor)
 
         self.__maketitle(drawable=drawable, values=values, tvalues=tvalues,
                          # label info ...
-                         dolabels=dolabels, doxlabels=doxlabels, doylabels=doylabels, labelstyle=labelstyle,
+                         dolabels=dolabels, doxlabels=doxlabels,
+                         doylabels=doylabels, labelstyle=labelstyle,
                          # describing title...
-                         title=title, titleshift=titleshift, titlefont=titlefont, titlecolor=titlecolor, titlerotate=titlerotate,
-                         titlesize=titlesize, titlebgcolor=titlebgcolor, titleanchor=titleanchor, titleplace=titleplace,
+                         title=title, titleshift=titleshift,
+                         titlefont=titlefont, titlecolor=titlecolor,
+                         titlerotate=titlerotate, titlesize=titlesize,
+                         titlebgcolor=titlebgcolor, titleanchor=titleanchor,
+                         titleplace=titleplace,
                          # describing xtitle...
-                         xtitle=xtitle, xtitleshift=xtitleshift, xtitlefont=xtitlefont, xtitlecolor=xtitlecolor, xtitlerotate=xtitlerotate,
-                         xtitlesize=xtitlesize, xtitlebgcolor=xtitlebgcolor, xtitleanchor=xtitleanchor, xtitleplace=xtitleplace,
+                         xtitle=xtitle, xtitleshift=xtitleshift,
+                         xtitlefont=xtitlefont, xtitlecolor=xtitlecolor,
+                         xtitlerotate=xtitlerotate, xtitlesize=xtitlesize,
+                         xtitlebgcolor=xtitlebgcolor, xtitleanchor=xtitleanchor,
+                         xtitleplace=xtitleplace,
                          # describing ytitle...
-                         ytitle=ytitle, ytitleshift=ytitleshift, ytitlefont=ytitlefont, ytitlecolor=ytitlecolor, ytitlerotate=ytitlerotate,
-                         ytitlesize=ytitlesize, ytitlebgcolor=ytitlebgcolor, ytitleanchor=ytitleanchor, ytitleplace=ytitleplace)
+                         ytitle=ytitle, ytitleshift=ytitleshift,
+                         ytitlefont=ytitlefont, ytitlecolor=ytitlecolor,
+                         ytitlerotate=ytitlerotate, ytitlesize=ytitlesize,
+                         ytitlebgcolor=ytitlebgcolor, ytitleanchor=ytitleanchor,
+                         ytitleplace=ytitleplace)
 
         # minortics
         if dominortics == True:
@@ -2929,28 +3050,40 @@ class axis:
             self.__makeminorlabels(nylabels, ylabels, yminorticcnt)
             
             if doxminortics and (style == 'x' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=nxlabels,
+                self.__maketics(drawable=drawable, axis='x',
+                                axispos=tvalues['xaxis,ypos'], labels=nxlabels,
                                 ticstyle=ticstyle, ticsize=ticminorsize,
                                 linecolor=linecolor, linewidth=linewidth)
             if doyminortics and (style == 'y' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=nylabels,
+                self.__maketics(drawable=drawable, axis='y',
+                                axispos=tvalues['yaxis,xpos'], labels=nylabels,
                                 ticstyle=ticstyle, ticsize=ticminorsize,
                                 linecolor=linecolor, linewidth=linewidth)
             if style == 'box':
                 if doxminortics:
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=nxlabels,
-                                    ticstyle=ticstyle, ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=nxlabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='x',
+                                    axispos=tvalues['yaxis,min'],
+                                    labels=nxlabels, ticstyle=ticstyle,
+                                    ticsize=ticminorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='x',
+                                    axispos=tvalues['yaxis,max'],
+                                    labels=nxlabels,
+                                    ticstyle=self.__toggle(ticstyle),
+                                    ticsize=ticminorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
                 if doyminortics:
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=nylabels,
-                                    ticstyle=ticstyle, ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=nylabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='y',
+                                    axispos=tvalues['xaxis,min'],
+                                    labels=nylabels, ticstyle=ticstyle,
+                                    ticsize=ticminorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='y',
+                                    axispos=tvalues['xaxis,max'],
+                                    labels=nylabels,
+                                    ticstyle=self.__toggle(ticstyle),
+                                    ticsize=ticminorsize, linecolor=linecolor,
+                                    linewidth=linewidth)
         return
     #END: __init__()
 
@@ -2997,18 +3130,19 @@ class axis:
         xhi = xlo + width
         yhi = ylo + height
 
-        if (('labelbox,'+axis+',xlo' in values) == False) or (xlo < values['labelbox,'+axis+',xlo']):
+        if (('labelbox,'+axis+',xlo' in values) == False) or \
+               (xlo < values['labelbox,'+axis+',xlo']):
             values['labelbox,'+axis+',xlo'] = xlo
-        if (('labelbox,'+axis+',ylo' in values) == False) or (ylo < values['labelbox,'+axis+',ylo']):
+        if (('labelbox,'+axis+',ylo' in values) == False) or \
+               (ylo < values['labelbox,'+axis+',ylo']):
             values['labelbox,'+axis+',ylo'] = ylo
-        if (('labelbox,'+axis+',xhi' in values) == False) or (xhi > values['labelbox,'+axis+',xhi']):
+        if (('labelbox,'+axis+',xhi' in values) == False) or \
+               (xhi > values['labelbox,'+axis+',xhi']):
             values['labelbox,'+axis+',xhi'] = xhi
-        if (('labelbox,'+axis+',yhi' in values) == False) or (yhi > values['labelbox,'+axis+',yhi']):
+        if (('labelbox,'+axis+',yhi' in values) == False) or \
+               (yhi > values['labelbox,'+axis+',yhi']):
             values['labelbox,'+axis+',yhi'] = yhi
-        # debug ...
-        #canvas.box(coord=[[values['labelbox,'+axis+',xlo'],values['labelbox,'+axis+',ylo']],
-        #[values['labelbox,'+axis+',xhi'],values['labelbox,'+axis+',yhi']]],
-        #linecolor='red', linewidth=0.5)
+        return
     #END: __recordlabel()
 
     def __makelabels(self,
@@ -3065,7 +3199,8 @@ class axis:
             else:
                 abort('bad ticstyle: ' + ticstyle)
 
-        # allow intelligent override, otherwise provide solid guess as to label placement
+        # allow intelligent override, otherwise provide solid guess as to
+        # label placement
         if labelanchor != '':
             anchor = labelanchor
 
@@ -3080,18 +3215,22 @@ class axis:
             if axis == 'x':
 		x = movpos + labelshift[0]
 		y = fixpos + labelshift[1]
-		canvas.text(coord=[x,y], text=label, font=font, size=fontsize, color=fontcolor,
-                            anchor=anchor, rotate=labelrotate, bgcolor=labelbgcolor)
+		canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
+                            color=fontcolor, anchor=anchor, rotate=labelrotate,
+                            bgcolor=labelbgcolor)
 	    elif axis == 'y':
 		x = fixpos + labelshift[0]
 		y = movpos + labelshift[1]
-		canvas.text(coord=[x,y], text=label, font=font, size=fontsize, color=fontcolor,
-                            anchor=anchor, rotate=labelrotate, bgcolor=labelbgcolor)
+		canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
+                            color=fontcolor, anchor=anchor, rotate=labelrotate,
+                            bgcolor=labelbgcolor)
             else:
                 abort('bad axis: ' + axis)
-            # record where text is s.t. later title positions are properly placed 
-            self.__recordlabel(drawable=drawable, values=values, axis=axis, x=x, y=y, label=label,
-                               font=font, fontsize=fontsize, anchor=anchor, rotate=labelrotate)
+            # record where text is s.t. later title pos are properly placed 
+            self.__recordlabel(drawable=drawable, values=values, axis=axis, x=x,
+                               y=y, label=label, font=font, fontsize=fontsize,
+                               anchor=anchor, rotate=labelrotate)
+        return
 
     def __maketics(self,
                    drawable,
@@ -3122,9 +3261,12 @@ class axis:
             value  = labels[i][1]
             tvalue = drawable.translate(axis, value)
             if axis == 'x':
-		canvas.line(coord=[[tvalue,lopos],[tvalue,hipos]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[tvalue,lopos],[tvalue,hipos]],
+                            linecolor=linecolor, linewidth=linewidth)
             elif axis == 'y':
-		canvas.line(coord=[[lopos,tvalue],[hipos,tvalue]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[lopos,tvalue],[hipos,tvalue]],
+                            linecolor=linecolor, linewidth=linewidth)
+        return
     # END: maketics()
     
     def __findmajorstep(self,
@@ -3157,7 +3299,6 @@ class axis:
         # now, unpack label and tic info
         if manual != '':
             # if manual is not empty, use it (override auto)
-            # print 'MANUAL'
             for m in manual:
                 if labelformat == '':
                     labelformat = '%s'
@@ -3178,10 +3319,15 @@ class axis:
                 values[axis+',max'] = auto[1]
 
             if auto[2] == '':
-                # XXX this assumes that rangemin, max are linear values, whereas they MIGHT NOT BE
-                # more proper to: take virtual values, map them to linear, figure out what to do then
-                # values[axis+',step'] = int((float(rangemax) - float(rangemin)) / 10.0)
-                values[axis+',step'] = self.__findmajorstep(drawable=drawable, axis=axis, vmin=rangemin, vmax=rangemax)
+                # This assumes that rangemin, max are linear values, whereas
+                # they MIGHT NOT BE. More proper to: take virtual values, map
+                # them to linear, figure out what to do then 
+                # values[axis+',step'] =
+                #   int((float(rangemax) - float(rangemin)) / 10.0)
+                values[axis+',step'] = self.__findmajorstep(drawable=drawable,
+                                                            axis=axis,
+                                                            vmin=rangemin,
+                                                            vmax=rangemax)
             else:
                 values[axis+',step'] = auto[2]
 
@@ -3213,34 +3359,27 @@ class axis:
                 else:
                     labels.append([labelformat % init, init])
                 init = init + values[axis+',step']
-
-        # print '-> LABELS', labels
-        # figure out format of the thing
-        #print values[axis+',min']
-        #print 'check', values[axis+',min'] == int(values[axis+',min'])
-        #print values[axis+',max'] 
-        #print values[axis+',step'] 
-
-
+        return
     # END: __unpackargs()
 
-    def __maketitle(self,
-                    drawable, values, tvalues,
-                    dolabels, doxlabels, doylabels,
-                    title, titleshift, titlefont, titlecolor, titlerotate, titlesize, titlebgcolor, titleanchor, titleplace,
-                    xtitle, xtitleshift, xtitlefont, xtitlecolor, xtitlerotate, xtitlesize, xtitlebgcolor, xtitleanchor, xtitleplace,
-                    ytitle, ytitleshift, ytitlefont, ytitlecolor, ytitlerotate, ytitlesize, ytitlebgcolor, ytitleanchor, ytitleplace,
-                    labelstyle,
-                    ):                    
-        # some space between titles and the nearest text to them; 3 is randomly chosen
+    def __maketitle(self, drawable, values, tvalues, dolabels, doxlabels,
+                    doylabels, title, titleshift, titlefont, titlecolor,
+                    titlerotate, titlesize, titlebgcolor, titleanchor,
+                    titleplace, xtitle, xtitleshift, xtitlefont, xtitlecolor,
+                    xtitlerotate, xtitlesize, xtitlebgcolor, xtitleanchor,
+                    xtitleplace, ytitle, ytitleshift, ytitlefont, ytitlecolor,
+                    ytitlerotate, ytitlesize, ytitlebgcolor, ytitleanchor,
+                    ytitleplace, labelstyle):                    
+        # some space between titles and the nearest text to them;
+        # 3 is randomly chosen
         offset = 3.0
-
         canvas = drawable.canvas
 
         if title != '':
             values['title,y'] = tvalues['yrange,max'] + (2.5 * offset)
             if titleplace == 'c':
-		values['title,x']      = (tvalues['xrange,min'] + tvalues['xrange,max']) / 2.0
+		values['title,x']      = (tvalues['xrange,min'] + \
+                                          tvalues['xrange,max']) / 2.0
 		values['title,anchor'] = 'c,l'
             elif titleplace == 'l':
 		values['title,x']      = tvalues['xrange,min'] + offset
@@ -3267,7 +3406,8 @@ class axis:
                 abort('bad labelstyle')
 	
             if ytitleplace == 'c':
-		values['ytitle,y']  = (tvalues['yrange,max'] + tvalues['yrange,min']) / 2.0
+		values['ytitle,y']  = (tvalues['yrange,max'] + \
+                                       tvalues['yrange,min']) / 2.0
 		xanchor             = 'c'
             elif ytitleplace == 'l':
 		values['ytitle,y']  = tvalues['yrange,min'] + offset
@@ -3289,10 +3429,12 @@ class axis:
                 if doylabels == True:
                     if labelstyle == 'out':
                         if values['ytitle,x'] >= values['labelbox,y,xlo']:
-                            values['ytitle,x'] = values['labelbox,y,xlo'] - offset
+                            values['ytitle,x'] = values['labelbox,y,xlo'] - \
+                                                 offset
                     if labelstyle == 'in':
                         if values['ytitle,x'] <= values['labelbox,y,xhi']:
-                            values['ytitle,x'] = values['labelbox,y,xhi'] + offset
+                            values['ytitle,x'] = values['labelbox,y,xhi'] + \
+                                                 offset
         # END: if ytitle != ''
 
         if xtitle != '':
@@ -3306,7 +3448,8 @@ class axis:
                 abort('bad labelstyle')
 
             if xtitleplace == 'c':
-                values['xtitle,x']   = (tvalues['xrange,min'] + tvalues['xrange,max']) / 2.0
+                values['xtitle,x']   = (tvalues['xrange,min'] + \
+                                        tvalues['xrange,max']) / 2.0
                 xanchor              = 'c'
             elif xtitleplace == 'l':
                 values['xtitle,x']   = tvalues['xrange,min'] + offset
@@ -3332,19 +3475,25 @@ class axis:
 
         # finish up
         if title != '':
-            canvas.text(coord=[titleshift[0]+values['title,x'], titleshift[1]+values['title,y']],
-                        text=title, font=titlefont, size=titlesize, color=titlecolor, 
-                        anchor=values['title,anchor'], bgcolor=titlebgcolor, rotate=titlerotate)
+            canvas.text(coord=[titleshift[0]+values['title,x'],
+                               titleshift[1]+values['title,y']],
+                        text=title, font=titlefont, size=titlesize,
+                        color=titlecolor, anchor=values['title,anchor'],
+                        bgcolor=titlebgcolor, rotate=titlerotate)
 
         if xtitle != '':
-            canvas.text(coord=[xtitleshift[0]+values['xtitle,x'], xtitleshift[1]+values['xtitle,y']],
-                        text=xtitle, font=xtitlefont, size=xtitlesize, color=xtitlecolor, 
-                        anchor=values['xtitle,anchor'], bgcolor=xtitlebgcolor, rotate=xtitlerotate)
+            canvas.text(coord=[xtitleshift[0]+values['xtitle,x'],
+                               xtitleshift[1]+values['xtitle,y']],
+                        text=xtitle, font=xtitlefont, size=xtitlesize,
+                        color=xtitlecolor, anchor=values['xtitle,anchor'],
+                        bgcolor=xtitlebgcolor, rotate=xtitlerotate)
 
         if ytitle != '':
-            canvas.text(coord=[ytitleshift[0]+values['ytitle,x'], ytitleshift[1]+values['ytitle,y']],
-                        text=ytitle, font=ytitlefont, size=ytitlesize, color=ytitlecolor, 
-                        anchor=values['ytitle,anchor'], bgcolor=ytitlebgcolor, rotate=ytitlerotate)
+            canvas.text(coord=[ytitleshift[0]+values['ytitle,x'],
+                               ytitleshift[1]+values['ytitle,y']],
+                        text=ytitle, font=ytitlefont, size=ytitlesize,
+                        color=ytitlecolor, anchor=values['ytitle,anchor'],
+                        bgcolor=ytitlebgcolor, rotate=ytitlerotate)
     # END: __maketitle()
 
     def __toggle(self,
@@ -3369,11 +3518,74 @@ class axis:
             for j in range(0, minorticcnt):
                 cvalue = cvalue + diff
                 nlabels.append(['', cvalue])
+        return
     # END: __makeminorlabels
-
 #END: class axis
 
+#
+# class grid
+#
+# Just a simple way to draw grids onto graphs.
+# While we generally don't like grids, some people do.
+#
 class grid:
+    def __init__(self,
+                 drawable  = '',           # the relevant drawable
+                 linecolor = 'black',      # color of axis line
+                 linewidth = 0.5,          # width of axis line
+
+                 # dash parameters; will make axes dashed, but not tic marks
+                 linedash  = 0,
+                 # specify false to turn off grid in x direction (vertical lines)
+                 x         = True,
+                 # specify false to turn off grid in y direction (horiz. lines)
+                 y         = True,
+
+                 # empty means whole range, otherwise a 'y1,y2' as beginning
+                 # and end of the  range to draw vertical lines upon
+                 xrange    = '',
+
+                 # how much space to skip between each grid line; if log scale,
+                 # this will be used in a multiplicative way
+                 xstep     = '',
+
+                 # empty means whole range, otherwise a 'x1,x2' as beginning
+                 # and end of the  range to draw horizontal lines upon
+                 yrange    = '',
+
+                 # how much space to skip between each grid line; if log scale,
+                 # this will be used in a multiplicative way
+                 ystep     = '',           
+                 ):
+
+        if x == True:
+            self.__dogrid(drawable=drawable, axis='x', step=xstep,
+                          range=xrange, linecolor=linecolor,
+                          linewidth=linewidth, linedash=linedash)
+        if y == True:
+            self.__dogrid(drawable=drawable, axis='y', step=ystep,
+                          range=yrange, linecolor=linecolor,
+                          linewidth=linewidth, linedash=linedash)
+    # END __init__
+# END: class grid
+
+#
+# class legend
+#
+# Minimal support for legends is provided.
+# Initialize it first:
+# L = Legend()
+# Pass 'L' and other info to plotters.
+# Then, call draw() to make it on the plot.
+# 
+class legend:
+    def __init__(self):
+        # 'info' field will track each picture and text in the legend
+        # All the work is done later - when legend is drawn.
+        self.info = []
+    # END: __init__
+
+    
     def __dogrid(self,
                  drawable,
                  axis,
@@ -3403,48 +3615,37 @@ class grid:
         canvas = drawable.canvas
         for v in drawable.rangeiterator(axis, urange[0], urange[1], step):
             if axis == 'x':
-                canvas.line(coord=drawable.map([[v,othermin],[v,othermax]]), linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+                canvas.line(coord=drawable.map([[v,othermin],[v,othermax]]),
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
             if axis == 'y':
-		canvas.line(coord=drawable.map([[othermin,v],[othermax,v]]), linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=drawable.map([[othermin,v],[othermax,v]]),
+                            linecolor=linecolor, linewidth=linewidth,
+                            linedash=linedash)
     # END __dogrid()
-    
-    def __init__(self,
-                 drawable  = '',           # the relevant drawable
-                 linecolor = 'black',      # color of axis line
-                 linewidth = 0.5,          # width of axis line
-                 linedash  = 0,            # dash parameters; will make axes dashed, but not tic marks
-                 x         = True,         # specify false to turn off grid in x direction (vertical lines)
-                 y         = True,         # specify false to turn off grid in y direction (horizontal lines)
-                 xrange    = '',           # empty means whole range, otherwise a 'y1,y2' as beginning and end of the  range to draw vertical lines upon
-                 xstep     = '',           # how much space to skip between each grid line; if log scale, this will be used in a multiplicative way
-                 yrange    = '',           # empty means whole range, otherwise a 'x1,x2' as beginning and end of the  range to draw horizontal lines upon
-                 ystep     = '',           # how much space to skip between each grid line; if log scale, this will be used in a multiplicative way
-                 ):
-
-        if x == True:
-            self.__dogrid(drawable=drawable, axis='x', step=xstep, range=xrange, linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-        if y == True:
-            self.__dogrid(drawable=drawable, axis='y', step=ystep, range=yrange, linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-    # END __init__
-# END: class grid
-
-class legend:
-    def __init__(self):
-        # info will track each picture and text in the legend
-        self.info = []
-    # END: __init__
     
     # 
     # add()
     # 
-    # command used to add some info about a legend to the legend list. If 'entry' is specified, this will add the text
-    # (if any) to the existing text in that spot, and also add the picture to the list of pictures to be drawn for this entry.
-    # If 'entry' is not specified, simply use the current counter and add this to the end of the list.
+    # command used to add some info about a legend to the legend list. If
+    # 'entry' is specified, this will add the text (if any) to the existing
+    # text in that spot, and also add the picture to the list of pictures to be
+    # drawn for this entry. If 'entry' is not specified, simply use the current
+    # counter and add this to the end of the list.
     # 
     def add(self,
-            text    = '',   # text for the legend
-            picture = '',    # code to add the picture to the legend: COORDX and COORDY should be used to specify the lower-left point of the picture key; WIDTH and HEIGHT should be used to specify the width and height of the picture
-            entry   = '',   # entry number: which legend entry this should be (empty means auto-picked for you)
+            # text for the legend
+            text    = '',  
+
+            # code to add the picture to the legend: COORDX and COORDY should
+            # be used to specify the lower-left point of the picture key;
+            # WIDTH and HEIGHT should be used to specify the width and height
+            # of the picture
+            picture = '',
+
+            # entry number: which legend entry this should be
+            # (empty means auto-picked for you).
+            entry   = '',   
             ):
 
         if entry == '':
@@ -3455,22 +3656,50 @@ class legend:
 
     # 
     # legend()
-    # Use this to draw a legend given the current entries in the legend. Lots of options are available, including: xxx
+    # Use this to draw a legend given the current entries in the legend.
+    # Lots of options are available.
     # 
     def draw(self,
-             canvas      = '',        # 
-             coord       = '',        # where to place the legend (lower left point)
-             style       = 'right',   # which side to place the text on, right or left?
-             width       = 10.0,      # width of the picture to be drawn in the legend
-             height      = 10.0,      # height of the picture to be drawn in the legend
-             vskip       = 3.0,       # number of points to skip when moving to next legend entry
-             hspace      = 4.0,       # space between pictures and text
-             down        = True,      # go downward from starting spot when building the legend; false goes upward
-             skipnext    = '',        # if non-empty, how many rows of legend to print before skipping to a new column
-             skipspace   = 25.0,      # how much to move over if the 'skipnext' option is used to start the next column
-             font        = 'default', # which font face to use
-             fontsize    = 10,        # size of font of legend
-             fontcolor   = 'black',   # color of font
+             canvas      = '',        
+
+             # where to place the legend (lower left point)
+             coord       = '',
+
+             # which side to place the text on, right or left?
+             style       = 'right',
+
+             # width of the picture to be drawn in the legend
+             width       = 10.0,
+
+             # height of the picture to be drawn in the legend
+             height      = 10.0,
+
+             # number of points to skip when moving to next legend entry
+             vskip       = 3.0,
+
+             # space between pictures and text
+             hspace      = 4.0,
+
+             # go downward from starting spot when building the legend;
+             # false goes upward
+             down        = True,
+
+             # if non-empty, how many rows of legend to print before
+             # skipping to a new column
+             skipnext    = '',
+
+             # how much to move over if the 'skipnext' option is used to
+             # start the next column
+             skipspace   = 25.0,
+
+             # which type face to use
+             font        = 'default',
+
+             # size of font of legend, and color
+             fontsize    = 10,        
+             fontcolor   = 'black',
+
+             # can specify a specific legend order ...
              order       = [],
              ):
 
@@ -3505,18 +3734,24 @@ class legend:
             text   = legend[0]
             pic    = legend[1]
 
-            mapped = pic.substitute(__Xx=cx, __Yy=y, __Ww=w, __Hh=h, __Mm=minval, __W2=(w/2.0), __H2=(h/2.0),
-                                    __M2=(minval/2.0), __Xmm=(cx-(minval/2.0)), __Xpm=cx+(minval/2.0),
-                                    __Ymm=(y-(minval/2.0)), __Ypm=(y+(minval/2.0)), __Xmw=cx-(w/2.0),
-                                    __Xpw=(cx+(w/2.0)), __Ymh=(y-(h/2.0)), __Yph=(y+(h/2.0)))
+            mapped = pic.substitute(__Xx=cx, __Yy=y, __Ww=w, __Hh=h,
+                                    __Mm=minval, __W2=(w/2.0), __H2=(h/2.0),
+                                    __M2=(minval/2.0), __Xmm=(cx-(minval/2.0)),
+                                    __Xpm=cx+(minval/2.0),
+                                    __Ymm=(y-(minval/2.0)),
+                                    __Ypm=(y+(minval/2.0)), __Xmw=cx-(w/2.0),
+                                    __Xpw=(cx+(w/2.0)), __Ymh=(y-(h/2.0)),
+                                    __Yph=(y+(h/2.0)))
 
             if style == 'left':
-		canvas.text(coord=[tx,y], anchor='r,c', text=text, font=font, color=fontcolor, size=fontsize)
+		canvas.text(coord=[tx,y], anchor='r,c', text=text, font=font,
+                            color=fontcolor, size=fontsize)
 		eval(mapped)
             elif style == 'right':
                 for m in mapped.split(';'):
                     eval(m)
-		canvas.text(coord=[tx,y], anchor='l,c', text=text, font=font, color=fontcolor, size=fontsize)
+		canvas.text(coord=[tx,y], anchor='l,c', text=text, font=font,
+                            color=fontcolor, size=fontsize)
 
             if down == True:
                 y = y - height - vskip
