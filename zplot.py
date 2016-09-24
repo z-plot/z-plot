@@ -1381,7 +1381,8 @@ class drawable:
         assert(len(dimensions) == 2)
         dimensions[0] = str(dimensions[0])
         dimensions[1] = str(dimensions[1])
-        self.dimensions = [canvas.convert(dimensions[0]), canvas.convert(dimensions[1])]
+        self.dimensions = [canvas.convert(dimensions[0]),
+                           canvas.convert(dimensions[1])]
 
         self.scaletype = ['blank', 'blank']
         self.logbase = [0, 0]
@@ -1421,15 +1422,19 @@ class drawable:
                 assert(float(grange[0]) > 0)
                 assert(float(grange[1]) > 0)
                 
-		self.linearMin[axisnum]  = math.log(float(grange[0]), self.logbase[axisnum])
-		self.linearMax[axisnum]  = math.log(float(grange[1]), self.logbase[axisnum])
+		self.linearMin[axisnum]  = math.log(float(grange[0]),
+                                                    self.logbase[axisnum])
+		self.linearMax[axisnum]  = math.log(float(grange[1]),
+                                                    self.logbase[axisnum])
 		self.virtualMin[axisnum] = float(grange[0])
 		self.virtualMax[axisnum] = float(grange[1])
 
             # and record the linear range (for use in scaling)
-            self.linearRange[axisnum] = self.linearMax[axisnum] - self.linearMin[axisnum]
+            self.linearRange[axisnum] = self.linearMax[axisnum] - \
+                                        self.linearMin[axisnum]
 
         self.axismap = {'x': 0, 'y': 1}
+        return
     # END: __init__
 
     # helper functions
@@ -1439,7 +1444,8 @@ class drawable:
     #
     # VALUES have three possible types
     #   Virtual    : what they are in the specifed scale type (log, linear, etc.)
-    #   Linear     : what they are once the mapping has been applied (log(virtual), etc.)
+    #   Linear     : what they are once the mapping has been applied
+    #                (log(virtual), etc.)
     #   Scaled     : in Postscript points, scaled as if the drawable is at 0,0
     #   Translated : in Postscript points, scaled + offset of drawable
     #
@@ -1464,21 +1470,17 @@ class drawable:
             abort('unknown mapping scale')
 
     def scaleNum(self, axisnum, value):
-        # print '    scalenum: %s %s' % (axisnum, value)
         width  = self.dimensions[axisnum]
         lrange = self.linearRange[axisnum]
         result = float(value) * (width / lrange)
-        # print '    scalenum: %s %s --> RESULT %s' % (axisnum, value, result)
         return result
         
     # Scale: scale a linear value onto the drawable's range
     def scale(self, axis, value):
-        # print '    scale: %s %s' % (axis, value)
         return self.scaleNum(self.__axisindex(axis), value)
 
     # Translate: scale and then add the offset 
     def translate(self, axis, value):
-        # print '    drawable:translate %s %s' % (axis, value)
         # need two linear values: then subtract, scale, and add offset
         anum  = self.__axisindex(axis)
         lmin  = self.linearMin[anum]
@@ -1486,7 +1488,6 @@ class drawable:
 
         # offset + scaled difference = what we want
         result = self.offset[anum] + self.scaleNum(anum, value - lmin)
-        # print '    drawable:translate %s %s --> result is %s' % (axis, value, result)
         return result
 
     # accessor function
@@ -1536,16 +1537,19 @@ class drawable:
         assert(coord != '')
         assert(len(coord) > 0)
         ucoord = []
-        ucoord.append([self.translate('x', float(coord[0][0])), self.translate('y', float(coord[0][1]))])
+        ucoord.append([self.translate('x', float(coord[0][0])),
+                       self.translate('y', float(coord[0][1]))])
         for i in range(1,len(coord)):
-            ucoord.append([self.translate('x', float(coord[i][0])), self.translate('y', float(coord[i][1]))])
+            ucoord.append([self.translate('x', float(coord[i][0])),
+                           self.translate('y', float(coord[i][1]))])
         return ucoord
 
     # useful for calling basic ps functions ...
     def translatecoordsingle(self, coord):
         assert(coord != '')
         assert(len(coord) > 0)
-        ucoord = [self.translate('x', float(coord[0])), self.translate('y', float(coord[1]))]
+        ucoord = [self.translate('x', float(coord[0])),
+                  self.translate('y', float(coord[1]))]
         return ucoord
 
     def getsize(self, axis):
@@ -1563,15 +1567,15 @@ class drawable:
 
     def right(self):
         return self.offset[0] + self.dimensions[0]
-
     # END: class drawable
-    def LAST(self):
-        return
 
+#
+# class table
+#
+# Tables store data to be plotted, and provide a thin layer over SQLite to
+# select subsets of the data to plot.
+#
 class table:
-    def __cnames(self):
-        return self.cnames
-    
     def __init__(self,
                  file  = '',
                  table = '',
@@ -1598,7 +1602,7 @@ class table:
                     count = count + 1
                 data.append(element)
             
-            # generate unique name
+            # generate unique name - undoubtedly not the way to do this.
             self.dbname = 'tmp' + str(random.randint(0,9999999))
         elif self.file != '':
             # first, look for schema
@@ -1649,7 +1653,7 @@ class table:
         self.fd     = sqlite3.connect(':memory:')
         self.cursor = self.fd.cursor()
 
-        # XXX: calling each column cXXX where XXX is the row number
+        # calling each column cXXX where XXX is the row number
         create = 'create table %s (' % self.dbname
         for i in range(0, self.columns):
             if i != 0:
@@ -1661,8 +1665,6 @@ class table:
         self.rindex  = {}
         for i in range(0, self.columns):
             self.rindex[self.cnames[i]] = i
-        
-        # self.cursor.execute('create table %s (x real, y real, label text)' % file)
         self.cursor.execute(create)
         self.fd.commit()
 
@@ -1671,16 +1673,17 @@ class table:
         for i in range(0, self.columns-1):
             insert = insert + '?, '
         insert = insert + '?)'
-        # print 'insert: ', insert
 
         count = 0
         for row in data:
-            # print 'inserting', row
             row.insert(0, count)
             count = count + 1
-            # print 'insert row', row
             self.cursor.execute(insert, row)
+        return
 
+    def __cnames(self):
+        return self.cnames
+    
     def getaxislabels(self,
                       column=''):
         self.cursor.execute('select * from %s' % (self.dbname))
@@ -1694,7 +1697,6 @@ class table:
             tmp.append(cnt)
             rlist.append(tmp)
             cnt = cnt + 1
-        # print 'RETURNING rlist', rlist
         return rlist
    
     def dump(self, title='', canvas=None):
@@ -1712,6 +1714,7 @@ class table:
             canvas.comment(s)
         else:
             print s
+        return
 
     # INSERT INTO table_name
     # SET column1=value, column2=value2,...
@@ -1721,7 +1724,6 @@ class table:
         values = ["'%s'" % keyValues[x] for x in keys]
         rownumber = self.cursor.execute('select count(*) from %s' % self.dbname)
         rownumber = rownumber.fetchone()[0] + 1
-
         query = ('insert into %s (rownumber, %s)'
                  'values (%d, %s)' % (
                 self.dbname,
@@ -1729,6 +1731,7 @@ class table:
                 rownumber,
                 ', '.join(values)))
         self.cursor.execute(query)
+        return
 
     # UPDATE table_name
     # SET column1=value, column2=value2,...
@@ -1740,7 +1743,8 @@ class table:
         if where == '':
             self.cursor.execute('update %s set %s' % (self.dbname, set))
         else:
-            self.cursor.execute('update %s set %s where %s' % (self.dbname, set, where))
+            self.cursor.execute('update %s set %s where %s' % (self.dbname, set,
+                                                               where))
 
     def getmax(self, column, cmax=''):
         self.cursor.execute('select * from %s' % (self.dbname))
@@ -1781,7 +1785,8 @@ class table:
         if where == '':
             self.cursor.execute('select * from %s' % self.dbname)
         else:
-            self.cursor.execute('select * from %s where %s' % (self.dbname, where))
+            self.cursor.execute('select * from %s where %s' % (self.dbname,
+                                                               where))
 
         rindex = self.getrindex()
         idx    = rindex[column]
@@ -1798,7 +1803,8 @@ class table:
 
     def getrange(self, column, crange):
         if crange != '':
-            return [self.getmin(column, crange[0]), self.getmax(column, crange[1])]
+            return [self.getmin(column, crange[0]),
+                    self.getmax(column, crange[1])]
         else:
             return [self.getmin(column, ''), self.getmax(column, '')]
 
@@ -1836,34 +1842,36 @@ class table:
                   column='',
                   value='',
                   ):
-        # print 'adding column (%s) with value: (%s)' % (column, value)
         assert(column != '')
-        self.cursor.execute('alter table %s add column %s text' % (self.dbname, column))
+        self.cursor.execute('alter table %s add column %s text' % (self.dbname,
+                                                                   column))
         self.cnames.append(column)
         self.rindex[column] = self.columns
         self.columns = self.columns + 1
         if value == '':
             value = 0
-        # print 'update %s set %s=%s' % (self.dbname, column, value)
-        self.cursor.execute('update %s set %s=\'%s\'' % (self.dbname, column, value))
+        self.cursor.execute('update %s set %s=\'%s\'' % (self.dbname, column,
+                                                         value))
+        return
+# END: class table
 
-    def __fini__(self):
-        # xxx: should clean up
-        print 'fini'
-
-
-# CLASS plotter
+# 
+# class plotter
 #
-# Use this to draw some points on a drawable. There are some obvious parameters: which drawable, which table,
-# which x and y columns from the table to use, the color of the point, its linewidth, and the size of the marker.
-# 'style' is a more interesting parameter, allowing one to pick a box, circle, horizontal line (hline), and 'x'
-# that marks the spot, and so forth. However, if you set 'style' to label, PlotPoints will instead use a column
-# from the table (as specified by the 'label' flag) to plot an arbitrary label at each (x,y) point. Virtually
-# all the rest of the flags pertain to these text labels: whether to rotate them, how to anchor them, how to
-# place them, font, size, and color. 
+# Use this to draw some points on a drawable. There are some obvious parameters:
+# which drawable, which table, which x and y columns from the table to use, the
+# color of the point, its linewidth, and the size of the marker. 'style' is a
+# more interesting parameter, allowing one to pick a box, circle, horizontal
+# line (hline), and 'x' that marks the spot, and so forth. However, if you set
+# 'style' to label, PlotPoints will instead use a column from the table (as
+# specified by the 'label' flag) to plot an arbitrary label at each (x,y) point.
+# Virtually all the rest of the flags pertain to these text labels: whether to
+# rotate them, how to anchor them, how to place them, font, size, and color.
+# 
 class plotter:
     def __init__(self, drawable=''):
         self.drawable = drawable
+        return
 
     def points(self,
                drawable        = '',        # name of the drawable area
