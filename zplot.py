@@ -183,7 +183,8 @@ class postscript:
         self.__out(str(x) + ' ' + str(y) + ' scale')
 
     def __arc(self, x, y, radius, start, end):
-        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + str(start) + ' ' + str(end) + ' arc')
+        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + str(start) \
+                   + ' ' + str(end) + ' arc')
 
     def __clip(self):
         self.__out('clip')
@@ -246,8 +247,10 @@ class postscript:
 
         # this is done for all except the solid ...
         self.__setcolor(fillcolor)
+        styleList = ''
 
         if fillstyle == 'hline':
+            styleList += 'hline '
 	    self.__setlinewidth(fillsize)
             cy = y1
             while cy <= y2:
@@ -258,6 +261,7 @@ class postscript:
 		self.__stroke()
                 cy = cy + fillsize + fillskip
 	elif fillstyle == 'vline':
+            styleList += 'vline '
 	    self.__setlinewidth(fillsize)
             cx = x1
             while cx <= x2:
@@ -267,6 +271,7 @@ class postscript:
 		self.__stroke()
                 cx = cx + fillsize + fillskip
         elif fillstyle == 'hvline':
+            styleList += 'hvline '
 	    self.__setlinewidth(fillsize)
             cy = y1
             while cy <= y2:
@@ -284,6 +289,7 @@ class postscript:
 		self.__stroke()
                 cx = cx + fillsize + fillskip
 	elif fillstyle == 'dline1':
+            styleList += 'dline1 '
 	    self.__setlinewidth(fillsize)
             cy = y1
             while cy <= y2:
@@ -300,6 +306,7 @@ class postscript:
 		self.__stroke()
                 cx = cx + fillskip + fillsize
 	elif fillstyle == 'dline2':
+            styleList += 'dline2 '
 	    self.__setlinewidth(fillsize)
             cy = y1
             while cy <= y2:
@@ -316,6 +323,7 @@ class postscript:
 		self.__stroke()
                 cx = cx - (fillskip + fillsize)
 	elif fillstyle == 'dline12':
+            styleList += 'dline12 '
 	    self.__setlinewidth(fillsize)
             cy = y1
             while cy <= y2:
@@ -346,6 +354,7 @@ class postscript:
 		self.__stroke()
                 cx = cx - (fillskip + fillsize)
 	elif fillstyle == 'circle':
+            styleList += 'circle '
             cx = x1
             while cx <= x2:
                 cy = y1
@@ -357,6 +366,7 @@ class postscript:
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
 	elif fillstyle == 'square':
+            styleList += 'square '
             cx = x1
             while cx <= x2:
                 cy = y1
@@ -368,6 +378,7 @@ class postscript:
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
 	elif fillstyle == 'triangle':
+            styleList += 'triangle '
             cx = x1
             while cx <= x2:
                 cy = y1
@@ -382,6 +393,7 @@ class postscript:
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
         elif fillstyle == 'utriangle':
+            styleList += 'utriangle '
             cx = x1
             while cx <= x2:
                 cy = y1
@@ -396,8 +408,8 @@ class postscript:
                     cy = cy + fillsize + fillsize
                 cx = cx + fillsize + fillskip
 	else:
-            print 'Bad fill style: ' + fillstyle
-	    abort('Should be one of solid, vline, hline, hvline, dline1, dline2, dline12, circle, square, triangle, utriangle')
+            print 'Bad fill style: ', fillstyle
+	    abort('Should be one of %s' % styleList)
         # END: makepattern()
 
     def raw(self,
@@ -413,12 +425,13 @@ class postscript:
     # initialize everything for this particular canvas
     # (one drawing surface per PS canvas, saved to exactly one file, of course)
     # 
-    def __init__(self, title='default.eps', dimensions=['3in','2in'], font='Helvetica', script=__file__):
+    def __init__(self, title='default.eps', dimensions=['3in','2in'],
+                 font='Helvetica', script=__file__):
         self.comments = ''
         self.commands = []
         
         self.program = 'zplot'
-        self.version = 'python version 0.1'
+        self.version = 'python version 1.0'
         self.default = font
 
         self.date    = str(time.strftime('%X %x %Z'))
@@ -428,7 +441,10 @@ class postscript:
         self.fontlist.append(self.default)
 
         # list of all fonts 
-        self.allfonts = ['Helvetica', 'Helvetica-Bold', 'Helvetica-Italic', 'TimesRoman', 'TimesRoman-Bold', 'TimesRoman-Italic', 'Courier', 'Courier-Bold', 'Courier-Italic', 'URWPalladioL-Roma', 'ICQPMD+NimbusSanL-Regu']
+        self.allfonts = ['Helvetica', 'Helvetica-Bold', 'Helvetica-Italic',
+                         'TimesRoman', 'TimesRoman-Bold', 'TimesRoman-Italic',
+                         'Courier', 'Courier-Bold', 'Courier-Italic',
+                         'URWPalladioL-Roma', 'ICQPMD+NimbusSanL-Regu']
         
         self.gsaveCnt    = 0
         self.grestoreCnt = 0
@@ -585,7 +601,9 @@ class postscript:
         __out = self.__out
         __out('%!PS-Adobe-2.0 EPSF-2.0')
         __out('%%Title: ' + str(self.title))
-        __out('%%Creator: '+ str(self.program) + ' version:' + str(self.version) + ' script:' + os.path.abspath(script) + ' host:'+socket.gethostname())
+        __out('%%Creator: '+ str(self.program) + ' version:' + \
+              str(self.version) + ' script:' + os.path.abspath(script) + \
+              ' host:'+socket.gethostname())
         __out('%%CreationDate: ' + str(self.date))
         __out('%%DocumentFonts: (atend)')
         __out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + str(self.height))
@@ -627,14 +645,15 @@ class postscript:
     # 
     # render()
     # 
-    # Use this routine to print out all the postscript commands you've been queueing up to a file or 'stdout' (default).
+    # Use this routine to print out all the postscript commands you've been
+    # queueing up to a file or 'stdout' (default).
     # 
     def render(self):
         # do some checks
         if self.gsaveCnt != self.grestoreCnt:
             print self.gsaveCnt
             print self.grestoreCnt
-            print 'INTERNAL ERROR: gsavecnt != grestorecnt (bad postscript possible)'
+            print 'INTERNAL ERROR: gsavecnt != grestorecnt (bad ps possible)'
             exit(1)
 
         # generic eps trailer
@@ -655,16 +674,15 @@ class postscript:
         self.__dumpOut(self.title)
         # END: render()
 
-
     # 
-    # this is a complete hack, and can be very wrong depending on the fontface
-    # (which it should clearly be dependent upon)
-    # the problem, of course: only the ps interpreter really knows
-    # how wide the string is: e.g., put the string on the stack and call 'stringwidth'
-    # but of course, we don't want to have to invoke that to get the result (a pain)
-    # we could build in a table that has all the answers for supported fonts (Helvetica, TimesRoman, etc.)
-    # but that is a complete pain as well
-    # so, for now, we just make a rough guess based on the length of the string and the size of the font
+    # This is a complete hack, and can be very wrong depending on the fontface
+    # (which it should clearly be dependent upon). The problem, of course: only
+    # the ps interpreter really knows how wide the string is: e.g., put the
+    # string on the stack and call 'stringwidth'. But of course, we don't want
+    # to have to invoke that to get the result (a pain). We could build in a
+    # table that has all the answers for supported fonts (Helvetica, TimesRoman,
+    # etc.) but that is a complete pain as well. So, for now, we just make a
+    # rough guess based on the length of the string and the size of the font.
     # 
     def stringwidth(self, str, fontsize):
         length = len(str)
@@ -688,8 +706,9 @@ class postscript:
     #
     # shape()
     #
-    # Use this to draw a shape on the plotting surface. Lots of possibilities, including square,
-    # circle, triangle, utriangle, plusline, hline, vline, hvline, xline, dline1, dline2, dline12, diamond, asterisk, ...
+    # Use this to draw a shape on the plotting surface. Lots of possibilities,
+    # including square, circle, triangle, utriangle, plusline, hline, vline,
+    # hvline, xline, dline1, dline2, dline12, diamond, asterisk, ...
     # 
     def shape(self,
               style     = '',      # the possible shapes
@@ -699,7 +718,8 @@ class postscript:
               linecolor = 'black', # color of the line of the marker
               linewidth = 1.0,     # width of lines used to draw the marker
               linedash  = 0,       # dash pattern - 0 means no dashes
-              fill      = False,   # for some shapes, filling makes sense; if desired, mark this true
+              fill      = False,   # for some shapes, filling makes sense;
+                                   # if desired, mark this true
               fillcolor = 'black', # if filling, use this fill color
               fillstyle = 'solid', # if filling, which fill style to use
               fillsize  = 3.0,     #  size of object in pattern
@@ -707,40 +727,60 @@ class postscript:
               ):
         if style == 'square':
 	    self.box(coord=[[x-size,y-size],[x+size,y+size]], 
-                     linecolor=linecolor, linewidth=linewidth,  fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                     linecolor=linecolor, linewidth=linewidth,  fill=fill,
+                     fillcolor=fillcolor, fillstyle=fillstyle,
                      fillsize=fillsize, fillskip=fillskip) 
         elif style == 'circle':
-	    self.circle(coord=[x,y], radius=size, linecolor=linecolor, linewidth=linewidth,
-                        fill=fill, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip) 
+	    self.circle(coord=[x,y], radius=size, linecolor=linecolor,
+                        linewidth=linewidth, fill=fill, fillcolor=fillcolor,
+                        fillstyle=fillstyle, fillsize=fillsize,
+                        fillskip=fillskip) 
 	elif style == 'triangle':
-	    self.polygon(coord=[[x-size,y-size],[x,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth,
-                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip) 
+	    self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
+                         linecolor=linecolor, linewidth=linewidth,
+                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
 	elif style == 'utriangle':
-	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth,
-                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip) 
+	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
 	elif style == 'plusline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth) 
 	elif style == 'xline':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
 	elif style == 'dline1':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
 	elif style == 'dline2':
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
 	elif style == 'dline12':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
 	elif style == 'hline': 
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth, linedash=linedash)
 	elif style == 'vline': 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor, linewidth=linewidth)
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
         elif style == 'hvline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor, linewidth=linewidth)
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
 	elif style == 'diamond':
 	    self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
-                         linecolor=linecolor, linewidth=linewidth, fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
 	elif style == 'star':
             s2 = size / 2.0
@@ -748,15 +788,20 @@ class postscript:
             yp  = s2 * math.sin(math.radians(18.0))
             xp2 = s2 * math.cos(math.radians(54.0))
             yp2 = s2 * math.sin(math.radians(54.0))
-	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],[x-xp,y+yp],[x+xp,y+yp],[x-xp2,y-yp2],[x,y+s2]],
+	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],[x-xp,y+yp],[x+xp,y+yp],
+                                [x-xp2,y-yp2],[x,y+s2]],
                          linecolor=linecolor, linewidth=linewidth,
                          fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
         elif style == 'asterisk':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]], linecolor=linecolor, linewidth=linewidth)
-            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor, linewidth=linewidth)
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth)
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
         else:
             abort('bad choice of point style: ' + style)
     # END: shape()
@@ -788,7 +833,6 @@ class postscript:
         self.__gsave()
 
         # first, draw the line, one component at a time
-        # segments = coord.split(':')
         self.__newpath()
         point = coord[0]
         self.__moveto(point[0], point[1])
@@ -868,19 +912,24 @@ class postscript:
                 self.__grestore()
 
         self.__grestore()
-
+        return
         # END: line()
 
     # 
     # text()
     # 
-    # Use this routine to place text on the canvas. Most options are obvious (the expected coordinate pair, color, text,
-    # font, size (the size of the font), rotation (which way the text should be rotated), but the anchor can be a bit confusing.
-    # Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed.
-    # Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position
-    # specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies
-    # a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h),
-    # and middle (m), again all determining the placement of the text relative to the y coordinate specified.
+    # Use this routine to place text on the canvas. Most options are obvious
+    # (the expected coordinate pair, color, text, font, size - the size of the
+    # font, rotation - which way the text should be rotated, but the anchor can
+    # be a bit confusing. Basically, the anchor determines where, relative to
+    # the coordinate pair (x,y), the text should be placed. Simple anchoring
+    # includes left (l), center (c), or right (r), which determines whether the
+    # text starts at the x position specified (left), ends at x (right), or is
+    # centered on the x (center). Adding a second anchor (xanchor,yanchor)
+    # specifies a y position anchoring as well. The three options there are low
+    # (l), which is the default if none is specified, high (h), and middle (m),
+    # again all determining the placement of the text relative to the y
+    # coordinate specified.
     # 
     def text(self,
              coord    = [0,0],
@@ -933,17 +982,23 @@ class postscript:
             if xanchor == 'l':
                 self.__out('('+ text +') stringwidth pop dup')
             elif xanchor == 'c':
-                self.__out('('+ text +') stringwidth pop dup -2 div 0 rmoveto dup')
+                self.__out('('+ text +') stringwidth pop dup -2 div 0 ' + \
+                           'rmoveto dup')
             elif xanchor == 'r':
-                self.__out('('+ text +') stringwidth pop dup -1 div 0 rmoveto dup')
+                self.__out('('+ text +') stringwidth pop dup -1 div 0 ' + \
+                           'rmoveto dup')
             else:
                 abort('xanchor should be: l, c, or r')
 
             # now get width of string and draw the box
-            self.__out('-' + str(bgborder) + ' -' + str(bgborder) + ' rmoveto')  # move to left-bottom including borders
-            self.__out(str(2 * bgborder) + ' add 0 rlineto')                     # add border*2 to the width (on the stack) and move over
-            self.__out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')  # move a line up by the height of characters + border
-            self.__out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')           # move back down and closepath to finish
+            # move to left-bottom including borders
+            self.__out('-' + str(bgborder) + ' -' + str(bgborder) + ' rmoveto')
+            # add border*2 to the width (on the stack) and move over
+            self.__out(str(2 * bgborder) + ' add 0 rlineto')
+            # move a line up by the height of characters + border
+            self.__out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')
+            # move back down and closepath to finish
+            self.__out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')           
             self.__closepath()
             self.__fill()
             if rotate != 0:
@@ -959,10 +1014,9 @@ class postscript:
             self.__gsave()
             self.__rotate(rotate)
 
-        # 0.36: a magic adjustment to center text in y direction
-        # based on years of postscript experience, only change if you actually
-        # know something about how this works, unlike me
-        # btw: if just 'l', do nothing ...
+        # 0.36: a magic adjustment to center text in y direction. Based on years
+        # of postscript experience, only change if you actually know something
+        # about how this works, unlike me. BTW: if just 'l', do nothing ...
         if yanchor == 'c':
             self.__rmoveto(0, -0.36 * float(size))
         elif yanchor == 'h':
@@ -972,24 +1026,30 @@ class postscript:
         else:
             abort('yanchor should be: l, c, or h')
 
-        # XXX - need to mark parens specially in postscript (as they are normally used to mark strings)
-        # set text [string map { ( \\( ) \\) } $use(text)]
+        # TODO: missing text feature.
+        # Need to mark parens specially in postscript (as they are normally
+        # used to mark strings).
+        # Something like this?
+        #   set text [string map { ( \\( ) \\) } $use(text)]
+        # For now, user can deal with it themselves.
         self.__show(str(text),xanchor)
         if rotate != 0:
             self.__grestore()
         self.__stroke()
         self.__grestore()
+        return
         # END: text()
 
     # 
-    # METHOD box()
+    # box()
     #
     # Makes a box at coords specifying the bottom-left and upper-right corners
     # Options:
-    # Can change the surrounding line (linewidth=0 removes it)
-    # Can fill with solid or pattern
+    # - Can change the surrounding line (linewidth=0 removes it)
+    # - Can fill with solid or pattern
     # When filling with non-solid pattern, can add a background color so
-    # as not to be see-through
+    # as not to be see-through.
+    # 
     def box(self,
             coord       = [[0,0],[0,0]],
             linecolor   = 'black',
@@ -1021,7 +1081,8 @@ class postscript:
         # if the background should be filled, do that here
         if bgcolor != '':
             self.__gsave()
-            self.__makepattern(coord=[[x1,y1],[x2,y2]], fillcolor=bgcolor, fillstyle='solid')
+            self.__makepattern(coord=[[x1,y1],[x2,y2]], fillcolor=bgcolor,
+                               fillstyle='solid')
             self.__grestore()
 
         # do filled one first
@@ -1029,7 +1090,8 @@ class postscript:
             self.__gsave()
             self.__clipbox(x1, y1, x2, y2)
             self.__makepattern(coord=[[x1,y1],[x2,y2]], fillcolor=fillcolor,
-                               fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip)
+                               fillstyle=fillstyle, fillsize=fillsize,
+                               fillskip=fillskip)
             self.__grestore()
 
         # draw outline box
@@ -1046,18 +1108,19 @@ class postscript:
                 self.__setlinecap(linecap)
             self.__stroke()
             self.__grestore()
-
+        return
         # END: box()
 
     # 
-    # METHOD box2()
+    # box3()
     #
     # Makes a box at coords specifying the bottom-left and upper-right corners
     # Options:
-    # Can change the surrounding line (linewidth=0 removes it)
-    # Can fill with solid or pattern
+    # - Can change the surrounding line (linewidth=0 removes it)
+    # - Can fill with solid or pattern
     # When filling with non-solid pattern, can add a background color so
-    # as not to be see-through
+    # as not to be see-through.
+    # 
     def box3(self,
              coord       = [0,0],
              xwidth      = 10,
@@ -1087,10 +1150,18 @@ class postscript:
         x4 = x1 - (ywidth * math.cos(math.radians(90.0 - rotate)))
         y4 = y1 + (ywidth * math.sin(math.radians(90.0 - rotate)))
         self.polygon(coord=[[x1,y1],[x2,y2],[x3,y3],[x4,y4]],
-                     linecolor=linecolor, linewidth=linewidth, linedash=linedash, linecap=linecap,
-                     fill=fill, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip)
+                     linecolor=linecolor, linewidth=linewidth,
+                     linedash=linedash, linecap=linecap, fill=fill,
+                     fillcolor=fillcolor, fillstyle=fillstyle,
+                     fillsize=fillsize, fillskip=fillskip)
+        return
     # END: box3()
 
+    #
+    # arc()
+    #
+    # Can make circles, or partial circles (arcs), with this.
+    #
     def arc(self,
             coord     = [],
             angle     = [0.0,360.0],
@@ -1116,8 +1187,14 @@ class postscript:
             self.__setlinedash(linedash)
         self.__stroke()
         self.__grestore()
+        return
     # END: arc
 
+    #
+    # circle()
+    #
+    # Can just make circles with this. Filled or not.
+    #
     def circle(self,
                coord     = [0,0],
                radius    = 1,
@@ -1168,7 +1245,8 @@ class postscript:
             self.__clip()
             r = float(radius)
             self.__makepattern(coord=[[x-radius,y-radius],[x+radius,y+radius]],
-                               fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip)
+                               fillcolor=fillcolor, fillstyle=fillstyle,
+                               fillsize=fillsize, fillskip=fillskip)
             self.__grestore()
 
         # make the circle outline now
@@ -1184,6 +1262,7 @@ class postscript:
                 self.__setlinedash(linedash)
             self.__stroke()
             self.__grestore()
+        return
         # END: circle()
 
     def polygon(self,
@@ -1199,7 +1278,6 @@ class postscript:
                 fillskip   = 4,
                 bgcolor    = '',
                 ):
-
         # find minx,miny and maxx,maxy
         xmin = coord[0][0]
         ymin = coord[0][1]
@@ -1237,7 +1315,8 @@ class postscript:
             self.__clip()
             # use minimal x,y pair and max x.y pair to determine patternbox
             self.__makepattern(coord=[[xmin,ymin],[xmax,ymax]],
-                               fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip)
+                               fillcolor=fillcolor, fillstyle=fillstyle,
+                               fillsize=fillsize, fillskip=fillskip)
             self.__grestore()
 
         # now draw outline of polygon
@@ -1255,22 +1334,23 @@ class postscript:
 	        self.__setlinedash(linedash)
             self.__stroke()
             self.__grestore()
-        # END: polygon
 
-
-    # END: class postscript
-    def LAST(self):
         return
+        # END: polygon
+    # END: class postscript
 
 #
 # class drawable
 # 
-# Creates a drawable region onto which graphs can be drawn. Must define the xrange and yrange,
-# which are each min,max pairs, so that the drawable can translate data in table into points on the graph.
-# Also, must select which type of scale each axis is, e.g., linear, log10, and so forth. If unspecified,
-# coordinates (the x,y location of the lower left of the drawable) and dimensions (the width, height of the drawable)
-# will be guessed at; specifying these allows control over where and how big the drawable is.
-# Other options do things like place a background color behind the entire drawable or make an outline around it.
+# Creates a drawable region onto which graphs can be drawn. Must define the
+# xrange and yrange, which are each min,max pairs, so that the drawable can
+# translate data in table into points on the graph. Also, must select which
+# type of scale each axis is, e.g., linear, log10, and so forth. If unspecified,
+# coordinates (the x,y location of the lower left of the drawable) and
+# dimensions (the width, height of the drawable) will be guessed at; specifying
+# these allows control over where and how big the drawable is. Other options do
+# things like place a background color behind the entire drawable or make an
+# outline around it.
 # 
 class drawable:
     def __init__(self,
