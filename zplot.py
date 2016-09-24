@@ -1873,6 +1873,11 @@ class plotter:
         self.drawable = drawable
         return
 
+    #
+    # points()
+    #
+    # Use this to draw points onto the drawing surface. Lots and lots of options!
+    #
     def points(self,
                drawable        = '',        # name of the drawable area
                table           = '',        # name of table to use
@@ -1880,38 +1885,46 @@ class plotter:
                xfield          = 'c0',      # table column with x data
                yfield          = 'c1',      # table column with y data
                shift           = [0,0],     # shift points in x,y direction
-               size            = 2.0,       # overall size of marker; used unless sizefield is specified
-               style           = 'xline',   # label,hline,vline,plusline,xline,dline1,dline2,dline12,square,circle,triangle,utriangle,diamond,star,asterisk
-               sizefield       = '',        # if specified, table column with sizes for each point
-               sizediv         = '',        # if using sizefield, use sizediv to scale each value (each sizefield gets divided by sizediv)
+               size            = 2.0,       # overall size of marker;
+                                            # used unless sizefield is specified
+               style           = 'xline',   # label,hline,vline,plusline,xline,
+                                            # dline1,dline2,dline12,square,
+                                            # circle,triangle,utriangle,diamond,
+                                            # star,asterisk
+               sizefield       = '',        # if specified, table column with
+                                            # sizes for each point
+               sizediv         = '',        # if using sizefield, use sizediv to
+                                            # scale each value (each sizefield
+                                            # gets divided by sizediv)
                linecolor       = 'black',   # color of the line of the marker
-               linewidth       = 1.0,       # width of lines used to draw the marker
-               fill            = False,     # for some shapes, filling makes sense; if desired, mark this true
+               linewidth       = 1.0,       # width of lines used to draw marker
+               fill            = False,     # for some shapes, filling makes
+                                            # sense; if desired, mark this true
                fillcolor       = 'black',   # if filling, use this fill color
                fillstyle       = 'solid',   # if filling, which fill style to use
                fillsize        = 3.0,       # size of object in pattern
                fillskip        = 4.0,       # space between object in pattern
-               labelfield      = '',        # if specified, table column with labels for each point
-               labelformat     = '%s',      # if specified, table column with labels for each point
+               labelfield      = '',        # if specified, table column with
+                                            # labels for each point
+               labelformat     = '%s',      # if specified, table column with
+                                            # labels for each point
                labelrotate     = 0,         # if using labels, rotate labels
-               labelanchor     = 'c,c',     # if using labels, anchor them this way
-               labelplace      = 'c',       # if using labels, place text: (c) centered on point, (s) below point, (n) above point, (w) west of point, (e) east of point
+               labelanchor     = 'c,c',     # if using labels, how to anchor 
+               labelplace      = 'c',       # if using labels, place text:
+                                            # (c) centered on point, (s) below
+                                            # point, (n) above point, (w) west
+                                            # of point, (e) east of point
                labelshift      = [0,0],     # shift text in x,y direction
-               labelfont       = 'default', # if using labels, what font should be used
+               labelfont       = 'default', # if using labels, what font 
                labelsize       = 6.0,       # if using labels, font for label
-               labelcolor      = 'black',   # if using labels, what color font should be used
-               labelbgcolor    = '',        # if using labels, put a background color behind each
+               labelcolor      = 'black',   # if using labels, what color font
+               labelbgcolor    = '',        # if using labels, put a background
+                                            # color behind each
                legend          = '',        # which legend?
                legendtext      = '',        # text to add to legend
-               stackfields     = [],        # fields to add to yfield to determine y coord
+               stackfields     = [],        # fields to add to yfield to
+                                            # determine y coord
                ):
-        # timing notes (from TCL): 
-        #   just getting values :   30ms / 2000pts
-        #   + translation       :  130ms / 2000pts
-        #   + filledcircle      : 1014ms / 2000pts (or 2pts/ms -- ouch!)
-        #   + box               :  350ms / 2000pts 
-        #   + switchstatement   : 1030ms / 2000pts
-
         if drawable == '':
             drawable = self.drawable
         assert(drawable != '')
@@ -1938,8 +1951,6 @@ class plotter:
                 # non-empty -> sizefield should be used (i.e., ignore use(size))
                 size = float(r[sizeindex]) / float(sizediv)
 
-            # print 'plot (%f,%f) --> (%f,%f)' % (float(r[xindex]), float(r[yindex]), float(x), float(y))
-
             if style == 'label': 
                 assert(labelfield != '')
                 label = r[labelindex]
@@ -1954,43 +1965,72 @@ class plotter:
                 elif labelplace == 'e':
                     x = x + size + 2.0
                 else:
-                    abort('bad place flag (%s); should be c, s, n, w, or e' % labelplace)
+                    abort('bad place flag (%s); should be c, s, n, w, or e' % \
+                          labelplace)
                 text = labelformat % label
-                canvas.text(coord=[x+labelshift[0],y+labelshift[1]], text=text, anchor=labelanchor,
-                            rotate=labelrotate, font=labelfont, size=labelsize, color=labelcolor, bgcolor=labelbgcolor)
+                canvas.text(coord=[x+labelshift[0],y+labelshift[1]], text=text,
+                            anchor=labelanchor, rotate=labelrotate,
+                            font=labelfont, size=labelsize, color=labelcolor,
+                            bgcolor=labelbgcolor)
 		
             else:
-                canvas.shape(style=style, x=x+shift[0], y=y+shift[1], size=size, linecolor=linecolor, linewidth=linewidth,
-                             fill=fill, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip)
+                canvas.shape(style=style, x=x+shift[0], y=y+shift[1], size=size,
+                             linecolor=linecolor, linewidth=linewidth, fill=fill,
+                             fillcolor=fillcolor, fillstyle=fillstyle,
+                             fillsize=fillsize, fillskip=fillskip)
 
         if legend != '':
-            s = 'canvas.shape(style=\''+style+'\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+str(linecolor)+'\', linewidth='+str(linewidth)+', fill='+str(fill)+', fillcolor=\''+str(fillcolor)+'\', fillstyle=\''+str(fillstyle)+'\', fillsize='+str(fillsize)+', fillskip='+str(fillskip)+')'
+            s = 'canvas.shape(style=\'' + style + \
+                '\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+ \
+                str(linecolor) + '\', linewidth=' + str(linewidth) + \
+                ', fill=' + str(fill) + ', fillcolor=\'' + str(fillcolor) + \
+                '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=' + \
+                str(fillsize) + ', fillskip=' + str(fillskip)+')'
             t = string.Template(s)
             legend.add(text=legendtext, picture=t)
+        return
     # END: points()
 
-   
-    # Use this to plot horizontal bars. The options are quite similar to the vertical cousin of this routine,
-    # except (somehow) less feature-filled (hint: lazy programmer).
+
+    # 
+    # horizontalbars()
+    # 
+    # Use this to plot horizontal bars. The options are quite similar to the
+    # vertical cousin of this routine, except (somehow) less feature-filled
+    # (hint: lazy programmer).
+    # 
     def horizontalbars(self,
-                       drawable  = '',
-                       table     = '',
-                       where     = '',
-                       xfield    = 'c0',
-                       yfield    = 'c1',
-                       xloval    = '',
-                       barwidth  = 1.0,
-                       linecolor = 'black',
-                       linewidth = 1.0,
-                       fill      = False,
-                       fillcolor = 'black',
-                       fillstyle = 'solid',
-                       fillsize  = 3,
-                       fillskip  = 4,
-                       bgcolor   = '',
-                       legend     = '',        # which legend?
-                       legendtext = '',        # text to add to legend
-                       stackfields     = [],   # fields to add to yfield to determine y coord
+                       drawable    = '',
+                       table       = '',
+                       where       = '',
+                       xfield      = 'c0',
+                       yfield      = 'c1',
+
+                       # if specified, table column with xlo data; use if bars
+                       # don't start at the minimum of the range
+                       xloval      = '',
+
+                       # width of the bars
+                       barwidth    = 1.0,
+
+                       # color, width of lines
+                       linecolor   = 'black',
+                       linewidth   = 1.0,
+
+                       # if filling, description of fill of bars
+                       fill        = False,
+                       fillcolor   = 'black',
+                       fillstyle   = 'solid',
+                       fillsize    = 3,
+                       fillskip    = 4,
+
+                       # background color for legend text, and other legend stuff
+                       bgcolor     = '',
+                       legend      = '',
+                       legendtext  = '',
+
+                       # fields to add to yfield to determine y coord
+                       stackfields = [],       
                        ):
         if drawable == '':
             drawable = self.drawable
@@ -2027,14 +2067,18 @@ class plotter:
             y2 = drawable.translate('y', y) + (bwidth/2.0)
 
             canvas.box(coord=[[x1,y1],[x2,y2]],
-                       linecolor=linecolor, linewidth=linewidth, fill=fill, fillcolor=fillcolor,
-                       fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip, bgcolor=bgcolor)
+                       linecolor=linecolor, linewidth=linewidth, fill=fill,
+                       fillcolor=fillcolor, fillstyle=fillstyle,
+                       fillsize=fillsize, fillskip=fillskip, bgcolor=bgcolor)
+        return
     # END: horizontalbars()
 
+    #
     # helper function for vertical bars routine below
+    # 
     def __getanchorplace(self, labelanchor, labelplace, y1, y2):
         if y2 < y1:
-            # this is an upside down bar, so switch position of anchor and 'place'
+            # this is an upside down bar, so switch anchor and 'place'
             if labelplace == 'i':
                 place = 3
             else:
@@ -2059,50 +2103,114 @@ class plotter:
     #
     # verticalbars()
     #
-    # Use this to plot vertical bars on a drawable. A basic plot will specify the table, xfield, and yfield.
-    # Bars will be drawn from the minimum of the range to the y value found in the table. If the bars should
-    # start at some value other than the minimum of the range (for example, when the yaxis extends below zero,
-    # or you are building a stacked bar chart), two options are available: ylofield and yloval. ylofield specifies
-    # a column of a table that has the low values for each bar, i.e., 
-    # a bar will be drawn at the value specifed by the xfield starting at the ylofield value and going up to the
-    # yfield value. yloval can be used instead when there is just a single low value to draw all bars down to.
-    # Some other interesting options: labelfield, which lets you add a label to each bar by giving a column of labels
-    # (use rotate, anchor, place, font, fontsize, and fontcolor flags to control details of the labels); barwidth,
-    # which determines how wide each bar is in the units of the x-axis; linecolor, which determines the color of the line
-    # surrounding the box, and linewidth, which determines its thickness (or 0 to not have one); and of course the color
-    # and fill of the bar, as determined by fillcolor, fillstyle, and fillsize and fillskip.
+    # Use this to plot vertical bars on a drawable. A basic plot will specify
+    # the table, xfield, and yfield. Bars will be drawn from the minimum of the
+    # range to the y value found in the table. If the bars should start at some
+    # value other than the minimum of the range (for example, when the yaxis
+    # extends below zero, or you are building a stacked bar chart), two options
+    # are available: ylofield and yloval. ylofield specifies a column of a
+    # table that has the low values for each bar, i.e., a bar will be drawn at
+    # the value specifed by the xfield starting at the ylofield value and going
+    # up to the yfield value. yloval can be used instead when there is just a
+    # single low value to draw all bars down to. Some other interesting options:
+    # labelfield, which lets you add a label to each bar by giving a column of
+    # labels (use rotate, anchor, place, font, fontsize, and fontcolor flags to
+    # control details of the labels); barwidth, which determines how wide each
+    # bar is in the units of the x-axis; linecolor, which determines the color
+    # of the line surrounding the box, and linewidth, which determines its
+    # thickness (or 0 to not have one); and of course the color and fill of the
+    # bar, as determined by fillcolor, fillstyle, and fillsize and fillskip.
     # 
     def verticalbars(self,
                      drawable      = '',
                      table         = '',
                      where         = '',
                      xfield        = 'c0',
-                     yfield        = 'c1', 
-                     ylofield      = '',        # if specified, table column with ylo data; use if bars don't start at the minimum of the range
-                     stackfields     = [],      # fields to add to yfield to determine y coord
-                     yloval        = '',        # if there is no ylofield, use this value to fill down to; if empty, just use min of yrange
+                     yfield        = 'c1',
+
+                     # if specified, table column with ylo data; use if bars
+                     # don't start at the minimum of the range
+                     ylofield      = '',        
+
+                     # fields to add to yfield to determine y coord
+                     stackfields     = [],
+
+                     # if there is no ylofield, use this value to fill down to;
+                     # if empty, just use min of yrange
+                     yloval        = '',        
+
                      barwidth      = 1.0,       # bar width
-                     cluster       = [0,1],     # of the form n,m; thus, each x-axis data point actually will have 'm' bars plotted upon it; 'n' specifies which cluster of the 'm' this one is (from 0 to m-1); width of each bar is 'barwidth/m'; normal bar plots (without clusters) are just the default, '0,1'
-                     linecolor     = 'black',   # color of the line surrounding each bar
-                     linewidth     = 0.25,      # width of the line; set to 0 if you don't want a surrounding line on the box
-                     fill          = False,     # fill the box or not 
-                     fillcolor     = 'gray',    # fill color (if used)
-                     fillstyle     = 'solid',   # solid, boxes, circles, ...
-                     fillsize      = 3,         # size of object in pattern
-                     fillskip      = 4,         # space between object in pattern
-                     bgcolor       = '',        # color background for the bar; empty means none (patterns may be see through)
-                     labelfield    = '',        # if specified, table column with labels for each bar
-                     labelformat   = '%s',      # use this format for the labels; can prepend and postpend arbitrary text
-                     labelrotate   = 0,         # rotate labels
-                     labelanchor   = '',        # text anchor if using a labelfield; empty means use a best guess
-                     labelplace    = 'o',       # place label (o) outside of bar or (i) inside of bar
-                     labelshift    = [0.0,0.0], # shift text in x,y direction
-                     labelfont     = 'default', # if using labels, what font should be used
-                     labelsize     = 10.0,      # if using labels, font for label
-                     labelcolor    = 'black',   # if using labels, what color font should be used
-                     labelbgcolor  = '',        # if specified, fill this color in behind each text item
-                     legend        = '',        # which legend?
-                     legendtext    = '',        # text to add to legend
+
+                     # of the form n,m; thus, each x-axis data point actually
+                     # will have 'm' bars plotted upon it; 'n' specifies which
+                     # cluster of the 'm' this one is (from 0 to m-1); width of
+                     # each bar is 'barwidth/m'; normal bar plots (without
+                     # clusters) are just the default, '0,1'
+                     cluster       = [0,1],
+
+                     # color of the line surrounding each bar
+                     linecolor     = 'black',
+
+                     # width of the line; set to 0 if you don't want a
+                     # surrounding line on the box
+                     linewidth     = 0.25,
+
+                     # fill the box or not 
+                     fill          = False,
+
+                     # fill color (if used)
+                     fillcolor     = 'gray',
+
+                     # solid, boxes, circles, ...
+                     fillstyle     = 'solid',
+
+                     # size of object in pattern
+                     fillsize      = 3,
+
+                     # space between object in pattern
+                     fillskip      = 4,
+
+                     # color background for the bar; empty means none (patterns
+                     # may be see through)
+                     bgcolor       = '',
+
+                     # if specified, table column with labels for each bar
+                     labelfield    = '',
+
+                     # use this format for the labels; can prepend and postpend
+                     # arbitrary text
+                     labelformat   = '%s',
+
+                     # rotate labels by this many degrees
+                     labelrotate   = 0,
+
+                     # text anchor if using a labelfield; empty means use a
+                     # best guess
+                     labelanchor   = '',
+
+                     # place label (o) outside of bar or (i) inside of bar
+                     labelplace    = 'o',
+
+                     # shift text in x,y direction
+                     labelshift    = [0.0,0.0],
+
+                     # if using labels, what font should be used
+                     labelfont     = 'default',
+
+                     # if using labels, font for label
+                     labelsize     = 10.0,
+
+                     # if using labels, what color font should be used
+                     labelcolor    = 'black',
+
+                     # if specified, fill this color in behind each text item
+                     labelbgcolor  = '',
+
+                     # which legend?
+                     legend        = '',
+
+                     # text to add to legend
+                     legendtext    = '',        
                      ):
         # start here
         if drawable == '':
@@ -2165,58 +2273,78 @@ class plotter:
 
             # make the arg list and call the box routine
             canvas.box(coord=[[x1,y1],[x2,y2]],
-                       linecolor=linecolor, linewidth=linewidth, fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                       linecolor=linecolor, linewidth=linewidth, fill=fill,
+                       fillcolor=fillcolor, fillstyle=fillstyle,
                        fillsize=fillsize, fillskip=fillskip, bgcolor=bgcolor)
 
             if labelfield != '':
                 label  = labelformat % r[labelindex]
                 xlabel = x1 + (barwidth/2.0) + labelshift[0]
                 ylabel = drawable.translate('y', y) + place + labelshift[1]
-                canvas.text(coord=[xlabel,ylabel], text=label, anchor=anchor, rotate=labelrotate,
-                            font=labelfont, size=labelsize, color=labelcolor, bgcolor=labelbgcolor)
+                canvas.text(coord=[xlabel,ylabel], text=label, anchor=anchor,
+                            rotate=labelrotate, font=labelfont, size=labelsize,
+                            color=labelcolor, bgcolor=labelbgcolor)
 
         if legend != '':
             if fillcolor=='white' and linewidth==0:
                 linewidth=1
-            s = 'canvas.box(coord=[[$__Xmm,$__Ymm],[$__Xpm,$__Ypm]], fill=' + str(fill) + ', fillcolor=\'' + str(fillcolor) + '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=\'' + str(fillsize) + '\', fillskip=\'' + str(fillskip) + '\', linewidth=\'' + str(linewidth/2.0) + '\', linecolor=\'' + str(linecolor) + '\')'
+            s = 'canvas.box(coord=[[$__Xmm,$__Ymm],[$__Xpm,$__Ypm]], fill=' + \
+                str(fill) + ', fillcolor=\'' + str(fillcolor) + \
+                '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=\'' + \
+                str(fillsize) + '\', fillskip=\'' + str(fillskip) + \
+                '\', linewidth=\'' + str(linewidth/2.0) + '\', linecolor=\'' + \
+                str(linecolor) + '\')'
             t = string.Template(s)
             legend.add(text=legendtext, picture=t)
-
+        return
     # END: verticalbars()
-
 
     #
     # line()
     # 
-    # Use this function to plot lines. It is one of the simplest routines there is -- basically, it takes
-    # the x and y fields and plots a line through them. It does NOT sort them, though, so you might need
-    # to do that first if you want the line to look pretty. The usual line arguments can be used, including
-    # color, width, and dash pattern.
+    # Use this function to plot lines. It is one of the simplest routines there
+    # is -- basically, it takes the x and y fields and plots a line through them.
+    # It does NOT sort them, though, so you might need to do that first if you
+    # want the line to look pretty. The usual line arguments can be used,
+    # including color, width, and dash pattern.
     # 
     def line(self,
              drawable     = '',
              table        = '', 
              where        = '', 
              xfield       = 'c0', 
-             yfield       = 'c1', 
-             stairstep    = False,   # plot the data in a stairstep manner (e.g., cumulative distribution plot)
+             yfield       = 'c1',
+
+             # plot the data in a stairstep manner (e.g., CDF)
+             stairstep    = False,   
              linecolor    = 'black', 
              linewidth    = 1.0,
              linejoin     = 0,
              linecap      = 0,
-             linedash     = 0,       # dash pattern - 0 means no dashes
-             labelfield   = '',      # if specified, table column with labels for each point in line
-             labelplace   = 'n',     # place the labels n (north) of the line, or s (south)
+
+             # dash pattern - 0 means no dashes
+             linedash     = 0,
+
+             # if specified, table column with labels for each point in line.
+             # Rest of label args spec things about the lables.
+             labelfield   = '',      
+             labelplace   = 'n',     
              labelfont    = 'default',
              labelsize    = 8.0,
              labelcolor   = 'black',
              labelanchor  = 'c',
              labelrotate  = 0,       
              labelshift   = [0,0],
-             labelbgcolor = '',       # if not empty, put this background color behind each text marking
-             labeloffset  = 3.0,      # if using labels, how much to offset from point by
-             legend       = '',       # which legend?
-             legendtext   = '',       # text to add to legend
+             labelbgcolor = '',
+             # if using labels, how much to offset from point by
+             labeloffset  = 3.0,
+
+             # legend info
+             legend       = '',       
+             legendtext   = '',       
+
+             # if adding points as well - a convenience?
+             # why not just use lines and points?
              symbstyle    = '',
              symbsize     = 2,
              symbfill     = False,
@@ -2228,8 +2356,8 @@ class plotter:
 
         if symbstyle:
             self.points(drawable=drawable, table=table, style=symbstyle,
-                        xfield=xfield, yfield=yfield, size=symbsize, fill=symbfill,
-                        linecolor=linecolor, fillcolor=linecolor)
+                        xfield=xfield, yfield=yfield, size=symbsize,
+                        fill=symbfill, linecolor=linecolor, fillcolor=linecolor)
 
         # get some things straight before looping
         if labelplace == 'n':
@@ -2277,30 +2405,46 @@ class plotter:
                     linedash=linedash, linecap=linecap, linejoin=linejoin)
 
         if legend != '':
-            s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+str(linecolor)+'\', linewidth='+str(linewidth)+', linedash='+str(linedash)+')'
+            s = 'canvas.shape(style=\'hline\', x=$__Xx, y=$__Yy, size=$__M2,' + \
+                'linecolor=\'' + str(linecolor) + '\', linewidth=' + \
+                str(linewidth) + ', linedash=' + str(linedash) + ')'
             t = string.Template(s)
             legend.add(text=legendtext, picture=t)
-        
+
         return
     # END: line()
 
     #
     # function()
     #
-    # Use PlotFunction to plot a function right onto a drawable. The function should simply take one argument
-    # (e.g., x) and return the value of the function (e.g., f(x)).
+    # Use function() to plot a function right onto a drawable. The function
+    # should simply take one argument (e.g., x) and return the value of the
+    # function (e.g., f(x)).
     # 
     def function(self,
-                 drawable   = '',     # name of the drawable area
-                 function   = '',     # 
-                 xrange     = [0,10], # the x-range the function should be plotted over, in xmin,xmax form
-                 step       = 1,      # given the range of xmin to xmax, step determines at which x values the function is evaluated and a line is drawn to
-                 ylimit     = ['',''],# if given, limit function to values between low and hi y values
-                 linewidth  = 1,      # the linewidth
-                 linecolor  = 'black',# the color of the line
-                 linedash   = 0,      # the dash pattern (if non-zero)
-                 legend     = '',     # which legend?
-                 legendtext = '',     # text to add to legend
+                 drawable   = '',
+
+                 # the function, such as 'x*x'
+                 function   = '',
+                 
+                 # the x-range the function should be plotted over [xmin,xmax]
+                 xrange     = [0,10],
+
+                 # given the range of xmin to xmax, step determines at which x
+                 # values the function is evaluated and a line is drawn to
+                 step       = 1,
+
+                 # if given, limit function to values between low and hi y values
+                 ylimit     = ['',''],
+
+                 # line width, color, and dash pattern
+                 linewidth  = 1,      
+                 linecolor  = 'black',
+                 linedash   = 0,
+
+                 # legend info
+                 legend     = '',     
+                 legendtext = '',     
                  ):
         if drawable == '':
             drawable = self.drawable
@@ -2309,15 +2453,21 @@ class plotter:
         x = xrange[0]
         while x <= xrange[1]:
             y = function(x)
-            if ((ylimit[0] == '') or (ylimit[0] != '') and (y >= ylimit[0])) and ((ylimit[1] == '') or ((ylimit[1] != '') and (y <= ylimit[1]))):
-                linelist.append([drawable.translate('x', x), drawable.translate('y', y)])
+            if ((ylimit[0] == '') or (ylimit[0] != '') and (y >= ylimit[0])) \
+                   and ((ylimit[1] == '') or ((ylimit[1] != '') and \
+                                              (y <= ylimit[1]))):
+                linelist.append([drawable.translate('x', x),
+                                 drawable.translate('y', y)])
             x = x + step
-        # end while
+            
         canvas = drawable.canvas
-        canvas.line(coord=linelist, linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+        canvas.line(coord=linelist, linecolor=linecolor, linewidth=linewidth,
+                    linedash=linedash)
 
         if legend != '':
-            s = 'canvas.line(coord=[[$__Xmw,$__Yy],[$__Xpw,$__Yy]], linewidth=%s, linecolor=\'%s\', linedash=%s)' % (linewidth, linecolor, linedash)
+            s = 'canvas.line(coord=[[$__Xmw,$__Yy],[$__Xpw,$__Yy]], ' + \
+                'linewidth=%s, linecolor=\'%s\', linedash=%s)' % \
+                (linewidth, linecolor, linedash)
             t = string.Template(s)
             legend.add(text=legendtext, picture=t)
 
@@ -2325,20 +2475,22 @@ class plotter:
     # END: function()
 
     # 
-    # METHOD horizontalintervals()
+    # horizontalintervals()
     #
-    # Use this to plot interval markers in the x direction. The y column has the y value for each interval,
-    # and draws the interval between the ylo and yhi column values. The marker can take on many forms,
-    # as specified by the 'align' flag. Note the 'b' type in particular, which can be used to assemble box plots.
+    # Use this to plot interval markers in the x direction. The y column has
+    # the y value for each interval, and draws the interval between the ylo and
+    # yhi column values. The marker can take on many forms, as specified by
+    # the 'align' flag. Note the 'b' type in particular, which can be used to
+    # assemble box plots.
     #
     def horizontalintervals(self,
                             drawable  = '', # name of the drawable area
                             table     = '', # name of table to use
-                            where     = '', # where clause: select a subset of the table?
+                            where     = '', # select a subset of the table?
                             yfield    = '', # table column with y data
                             xlofield  = '', # table column with xlo data
                             xhifield  = '', # table column with xhi data
-                            align     = 'c', # c - center, u - upper, l - lower, n - none
+                            align     = 'c', # c-center, u-upper, l-lower, n-none
                             linecolor = 'black', # color of the line
                             linewidth = 1,  # width of all lines
                             devwidth  = 3,  # width of interval marker on top
@@ -2369,39 +2521,45 @@ class plotter:
             hlw  = linewidth / 2.0
             
             if align == 'c':
-		canvas.line(coord=[[xlop,yp],[xhip,yp]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xlop,yp],[xhip,yp]], linecolor=linecolor,
+                            linewidth=linewidth)
             elif align == 'l':
-		canvas.line(coord=[[xlop,yp-dw+hlw],[xhip,yp-dw+hlw]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xlop,yp-dw+hlw],[xhip,yp-dw+hlw]],
+                            linecolor=linecolor, linewidth=linewidth)
             elif align == 'u':
-		canvas.line(coord=[[xlop,yp+dw-hlw],[xhip,yp+dw-hlw]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xlop,yp+dw-hlw],[xhip,yp+dw-hlw]],
+                            linecolor=linecolor, linewidth=linewidth)
             elif align != 'n':
                 abort('Bad alignment: %s; should be c, l, or r' % align)
 
             # vertical line between two end marks
-            canvas.line(coord=[[xhip,yp-dw],[xhip,yp+dw]], linecolor=linecolor, linewidth=linewidth)
-            canvas.line(coord=[[xlop,yp-dw],[xlop,yp+dw]], linecolor=linecolor, linewidth=linewidth)
+            canvas.line(coord=[[xhip,yp-dw],[xhip,yp+dw]], linecolor=linecolor,
+                        linewidth=linewidth)
+            canvas.line(coord=[[xlop,yp-dw],[xlop,yp+dw]], linecolor=linecolor,
+                        linewidth=linewidth)
         return
     # END: horizontalintervals()
-    
 
     # 
-    # FUNCTION verticalintervals()
+    # verticalintervals()
     # 
-    # Use this to plot interval markers in the y direction. The x column has the x value for each interval,
-    # and draws the interval between the ylo and yhi column values. The marker can take on many forms,
-    # as specified by the 'align' flag. Note the 'b' type in particular, which can be used to assemble box plots. 
+    # Use this to plot interval markers in the y direction. The x column has
+    # the x value for each interval, and draws the interval between the ylo and
+    # yhi column values. The marker can take on many forms, as specified by
+    # the 'align' flag. Note the 'b' type in particular, which can be used to
+    # assemble box plots. 
     # 
     def verticalintervals(self,
-                          drawable    = '',         # name of the drawable area
-                          table       = '',         # name of table to use
-                          where       = '',         # where clause to select subset of queries
-                          xfield      = 'c0',       # table column with x data
-                          ylofield    = 'c1',       # table column with ylo data
-                          yhifield    = 'c2',       # table column with yhi data
-                          align       = 'c',        # c - center, l - left, r - right, n - none
-                          linecolor   = 'black',    # color of the line
-                          linewidth   = 1,          # width of all lines
-                          devwidth    = 3,          # width of interval marker on top
+                          drawable    = '',   # name of the drawable area
+                          table       = '',   # name of table to use
+                          where       = '',   # where clause?
+                          xfield      = 'c0', # table column with x data
+                          ylofield    = 'c1', # table column with ylo data
+                          yhifield    = 'c2', # table column with yhi data
+                          align       = 'c',  # c-center, l-left, r-right, n-none
+                          linecolor   = 'black', # color of the line
+                          linewidth   = 1,    # width of all lines
+                          devwidth    = 3,    # width of interval marker on top
                           ):
         if drawable == '':
             drawable = self.drawable
@@ -2430,42 +2588,50 @@ class plotter:
             hlw  = linewidth / 2.0
 
             if align == 'c':
-		canvas.line(coord=[[xp,ylop],[xp,yhip]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xp,ylop],[xp,yhip]], linecolor=linecolor,
+                            linewidth=linewidth)
             elif align == 'l':
-		canvas.line(coord=[[xp-dw+hlw,ylop],[xp-dw+hlw,yhip]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xp-dw+hlw,ylop],[xp-dw+hlw,yhip]],
+                            linecolor=linecolor, linewidth=linewidth)
             elif align == 'r':
-		canvas.line(coord=[[xp+dw-hlw,ylop],[xp+dw-hlw,yhip]], linecolor=linecolor, linewidth=linewidth)
+		canvas.line(coord=[[xp+dw-hlw,ylop],[xp+dw-hlw,yhip]],
+                            linecolor=linecolor, linewidth=linewidth)
 	    elif align != 'n':
                 # n is the only other reasonable choice...
 		abort('Bad alignment (%s): should be c, l, r, or n' % align)
 
             # vertical line between two end marks
-            canvas.line(coord=[[xp-dw,yhip],[xp+dw,yhip]], linecolor=linecolor, linewidth=linewidth)
-            canvas.line(coord=[[xp-dw,ylop],[xp+dw,ylop]], linecolor=linecolor, linewidth=linewidth)
+            canvas.line(coord=[[xp-dw,yhip],[xp+dw,yhip]], linecolor=linecolor,
+                        linewidth=linewidth)
+            canvas.line(coord=[[xp-dw,ylop],[xp+dw,ylop]], linecolor=linecolor,
+                        linewidth=linewidth)
         return
     # END: verticalintervals()
 
     #
     # METHOD verticalfill()
     #
-    # Use this function to fill a vertical region between either the values in yfield and the minimum of the y-range (default),
-    # the yfield values and the values in the ylofield, or the yfield values and a single yloval. Any pattern and color
-    # combination can be used to fill the filled space.
+    # Use this function to fill a vertical region between either the values in
+    # yfield and the minimum of the y-range (default), the yfield values and
+    # the values in the ylofield, or the yfield values and a single yloval.
+    # Any pattern and color combination can be used to fill the filled space.
     # 
     def verticalfill(self,
-                     drawable   = '',          # name of the drawable area
-                     table      = '',          # name of table to use
-                     where      = '',          # where clause, to pick rows of table to plot...
-                     xfield     = '',          # table column with x data
-                     yfield     = '',          # table column with y data
-                     ylofield   = '',          # if not empty, use this table column to fill down to this value
-                     yloval     = '',          # if no ylofield, use this single value to fill down to; if empty, just use the min of y-range
+                     drawable   = '',  # name of the drawable area
+                     table      = '',  # name of table to use
+                     where      = '',  # where clause?
+                     xfield     = '',  # table column with x data
+                     yfield     = '',  # table column with y data
+                     ylofield   = '',  # if not empty, use this table column
+                                       # to fill down to this value
+                     yloval     = '',  # if no ylofield, use this value to fill
+                                       # down to; if empty, use min of y-range
                      fillcolor  = 'lightgrey', #  fill color (if used)
                      fillstyle  = 'solid',     # solid, boxes, circles, ...
-                     fillsize   = 3,           # size of object in pattern
-                     fillskip   = 4,           # space between object in pattern
-                     legend     = '',          # which legend object?
-                     legendtext = '',          # text to add to legend
+                     fillsize   = 3,   # size of object in pattern
+                     fillskip   = 4,   # space between object in pattern
+                     legend     = '',  # which legend object?
+                     legendtext = '',  # text to add to legend
                      ):
         if drawable == '':
             drawable = self.drawable
@@ -2483,7 +2649,6 @@ class plotter:
             else:
                 ylo = drawable.translate('y', yloval)
 
-        # canvas ...
         canvas = drawable.canvas
 
         first = 0
@@ -2504,12 +2669,17 @@ class plotter:
                 ycurr   = y
                 ylocurr = ylo
 
-                # draw the polygon between the last pair of points and the current points
-                canvas.polygon(coord=[[xlast,ylolast],[xlast,ylast],[xcurr,ycurr],[xcurr,ylocurr]],
-                               fill=True, fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize, fillskip=fillskip,
-                               linewidth=0.1, linecolor=fillcolor)
-                # xxx - make a little bit of linewidth so as to overlap neighboring regions
-                # the alternate is worse: having to draw one huge polygon (though maybe not that bad...)
+                # draw the polygon between the last pair of points and
+                # the current points
+                canvas.polygon(coord=[[xlast,ylolast],[xlast,ylast],
+                                      [xcurr,ycurr],[xcurr,ylocurr]],
+                               fill=True, fillcolor=fillcolor,
+                               fillstyle=fillstyle, fillsize=fillsize,
+                               fillskip=fillskip, linewidth=0.1,
+                               linecolor=fillcolor)
+                # XXX - make a little bit of linewidth so as to overlap
+                # neighboring regions. The alternate is worse: having to draw
+                # one huge polygon (though maybe not that bad...)
 
                 # move last points to current points
                 xlast   = xcurr
@@ -2518,18 +2688,271 @@ class plotter:
         # END: for ...
 
         if legend != '':
-            # LegendAdd -text $use(legend) -picture PsBox -coord __Xmw,__Ymh:__Xpw,__Yph -fill t -fillcolor $use(fillcolor) -fillstyle $use(fillstyle) -fillsize $use(fillsize) -fillskip $use(fillskip) -linewidth 0.1 -linecolor black
+            # XXX - lazy programmer.
             abort('no legend implemented')
         return
     # END: verticalfill()
 # END: class plotter
 
 #
-# CLASS axis
+# class axis
 #
-# Use this to draw some axes. It is supposed to be simpler and easier to use than the older package. We will see about that...
+# Use this to draw some axes. It is supposed to be simpler and easier to use
+# than the older package. We will see about that.
 # 
 class axis:
+    def __init__(self,
+                 drawable      = '',        # the relevant drawable
+                 linecolor     = 'black',   # color of axis line
+                 linewidth     = 1.0,       # width of axis line
+                 linedash      = 0,         # dash parameters; will make axes dashed, but not tic marks
+                 style         = 'xy',      # which axes to draw: 'xy', 'x', 'y', 'box' are options
+                 labelstyle    = 'out',     # labels 'in'or'out'? for xaxis, 'out' means below/'in' above; for yaxis,'out' means left/'in' right
+                 ticstyle      = 'out',     # are tics 'in', 'out', or 'centered'? (inside the axes, outside them, or centered upon the axes)
+                 doaxis        = True,      # whether to draw the actual axes or not
+                 dolabels      = True,      # whether to put labels on or not; useful to set to false, for example, when ...
+                 domajortics   = True,      # whether to put majortics on axes or not
+                 doxmajortics  = True,      # whether to put major tics on x-axis
+                 doymajortics  = True,      # whether to put major tics on y-axis
+                 dominortics   = False,     # whether to put minortics on axes or not
+                 doxminortics  = True,      # whether to put major tics on x-axis
+                 doyminortics  = True,      # whether to put major tics on y-axis
+                 doxlabels     = True,      # whether to put labels on x-axis
+                 doylabels     = True,      # whether to put labels on y-axis
+
+                 xaxisrange    = '',        # min and max values to draw xaxis between; empty means whole range
+                 yaxisrange    = '',        # min and max values to draw yaxis between; empty means whole range
+                 xaxisposition = '',        # which y value x-axis is located at; if empty, min of range; ignored by 'box' style
+                 yaxisposition = '',        # which x value y-axis is located at; if empty, min of range; ignored by 'box' style
+
+                 xauto         = ['','',''],# [x1,x2,step] (will put labels and major tics from x1 to x2 with step between each); can leave any of these empty and the routine will fill in a guess (either the min or max of the range, or a guess for the step), e.g., 0,,2 means start at 0, fill in the max of the xrange for a max value, and set the step to 2. The default is to guess all of these values
+                 xmanual       = '',        # specify labels/majortics by hand with a list of form: [[x1,'label1'],[x2,'label2']...]
+                 yauto         = ['','',''],# similar to xauto, but for the yaxis
+                 ymanual       = '',        # similar to xmanual, but for the yaxis
+
+                 ticmajorsize  = 4.0,       # size of the major tics
+                 ticminorsize  = 2.5,       # size of the minor tics
+
+                 xminorticcnt  = 1,         # how many minor tics between each major tic (x axis)
+                 yminorticcnt  = 1,         # how many minor tics between each major tic (y axis)
+
+                 xlabelfont      = 'default', # font to use (if any)
+                 xlabelfontsize  = 10.0,      # font size of labels (if any)
+                 xlabelfontcolor = 'black',   # font color
+                 xlabelrotate   = 0,          # use specified rotation for x labels
+                 xlabelbgcolor = '',        # if non-empty, put a background colored square behind the xlabels
+                 xlabelanchor   = '',         # text anchor for labels along the x axis; empty means routine should guess
+                 xlabelformat   = '',         # format string for xlabels; e.g., %d for ints; empty (default) implies best guess; can also use this to add decoration to the label, e.g., '%i %%' will add a percent sign to each integer label, and so forth
+
+                 ylabelfont      = 'default', # font to use (if any)
+                 ylabelfontsize  = 10.0,      # font size of labels (if any)
+                 ylabelfontcolor = 'black',   # font color
+                 ylabelrotate   = 0,          # use specified rotation for y labels
+                 ylabelbgcolor = '',          # just like xbgcolor, but for ylabels
+                 ylabelanchor   = '',         # same as xanchor, but for labels along the y axis
+                 ylabelformat   = '',         # similar to xformat, but for ylabels
+
+                 xlabeltimes   = 1,           # what to multiple xlabel by; e.g., if 10, 1->10, 2->20, etc., if 0.1, 1->0.1, etc.
+                 ylabeltimes   = 1,           # similar to xmul, but for ylabels
+
+                 xlabelshift   = [0,0],       # shift xlabels left/right, up/down (e.g., +4,-3 -> shift right 4, shift down 3)
+                 ylabelshift   = [0,0],       # similar to xshift, but for ylabels
+
+                 xtitle        = '',          # title along the x axis
+                 xtitlefont    = 'default',   # xtitle font to use
+                 xtitlesize    = 10,          # xtitle font size
+                 xtitlecolor   = 'black',     # xtitle font color
+                 xtitleplace   = 'c',         # c - center, l - left, r - right
+                 xtitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -xtitleshift)
+                 xtitleshift   = [0,0],       # use this to micro-adjust the placement of the title
+                 xtitlerotate  = 0,           # how much to rotate the title
+                 xtitleanchor  = '',          # how to anchor the text; empty means we will guess
+                 xtitlebgcolor = '',          # if not-empty, put this color behind the title
+
+                 ytitle        = '',          # title along the y axis
+                 ytitlefont    = 'default',   # ytitle font to use
+                 ytitlesize    = 10,          # ytitle font size
+                 ytitlecolor   = 'black',     # ytitle font color
+                 ytitleplace   = 'c',         # c - center, l - lower, u - upper
+                 ytitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -titleshift)
+                 ytitleshift   = [0,0],       # use this to micro-adjust the placement of the title
+                 ytitlerotate  = 90.0,        # how much to rotate the title
+                 ytitleanchor  = '',          # how to anchor the text; empty means we will guess
+                 ytitlebgcolor = '',          # if not-empty, put this color behind the title
+
+                 title         = '',          # title along the y axis
+                 titlefont     = 'default',   # title font to use
+                 titlesize     = 10.0,        # title font size
+                 titlecolor    = 'black',     # title font color
+                 titleplace    = 'c',         # c - center, l - left, r - right
+                 titleshift    = [0,0],       # use this to micro-adjust the placement of the title
+                 titlerotate   = 0,           # how much to rotate the title
+                 titleanchor   = '',          # how to anchor the text; empty means we will guess
+                 titlebgcolor  = '',          # if not-empty, put this color behind the title
+                 ):
+        assert(drawable != '')
+
+        values = {} # empty dict
+        values['xrange,min'] = drawable.virtualmin('x')
+        values['xrange,max'] = drawable.virtualmax('x')
+        values['yrange,min'] = drawable.virtualmin('y')
+        values['yrange,max'] = drawable.virtualmax('y')
+
+        # figure out where axes will go
+        if xaxisposition != '':
+            values['xaxis,ypos'] = xaxisposition
+        else:
+            values['xaxis,ypos'] = values['yrange,min']
+
+        if yaxisposition != '':
+            values['yaxis,xpos'] = yaxisposition
+        else:
+            values['yaxis,xpos'] = values['xrange,min']
+
+        # find out ranges of each axis
+        if xaxisrange != '':
+            assert(len(xaxisrange) == 2)
+            values['xaxis,min'] = xaxisrange[0]
+            values['xaxis,max'] = xaxisrange[1]
+        else:
+            values['xaxis,min'] = values['xrange,min']
+            values['xaxis,max'] = values['xrange,max']
+
+        if yaxisrange != '':
+            assert(len(yaxisrange) == 2)
+            values['yaxis,min'] = yaxisrange[0]
+            values['yaxis,max'] = yaxisrange[1]
+        else:
+            values['yaxis,min'] = values['yrange,min']
+            values['yaxis,max'] = values['yrange,max']
+
+        # translate each of these values into points
+        tvalues = {}
+        for v in ['xaxis,min', 'xaxis,max', 'xrange,min', 'xrange,max', 'yaxis,xpos']:
+            tvalues[v] = drawable.translate('x', values[v])
+        for v in ['yaxis,min', 'yaxis,max', 'yrange,min', 'yrange,max', 'xaxis,ypos']:
+            tvalues[v] = drawable.translate('y', values[v])
+
+        # adjust for linewidths
+        half = float(linewidth) / 2.0
+
+        assert(style == 'x' or style == 'y' or style == 'xy' or style == 'box')
+
+        assert(drawable != '')
+        canvas = drawable.canvas
+
+        if doaxis == True:
+            if style == 'x' or style == 'xy':
+		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['xaxis,ypos']],[tvalues['xaxis,max']+half,tvalues['xaxis,ypos']]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+            if style == 'y' or style == 'xy':
+		canvas.line(coord=[[tvalues['yaxis,xpos'],tvalues['yaxis,min']-half],[tvalues['yaxis,xpos'],tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+
+            if style == 'box':
+		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,min']],[tvalues['xaxis,max']+half,tvalues['yrange,min']]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['xrange,min'],tvalues['yaxis,min']-half],[tvalues['xrange,min'],tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,max']],[tvalues['xaxis,max']+half,tvalues['yrange,max']]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+		canvas.line(coord=[[tvalues['xrange,max'],tvalues['yaxis,min']-half],[tvalues['xrange,max'],tvalues['yaxis,max']+half]],
+                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
+
+        # unpack the (complex) args and put useful things into labels and values arrays
+        xlabels = []
+        ylabels = []
+        self.__unpackargs(drawable, axis='x', values=values, labels=xlabels, manual=xmanual, auto=xauto,
+                          labelformat=xlabelformat, labeltimes=xlabeltimes)
+        self.__unpackargs(drawable, axis='y', values=values, labels=ylabels, manual=ymanual, auto=yauto,
+                          labelformat=ylabelformat, labeltimes=ylabeltimes)
+
+        if domajortics == True:
+            if doxmajortics and (style == 'x' or style == 'xy'):
+                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=xlabels,
+                                ticstyle=ticstyle, ticsize=ticmajorsize,
+                                linecolor=linecolor, linewidth=linewidth)
+            if doymajortics and (style == 'y' or style == 'xy'):
+                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=ylabels,
+                                ticstyle=ticstyle, ticsize=ticmajorsize,
+                                linecolor=linecolor, linewidth=linewidth)
+            if style == 'box':
+                if doxmajortics:
+                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=xlabels,
+                                    ticstyle=ticstyle, ticsize=ticmajorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=xlabels,
+                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                if doymajortics:
+                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=ylabels,
+                                    ticstyle=ticstyle, ticsize=ticmajorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=ylabels,
+                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                
+        if dolabels == True:
+            if (style == 'x' or style == 'xy' or style == 'box') and doxlabels == True:
+                self.__makelabels(drawable=drawable, values=values, 
+                                  axis='x', axispos=tvalues['xaxis,ypos'],
+                                  labels=xlabels, labelstyle=labelstyle,
+                                  ticstyle=ticstyle, ticmajorsize=ticmajorsize,
+                                  font=xlabelfont, fontsize=xlabelfontsize, fontcolor=xlabelfontcolor,
+                                  labelanchor=xlabelanchor, labelrotate=xlabelrotate, labelshift=xlabelshift, labelbgcolor=xlabelbgcolor)
+            if (style == 'y' or style == 'xy' or style == 'box') and doylabels == True:
+                self.__makelabels(drawable=drawable, values=values,
+                                  axis='y', axispos=tvalues['yaxis,xpos'],
+                                  labels=ylabels, labelstyle=labelstyle,
+                                  ticstyle=ticstyle, ticmajorsize=ticmajorsize,
+                                  font=ylabelfont, fontsize=ylabelfontsize, fontcolor=ylabelfontcolor,
+                                  labelanchor=ylabelanchor, labelrotate=ylabelrotate, labelshift=ylabelshift, labelbgcolor=ylabelbgcolor)
+
+        self.__maketitle(drawable=drawable, values=values, tvalues=tvalues,
+                         # label info ...
+                         dolabels=dolabels, doxlabels=doxlabels, doylabels=doylabels, labelstyle=labelstyle,
+                         # describing title...
+                         title=title, titleshift=titleshift, titlefont=titlefont, titlecolor=titlecolor, titlerotate=titlerotate,
+                         titlesize=titlesize, titlebgcolor=titlebgcolor, titleanchor=titleanchor, titleplace=titleplace,
+                         # describing xtitle...
+                         xtitle=xtitle, xtitleshift=xtitleshift, xtitlefont=xtitlefont, xtitlecolor=xtitlecolor, xtitlerotate=xtitlerotate,
+                         xtitlesize=xtitlesize, xtitlebgcolor=xtitlebgcolor, xtitleanchor=xtitleanchor, xtitleplace=xtitleplace,
+                         # describing ytitle...
+                         ytitle=ytitle, ytitleshift=ytitleshift, ytitlefont=ytitlefont, ytitlecolor=ytitlecolor, ytitlerotate=ytitlerotate,
+                         ytitlesize=ytitlesize, ytitlebgcolor=ytitlebgcolor, ytitleanchor=ytitleanchor, ytitleplace=ytitleplace)
+
+        # minortics
+        if dominortics == True:
+            nxlabels = []
+            nylabels = []
+            self.__makeminorlabels(nxlabels, xlabels, xminorticcnt)
+            self.__makeminorlabels(nylabels, ylabels, yminorticcnt)
+            
+            if doxminortics and (style == 'x' or style == 'xy'):
+                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=nxlabels,
+                                ticstyle=ticstyle, ticsize=ticminorsize,
+                                linecolor=linecolor, linewidth=linewidth)
+            if doyminortics and (style == 'y' or style == 'xy'):
+                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=nylabels,
+                                ticstyle=ticstyle, ticsize=ticminorsize,
+                                linecolor=linecolor, linewidth=linewidth)
+            if style == 'box':
+                if doxminortics:
+                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=nxlabels,
+                                    ticstyle=ticstyle, ticsize=ticminorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=nxlabels,
+                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                if doyminortics:
+                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=nylabels,
+                                    ticstyle=ticstyle, ticsize=ticminorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=nylabels,
+                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
+                                    linecolor=linecolor, linewidth=linewidth)
+        return
+    #END: __init__()
 
     def __recordlabel(self,
                       drawable,
@@ -2948,258 +3371,6 @@ class axis:
                 nlabels.append(['', cvalue])
     # END: __makeminorlabels
 
-    def __init__(self,
-                 drawable      = '',        # the relevant drawable
-                 linecolor     = 'black',   # color of axis line
-                 linewidth     = 1.0,       # width of axis line
-                 linedash      = 0,         # dash parameters; will make axes dashed, but not tic marks
-                 style         = 'xy',      # which axes to draw: 'xy', 'x', 'y', 'box' are options
-                 labelstyle    = 'out',     # labels 'in'or'out'? for xaxis, 'out' means below/'in' above; for yaxis,'out' means left/'in' right
-                 ticstyle      = 'out',     # are tics 'in', 'out', or 'centered'? (inside the axes, outside them, or centered upon the axes)
-                 doaxis        = True,      # whether to draw the actual axes or not
-                 dolabels      = True,      # whether to put labels on or not; useful to set to false, for example, when ...
-                 domajortics   = True,      # whether to put majortics on axes or not
-                 doxmajortics  = True,      # whether to put major tics on x-axis
-                 doymajortics  = True,      # whether to put major tics on y-axis
-                 dominortics   = False,     # whether to put minortics on axes or not
-                 doxminortics  = True,      # whether to put major tics on x-axis
-                 doyminortics  = True,      # whether to put major tics on y-axis
-                 doxlabels     = True,      # whether to put labels on x-axis
-                 doylabels     = True,      # whether to put labels on y-axis
-
-                 xaxisrange    = '',        # min and max values to draw xaxis between; empty means whole range
-                 yaxisrange    = '',        # min and max values to draw yaxis between; empty means whole range
-                 xaxisposition = '',        # which y value x-axis is located at; if empty, min of range; ignored by 'box' style
-                 yaxisposition = '',        # which x value y-axis is located at; if empty, min of range; ignored by 'box' style
-
-                 xauto         = ['','',''],# [x1,x2,step] (will put labels and major tics from x1 to x2 with step between each); can leave any of these empty and the routine will fill in a guess (either the min or max of the range, or a guess for the step), e.g., 0,,2 means start at 0, fill in the max of the xrange for a max value, and set the step to 2. The default is to guess all of these values
-                 xmanual       = '',        # specify labels/majortics by hand with a list of form: [[x1,'label1'],[x2,'label2']...]
-                 yauto         = ['','',''],# similar to xauto, but for the yaxis
-                 ymanual       = '',        # similar to xmanual, but for the yaxis
-
-                 ticmajorsize  = 4.0,       # size of the major tics
-                 ticminorsize  = 2.5,       # size of the minor tics
-
-                 xminorticcnt  = 1,         # how many minor tics between each major tic (x axis)
-                 yminorticcnt  = 1,         # how many minor tics between each major tic (y axis)
-
-                 xlabelfont      = 'default', # font to use (if any)
-                 xlabelfontsize  = 10.0,      # font size of labels (if any)
-                 xlabelfontcolor = 'black',   # font color
-                 xlabelrotate   = 0,          # use specified rotation for x labels
-                 xlabelbgcolor = '',        # if non-empty, put a background colored square behind the xlabels
-                 xlabelanchor   = '',         # text anchor for labels along the x axis; empty means routine should guess
-                 xlabelformat   = '',         # format string for xlabels; e.g., %d for ints; empty (default) implies best guess; can also use this to add decoration to the label, e.g., '%i %%' will add a percent sign to each integer label, and so forth
-
-                 ylabelfont      = 'default', # font to use (if any)
-                 ylabelfontsize  = 10.0,      # font size of labels (if any)
-                 ylabelfontcolor = 'black',   # font color
-                 ylabelrotate   = 0,          # use specified rotation for y labels
-                 ylabelbgcolor = '',          # just like xbgcolor, but for ylabels
-                 ylabelanchor   = '',         # same as xanchor, but for labels along the y axis
-                 ylabelformat   = '',         # similar to xformat, but for ylabels
-
-                 xlabeltimes   = 1,           # what to multiple xlabel by; e.g., if 10, 1->10, 2->20, etc., if 0.1, 1->0.1, etc.
-                 ylabeltimes   = 1,           # similar to xmul, but for ylabels
-
-                 xlabelshift   = [0,0],       # shift xlabels left/right, up/down (e.g., +4,-3 -> shift right 4, shift down 3)
-                 ylabelshift   = [0,0],       # similar to xshift, but for ylabels
-
-                 xtitle        = '',          # title along the x axis
-                 xtitlefont    = 'default',   # xtitle font to use
-                 xtitlesize    = 10,          # xtitle font size
-                 xtitlecolor   = 'black',     # xtitle font color
-                 xtitleplace   = 'c',         # c - center, l - left, r - right
-                 xtitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -xtitleshift)
-                 xtitleshift   = [0,0],       # use this to micro-adjust the placement of the title
-                 xtitlerotate  = 0,           # how much to rotate the title
-                 xtitleanchor  = '',          # how to anchor the text; empty means we will guess
-                 xtitlebgcolor = '',          # if not-empty, put this color behind the title
-
-                 ytitle        = '',          # title along the y axis
-                 ytitlefont    = 'default',   # ytitle font to use
-                 ytitlesize    = 10,          # ytitle font size
-                 ytitlecolor   = 'black',     # ytitle font color
-                 ytitleplace   = 'c',         # c - center, l - lower, u - upper
-                 ytitlecoord   = '',          # coordinates of title; if empty, use best guess (can micro-adjust with -titleshift)
-                 ytitleshift   = [0,0],       # use this to micro-adjust the placement of the title
-                 ytitlerotate  = 90.0,        # how much to rotate the title
-                 ytitleanchor  = '',          # how to anchor the text; empty means we will guess
-                 ytitlebgcolor = '',          # if not-empty, put this color behind the title
-
-                 title         = '',          # title along the y axis
-                 titlefont     = 'default',   # title font to use
-                 titlesize     = 10.0,        # title font size
-                 titlecolor    = 'black',     # title font color
-                 titleplace    = 'c',         # c - center, l - left, r - right
-                 titleshift    = [0,0],       # use this to micro-adjust the placement of the title
-                 titlerotate   = 0,           # how much to rotate the title
-                 titleanchor   = '',          # how to anchor the text; empty means we will guess
-                 titlebgcolor  = '',          # if not-empty, put this color behind the title
-                 ):
-        assert(drawable != '')
-
-        values = {} # empty dict
-        values['xrange,min'] = drawable.virtualmin('x')
-        values['xrange,max'] = drawable.virtualmax('x')
-        values['yrange,min'] = drawable.virtualmin('y')
-        values['yrange,max'] = drawable.virtualmax('y')
-
-        # figure out where axes will go
-        if xaxisposition != '':
-            values['xaxis,ypos'] = xaxisposition
-        else:
-            values['xaxis,ypos'] = values['yrange,min']
-
-        if yaxisposition != '':
-            values['yaxis,xpos'] = yaxisposition
-        else:
-            values['yaxis,xpos'] = values['xrange,min']
-
-        # find out ranges of each axis
-        if xaxisrange != '':
-            assert(len(xaxisrange) == 2)
-            values['xaxis,min'] = xaxisrange[0]
-            values['xaxis,max'] = xaxisrange[1]
-        else:
-            values['xaxis,min'] = values['xrange,min']
-            values['xaxis,max'] = values['xrange,max']
-
-        if yaxisrange != '':
-            assert(len(yaxisrange) == 2)
-            values['yaxis,min'] = yaxisrange[0]
-            values['yaxis,max'] = yaxisrange[1]
-        else:
-            values['yaxis,min'] = values['yrange,min']
-            values['yaxis,max'] = values['yrange,max']
-
-        # translate each of these values into points
-        tvalues = {}
-        for v in ['xaxis,min', 'xaxis,max', 'xrange,min', 'xrange,max', 'yaxis,xpos']:
-            tvalues[v] = drawable.translate('x', values[v])
-        for v in ['yaxis,min', 'yaxis,max', 'yrange,min', 'yrange,max', 'xaxis,ypos']:
-            tvalues[v] = drawable.translate('y', values[v])
-
-        # adjust for linewidths
-        half = float(linewidth) / 2.0
-
-        assert(style == 'x' or style == 'y' or style == 'xy' or style == 'box')
-
-        assert(drawable != '')
-        canvas = drawable.canvas
-
-        if doaxis == True:
-            if style == 'x' or style == 'xy':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['xaxis,ypos']],[tvalues['xaxis,max']+half,tvalues['xaxis,ypos']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-            if style == 'y' or style == 'xy':
-		canvas.line(coord=[[tvalues['yaxis,xpos'],tvalues['yaxis,min']-half],[tvalues['yaxis,xpos'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-
-            if style == 'box':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,min']],[tvalues['xaxis,max']+half,tvalues['yrange,min']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,min'],tvalues['yaxis,min']-half],[tvalues['xrange,min'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xaxis,min']-half,tvalues['yrange,max']],[tvalues['xaxis,max']+half,tvalues['yrange,max']]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,max'],tvalues['yaxis,min']-half],[tvalues['xrange,max'],tvalues['yaxis,max']+half]],
-                            linecolor=linecolor, linewidth=linewidth, linedash=linedash)
-
-        # unpack the (complex) args and put useful things into labels and values arrays
-        xlabels = []
-        ylabels = []
-        self.__unpackargs(drawable, axis='x', values=values, labels=xlabels, manual=xmanual, auto=xauto,
-                          labelformat=xlabelformat, labeltimes=xlabeltimes)
-        self.__unpackargs(drawable, axis='y', values=values, labels=ylabels, manual=ymanual, auto=yauto,
-                          labelformat=ylabelformat, labeltimes=ylabeltimes)
-
-        if domajortics == True:
-            if doxmajortics and (style == 'x' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=xlabels,
-                                ticstyle=ticstyle, ticsize=ticmajorsize,
-                                linecolor=linecolor, linewidth=linewidth)
-            if doymajortics and (style == 'y' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=ylabels,
-                                ticstyle=ticstyle, ticsize=ticmajorsize,
-                                linecolor=linecolor, linewidth=linewidth)
-            if style == 'box':
-                if doxmajortics:
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=xlabels,
-                                    ticstyle=ticstyle, ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=xlabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                if doymajortics:
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=ylabels,
-                                    ticstyle=ticstyle, ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=ylabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticmajorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                
-        if dolabels == True:
-            if (style == 'x' or style == 'xy' or style == 'box') and doxlabels == True:
-                self.__makelabels(drawable=drawable, values=values, 
-                                  axis='x', axispos=tvalues['xaxis,ypos'],
-                                  labels=xlabels, labelstyle=labelstyle,
-                                  ticstyle=ticstyle, ticmajorsize=ticmajorsize,
-                                  font=xlabelfont, fontsize=xlabelfontsize, fontcolor=xlabelfontcolor,
-                                  labelanchor=xlabelanchor, labelrotate=xlabelrotate, labelshift=xlabelshift, labelbgcolor=xlabelbgcolor)
-            if (style == 'y' or style == 'xy' or style == 'box') and doylabels == True:
-                self.__makelabels(drawable=drawable, values=values,
-                                  axis='y', axispos=tvalues['yaxis,xpos'],
-                                  labels=ylabels, labelstyle=labelstyle,
-                                  ticstyle=ticstyle, ticmajorsize=ticmajorsize,
-                                  font=ylabelfont, fontsize=ylabelfontsize, fontcolor=ylabelfontcolor,
-                                  labelanchor=ylabelanchor, labelrotate=ylabelrotate, labelshift=ylabelshift, labelbgcolor=ylabelbgcolor)
-
-        self.__maketitle(drawable=drawable, values=values, tvalues=tvalues,
-                         # label info ...
-                         dolabels=dolabels, doxlabels=doxlabels, doylabels=doylabels, labelstyle=labelstyle,
-                         # describing title...
-                         title=title, titleshift=titleshift, titlefont=titlefont, titlecolor=titlecolor, titlerotate=titlerotate,
-                         titlesize=titlesize, titlebgcolor=titlebgcolor, titleanchor=titleanchor, titleplace=titleplace,
-                         # describing xtitle...
-                         xtitle=xtitle, xtitleshift=xtitleshift, xtitlefont=xtitlefont, xtitlecolor=xtitlecolor, xtitlerotate=xtitlerotate,
-                         xtitlesize=xtitlesize, xtitlebgcolor=xtitlebgcolor, xtitleanchor=xtitleanchor, xtitleplace=xtitleplace,
-                         # describing ytitle...
-                         ytitle=ytitle, ytitleshift=ytitleshift, ytitlefont=ytitlefont, ytitlecolor=ytitlecolor, ytitlerotate=ytitlerotate,
-                         ytitlesize=ytitlesize, ytitlebgcolor=ytitlebgcolor, ytitleanchor=ytitleanchor, ytitleplace=ytitleplace)
-
-        # minortics
-        if dominortics == True:
-            nxlabels = []
-            nylabels = []
-            self.__makeminorlabels(nxlabels, xlabels, xminorticcnt)
-            self.__makeminorlabels(nylabels, ylabels, yminorticcnt)
-            
-            if doxminortics and (style == 'x' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='x', axispos=tvalues['xaxis,ypos'], labels=nxlabels,
-                                ticstyle=ticstyle, ticsize=ticminorsize,
-                                linecolor=linecolor, linewidth=linewidth)
-            if doyminortics and (style == 'y' or style == 'xy'):
-                self.__maketics(drawable=drawable, axis='y', axispos=tvalues['yaxis,xpos'], labels=nylabels,
-                                ticstyle=ticstyle, ticsize=ticminorsize,
-                                linecolor=linecolor, linewidth=linewidth)
-            if style == 'box':
-                if doxminortics:
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,min'], labels=nxlabels,
-                                    ticstyle=ticstyle, ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='x', axispos=tvalues['yaxis,max'], labels=nxlabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                if doyminortics:
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,min'], labels=nylabels,
-                                    ticstyle=ticstyle, ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-                    self.__maketics(drawable=drawable, axis='y', axispos=tvalues['xaxis,max'], labels=nylabels,
-                                    ticstyle=self.__toggle(ticstyle), ticsize=ticminorsize,
-                                    linecolor=linecolor, linewidth=linewidth)
-        return
-    #END: __init__()
 #END: class axis
 
 class grid:
