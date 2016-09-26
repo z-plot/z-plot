@@ -9,7 +9,7 @@ t = table(file='km2.data')
 # canvas and a single drawable
 c = postscript(title='km2.eps', dimensions=['4in','2.5in'])
 d = drawable(canvas=c, dimensions=['3.5in','2.0in'],
-             coord=['0.25in','0.25in'], xrange=[0,36], yrange=[0.3,1])
+             coord=['0.4in','0.4in'], xrange=[0,36], yrange=[0.3,1])
 
 # now plot the data
 L = legend()
@@ -24,7 +24,8 @@ p.line(drawable=d, table=t, xfield='T', yfield='val2', linecolor='red',
        legend=L, legendtext='Group B')
 
 # axes, labels, legend
-# AxesTicsLabels -yauto ,,0.1 -xauto ,,12 -xtitle "Months" -xtitlefont Helvetica-Bold 
+axis(drawable=d, yauto=['','',0.1], xauto=['','',12], xtitle='Months',
+     xtitlefont='Helvetica-Bold')
 L.draw(canvas=c, coord=d.map([8,.5]), style='left')
 
 # all done
