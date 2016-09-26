@@ -3579,25 +3579,7 @@ class grid:
                           range=yrange, linecolor=linecolor,
                           linewidth=linewidth, linedash=linedash)
     # END __init__
-# END: class grid
 
-#
-# class legend
-#
-# Minimal support for legends is provided.
-# Initialize it first:
-# L = Legend()
-# Pass 'L' and other info to plotters.
-# Then, call draw() to make it on the plot.
-# 
-class legend:
-    def __init__(self):
-        # 'info' field will track each picture and text in the legend
-        # All the work is done later - when legend is drawn.
-        self.info = []
-    # END: __init__
-
-    
     def __dogrid(self,
                  drawable,
                  axis,
@@ -3635,6 +3617,25 @@ class legend:
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
     # END __dogrid()
+    
+# END: class grid
+
+#
+# class legend
+#
+# Minimal support for legends is provided.
+# Initialize it first:
+# L = Legend()
+# Pass 'L' and other info to plotters.
+# Then, call draw() to make it on the plot.
+# 
+class legend:
+    def __init__(self):
+        # 'info' field will track each picture and text in the legend
+        # All the work is done later - when legend is drawn.
+        self.info = []
+    # END: __init__
+
     
     # 
     # add()
