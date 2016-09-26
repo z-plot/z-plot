@@ -2690,8 +2690,14 @@ class plotter:
         # END: for ...
 
         if legend != '':
-            # XXX - lazy programmer.
-            abort('no legend implemented')
+            s = 'canvas.shape(style=\'' + 'square' + \
+                '\', x=$__Xx, y=$__Yy, size=$__M2, linecolor=\''+ \
+                'black' + '\', linewidth=' + str(0.5) + \
+                ', fill=' + str(True) + ', fillcolor=\'' + str(fillcolor) + \
+                '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=' + \
+                str(fillsize) + ', fillskip=' + str(fillskip)+')'
+            t = string.Template(s)
+            legend.add(text=legendtext, picture=t)
         return
     # END: verticalfill()
 # END: class plotter
