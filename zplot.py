@@ -2337,6 +2337,7 @@ class plotter:
              labelanchor  = 'c',
              labelrotate  = 0,       
              labelshift   = [0,0],
+             labelformat  = '%s',
              labelbgcolor = '',
              # if using labels, how much to offset from point by
              labeloffset  = 3.0,
@@ -2384,8 +2385,12 @@ class plotter:
 
         linelist = []
 
+        canvas = drawable.canvas
+
+        x = 0
+        lastyt = 0
+
         for r in rows:
-            # print 'DATA', r
             x = r[xindex]
             y = r[yindex]
 
@@ -2399,10 +2404,21 @@ class plotter:
                 linelist.append([xt, lastyt])
             linelist.append([xt, yt])
             lastyt = yt 
-            # print 'appending x,y -> tx,ty: ', x, y, xt, yt
+
+            if labelfield != '':
+                label  = labelformat % r[labelindex]
+                xlabel = xt + labelshift[0]
+                ylabel = yt + labelshift[1] + offset
+                canvas.text(coord=[xlabel,ylabel], text=label,
+                            anchor=labelanchor, rotate=labelrotate,
+                            font=labelfont, size=labelsize,
+                            color=labelcolor, bgcolor=labelbgcolor)
         # end: for r in rows
-        # print 'drawline: ', linelist
-        canvas = drawable.canvas
+        if stairstep == True:
+            # should this really just be one? what if each stairstep
+            # is much bigger than that? what should it be then?
+            linelist.append([drawable.translate('x', float(x) + 1.0), lastyt])
+
         canvas.line(coord=linelist, linecolor=linecolor, linewidth=linewidth,
                     linedash=linedash, linecap=linecap, linejoin=linejoin)
 
