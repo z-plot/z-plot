@@ -493,6 +493,8 @@ class postscript:
             'deepskyblue'            :  '0.00 0.75 1.00',
             'dimgray'                :  '0.41 0.41 0.41',
             'dodgerblue'             :  '0.12 0.56 1.00',
+            'drabgreen'              :  '0.60 0.80 0.60',
+            'dullyellow'             :  '1.00 0.90 0.60',
             'firebrick'              :  '0.70 0.13 0.13',
             'floralwhite'            :  '1.00 0.98 0.94',
             'forestgreen'            :  '0.13 0.55 0.13',
@@ -3663,36 +3665,6 @@ class legend:
     # END: __init__
 
     # 
-    # add()
-    # 
-    # command used to add some info about a legend to the legend list. If
-    # 'entry' is specified, this will add the text (if any) to the existing
-    # text in that spot, and also add the picture to the list of pictures to be
-    # drawn for this entry. If 'entry' is not specified, simply use the current
-    # counter and add this to the end of the list.
-    # 
-    def add(self,
-            # text for the legend
-            text    = '',  
-
-            # code to add the picture to the legend: COORDX and COORDY should
-            # be used to specify the lower-left point of the picture key;
-            # WIDTH and HEIGHT should be used to specify the width and height
-            # of the picture
-            picture = '',
-
-            # entry number: which legend entry this should be
-            # (empty means auto-picked for you).
-            entry   = '',   
-            ):
-
-        if entry == '':
-            self.info.append([text, picture])
-        else:
-            self.info[entry] = [text, picture]
-    # END: add()
-
-    # 
     # legend()
     # Use this to draw a legend given the current entries in the legend.
     # Lots of options are available.
@@ -3811,4 +3783,35 @@ class legend:
         # END: for i in range...
         return
     # END: draw()
+
+    # 
+    # add()
+    # 
+    # command used to add some info about a legend to the legend list. If
+    # 'entry' is specified, this will add the text (if any) to the existing
+    # text in that spot, and also add the picture to the list of pictures to be
+    # drawn for this entry. If 'entry' is not specified, simply use the current
+    # counter and add this to the end of the list.
+    # 
+    def add(self,
+            # text for the legend
+            text    = '',  
+
+            # code to add the picture to the legend: COORDX and COORDY should
+            # be used to specify the lower-left point of the picture key;
+            # WIDTH and HEIGHT should be used to specify the width and height
+            # of the picture
+            picture = '',
+
+            # entry number: which legend entry this should be
+            # (empty means auto-picked for you).
+            entry   = '',   
+            ):
+
+        if entry == '':
+            self.info.append([text, picture])
+        else:
+            self.info[entry] = [text, picture]
+    # END: add()
+
 #END: class legend
