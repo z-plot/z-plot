@@ -3662,7 +3662,6 @@ class legend:
         self.info = []
     # END: __init__
 
-    
     # 
     # add()
     # 
@@ -3742,7 +3741,10 @@ class legend:
              order       = [],
              ):
 
-        assert(canvas != '')
+        if canvas == '':
+            print 'error: must specify canvas when drawing legend', 
+            print '(legend not drawn as result)'
+            return
         assert(len(coord) == 2)
         x = coord[0]
         y = coord[1]
