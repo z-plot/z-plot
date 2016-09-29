@@ -2414,10 +2414,11 @@ class plotter:
                             font=labelfont, size=labelsize,
                             color=labelcolor, bgcolor=labelbgcolor)
         # end: for r in rows
-        if stairstep == True:
-            # should this really just be one? what if each stairstep
-            # is much bigger than that? what should it be then?
-            linelist.append([drawable.translate('x', float(x) + 1.0), lastyt])
+        # if stairstep == True:
+        # should this really just be one? what if each stairstep
+        # is much bigger than that? what should it be then?
+        # XXX
+        # linelist.append([drawable.translate('x', float(x) + 1.0), lastyt])
 
         canvas.line(coord=linelist, linecolor=linecolor, linewidth=linewidth,
                     linedash=linedash, linecap=linecap, linejoin=linejoin)
@@ -2644,6 +2645,7 @@ class plotter:
                                        # to fill down to this value
                      yloval     = '',  # if no ylofield, use this value to fill
                                        # down to; if empty, use min of y-range
+                     stairstep  = False, # use stairsteps in making fill
                      fillcolor  = 'lightgrey', #  fill color (if used)
                      fillstyle  = 'solid',     # solid, boxes, circles, ...
                      fillsize   = 3,   # size of object in pattern
@@ -2688,14 +2690,22 @@ class plotter:
                 ylocurr = ylo
 
                 # draw the polygon between the last pair of points and
-                # the current points
+                # the current points if stairstep is in action
+                if stairstep:
+                    ycurr_use   = ylast
+                    ylocurr_use = ylolast
+                else:
+                    ycurr_use   = ycurr
+                    ylocurr_use = ylocurr
+
                 canvas.polygon(coord=[[xlast,ylolast],[xlast,ylast],
-                                      [xcurr,ycurr],[xcurr,ylocurr]],
+                                      [xcurr,ycurr_use],[xcurr,ylocurr_use]],
                                fill=True, fillcolor=fillcolor,
                                fillstyle=fillstyle, fillsize=fillsize,
                                fillskip=fillskip, linewidth=0.1,
                                linecolor=fillcolor)
-                # XXX - make a little bit of linewidth so as to overlap
+                # future: 
+                # make a little bit of linewidth so as to overlap
                 # neighboring regions. The alternate is worse: having to draw
                 # one huge polygon (though maybe not that bad...)
 
