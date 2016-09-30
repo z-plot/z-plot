@@ -38,19 +38,225 @@ import random
 import types
 import string
 
+#
+# UTILITY functions
+#
+# Used throughout.
+#
+def abortIfFalse(statement, msg):
+    if statement == False:
+        print 'ABORT:', msg
+        exit(1)
+    return
+
 def abort(str):
     print 'Abort! Reason: (%s)' % str
     exit(1)
 
-#
-# CLASS postscript
-# 
-# use this to make a postscript drawing surface
-#
-class postscript:
-    def RGB(self, color):
-        return self.colors[color]
 
+#
+# CLASS color
+#
+# Separate class just to map color names to RGB values
+#
+class color:
+    def __init__(self):
+        self.color_list = {
+            'aliceblue'              :  '0.94 0.97 1.00',
+            'antiquewhite'           :  '0.98 0.92 0.84',
+            'aqua'                   :  '0.00 1.00 1.00',
+            'aquamarine'             :  '0.50 1.00 0.83',
+            'azure'                  :  '0.94 1.00 1.00',
+            'beige'                  :  '0.96 0.96 0.86',
+            'bisque'                 :  '1.00 0.89 0.77',
+            'black'                  :  '0.00 0.00 0.00',
+            'blanchedalmond'         :  '1.00 0.92 0.80',
+            'blue'                   :  '0.00 0.00 1.00',
+            'blueviolet'             :  '0.54 0.17 0.89',
+            'brown'                  :  '0.65 0.16 0.16',
+            'burlywood'              :  '0.87 0.72 0.53',
+            'cadetblue'              :  '0.37 0.62 0.63',
+            'chartreuse'             :  '0.50 1.00 0.00',
+            'chocolate'              :  '0.82 0.41 0.12',
+            'coral'                  :  '1.00 0.50 0.31',
+            'cornflowerblue'         :  '0.39 0.58 0.93',
+            'cornsilk'               :  '1.00 0.97 0.86',
+            'crimson'                :  '0.86 0.08 0.24',
+            'cyan'                   :  '0.00 1.00 1.00',
+            'darkblue'               :  '0.00 0.00 0.55',
+            'darkcyan'               :  '0.00 0.55 0.55',
+            'darkgoldenrod'          :  '0.72 0.53 0.04',
+            'darkgray'               :  '0.66 0.66 0.66',
+            'darkgreen'              :  '0.00 0.39 0.00',
+            'darkkhaki'              :  '0.74 0.72 0.42',
+            'darkmagenta'            :  '0.55 0.00 0.55',
+            'darkolivegreen'         :  '0.33 0.42 0.18',
+            'darkorange'             :  '1.00 0.55 0.00',
+            'darkorchid'             :  '0.60 0.20 0.80',
+            'darkred'                :  '0.55 0.00 0.00',
+            'darksalmon'             :  '0.91 0.59 0.48',
+            'darkseagreen'           :  '0.55 0.74 0.56',
+            'darkslateblue'          :  '0.28 0.24 0.55',
+            'darkslategray'          :  '0.18 0.31 0.31',
+            'darkturquoise'          :  '0.00 0.87 0.82',
+            'darkviolet'             :  '0.58 0.00 0.83',
+            'deeppink'               :  '1.00 0.08 0.58',
+            'deepskyblue'            :  '0.00 0.75 1.00',
+            'dimgray'                :  '0.41 0.41 0.41',
+            'dodgerblue'             :  '0.12 0.56 1.00',
+            'drabgreen'              :  '0.60 0.80 0.60',
+            'dullyellow'             :  '1.00 0.90 0.60',
+            'firebrick'              :  '0.70 0.13 0.13',
+            'floralwhite'            :  '1.00 0.98 0.94',
+            'forestgreen'            :  '0.13 0.55 0.13',
+            'fuchsia'                :  '1.00 0.00 1.00',
+            'gainsboro'              :  '0.86 0.86 0.86',
+            'ghostwhite'             :  '0.97 0.97 1.00',
+            'gold'                   :  '1.00 0.84 0.00',
+            'goldenrod'              :  '0.85 0.65 0.13',
+            'gray'                   :  '0.50 0.50 0.50',
+            'green'                  :  '0.00 0.50 0.00',
+            'greenyellow'            :  '0.68 1.00 0.18',
+            'honeydew'               :  '0.94 1.00 0.94',
+            'hotpink'                :  '1.00 0.41 0.71',
+            'indianred'              :  '0.80 0.36 0.36',
+            'indigo'                 :  '0.29 0.00 0.51',
+            'ivory'                  :  '1.00 1.00 0.94',
+            'khaki'                  :  '0.94 0.90 0.55',
+            'lavender'               :  '0.90 0.90 0.98',
+            'lavenderblush'          :  '1.00 0.94 0.96',
+            'lawngreen'              :  '0.49 0.99 0.00',
+            'lemonchiffon'           :  '1.00 0.98 0.80',
+            'lightblue'              :  '0.68 0.85 0.90',
+            'lightcoral'             :  '0.94 0.50 0.50',
+            'lightcyan'              :  '0.88 1.00 1.00',
+            'lightgoldenrodyellow'   :  '0.98 0.98 0.82',
+            'lightgreen'             :  '0.56 0.93 0.56',
+            'lightgrey'              :  '0.83 0.83 0.83',
+            'lightpink'              :  '1.00 0.71 0.76',
+            'lightsalmon'            :  '1.00 0.63 0.48',
+            'lightseagreen'          :  '0.13 0.70 0.67',
+            'lightskyblue'           :  '0.53 0.81 0.98',
+            'lightslategray'         :  '0.47 0.53 0.60',
+            'lightsteelblue'         :  '0.69 0.77 0.87',
+            'lightyellow'            :  '1.00 1.00 0.88',
+            'lime'                   :  '0.00 1.00 0.00',
+            'limegreen'              :  '0.20 0.80 0.20',
+            'linen'                  :  '0.98 0.94 0.90',
+            'magenta'                :  '1.00 0.00 1.00',
+            'maroon'                 :  '0.50 0.00 0.00',
+            'mediumaquamarine'       :  '0.40 0.80 0.67',
+            'mediumblue'             :  '0.00 0.00 0.80',
+            'mediumorchid'           :  '0.73 0.33 0.83',
+            'mediumpurple'           :  '0.58 0.44 0.86',
+            'mediumseagreen'         :  '0.24 0.70 0.44',
+            'mediumslateblue'        :  '0.48 0.41 0.93',
+            'mediumspringgreen'      :  '0.00 0.98 0.60',
+            'mediumturquoise'        :  '0.28 0.82 0.80',
+            'mediumvioletred'        :  '0.78 0.08 0.52',
+            'midnightblue'           :  '0.10 0.10 0.44',
+            'mintcream'              :  '0.96 1.00 0.98',
+            'mistyrose'              :  '1.00 0.89 0.88',
+            'moccasin'               :  '1.00 0.89 0.71',
+            'navajowhite'            :  '1.00 0.87 0.68',
+            'navy'                   :  '0.00 0.00 0.50',
+            'oldlace'                :  '0.99 0.96 0.90',
+            'olivedrab'              :  '0.42 0.56 0.14',
+            'orange'                 :  '1.00 0.65 0.00',
+            'orangered'              :  '1.00 0.27 0.00',
+            'orchid'                 :  '0.85 0.44 0.84',
+            'palegoldenrod'          :  '0.93 0.91 0.67',
+            'palegreen'              :  '0.60 0.98 0.60',
+            'paleturquoise'          :  '0.69 0.93 0.93',
+            'palevioletred'          :  '0.86 0.44 0.58',
+            'papayawhip'             :  '1.00 0.94 0.84',
+            'peachpuff'              :  '1.00 0.85 0.73',
+            'peru'                   :  '0.80 0.52 0.25',
+            'pink'                   :  '1.00 0.78 0.80',
+            'plum'                   :  '0.87 0.63 0.87',
+            'powderblue'             :  '0.69 0.88 0.90',
+            'purple'                 :  '0.50 0.00 0.50',
+            'red'                    :  '1.00 0.00 0.00',
+            'rosybrown'              :  '0.74 0.56 0.56',
+            'royalblue'              :  '0.25 0.41 0.88',
+            'saddlebrown'            :  '0.55 0.27 0.07',
+            'salmon'                 :  '0.98 0.50 0.45',
+            'sandybrown'             :  '0.96 0.64 0.38',
+            'seagreen'               :  '0.18 0.55 0.34',
+            'seashell'               :  '1.00 0.96 0.93',
+            'sienna'                 :  '0.63 0.32 0.18',
+            'silver'                 :  '0.75 0.75 0.75',
+            'skyblue'                :  '0.53 0.81 0.92',
+            'slateblue'              :  '0.42 0.35 0.80',
+            'snow'                   :  '1.00 0.98 0.98',
+            'springgreen'            :  '0.00 1.00 0.50',
+            'steelblue'              :  '0.27 0.51 0.71',
+            'tan'                    :  '0.82 0.71 0.55',
+            'teal'                   :  '0.00 0.50 0.50',
+            'thistle'                :  '0.85 0.75 0.85',
+            'tomato'                 :  '1.00 0.39 0.28',
+            'turquoise'              :  '0.25 0.88 0.82',
+            'violet'                 :  '0.93 0.51 0.93',
+            'wheat'                  :  '0.96 0.87 0.70',
+            'white'                  :  '1.00 1.00 1.00',
+            'whitesmoke'             :  '0.96 0.96 0.96',
+            'yellow'                 :  '1.00 1.00 0.00',
+            'yellowgreen'            :  '0.60 0.80 0.20',
+        }
+        return
+
+    # Just get the color
+    def get(self, color):
+        if color not in self.color_list:
+            print 'color %s not valid; returning 0 0 0'
+            return '0 0 0'
+        return self.color_list[color]
+
+    # converts floating point value (from 0->1) to
+    # proper RGB hex value (from 0x00 to 0xFF)
+    def floatToRgb(self, value):
+        outValue = int(float(value) * 255.0)
+        if outValue < 16:
+            return '0%x' % outValue
+        else:
+            return '%x' % outValue
+
+    def getAsHex(self, color):
+        if color[0] == '#':
+            # assume this is hex value already; just return it
+            return color
+        tmp = color.split(',')
+        if len(tmp) == 3:
+            # this is just three rgb values, comma-separated
+            r, g, b = tmp[0], tmp[1], tmp[2]
+        else:
+            # assume that it is a color name
+            if color not in self.color_list:
+                print 'color %s not valid; returning 0 0 0'
+                r, g, b = 0.0, 0.0, 0.0
+            else:
+                r, g, b = self.color_list[color].split()
+        return '#%s%s%s' % (self.floatToRgb(r),
+                            self.floatToRgb(g),
+                            self.floatToRgb(b))
+# END: class color
+
+
+#
+# CLASS util
+#
+# Class util has a number of shared utility methods for use across
+# all real canvas types; thus, each should inherit from here to use them.
+#
+class util:
+    def __init__(self):
+        return
+
+    #
+    # convert()
+    #
+    # Used to convert from whatever into points
+    #
     def convert(self, unitStr):
         u = unitStr.split('inches')
         if len(u) > 1:
@@ -63,18 +269,161 @@ class postscript:
             return float(u[0]) * 72.0
         return float(unitStr)
 
-    def comment(self, comments):
-        self.comments += comments
+    #
+    # stringwidth()
+    #
+    # This is a complete hack, and can be very wrong depending on the fontface
+    # (which it should clearly be dependent upon). The problem, of course: only
+    # the ps interpreter really knows how wide the string is: e.g., put the
+    # string on the stack and call 'stringwidth'. But of course, we don't want
+    # to have to invoke that to get the result (a pain). We could build in a
+    # table that has all the answers for supported fonts (Helvetica, TimesRoman,
+    # etc.) but that is a complete pain as well. So, for now, we just make a
+    # rough guess based on the length of the string and the size of the font.
+    # 
+    def stringwidth(self, str, fontsize):
+        length = len(str)
+        total  = 0.0
+        for i in range(0,length):
+            c = str[i]
+            if re.search(c, "ABCDEFGHJKLMNOPQRSTUVWXYZ234567890") != None:
+                add = 0.69
+            elif re.search(c, "abcdeghkmnopqrsuvwxyz1I") != None:
+                add = 0.54
+            elif re.search(c, ".fijlt") != None:
+                add = 0.3
+            elif re.search(c, "-") != None:
+                add = 0.3
+            else:
+                # be conservative for all others
+                add = 0.65
+            total = total + add
+        return (fontsize * total)
 
-    def __out(self, outStr):
+    #
+    # shape()
+    #
+    # Use this to draw a shape on the plotting surface. Lots of possibilities,
+    # including square, circle, triangle, utriangle, plusline, hline, vline,
+    # hvline, xline, dline1, dline2, dline12, diamond, asterisk, ...
+    #
+    # Amazingly, this is all generic, just built on lines, boxes, circles, etc.
+    # 
+    def shape(self,
+              style     = '',      # the possible shapes
+              x         = '',      # x position of shape
+              y         = '',      # y position of shape
+              size      = 3.0,     # size of shape
+              linecolor = 'black', # color of the line of the marker
+              linewidth = 1.0,     # width of lines used to draw the marker
+              linedash  = 0,       # dash pattern - 0 means no dashes
+              fill      = False,   # for some shapes, filling makes sense;
+                                   # if desired, mark this true
+              fillcolor = 'black', # if filling, use this fill color
+              fillstyle = 'solid', # if filling, which fill style to use
+              fillsize  = 3.0,     #  size of object in pattern
+              fillskip  = 4.0,     # space between object in pattern
+              ):
+        if style == 'square':
+	    self.box(coord=[[x-size,y-size],[x+size,y+size]], 
+                     linecolor=linecolor, linewidth=linewidth,  fill=fill,
+                     fillcolor=fillcolor, fillstyle=fillstyle,
+                     fillsize=fillsize, fillskip=fillskip) 
+        elif style == 'circle':
+	    self.circle(coord=[x,y], radius=size, linecolor=linecolor,
+                        linewidth=linewidth, fill=fill, fillcolor=fillcolor,
+                        fillstyle=fillstyle, fillsize=fillsize,
+                        fillskip=fillskip) 
+	elif style == 'triangle':
+	    self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
+                         linecolor=linecolor, linewidth=linewidth,
+                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'utriangle':
+	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'plusline':
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	elif style == 'xline':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline1':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline2':
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline12':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'hline': 
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth, linedash=linedash)
+	elif style == 'vline': 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+        elif style == 'hvline':
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+	elif style == 'diamond':
+	    self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'star':
+            s2 = size / 2.0
+            xp  = s2 * math.cos(math.radians(18.0))
+            yp  = s2 * math.sin(math.radians(18.0))
+            xp2 = s2 * math.cos(math.radians(54.0))
+            yp2 = s2 * math.sin(math.radians(54.0))
+	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],[x-xp,y+yp],[x+xp,y+yp],
+                                [x-xp2,y-yp2],[x,y+s2]],
+                         linecolor=linecolor, linewidth=linewidth,
+                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+        elif style == 'asterisk':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth)
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+        else:
+            abort('bad choice of point style: ' + style)
+        return
+    # END: shape()
+
+    #
+    # utility routines for recording steps and then output'ing at end
+    #
+
+    # add a new command
+    def out(self, outStr):
         self.commands.append(outStr)
+        return
 
-    def __outnonewline(self, outStr):
+    # add a command to the previously added line
+    def outnl(self, outStr):
         assert(len(self.commands) > 0)
         idx = len(self.commands) - 1
         self.commands[idx] = self.commands[idx] + outStr
+        return
 
-    def __dumpOut(self, outfile):
+    # output the commands
+    def dump(self, outfile):
         if outfile == 'stdout':
             for line in self.commands:
                 print line
@@ -83,6 +432,365 @@ class postscript:
             for line in self.commands:
                 fd.write(line + '\n')
             fd.close()
+        return
+# END: canvas
+
+#
+# CLASS svg
+#
+# Use this to make an SVG drawing surface
+#
+class svg(util):
+    #
+    # __init__()
+    #
+    def __init__(self, title='default.svg', dimensions=['3in','2in'],
+                 font='Helvetica', script=__file__):
+        self.comments = ''
+        self.commands = []
+        
+        self.program = 'zplot'
+        self.version = 'python version 1.0'
+        # SHOULD INCLUDE SOME INFO IN HEADER
+        # __out('%%Creator: '+ str(self.program) + ' version:' + \
+        # str(self.version) + ' script:' + os.path.abspath(script) + \
+        #        ' host:'+socket.gethostname())
+
+        self.default = font
+
+        self.date    = str(time.strftime('%X %x %Z'))
+        self.title   = title
+
+        if len(dimensions) != 2:
+            print 'bad dimensions (should have two elements):', dimensions
+            return
+        self.width  = self.convert(str(dimensions[0]))
+        self.height = self.convert(str(dimensions[1]))
+
+        self.colors = color()
+
+        #
+        # init svg output header
+        #
+        self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
+                 'xmlns:xlink="http://www.w3.org/1999/xlink">')
+        return
+
+    # 
+    # render()
+    # 
+    # Use this routine to print out all the postscript commands you've been
+    # queueing up to a file or 'stdout' (default).
+    # 
+    def render(self):
+        self.out('</svg>')
+        self.dump(self.title)
+        return
+
+    #
+    # line()
+    #
+    # Use this to draw a line on the canvas.
+    # 
+    def line(self,
+             coord           = [[0,0],[0,0]],
+             linecolor       = 'black',
+             linewidth       = 1,
+             linejoin        = 0,
+             linecap         = 0,
+             linedash        = 0,
+             closepath       = False,
+             arrow           = False,
+             arrowheadlength = 4,
+             arrowheadwidth  = 3,
+             arrowlinecolor  = 'black',
+             arrowlinewidth  = 0.5,
+             arrowfill       = True,
+             arrowfillcolor  = 'black', 
+             arrowstyle      = 'normal'
+            ):
+        # ARROW NOT IMPLEMENTED (YET)
+        assert(arrow == False)
+
+        linecolor = self.__getcolor(linecolor)
+        point = coord[0]
+        self.__startpath()
+        self.__moveto(point[0], point[1])
+        for i in range(1, len(coord)):
+            point = coord[i]
+            self.__lineto(point[0], point[1])
+        self.__endpoints()
+        self.__startstyle()
+        self.outnl('stroke="%s" ' % linecolor)
+        self.outnl('stroke-width="%.2fpx" ' % linewidth)
+        if linedash != 0:
+            self.outnl('stroke-dasharray="%s" ' % \
+                                self.__getdash(linedash))
+            
+        self.outnl('fill="none"')
+        self.__endstyle()
+        self.__endpath()
+        return
+        # END: line()
+
+    # 
+    # LINE HELPER FUNCTIONS
+    #
+
+    def __startpath(self):
+        self.out('<path d="')
+        return
+
+    def __endpath(self):
+        self.outnl('></path>')
+        return
+
+    def __endpoints(self):
+        self.outnl('"')
+        return
+
+    def __startstyle(self):
+        self.outnl(' ')
+        return
+    
+    def __endstyle(self):
+        return
+    
+    def __moveto(self, p1, p2):
+        self.outnl('M %.2f,%.2f ' % (p1, self.__converty(p2)))
+        return
+
+    def __lineto(self, p1, p2):
+        self.outnl('L %.2f,%.2f ' % (p1, self.__converty(p2)))
+        return
+
+    def __converty(self, y):
+        return self.height - y
+
+    def __getcolor(self, value):
+        return self.colors.getAsHex(value)
+
+    def __getdash(self, linedash):
+        outdash = ''
+        for e in linedash:
+            if outdash == '':
+                outdash = str(e)
+            else:
+                outdash = outdash + ',' + str(e)
+        return outdash
+        
+    # text()
+    # 
+    # Use this routine to place text on the canvas. Most options are obvious
+    # (the expected coordinate pair, color, text, font, size - the size of the
+    # font, rotation - which way the text should be rotated, but the anchor can
+    # be a bit confusing. Basically, the anchor determines where, relative to
+    # the coordinate pair (x,y), the text should be placed. Simple anchoring
+    # includes left (l), center (c), or right (r), which determines whether the
+    # text starts at the x position specified (left), ends at x (right), or is
+    # centered on the x (center). Adding a second anchor (xanchor,yanchor)
+    # specifies a y position anchoring as well. The three options there are low
+    # (l), which is the default if none is specified, high (h), and middle (m),
+    # again all determining the placement of the text relative to the y
+    # coordinate specified.
+    # 
+    def text(self,
+             coord    = [0,0],
+             text     = 'text',
+             font     = 'default',
+             color    = 'black',
+             size     = 16,
+             rotate   = 0,
+             anchor   = 'c',
+             bgcolor  = '',
+             bgborder = 1,
+             ):
+        color = self.__getcolor(color)
+        if font == 'default':
+            font = 'Helvetica'
+
+        tmp = anchor.split(',')
+        # first can be l,c,r   left,center,right
+        # second can be l,c,h  low,center,high
+        if len(tmp) == 1:
+            left = anchor
+            right = 'c'
+        elif len(tmp) == 2:
+            left = tmp[0]
+            right = tmp[1]
+        else:
+            abort('bad anchor ' + anchor)
+
+        if left == 'c':
+            anchor = 'middle'
+        elif left == 'l':
+            anchor = 'start'
+        elif left == 'r':
+            anchor = 'end'
+        else:
+            abort('bad anchor ' + anchor)
+
+        if right == 'l':
+            yshift = 0
+        elif right == 'c':
+            # XXX hackish adjustment of text height: +2
+            yshift = -size/2.0 + 2
+        elif right == 'h':
+            # XXX hackish adjustment of text height: +2
+            yshift = -size + 2
+        else:
+            abort('bad anchor ' + anchor)
+
+        x, y = coord[0], self.__converty(coord[1] + yshift)
+        self.out('<text x="%.2f" y="%.2f" ' % (x, y))
+        if rotate != 0:
+            self.outnl('transform="rotate(%.2f %.2f,%.2f)" ' %
+                                (float(-rotate), x, y))
+        self.outnl('style="')
+        self.outnl('font-family: %s; ' % font)
+        self.outnl('font-size: %d; ' % size)
+        self.outnl('fill: %s; ' % color)
+        self.outnl('text-anchor: %s; ' % anchor)
+        self.outnl('"> ')
+        self.outnl(text)
+        self.outnl('</text>')
+            
+        return
+
+    # 
+    # box()
+    #
+    # Makes a box at coords specifying the bottom-left and upper-right corners
+    # Options:
+    # - Can change the surrounding line (linewidth=0 removes it)
+    # - Can fill with solid or pattern
+    # When filling with non-solid pattern, can add a background color so
+    # as not to be see-through.
+    # 
+    def box(self,
+            coord       = [[0,0],[0,0]],
+            linecolor   = 'black',
+            linewidth   = 1,
+            linedash    = 0,
+            linecap     = 0,
+            fill        = False,
+            fillcolor   = 'black',
+            fillstyle   = 'solid',
+            fillsize    = 3,
+            fillskip    = 4,
+            rotate      = 0,
+            bgcolor     = '',
+            ):
+        # DOES NOT YET SUPPORT OTHER FILLS
+        assert(fillstyle == 'solid')
+        
+        x1, y1 = coord[0][0], self.__converty(coord[0][1])
+        x2, y2 = coord[1][0], self.__converty(coord[1][1])
+        if x1 > x2:
+            x = x2
+            w = x1 - x2
+        else:
+            x = x1
+            w = x2 - x1
+        if y1 > y2:
+            y = y2
+            h = y1 - y2
+        else:
+            y = y1
+            h = y2 - y1
+        self.out('<rect x="%.2f" y="%.2f" ' % (x, y))
+        self.outnl('height="%.2f" width="%.2f" ' % (h, w))
+        if linewidth > 0:
+            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+            self.outnl('stroke-width="%s" ' % linewidth)
+        if linedash != 0:
+            self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
+        if fill:
+            self.outnl('fill="%s" ' % fillcolor)
+        self.outnl('></rect>')
+        return
+
+
+    #
+    # arc()
+    #
+    # Can make circles, or partial circles (arcs), with this.
+    #
+    def arc(self,
+            coord     = [],
+            angle     = [0.0,360.0],
+            radius    = 1,
+            linecolor = 'black',
+            linewidth = 1,
+            linedash  = 0,
+            ):
+        # DOES NOT WORK NOW
+        assert(0 == 1)
+        return
+
+    # circle()
+    #
+    # Can just make circles with this. Filled or not.
+    #
+    def circle(self,
+               coord     = [0,0],
+               radius    = 1,
+               scale     = [1,1],
+               linecolor = 'black',
+               linewidth = 1,
+               linedash  = 0,
+               fill      = False,
+               fillcolor = 'black',
+               fillstyle = 'solid',
+               fillsize  = 3,
+               fillskip  = 4,
+               bgcolor   = ''
+               ):
+        # DOES NOT YET SUPPORT OTHER FILL STYLES
+        assert(fillstyle == 'solid')
+        x, y = coord[0], self.__converty(coord[1])
+        self.out('<circle cx="%.2f" cy="%.2f" r="%.2f" ' % (x, y, radius))
+        self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+        self.outnl('stroke-width="%s" ' % linewidth)
+        if linedash != 0:
+            self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
+        if fill:
+            self.outnl('fill="%s" ' % fillcolor)
+        self.outnl('></circle>')
+        return
+    # END: circle
+
+    #
+    # polygon()
+    #
+    def polygon(self,
+                coord      = [],
+                linecolor  = 'black',
+                linewidth  = 1,
+                linecap    = 0,
+                linedash   = 0,
+                fill       = False,
+                fillcolor  = 'black',
+                fillstyle  = 'solid',
+                fillsize   = 3,
+                fillskip   = 4,
+                bgcolor    = '',
+                ):
+        abort('POLYGON not implemented in SVG yet')
+        return
+    # END: polygon
+
+
+# END: class svg
+
+#
+# CLASS postscript
+# 
+# use this to make a postscript drawing surface
+#
+class postscript(util):
+    def comment(self, comments):
+        self.comments += comments
 
     def __addfont(self, font):
         if font == 'default':
@@ -102,75 +810,74 @@ class postscript:
     def __setfont(self, face, size):
         if face == 'default':
             face = self.default
-        self.__out('(' + face + ') findfont ' + str(size) +
-                   ' scalefont setfont')
+        self.out('(' + face + ') findfont ' + str(size) +
+                 ' scalefont setfont')
 
     def __gsave(self):
-        self.__out('gs')
+        self.out('gs')
         self.gsaveCnt = self.gsaveCnt + 1
         
     def __grestore(self):
-        self.__out('gr')
+        self.out('gr')
         self.grestoreCnt = self.grestoreCnt + 1
 
     def __newpath(self):
-        self.__out('np')
+        self.out('np')
 
     def __moveto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' m')
+        self.out(str(float(p1)) + ' ' + str(float(p2)) + ' m')
 
     def __rmoveto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' mr')
+        self.out(str(float(p1)) + ' ' + str(float(p2)) + ' mr')
 
     def __lineto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' l')
+        self.out(str(float(p1)) + ' ' + str(float(p2)) + ' l')
 
     def __rlineto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' lr')
+        self.out(str(float(p1)) + ' ' + str(float(p2)) + ' lr')
 
     def __rotate(self, angle):
-        self.__out(str(angle) + ' rotate')
+        self.out(str(angle) + ' rotate')
         
     def __show(self, text, anchor):
         if anchor == 'c':
-            self.__out('('+text+') cshow')
+            self.out('('+text+') cshow')
 	elif anchor == 'l':
-            self.__out('('+text+') lshow')
+            self.out('('+text+') lshow')
         elif anchor == 'r':
-            self.__out('('+text+') rshow')
+            self.out('('+text+') rshow')
         else:
 	    abort('bad anchor: ' + anchor)
 
     def __closepath(self):
-        self.__out('cp')
+        self.out('cp')
 
-    def __setcolor(self, color):
-        tmp = color.split(',')
+    def __setcolor(self, value):
+        tmp = value.split(',')
         if len(tmp) > 1:
             c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
         else:
-            c = self.colors[color]
-        self.__out(c + ' sc')
-
+            c = self.colors.get(value)
+        self.out(c + ' sc')
         return
 
     def __setlinewidth(self, linewidth):
-        self.__out(str(float(linewidth)) + ' slw')
+        self.out(str(float(linewidth)) + ' slw')
 
     def __setlinecap(self, linecap):
-        self.__out(str(float(linecap)) + ' slc')
+        self.out(str(float(linecap)) + ' slc')
 
     def __setlinejoin(self, linejoin):
-        self.__out(str(float(linejoin)) + ' slj')
+        self.out(str(float(linejoin)) + ' slj')
 
     def __setlinedash(self, linedash):
-        self.__out('[ ')
+        self.out('[ ')
         for seg in linedash:
-            self.__outnonewline(str(seg) + ' ')
-        self.__outnonewline('] 0 sd')
+            self.outnl(str(seg) + ' ')
+        self.outnl('] 0 sd')
 
     def __fill(self):
-        self.__out('fl')
+        self.out('fl')
 
     def __rectangle(self, x1, y1, x2, y2):
         self.__moveto(x1, y1)
@@ -179,14 +886,14 @@ class postscript:
         self.__lineto(x2, y1)
 
     def __scale(self, x, y):
-        self.__out(str(x) + ' ' + str(y) + ' scale')
+        self.out(str(x) + ' ' + str(y) + ' scale')
 
     def __arc(self, x, y, radius, start, end):
-        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + \
+        self.out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + \
                    str(start) + ' ' + str(end) + ' arc')
 
     def __clip(self):
-        self.__out('clip')
+        self.out('clip')
 
     def __clipbox(self, x1, y1, x2, y2):
         self.__newpath()
@@ -413,10 +1120,10 @@ class postscript:
 
     def raw(self,
             str):
-        self.__out(str)
+        self.out(str)
 
     def __stroke(self):
-        self.__out('st')
+        self.out('st')
 
     #
     # __init__ routine
@@ -447,149 +1154,8 @@ class postscript:
         
         self.gsaveCnt    = 0
         self.grestoreCnt = 0
-        
-        self.colors      = {
-            'aliceblue'              :  '0.94 0.97 1.00',
-            'antiquewhite'           :  '0.98 0.92 0.84',
-            'aqua'                   :  '0.00 1.00 1.00',
-            'aquamarine'             :  '0.50 1.00 0.83',
-            'azure'                  :  '0.94 1.00 1.00',
-            'beige'                  :  '0.96 0.96 0.86',
-            'bisque'                 :  '1.00 0.89 0.77',
-            'black'                  :  '0.00 0.00 0.00',
-            'blanchedalmond'         :  '1.00 0.92 0.80',
-            'blue'                   :  '0.00 0.00 1.00',
-            'blueviolet'             :  '0.54 0.17 0.89',
-            'brown'                  :  '0.65 0.16 0.16',
-            'burlywood'              :  '0.87 0.72 0.53',
-            'cadetblue'              :  '0.37 0.62 0.63',
-            'chartreuse'             :  '0.50 1.00 0.00',
-            'chocolate'              :  '0.82 0.41 0.12',
-            'coral'                  :  '1.00 0.50 0.31',
-            'cornflowerblue'         :  '0.39 0.58 0.93',
-            'cornsilk'               :  '1.00 0.97 0.86',
-            'crimson'                :  '0.86 0.08 0.24',
-            'cyan'                   :  '0.00 1.00 1.00',
-            'darkblue'               :  '0.00 0.00 0.55',
-            'darkcyan'               :  '0.00 0.55 0.55',
-            'darkgoldenrod'          :  '0.72 0.53 0.04',
-            'darkgray'               :  '0.66 0.66 0.66',
-            'darkgreen'              :  '0.00 0.39 0.00',
-            'darkkhaki'              :  '0.74 0.72 0.42',
-            'darkmagenta'            :  '0.55 0.00 0.55',
-            'darkolivegreen'         :  '0.33 0.42 0.18',
-            'darkorange'             :  '1.00 0.55 0.00',
-            'darkorchid'             :  '0.60 0.20 0.80',
-            'darkred'                :  '0.55 0.00 0.00',
-            'darksalmon'             :  '0.91 0.59 0.48',
-            'darkseagreen'           :  '0.55 0.74 0.56',
-            'darkslateblue'          :  '0.28 0.24 0.55',
-            'darkslategray'          :  '0.18 0.31 0.31',
-            'darkturquoise'          :  '0.00 0.87 0.82',
-            'darkviolet'             :  '0.58 0.00 0.83',
-            'deeppink'               :  '1.00 0.08 0.58',
-            'deepskyblue'            :  '0.00 0.75 1.00',
-            'dimgray'                :  '0.41 0.41 0.41',
-            'dodgerblue'             :  '0.12 0.56 1.00',
-            'drabgreen'              :  '0.60 0.80 0.60',
-            'dullyellow'             :  '1.00 0.90 0.60',
-            'firebrick'              :  '0.70 0.13 0.13',
-            'floralwhite'            :  '1.00 0.98 0.94',
-            'forestgreen'            :  '0.13 0.55 0.13',
-            'fuchsia'                :  '1.00 0.00 1.00',
-            'gainsboro'              :  '0.86 0.86 0.86',
-            'ghostwhite'             :  '0.97 0.97 1.00',
-            'gold'                   :  '1.00 0.84 0.00',
-            'goldenrod'              :  '0.85 0.65 0.13',
-            'gray'                   :  '0.50 0.50 0.50',
-            'green'                  :  '0.00 0.50 0.00',
-            'greenyellow'            :  '0.68 1.00 0.18',
-            'honeydew'               :  '0.94 1.00 0.94',
-            'hotpink'                :  '1.00 0.41 0.71',
-            'indianred'              :  '0.80 0.36 0.36',
-            'indigo'                 :  '0.29 0.00 0.51',
-            'ivory'                  :  '1.00 1.00 0.94',
-            'khaki'                  :  '0.94 0.90 0.55',
-            'lavender'               :  '0.90 0.90 0.98',
-            'lavenderblush'          :  '1.00 0.94 0.96',
-            'lawngreen'              :  '0.49 0.99 0.00',
-            'lemonchiffon'           :  '1.00 0.98 0.80',
-            'lightblue'              :  '0.68 0.85 0.90',
-            'lightcoral'             :  '0.94 0.50 0.50',
-            'lightcyan'              :  '0.88 1.00 1.00',
-            'lightgoldenrodyellow'   :  '0.98 0.98 0.82',
-            'lightgreen'             :  '0.56 0.93 0.56',
-            'lightgrey'              :  '0.83 0.83 0.83',
-            'lightpink'              :  '1.00 0.71 0.76',
-            'lightsalmon'            :  '1.00 0.63 0.48',
-            'lightseagreen'          :  '0.13 0.70 0.67',
-            'lightskyblue'           :  '0.53 0.81 0.98',
-            'lightslategray'         :  '0.47 0.53 0.60',
-            'lightsteelblue'         :  '0.69 0.77 0.87',
-            'lightyellow'            :  '1.00 1.00 0.88',
-            'lime'                   :  '0.00 1.00 0.00',
-            'limegreen'              :  '0.20 0.80 0.20',
-            'linen'                  :  '0.98 0.94 0.90',
-            'magenta'                :  '1.00 0.00 1.00',
-            'maroon'                 :  '0.50 0.00 0.00',
-            'mediumaquamarine'       :  '0.40 0.80 0.67',
-            'mediumblue'             :  '0.00 0.00 0.80',
-            'mediumorchid'           :  '0.73 0.33 0.83',
-            'mediumpurple'           :  '0.58 0.44 0.86',
-            'mediumseagreen'         :  '0.24 0.70 0.44',
-            'mediumslateblue'        :  '0.48 0.41 0.93',
-            'mediumspringgreen'      :  '0.00 0.98 0.60',
-            'mediumturquoise'        :  '0.28 0.82 0.80',
-            'mediumvioletred'        :  '0.78 0.08 0.52',
-            'midnightblue'           :  '0.10 0.10 0.44',
-            'mintcream'              :  '0.96 1.00 0.98',
-            'mistyrose'              :  '1.00 0.89 0.88',
-            'moccasin'               :  '1.00 0.89 0.71',
-            'navajowhite'            :  '1.00 0.87 0.68',
-            'navy'                   :  '0.00 0.00 0.50',
-            'oldlace'                :  '0.99 0.96 0.90',
-            'olivedrab'              :  '0.42 0.56 0.14',
-            'orange'                 :  '1.00 0.65 0.00',
-            'orangered'              :  '1.00 0.27 0.00',
-            'orchid'                 :  '0.85 0.44 0.84',
-            'palegoldenrod'          :  '0.93 0.91 0.67',
-            'palegreen'              :  '0.60 0.98 0.60',
-            'paleturquoise'          :  '0.69 0.93 0.93',
-            'palevioletred'          :  '0.86 0.44 0.58',
-            'papayawhip'             :  '1.00 0.94 0.84',
-            'peachpuff'              :  '1.00 0.85 0.73',
-            'peru'                   :  '0.80 0.52 0.25',
-            'pink'                   :  '1.00 0.78 0.80',
-            'plum'                   :  '0.87 0.63 0.87',
-            'powderblue'             :  '0.69 0.88 0.90',
-            'purple'                 :  '0.50 0.00 0.50',
-            'red'                    :  '1.00 0.00 0.00',
-            'rosybrown'              :  '0.74 0.56 0.56',
-            'royalblue'              :  '0.25 0.41 0.88',
-            'saddlebrown'            :  '0.55 0.27 0.07',
-            'salmon'                 :  '0.98 0.50 0.45',
-            'sandybrown'             :  '0.96 0.64 0.38',
-            'seagreen'               :  '0.18 0.55 0.34',
-            'seashell'               :  '1.00 0.96 0.93',
-            'sienna'                 :  '0.63 0.32 0.18',
-            'silver'                 :  '0.75 0.75 0.75',
-            'skyblue'                :  '0.53 0.81 0.92',
-            'slateblue'              :  '0.42 0.35 0.80',
-            'snow'                   :  '1.00 0.98 0.98',
-            'springgreen'            :  '0.00 1.00 0.50',
-            'steelblue'              :  '0.27 0.51 0.71',
-            'tan'                    :  '0.82 0.71 0.55',
-            'teal'                   :  '0.00 0.50 0.50',
-            'thistle'                :  '0.85 0.75 0.85',
-            'tomato'                 :  '1.00 0.39 0.28',
-            'turquoise'              :  '0.25 0.88 0.82',
-            'violet'                 :  '0.93 0.51 0.93',
-            'wheat'                  :  '0.96 0.87 0.70',
-            'white'                  :  '1.00 1.00 1.00',
-            'whitesmoke'             :  '0.96 0.96 0.96',
-            'yellow'                 :  '1.00 1.00 0.00',
-            'yellowgreen'            :  '0.60 0.80 0.20',
-        }
+
+        self.colors = color()
 
         self.title = title
         # print 'generating %s' % title
@@ -599,47 +1165,47 @@ class postscript:
         self.height = self.convert(str(dimensions[1]))
 
         # generic eps header
-        __out = self.__out
-        __out('%!PS-Adobe-2.0 EPSF-2.0')
-        __out('%%Title: ' + str(self.title))
-        __out('%%Creator: '+ str(self.program) + ' version:' + \
-              str(self.version) + ' script:' + os.path.abspath(script) + \
-              ' host:'+socket.gethostname())
-        __out('%%CreationDate: ' + str(self.date))
-        __out('%%DocumentFonts: (atend)')
-        __out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + str(self.height))
-        __out('%%Orientation: Portrait')
-        __out('%%EndComments')
+        self.out('%!PS-Adobe-2.0 EPSF-2.0')
+        self.out('%%Title: ' + str(self.title))
+        self.out('%%Creator: '+ str(self.program) + ' version:' + \
+                 str(self.version) + ' script:' + os.path.abspath(script) + \
+                 ' host:'+socket.gethostname())
+        self.out('%%CreationDate: ' + str(self.date))
+        self.out('%%DocumentFonts: (atend)')
+        self.out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + \
+                 str(self.height))
+        self.out('%%Orientation: Portrait')
+        self.out('%%EndComments')
 
         # zdraw dictionary
-        __out('% zdraw dictionary')
-        __out('/zdict 256 dict def')
-        __out('zdict begin')
-        __out('/cpx 0 def')
-        __out('/cpy 0 def')
-        __out('/recordcp {currentpoint /cpy exch def /cpx exch def} bind def')
-        __out('/m {moveto} bind def')
-        __out('/l {lineto} bind def')
-        __out('/mr {rmoveto} bind def')
-        __out('/lr {rlineto} bind def')
-        __out('/np {newpath} bind def')
-        __out('/cp {closepath} bind def')
-        __out('/st {stroke} bind def')
-        __out('/fl {fill} bind def')
-        __out('/gs {gsave} bind def')
-        __out('/gr {grestore} bind def')
-        __out('/slw {setlinewidth} bind def')
-        __out('/slc {setlinecap} bind def')
-        __out('/slj {setlinejoin} bind def')
-        __out('/sc  {setrgbcolor} bind def')
-        __out('/sd  {setdash} bind def')
+        self.out('% zdraw dictionary')
+        self.out('/zdict 256 dict def')
+        self.out('zdict begin')
+        self.out('/cpx 0 def')
+        self.out('/cpy 0 def')
+        self.out('/recordcp {currentpoint /cpy exch def /cpx exch def} bind def')
+        self.out('/m {moveto} bind def')
+        self.out('/l {lineto} bind def')
+        self.out('/mr {rmoveto} bind def')
+        self.out('/lr {rlineto} bind def')
+        self.out('/np {newpath} bind def')
+        self.out('/cp {closepath} bind def')
+        self.out('/st {stroke} bind def')
+        self.out('/fl {fill} bind def')
+        self.out('/gs {gsave} bind def')
+        self.out('/gr {grestore} bind def')
+        self.out('/slw {setlinewidth} bind def')
+        self.out('/slc {setlinecap} bind def')
+        self.out('/slj {setlinejoin} bind def')
+        self.out('/sc  {setrgbcolor} bind def')
+        self.out('/sd  {setdash} bind def')
         # XXX -- triangle not implemented (yet) -- expects x y size on stack
-        # __out('/triangle {pop pop pop} bind def')  
-        __out('/lshow {show recordcp} def')
-        __out('/rshow {dup stringwidth pop neg 0 mr show recordcp} def')
-        __out('/cshow {dup stringwidth pop -2 div 0 mr show recordcp} def')
-        __out('end')
-        __out('zdict begin')
+        # self.out('/triangle {pop pop pop} bind def')  
+        self.out('/lshow {show recordcp} def')
+        self.out('/rshow {dup stringwidth pop neg 0 mr show recordcp} def')
+        self.out('/cshow {dup stringwidth pop -2 div 0 mr show recordcp} def')
+        self.out('end')
+        self.out('zdict begin')
 
         # END: __init
 
@@ -658,155 +1224,23 @@ class postscript:
             exit(1)
 
         # generic eps trailer
-        __out = self.__out
         for ln in self.comments.split('\n'):
-            __out('% '+ln)
-        __out('% zdraw epilogue')
-        __out('end')
-        __out('showpage')
-        __out('%%Trailer')
+            self.out('% '+ln)
+        self.out('% zdraw epilogue')
+        self.out('end')
+        self.out('showpage')
+        self.out('%%Trailer')
 
         # make font list
         flist = self.fontlist[0]
         for i in range(1,len(self.fontlist)):
             flist = flist + ' ' + self.fontlist[i]
-        __out('%%DocumentFonts: ' + flist)
+        self.out('%%DocumentFonts: ' + flist)
 
-        self.__dumpOut(self.title)
+        self.dump(self.title)
         # END: render()
 
     # 
-    # This is a complete hack, and can be very wrong depending on the fontface
-    # (which it should clearly be dependent upon). The problem, of course: only
-    # the ps interpreter really knows how wide the string is: e.g., put the
-    # string on the stack and call 'stringwidth'. But of course, we don't want
-    # to have to invoke that to get the result (a pain). We could build in a
-    # table that has all the answers for supported fonts (Helvetica, TimesRoman,
-    # etc.) but that is a complete pain as well. So, for now, we just make a
-    # rough guess based on the length of the string and the size of the font.
-    # 
-    def stringwidth(self, str, fontsize):
-        length = len(str)
-        total  = 0.0
-        for i in range(0,length):
-            c = str[i]
-            if re.search(c, "ABCDEFGHJKLMNOPQRSTUVWXYZ234567890") != None:
-                add = 0.69
-            elif re.search(c, "abcdeghkmnopqrsuvwxyz1I") != None:
-                add = 0.54
-            elif re.search(c, ".fijlt") != None:
-                add = 0.3
-            elif re.search(c, "-") != None:
-                add = 0.3
-            else:
-                # be conservative for all others
-                add = 0.65
-            total = total + add
-        return (fontsize * total)
-
-    #
-    # shape()
-    #
-    # Use this to draw a shape on the plotting surface. Lots of possibilities,
-    # including square, circle, triangle, utriangle, plusline, hline, vline,
-    # hvline, xline, dline1, dline2, dline12, diamond, asterisk, ...
-    # 
-    def shape(self,
-              style     = '',      # the possible shapes
-              x         = '',      # x position of shape
-              y         = '',      # y position of shape
-              size      = 3.0,     # size of shape
-              linecolor = 'black', # color of the line of the marker
-              linewidth = 1.0,     # width of lines used to draw the marker
-              linedash  = 0,       # dash pattern - 0 means no dashes
-              fill      = False,   # for some shapes, filling makes sense;
-                                   # if desired, mark this true
-              fillcolor = 'black', # if filling, use this fill color
-              fillstyle = 'solid', # if filling, which fill style to use
-              fillsize  = 3.0,     #  size of object in pattern
-              fillskip  = 4.0,     # space between object in pattern
-              ):
-        if style == 'square':
-	    self.box(coord=[[x-size,y-size],[x+size,y+size]], 
-                     linecolor=linecolor, linewidth=linewidth,  fill=fill,
-                     fillcolor=fillcolor, fillstyle=fillstyle,
-                     fillsize=fillsize, fillskip=fillskip) 
-        elif style == 'circle':
-	    self.circle(coord=[x,y], radius=size, linecolor=linecolor,
-                        linewidth=linewidth, fill=fill, fillcolor=fillcolor,
-                        fillstyle=fillstyle, fillsize=fillsize,
-                        fillskip=fillskip) 
-	elif style == 'triangle':
-	    self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
-                         linecolor=linecolor, linewidth=linewidth,
-                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
-                         fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'utriangle':
-	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
-                         linecolor=linecolor, linewidth=linewidth, fill=fill,
-                         fillcolor=fillcolor, fillstyle=fillstyle,
-                         fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'plusline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
-                      linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
-                      linewidth=linewidth) 
-	elif style == 'xline':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline1':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline2':
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline12':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'hline': 
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
-                      linewidth=linewidth, linedash=linedash)
-	elif style == 'vline': 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
-                      linewidth=linewidth)
-        elif style == 'hvline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
-                      linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
-                      linewidth=linewidth)
-	elif style == 'diamond':
-	    self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
-                         linecolor=linecolor, linewidth=linewidth, fill=fill,
-                         fillcolor=fillcolor, fillstyle=fillstyle,
-                         fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'star':
-            s2 = size / 2.0
-            xp  = s2 * math.cos(math.radians(18.0))
-            yp  = s2 * math.sin(math.radians(18.0))
-            xp2 = s2 * math.cos(math.radians(54.0))
-            yp2 = s2 * math.sin(math.radians(54.0))
-	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],[x-xp,y+yp],[x+xp,y+yp],
-                                [x-xp2,y-yp2],[x,y+s2]],
-                         linecolor=linecolor, linewidth=linewidth,
-                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
-                         fillsize=fillsize, fillskip=fillskip) 
-        elif style == 'asterisk':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
-                      linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
-                      linecolor=linecolor, linewidth=linewidth)
-            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
-                      linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
-                      linewidth=linewidth)
-        else:
-            abort('bad choice of point style: ' + style)
-    # END: shape()
-
     #
     # line()
     #
@@ -981,25 +1415,25 @@ class postscript:
 
             # now, adjust based on xanchor
             if xanchor == 'l':
-                self.__out('('+ text +') stringwidth pop dup')
+                self.out('('+ text +') stringwidth pop dup')
             elif xanchor == 'c':
-                self.__out('('+ text +') stringwidth pop dup -2 div 0 ' + \
+                self.out('('+ text +') stringwidth pop dup -2 div 0 ' + \
                            'rmoveto dup')
             elif xanchor == 'r':
-                self.__out('('+ text +') stringwidth pop dup -1 div 0 ' + \
+                self.out('('+ text +') stringwidth pop dup -1 div 0 ' + \
                            'rmoveto dup')
             else:
                 abort('xanchor should be: l, c, or r')
 
             # now get width of string and draw the box
             # move to left-bottom including borders
-            self.__out('-' + str(bgborder) + ' -' + str(bgborder) + ' rmoveto')
+            self.out('-' + str(bgborder) + ' -' + str(bgborder) + ' rmoveto')
             # add border*2 to the width (on the stack) and move over
-            self.__out(str(2 * bgborder) + ' add 0 rlineto')
+            self.out(str(2 * bgborder) + ' add 0 rlineto')
             # move a line up by the height of characters + border
-            self.__out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')
+            self.out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')
             # move back down and closepath to finish
-            self.__out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')
+            self.out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')
             self.__closepath()
             self.__fill()
             if rotate != 0:

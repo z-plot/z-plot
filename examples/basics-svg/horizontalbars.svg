@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 35.50,108.00 L 201.50,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 36.00,108.50 L 36.00,14.50 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 36.00,112.00 L 36.00,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 77.25,112.00 L 77.25,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 118.50,112.00 L 118.50,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 159.75,112.00 L 159.75,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.00,112.00 L 201.00,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,96.38 L 36.00,96.38 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,73.12 L 36.00,73.12 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,49.88 L 36.00,49.88 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,26.62 L 36.00,26.62 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<text x="36.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 0</text>
+<text x="77.25" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 20</text>
+<text x="118.50" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 40</text>
+<text x="159.75" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 60</text>
+<text x="201.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 80</text>
+<text x="29.00" y="99.38" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> A</text>
+<text x="29.00" y="76.12" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> B</text>
+<text x="29.00" y="52.88" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> C</text>
+<text x="29.00" y="29.62" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> D</text>
+<text x="118.50" y="136.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Latency (ms)</text>
+<text x="19.10" y="61.50" transform="rotate(-90.00 19.10,61.50)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Operation</text>
+<rect x="36.00" y="87.08" height="18.60" width="103.12" fill="red" ></rect>
+<rect x="36.00" y="63.83" height="18.60" width="92.81" fill="red" ></rect>
+<rect x="36.00" y="40.58" height="18.60" width="20.62" fill="red" ></rect>
+<rect x="36.00" y="17.33" height="18.60" width="30.94" fill="red" ></rect>
+<rect x="139.12" y="87.08" height="18.60" width="10.31" fill="green" ></rect>
+<rect x="128.81" y="63.83" height="18.60" width="12.38" fill="green" ></rect>
+<rect x="56.62" y="40.58" height="18.60" width="10.31" fill="green" ></rect>
+<rect x="66.94" y="17.33" height="18.60" width="61.88" fill="green" ></rect>
+<rect x="149.44" y="87.08" height="18.60" width="20.62" fill="blue" ></rect>
+<rect x="141.19" y="63.83" height="18.60" width="24.75" fill="blue" ></rect>
+<rect x="66.94" y="40.58" height="18.60" width="51.56" fill="blue" ></rect>
+<rect x="128.81" y="17.33" height="18.60" width="20.62" fill="blue" ></rect>
+</svg>
