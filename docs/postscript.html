@@ -1,14 +1,43 @@
 <html>
 
 <h2> Class postscript</h2>
+
+<p>  Use this class to make a postscript drawing surface. </p>
 <p>
 <b> Initialize class with following parameters:</b>
 <table>
-<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.eps'</td><td style="width:10px"></td><td> name of the output file</td> </tr>
-<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> size of the drawing surface</td> </tr>
-<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> default font for text</td> </tr>
-<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> whether to add more info into output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> name of the file calling into zplot; recorded in header of output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.eps'</td><td style="width:10px"></td><td> Name of the output file.</td> </tr>
+<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> Size of the drawing surface.</td> </tr>
+<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> Default font for text.</td> </tr>
+<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Whether to add more info into output file.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> Name of the file calling into zplot; recorded in header.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> postscript.render()</h3><table>
+
+<p>  Use this routine to print out all the postscript commands you've been queueing up to a file or 'stdout' (default). </p>
+</table>
+</p>
+
+<h3> postscript.line()</h3><table>
+
+<p>  Use this to draw a line on the canvas. </p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>closepath</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrow</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowheadlength</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowheadwidth</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowlinecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowlinewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 0.5</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowfill</b></td><td style="width:10px"></td><td style="width:150px">default: True</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowfillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>arrowstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'normal'</td><td style="width:10px"></td><td></td> </tr>
 </table>
 </p>
 </html>

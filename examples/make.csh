@@ -5,7 +5,7 @@ foreach dir ( * )
     if (-d $dir) then
 	cd $dir
 	foreach py ( *.py )
-	    echo "$count $py"
+	    echo "$count ${dir}/${py}"
 	    @ count += 1
 	    ./${py}
 	end

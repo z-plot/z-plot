@@ -5,7 +5,7 @@ from zplot import *
 t = table(file='propbars2.data')
 
 # make cumulative across columns with simple SQL updates
-t.addcolumns('USA_2', 'Britain_2', 'USSR_2', 'France_2', 'Other_2')
+t.addcolumns(['USA_2', 'Britain_2', 'USSR_2', 'France_2', 'Other_2'])
 t.update(set='USA_2 = USA')
 t.update(set='Britain_2 = USA_2 + Britain')
 t.update(set='USSR_2 = Britain_2 + USSR')

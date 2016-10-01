@@ -5,7 +5,7 @@ from zplot import *
 t = table('stackedarea.data', separator=':')
 # c1 eastern   c2 central   c3 mountain   c4 pacific
 # orange powderblue drabyellow drabgreen
-t.addcolumns('c1_sum', 'c2_sum', 'c3_sum', 'c4_sum')
+t.addcolumns(['c1_sum', 'c2_sum', 'c3_sum', 'c4_sum'])
 t.update(set='c1_sum = c1')
 t.update(set='c2_sum = c1 + c2')
 t.update(set='c3_sum = c1 + c2 + c3')

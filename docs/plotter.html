@@ -1,6 +1,8 @@
 <html>
 
 <h2> Class plotter</h2>
+
+<p>  Use this to draw some points on a drawable. There are some obvious parameters: which drawable, which table, which x and y columns from the table to use, the color of the point, its linewidth, and the size of the marker. 'style' is a more interesting parameter, allowing one to pick a box, circle, horizontal line (hline), and 'x' that marks the spot, and so forth. However, if you set 'style' to label, PlotPoints will instead use a column from the table (as specified by the 'label' flag) to plot an arbitrary label at each (x,y) point. Virtually all the rest of the flags pertain to these text labels: whether to rotate them, how to anchor them, how to place them, font, size, and color. </p>
 <p>
 <b> Initialize class with following parameters:</b>
 <table>
@@ -8,11 +10,9 @@
 </table>
 </p>
 
-<h3> Method points</h3><table>
+<h3> plotter.points()</h3><table>
 
-<p> 
- Use this to draw points, as specified by x,y of a table, onto a drawable. Basically, how you make a scatter plot is with the points() method. 
-</p>
+<p>  Use this to draw points, as specified by x,y of a table, onto a drawable. Basically, how you make a scatter plot is with the points() method. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Drawable object to place points onto.</td> </tr>
 <tr><td style="width:150px"><b>table</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Table object to suck data from.</td> </tr>
 <tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Where clause: which rows to plot? Default is all rows.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -46,11 +46,9 @@
 </table>
 </p>
 
-<h3> Method horizontalbars</h3><table>
+<h3> plotter.horizontalbars()</h3><table>
 
-<p> 
- Use this to plot horizontal bars. The options are quite similar to the vertical cousin of this routine, except (somehow) less feature-filled (hint: lazy programmer). 
-</p>
+<p>  Use this to plot horizontal bars. The options are quite similar to the vertical cousin of this routine, except (somehow) less feature-filled (hint: lazy programmer). </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Drawable object on which to put the bars.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>table</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Table from which to draw data.</td> </tr>
 <tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> SQL select to subset the data as need be.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>

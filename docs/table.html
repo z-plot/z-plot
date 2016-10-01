@@ -1,6 +1,8 @@
 <html>
 
 <h2> Class table</h2>
+
+<p>  Tables store data to be plotted, and provide a thin layer over SQLite to select subsets of the data to plot. A table can be created and filled with contents of a file (the 'file' parameter) OR created and filled with data from another table (the 'table' parameter). When filling with data from a file, it is useful to pass in a 'separator' which tells the table class how the rows in the file are split. Default is whitespace. </p>
 <p>
 <b> Initialize class with following parameters:</b>
 <table>
@@ -8,6 +10,100 @@
 <tr><td style="width:150px"><b>table</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> If file name is not specified (as above), can populate</td></tr><tr><td></td><td></td><td></td><td></td><td> a table with data from another table (this makes a copy).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> When initializing a table from another table, use the</td></tr><tr><td></td><td></td><td></td><td></td><td> 'where' option to perform a selection of which data you want.</td></tr><tr><td></td><td></td><td></td><td></td><td> For example, 'where=c0 > 10' populates the new table with</td></tr><tr><td></td><td></td><td></td><td></td><td> all rows where the first value in the row (i.e., c0) is</td></tr><tr><td></td><td></td><td></td><td></td><td> greater than 10.</td> </tr>
 <tr><td style="width:150px"><b>separator</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> When reading from a file, use the 'separator' to split each</td></tr><tr><td></td><td></td><td></td><td></td><td> line and thus decide the different entries for that line.</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is to use whitespace; a colon is a common one too.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.getaxislabels()</h3><table>
+
+<p>  This method takes a column of data and returns it in a form so you can directly pass it to the axis() class as either the 'xmanual' or 'ymanual' parameter. Thus, you can call axis as follows: axis(xmanual=t.getaxislabels('c0'), ...) to get the values from column 'c0' of table 't' and use it to label the x axis (in this example). </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Which column to grab the data from.</td> </tr>
+</table>
+</p>
+
+<h3> table.dump()</h3><table>
+
+<p>  Used to dump the contents of the table to stdout. </p>
+<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> A title to add to the output for clarity.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>canvas</b></td><td style="width:10px"></td><td style="width:150px">default: None</td><td style="width:10px"></td><td> Can add this to the output as well as a comment.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.insert()</h3><table>
+
+<p>  Allows SQL insert directly into a table. SET column1=value, column2=value2,... WHERE some_column=some_value Format of keyValues should be ... XXX </p>
+<tr><td style="width:150px"><b>keyValues</b></td><td style="width:10px"></td><td style="width:150px">default: {}</td><td style="width:10px"></td><td> Needs a better description.</td> </tr>
+</table>
+</p>
+
+<h3> table.update()</h3><table>
+
+<p>  Enables an update() of values in a column. Can use to sum two columns, for example. </p>
+<tr><td style="width:150px"><b>set</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Specify how to set values in one column. Can just set a column</td></tr><tr><td></td><td></td><td></td><td></td><td> to a specific value (e.g., set='c0 = 100') or can do math across</td></tr><tr><td></td><td></td><td></td><td></td><td> some columns (e.g., set='c0 = c0 + c1').</td> </tr>
+<tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Can operate on a subset of rows via selection.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.getmax()</h3><table>
+
+<p>  Utility function to get maximum value of a particular column. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> column to compute max over.</td> </tr>
+<tr><td style="width:150px"><b>cmax</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> If specified, only return value from column if it's</td></tr><tr><td></td><td></td><td></td><td></td><td> greater than 'cmax'. Otherwise, just return max.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.getmin()</h3><table>
+
+<p>  Returns min value over a given column. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Column to get data from.</td> </tr>
+<tr><td style="width:150px"><b>cmin</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Only return values if they are less than cmin.</td></tr><tr><td></td><td></td><td></td><td></td><td> If not specified, just return min found.</td> </tr>
+</table>
+</p>
+
+<h3> table.getrange()</h3><table>
+
+<p>  Gets the [min, max] of a column and returns it as a list. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> The column to perform min, max over.</td> </tr>
+<tr><td style="width:150px"><b>crange</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> If not empty, 2-element list with min value</td></tr><tr><td></td><td></td><td></td><td></td><td> and max value not to go below/exceed when looking</td></tr><tr><td></td><td></td><td></td><td></td><td> for min and max in the column.</td> </tr>
+</table>
+</p>
+
+<h3> table.getvalues()</h3><table>
+
+<p>  Returns values in a column as a list. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Column to get values of.</td> </tr>
+</table>
+</p>
+
+<h3> table.getavg()</h3><table>
+
+<p>  Compute average over a column and return it. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Column over which to compute average.</td> </tr>
+<tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Where clause used to select subset of rows.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.query()</h3><table>
+
+<p>  Get data from table via a query. </p>
+<tr><td style="width:150px"><b>where</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Where clause to select which data to return.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>order</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Which column to order the results by; '' -> don't order.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>select</b></td><td style="width:10px"></td><td style="width:150px">default: '*'</td><td style="width:10px"></td><td> * selects all columns, or you can pick a subset.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>group</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> The group by clause also useful sometimes.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> table.addcolumns()</h3><table>
+
+<p>  Add a bunch of columns all at once. </p>
+<tr><td style="width:150px"><b>columns</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> columns to add to the table, all at once</td> </tr>
+</table>
+</p>
+
+<h3> table.addcolumn()</h3><table>
+
+<p>  Add a column to the table, and initialize it with value. </p>
+<tr><td style="width:150px"><b>column</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Column to be added.</td> </tr>
+<tr><td style="width:150px"><b>value</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Value to initialize column to.</td> </tr>
 </table>
 </p>
 </html>

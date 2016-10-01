@@ -4,7 +4,7 @@ from zplot import *
 
 c = postscript(title='devol.eps', dimensions=['400','340'])
 t = table(file='devol.data')
-t.addcolumns('month','year')
+t.addcolumns(['month','year'])
 t.update(set='month = substr(date, 1, 2)')
 t.update(set='year = substr(date, 4, 2)')
 

@@ -26,6 +26,22 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
+#
+# PLEASE READ
+#
+# If you are going to edit zplot, you should read this comment.
+#
+# Zplot uses a simple script, make-docs.py, to auto-generate documentation
+# from this file. Thus, you need to follow its style if you want make-docs
+# to keep working.
+#
+# (more useful info here)
+#
+# Thanks!
+# The Zplot Team
+#
+
 import time
 import math
 import os
@@ -528,7 +544,7 @@ class svg(util):
              # Default is just do hard turns (miter).
              linejoin        = 0,
 
-             
+             # Shape used at end of line ('butt', 'round', 'square')
              linecap         = 0,
 
              # Dash pattern of the line. '0' means no dashes.
@@ -566,7 +582,6 @@ class svg(util):
             ):
         # ARROW NOT IMPLEMENTED (YET)
         assert(arrow == False)
-        assert(linecap == 0)
         assert(closepath == False)
         
         linecolor = self.__getcolor(linecolor)
@@ -584,10 +599,13 @@ class svg(util):
             assert(linejoin == 'miter' or linejoin == 'bevel' or \
                    linejoin == 'round')
             self.outnl('stroke-linejoin="%%s" ' % linejoin)
+        if linecap != 0:
+            assert(linecap == 'butt' or linecap == 'square' or \
+                   linecap == 'round')
+            self.outnl('stroke-linecap="%%s" ' % linecap)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % \
                                 self.__getdash(linedash))
-            
         self.outnl('fill="none"')
         self.__endstyle()
         self.__endpath()
@@ -721,15 +739,14 @@ class svg(util):
         if right == 'l':
             yshift = 0
         elif right == 'c':
-            # XXX hackish adjustment of text height: +2
-            yshift = -size/2.0 + 2
+            yshift = -size * 0.36
         elif right == 'h':
-            # XXX hackish adjustment of text height: +2
-            yshift = -size + 2
+            yshift = -size * 0.72
         else:
             abort('bad anchor ' + anchor)
 
         x, y = coord[0], self.__converty(coord[1] + yshift)
+
         self.out('<text x="%.2f" y="%.2f" ' % (x, y))
         if rotate != 0:
             self.outnl('transform="rotate(%.2f %.2f,%.2f)" ' %
@@ -742,18 +759,16 @@ class svg(util):
         self.outnl('"> ')
         self.outnl(text)
         self.outnl('</text>')
-            
+
         return
 
     # 
     # --method-- box
     #
     # Makes a box at coords specifying the bottom-left and upper-right corners.
-    # Options:
-    # - Can change the surrounding line (linewidth=0 removes it)
-    # - Can fill with solid or pattern
-    # When filling with non-solid pattern, can add a background color so
-    # as not to be see-through.
+    # Can change the width of the surrounding line (linewidth=0 removes it).
+    # Can fill with solid or pattern. When filling with non-solid pattern, can
+    # add a background color so as not to be see-through.
     # 
     def box(self,
             # Coordinates of box, from [x1,y1] to [x2,y2].
@@ -927,9 +942,9 @@ class svg(util):
 # END: class svg
 
 #
-# CLASS postscript
+# --class-- postscript
 # 
-# use this to make a postscript drawing surface
+# Use this class to make a postscript drawing surface.
 #
 class postscript(util):
     def comment(self, comments):
@@ -1269,26 +1284,25 @@ class postscript(util):
         self.out('st')
 
     #
-    # __init__ routine
+    # __init__ 
     # 
     # initialize everything for this particular canvas
     # (one drawing surface per PS canvas, saved to exactly one file, of course)
     # 
     def __init__(self,
-                 # name of the output file
+                 # Name of the output file.
                  title='default.eps',
 
-                 # size of the drawing surface
+                 # Size of the drawing surface.
                  dimensions=['3in','2in'],
 
-                 # default font for text
+                 # Default font for text.
                  font='Helvetica',
                  
-                 # whether to add more info into output file
+                 # Whether to add more info into output file.
                  verbose=False,
 
-                 # name of the file calling into zplot;
-                 # recorded in header of output file
+                 # Name of the file calling into zplot; recorded in header.
                  script=__file__,
                  ):
         self.comments = ''
@@ -1316,7 +1330,6 @@ class postscript(util):
         self.colors = color()
 
         self.title = title
-        # print 'generating %s' % title
         
         assert(len(dimensions) == 2)
         self.width  = self.convert(str(dimensions[0]))
@@ -1368,12 +1381,13 @@ class postscript(util):
         # END: __init
 
     # 
-    # render()
+    # --method-- render
     # 
     # Use this routine to print out all the postscript commands you've been
     # queueing up to a file or 'stdout' (default).
     # 
-    def render(self):
+    def render(self,
+               ):
         # do some checks
         if self.gsaveCnt != self.grestoreCnt:
             print self.gsaveCnt
@@ -1399,8 +1413,7 @@ class postscript(util):
         # END: render()
 
     # 
-    #
-    # line()
+    # --method-- line
     #
     # Use this to draw a line on the canvas.
     # 
@@ -1450,7 +1463,6 @@ class postscript(util):
         # all done, so stroke and restore
         self.__stroke()
 
-        # ARROW?
         # now, do the arrow 
         if arrow == True:
             count = len(coord)
@@ -1933,7 +1945,7 @@ class postscript(util):
     # END: class postscript
 
 #
-# class drawable
+# --class-- drawable
 # 
 # Creates a drawable region onto which graphs can be drawn. Must define the
 # xrange and yrange, which are each min,max pairs, so that the drawable can
@@ -2131,7 +2143,19 @@ class drawable:
         return self.canvas
 
     #
-    def map(self, coord):
+    # --method-- map
+    #
+    # Can be used to map coordinates from something a drawable understands
+    # to something that can be used on the canvas directly. Useful when placing
+    # text or shapes on the canvas directly; pass d.map([x,y]) for example to
+    # the coord= argument of a canvas direct draw function (such as text, line).
+    #
+    def map(self,
+            # The coordinates to translate from the drawable coordinate system
+            # to the canvas raw coordinates. Coordinates can be a single list
+            # [x,y] or, for a line for example, a list of points [[x1,y1],[x2,y2]].
+            coord=['',''],
+            ):
         if type(coord) == types.ListType:
             # need to figure out: is this a simple list, or a list of lists?
             first = coord[0]
@@ -2177,19 +2201,23 @@ class drawable:
 
     def right(self):
         return self.offset[0] + self.dimensions[0]
-    # END: class drawable
+# END: class drawable
 
 #
-# class table
+# --class-- table
 #
 # Tables store data to be plotted, and provide a thin layer over SQLite to
-# select subsets of the data to plot.
+# select subsets of the data to plot. A table can be created and filled
+# with contents of a file (the 'file' parameter) OR created and filled
+# with data from another table (the 'table' parameter). When filling with
+# data from a file, it is useful to pass in a 'separator' which tells the
+# table class how the rows in the file are split. Default is whitespace.
 #
 class table:
     def __init__(self,
                  # File name where table should be populated from;
                  # file should have fixed number of columns of data.
-                 file  = '',
+                 file = '',
 
                  # If file name is not specified (as above), can populate
                  # a table with data from another table (this makes a copy).
@@ -2308,9 +2336,21 @@ class table:
 
     def __cnames(self):
         return self.cnames
-    
+
+    #
+    # --method-- getaxislabels
+    #
+    # This method takes a column of data and returns it in a form
+    # so you can directly pass it to the axis() class as either the
+    # 'xmanual' or 'ymanual' parameter. Thus, you can call axis as
+    # follows: axis(xmanual=t.getaxislabels('c0'), ...) to get the
+    # values from column 'c0' of table 't' and use it to label the
+    # x axis (in this example).
+    #
     def getaxislabels(self,
-                      column=''):
+                      # Which column to grab the data from.
+                      column='',
+                      ):
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
         idx    = rindex[column]
@@ -2323,8 +2363,19 @@ class table:
             rlist.append(tmp)
             cnt = cnt + 1
         return rlist
-   
-    def dump(self, title='', canvas=None):
+
+    #
+    # --method-- dump
+    #
+    # Used to dump the contents of the table to stdout.
+    #
+    def dump(self,
+             # A title to add to the output for clarity.
+             title='',
+
+             # Can add this to the output as well as a comment.
+             canvas=None,
+             ):
         s = ''
         if title:
             s += title + '\n'
@@ -2341,37 +2392,66 @@ class table:
             print s
         return
 
-    # INSERT INTO table_name
+    #
+    # --method-- insert
+    #
+    # Allows SQL insert directly into a table.
     # SET column1=value, column2=value2,...
     # WHERE some_column=some_value
-    def insert(self,keyValues={}):
+    # Format of keyValues should be ... XXX
+    # 
+    def insert(self,
+               # Needs a better description.
+               keyValues={},
+               ):
         keys = sorted(keyValues.keys())
         values = ["'%s'" % keyValues[x] for x in keys]
         rownumber = self.cursor.execute('select count(*) from %s' % self.dbname)
         rownumber = rownumber.fetchone()[0] + 1
         query = ('insert into %s (rownumber, %s)'
                  'values (%d, %s)' % (
-                self.dbname,
-                ', '.join(keys),
-                rownumber,
-                ', '.join(values)))
+                self.dbname, ', '.join(keys), rownumber, ', '.join(values)))
         self.cursor.execute(query)
         return
 
-    # UPDATE table_name
-    # SET column1=value, column2=value2,...
-    # WHERE some_column=some_value
+    # 
+    # --method-- update
+    # 
+    # Enables an update() of values in a column. Can use to sum
+    # two columns, for example. 
+    # 
     def update(self,
+               # Specify how to set values in one column. Can just set a column
+               # to a specific value (e.g., set='c0 = 100') or can do math across
+               # some columns (e.g., set='c0 = c0 + c1'). 
                set='',
-               where=''):
+
+               # Can operate on a subset of rows via selection.
+               where='',
+               ):
         assert(set != '')
         if where == '':
             self.cursor.execute('update %s set %s' % (self.dbname, set))
         else:
             self.cursor.execute('update %s set %s where %s' % (self.dbname, set,
                                                                where))
+        return
 
-    def getmax(self, column, cmax=''):
+    #
+    # --method-- getmax
+    #
+    # Utility function to get maximum value of a particular column.
+    #
+    def getmax(self,
+               # column to compute max over.
+               column='',
+
+               # If specified, only return value from column if it's
+               # greater than 'cmax'. Otherwise, just return max.
+               cmax='',
+               ):
+        if column == '':
+            print 'No column specified.'
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
         idx    = rindex[column]
@@ -2384,17 +2464,22 @@ class table:
                 cmax = value
         return cmax
 
-    def getvalues(self, column, cmax=''):
-        self.cursor.execute('select * from %s' % (self.dbname))
-        rindex = self.getrindex()
-        idx    = rindex[column]
-        # print column, idx
-        return_values = []
-        for row in self.cursor:
-            return_values.append(row[idx])
-        return return_values
+    #
+    # --method-- getmin
+    #
+    # Returns min value over a given column.
+    #
+    def getmin(self,
+               # Column to get data from.
+               column='',
 
-    def getmin(self, column, cmin=''):
+               # Only return values if they are less than cmin.
+               # If not specified, just return min found.
+               cmin='',
+               ):
+        if column == '':
+            print 'No column specified.'
+            return 0
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
         idx    = rindex[column]
@@ -2406,7 +2491,65 @@ class table:
                 cmin = value
         return cmin
 
-    def getavg(self, column, where=''):
+    #
+    # --method-- getrange
+    #
+    # Gets the [min, max] of a column and returns it as a list.
+    #
+    def getrange(self,
+                 # The column to perform min, max over.
+                 column='',
+
+                 # If not empty, 2-element list with min value
+                 # and max value not to go below/exceed when looking
+                 # for min and max in the column.
+                 crange='',
+                 ):
+        if column == '':
+            print 'No column specified.'
+            return [0, 0]
+        if crange != '':
+            return [self.getmin(column, crange[0]),
+                    self.getmax(column, crange[1])]
+        else:
+            return [self.getmin(column, ''), self.getmax(column, '')]
+
+    #
+    # --method-- getvalues
+    #
+    # Returns values in a column as a list.
+    #
+    def getvalues(self,
+                  # Column to get values of.
+                  column='',
+                  ):
+        if column == '':
+            print 'No column specified.'
+            return []
+        self.cursor.execute('select * from %s' % (self.dbname))
+        rindex = self.getrindex()
+        idx    = rindex[column]
+        # print column, idx
+        return_values = []
+        for row in self.cursor:
+            return_values.append(row[idx])
+        return return_values
+
+    #
+    # --method-- getavg
+    #
+    # Compute average over a column and return it.
+    #
+    def getavg(self,
+               # Column over which to compute average.
+               column='',
+
+               # Where clause used to select subset of rows.
+               where='',
+               ):
+        if column == '':
+            print 'Column not specified in call to getavg().'
+            return 0
         if where == '':
             self.cursor.execute('select * from %s' % self.dbname)
         else:
@@ -2426,20 +2569,30 @@ class table:
         else:
             return 0
 
-    def getrange(self, column, crange):
-        if crange != '':
-            return [self.getmin(column, crange[0]),
-                    self.getmax(column, crange[1])]
-        else:
-            return [self.getmin(column, ''), self.getmax(column, '')]
-
     def getrindex(self):
         return self.rindex
 
     def getname(self):
         return self.dbname
 
-    def query(self, where='', order='', select='*', group=''):
+    #
+    # --method-- query
+    #
+    # Get data from table via a query.
+    #
+    def query(self,
+              # Where clause to select which data to return.
+              where='',
+
+              # Which column to order the results by; '' -> don't order.
+              order='',
+
+              # * selects all columns, or you can pick a subset.
+              select='*',
+
+              # The group by clause also useful sometimes.
+              group='',
+              ):
         q = 'select %s from %s' % (select, self.dbname)
         if where != '':
             q += ' where %s' % where
@@ -2458,13 +2611,29 @@ class table:
             counter = counter + 1
         return results
 
-    def addcolumns(self, *args):
-        for cn in args:
-            self.addcolumn(cn)
+    #
+    # --method-- addcolumns
+    #
+    # Add a bunch of columns all at once. 
+    #
+    def addcolumns(self,
+                   # columns to add to the table, all at once
+                   columns=[],
+                   ):
+        for c in columns:
+            self.addcolumn(column=c)
         return self
 
+    #
+    # --method-- addcolumn
+    #
+    # Add a column to the table, and initialize it with value.
+    #
     def addcolumn(self,
+                  # Column to be added.
                   column='',
+
+                  # Value to initialize column to.
                   value='',
                   ):
         assert(column != '')
@@ -3437,10 +3606,13 @@ class plotter:
 # END: class plotter
 
 #
-# class axis
+# --class-- axis
 #
-# Use this to draw some axes. It is supposed to be simpler and easier to use
-# than the older package. We will see about that.
+# Use this to draw some axes. There are a huge number of options. A first
+# decision might be which 'style' to use: 'x' (x axis only), 'y' (y axis),
+# 'xy' (for x and y axes), and 'box' to put a box around the entire thing.
+# Making multiple axes is nice if you have, for example, two y axes for
+# different data sets plotting onto the same drawable.
 # 
 class axis:
     def __init__(self,
@@ -4367,10 +4539,10 @@ class axis:
 #END: class axis
 
 #
-# class grid
+# --class-- grid
 #
-# Just a simple way to draw grids onto graphs.
-# While we generally don't like grids, some people do.
+# Just a simple way to draw grids onto graphs. While we generally don't like
+# grids, some people do.
 #
 class grid:
     def __init__(self,
@@ -4464,13 +4636,12 @@ class grid:
 # END: class grid
 
 #
-# class legend
+# --class-- legend
 #
-# Minimal support for legends is provided.
-# Initialize it first:
-# L = Legend()
-# Pass 'L' and other info to plotters.
-# Then, call draw() to make it on the plot.
+# Minimal support for legends is provided. Initialize it first 
+# (e.g., L = Legend()). Then pass 'L' and other info into plotters.
+# (e.g., legend=L, legendtext='foo'). Finally, call legend.draw()
+# to make the legend on the plot.
 # 
 class legend:
     def __init__(self
@@ -4481,7 +4652,7 @@ class legend:
     # END: __init__
 
     # 
-    # method draw()
+    # --method-- draw
     # 
     # Use this to draw a legend given the current entries in the legend.
     # 
@@ -4605,10 +4776,8 @@ class legend:
     # END: draw()
 
     # 
-    # add()
-    # 
-    # command used to add some info about a legend to the legend list. If
-    # 'entry' is specified, this will add the text (if any) to the existing
+    # Method used by plotters to add some info about a legend to the legend list. 
+    # If 'entry' is specified, this will add the text (if any) to the existing
     # text in that spot, and also add the picture to the list of pictures to be
     # drawn for this entry. If 'entry' is not specified, simply use the current
     # counter and add this to the end of the list.

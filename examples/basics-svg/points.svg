@@ -15,19 +15,19 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <path d="M 32.00,52.20 L 36.00,52.20 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 32.00,33.60 L 36.00,33.60 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 32.00,15.00 L 36.00,15.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
-<text x="36.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 0</text>
-<text x="69.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 3</text>
-<text x="102.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 6</text>
-<text x="135.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 9</text>
-<text x="168.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 12</text>
-<text x="201.00" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 15</text>
-<text x="29.00" y="111.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 0</text>
-<text x="29.00" y="92.40" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 5</text>
-<text x="29.00" y="73.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 10</text>
-<text x="29.00" y="55.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 15</text>
-<text x="29.00" y="36.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 20</text>
-<text x="29.00" y="18.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 25</text>
-<text x="118.50" y="136.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Cost ($)</text>
+<text x="36.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 0</text>
+<text x="69.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 3</text>
+<text x="102.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 6</text>
+<text x="135.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 9</text>
+<text x="168.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 12</text>
+<text x="201.00" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 15</text>
+<text x="29.00" y="111.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 0</text>
+<text x="29.00" y="93.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 5</text>
+<text x="29.00" y="74.40" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 10</text>
+<text x="29.00" y="55.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 15</text>
+<text x="29.00" y="37.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 20</text>
+<text x="29.00" y="18.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 25</text>
+<text x="118.50" y="135.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Cost ($)</text>
 <text x="12.20" y="61.50" transform="rotate(-90.00 12.20,61.50)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Latency (ms)</text>
 <circle cx="58.00" cy="15.00" r="3.00" stroke="#000000" stroke-width="0.5" fill="red" ></circle>
 <circle cx="80.00" cy="22.44" r="3.00" stroke="#000000" stroke-width="0.5" fill="red" ></circle>

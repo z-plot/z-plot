@@ -21,9 +21,18 @@ def end_class(fd):
     fd.close()
     return
 
+def output_comments_para(class_fd, comments):
+    class_fd.write('\n')
+    class_fd.write('<p>')
+    for c in comments:
+        class_fd.write(' %s' % c)
+    class_fd.write('</p>')
+    class_fd.write('\n')
+    return
+
+# FORMAT of this line is:
+#   PARAMETER = DEFAULT ,
 def get_parameter(class_fd, line, comments):
-    # FORMAT of this line is:
-    #   PARAMETER = DEFAULT ,
 
     parameter = line.split('=')[0].strip()
     print '  parameter [%s]' % parameter
@@ -32,7 +41,6 @@ def get_parameter(class_fd, line, comments):
         return
     else:
         default = remove_until_last(line.split('=')[1], ',').strip()
-
 
     class_fd.write('<tr>')
     class_fd.write('<td style="width:150px"><b>%s</b></td>' % parameter)
@@ -58,11 +66,22 @@ in_class  = False
 in_init   = False
 in_method = False
 
+comments = []
+
 for line in fd:
     # print 'debug', line
     tmp = line.split()
     if len(tmp) == 0:
         continue
+
+    if tmp[0] == '#':
+        potential_comment = line.strip()[2:]
+        comments.append(potential_comment)
+
+    if tmp[0] == '#' and len(tmp) > 1 and \
+           (tmp[1] == '--class--' or tmp[1] == '--method--'):
+        comments = []
+    
     if tmp[0] == 'class':
         if in_class:
             end_class(class_fd)
@@ -78,12 +97,13 @@ for line in fd:
         class_fd.write('\n')
         class_fd.write('<h2> Class %s</h2>' % class_name)
         class_fd.write('\n')
+        output_comments_para(class_fd, comments)
 
     if len(tmp) == 3 and tmp[0] == '#' and tmp[1] == '--method--':
         method_name = tmp[2]
         print 'class %s: method %s()' % (class_name, method_name)
         class_fd.write('\n')
-        class_fd.write('<h3> Method %s</h3>' % method_name)
+        class_fd.write('<h3> %s.%s()</h3>' % (class_name, method_name))
         class_fd.write('<table>\n')
         in_method = True
 
@@ -91,20 +111,15 @@ for line in fd:
         # inside __init__
         # gather needed info about arguments
         if tmp[0] == 'def':
-            # this means we are done with the comments
-            class_fd.write('\n')
-            class_fd.write('<p>')
-            for c in comments:
-                class_fd.write(' %s' % c)
-            class_fd.write('</p>')
-            class_fd.write('\n')
+            # seeing 'def' means we are done with the comments
+            output_comments_para(class_fd, comments)
             
-        if tmp[0] == '#':
-            potential_comment = line.strip()[2:]
-            if len(tmp) > 1 and tmp[1] != '--method--':
-                comments.append(potential_comment)
-            if len(tmp) == 1:
-                comments.append('\n')
+        # if tmp[0] == '#':
+            # potential_comment = line.strip()[2:]
+            # if len(tmp) > 1 and tmp[1] != '--method--':
+            #     comments.append(potential_comment)
+            # if len(tmp) == 1:
+            #     comments.append('\n')
         if tmp[0] != '#' and tmp[0] != '):':
             get_parameter(class_fd, line, comments)
             comments = []
@@ -116,6 +131,7 @@ for line in fd:
 
     if in_class:
         if tmp[0] == 'def':
+            comments = []
             # looking for __init__
             func_name = remove_char(tmp[1], '(')
             if func_name == '__init__':
