@@ -55,12 +55,15 @@ def abort(str):
 
 
 #
-# CLASS color
+# class color
 #
-# Separate class just to map color names to RGB values
+# Separate class just to map color names to RGB values.
+# Not of general use.
 #
 class color:
-    def __init__(self):
+    def __init__(self,
+                 # no arguments
+                 ):
         self.color_list = {
             'aliceblue'              :  '0.94 0.97 1.00',
             'antiquewhite'           :  '0.98 0.92 0.84',
@@ -249,7 +252,8 @@ class color:
 # all real canvas types; thus, each should inherit from here to use them.
 #
 class util:
-    def __init__(self):
+    def __init__(self,
+                 ):
         return
 
     #
@@ -270,7 +274,7 @@ class util:
         return float(unitStr)
 
     #
-    # stringwidth()
+    # stringWidth()
     #
     # This is a complete hack, and can be very wrong depending on the fontface
     # (which it should clearly be dependent upon). The problem, of course: only
@@ -281,7 +285,7 @@ class util:
     # etc.) but that is a complete pain as well. So, for now, we just make a
     # rough guess based on the length of the string and the size of the font.
     # 
-    def stringwidth(self, str, fontsize):
+    def stringWidth(self, str, fontsize):
         length = len(str)
         total  = 0.0
         for i in range(0,length):
@@ -440,23 +444,40 @@ class util:
 #
 # Use this to make an SVG drawing surface
 #
-class svg(util):
+class svg(util): 
     #
     # __init__()
     #
-    def __init__(self, title='default.svg', dimensions=['3in','2in'],
-                 font='Helvetica', script=__file__):
+    def __init__(self, 
+                 # name of the output file
+                 title='default.svg',
+
+                 # size of the drawing surface
+                 dimensions=['3in','2in'],
+
+                 # default font for text
+                 font='Helvetica',
+
+                 # whether to add more info into output file
+                 verbose=False,
+
+                 # name of the file calling into zplot;
+                 # recorded in header of output file
+                 script=__file__,
+                 ):
         self.comments = ''
         self.commands = []
         
         self.program = 'zplot'
         self.version = 'python version 1.0'
-        # SHOULD INCLUDE SOME INFO IN HEADER
-        # __out('%%Creator: '+ str(self.program) + ' version:' + \
-        # str(self.version) + ' script:' + os.path.abspath(script) + \
-        #        ' host:'+socket.gethostname())
+
+        # SHOULD INCLUDE SOME INFO IN HEADER (in html comment form)
+        self.__comment('Creator: %s version %s script: %s host: %s' % \
+                 (self.program, self.version, os.path.abspath(script),
+                  socket.gethostname()))
 
         self.default = font
+        self.verbose = verbose
 
         self.date    = str(time.strftime('%X %x %Z'))
         self.title   = title
@@ -471,6 +492,8 @@ class svg(util):
 
         #
         # init svg output header
+        #
+        # This is taken from http://tutorials.jenkov.com/svg
         #
         self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
                  'xmlns:xlink="http://www.w3.org/1999/xlink">')
@@ -511,7 +534,9 @@ class svg(util):
             ):
         # ARROW NOT IMPLEMENTED (YET)
         assert(arrow == False)
-
+        assert(linecap == 0)
+        assert(closepath == False)
+        
         linecolor = self.__getcolor(linecolor)
         point = coord[0]
         self.__startpath()
@@ -534,8 +559,13 @@ class svg(util):
         # END: line()
 
     # 
-    # LINE HELPER FUNCTIONS
+    # INTERNAL HELPER FUNCTIONS
     #
+
+    def __comment(self, msg):
+        self.out('<!--')
+        self.outnl(msg)
+        self.outnl('-->')
 
     def __startpath(self):
         self.out('<path d="')
@@ -1131,8 +1161,23 @@ class postscript(util):
     # initialize everything for this particular canvas
     # (one drawing surface per PS canvas, saved to exactly one file, of course)
     # 
-    def __init__(self, title='default.eps', dimensions=['3in','2in'],
-                 font='Helvetica', script=__file__):
+    def __init__(self,
+                 # name of the output file
+                 title='default.eps',
+
+                 # size of the drawing surface
+                 dimensions=['3in','2in'],
+
+                 # default font for text
+                 font='Helvetica',
+                 
+                 # whether to add more info into output file
+                 verbose=False,
+
+                 # name of the file calling into zplot;
+                 # recorded in header of output file
+                 script=__file__,
+                 ):
         self.comments = ''
         self.commands = []
         
@@ -1789,12 +1834,29 @@ class postscript(util):
 # 
 class drawable:
     def __init__(self,
+                 # Canvas object upon which to draw.
                  canvas     = '',
+
+                 # Dimensions of the drawable surface; e.g., ['1in','1in']
+                 # if left as empty list, will make a guess as to size.
                  dimensions = [],
+
+                 # Lower-left corner of drawable should be placed at this
+                 # location on the canvas. If left as empty, will make a guess.
                  coord      = [],
+
+                 # X range of the drawable.
                  xrange     = [],
+
+                 # Y range of the drawable
                  yrange     = [],
+
+                 # Scale to use ('linear' or 'log2' or 'log10' or 'logX')
+                 # for x range; currently, no other types of scales supported.
                  xscale     = 'linear',
+
+                 # Scale to use ('linear' or 'log2' or 'log10' or 'logX')
+                 # for y range; currently, no other types of scales supported.
                  yscale     = 'linear',
                  ):
         # record canvas of this drawable...
@@ -2012,9 +2074,24 @@ class drawable:
 #
 class table:
     def __init__(self,
+                 # File name where table should be populated from;
+                 # file should have fixed number of columns of data.
                  file  = '',
+
+                 # If file name is not specified (as above), can populate
+                 # a table with data from another table (this makes a copy).
                  table = '',
+
+                 # When initializing a table from another table, use the
+                 # 'where' option to perform a selection of which data you want.
+                 # For example, 'where=c0 > 10' populates the new table with
+                 # all rows where the first value in the row (i.e., c0) is
+                 # greater than 10.
                  where = '',
+
+                 # When reading from a file, use the 'separator' to split each
+                 # line and thus decide the different entries for that line.
+                 # Default is to use whitespace; a colon is a common one too.
                  separator = '',
                  ):
         self.file = file
@@ -2304,7 +2381,12 @@ class table:
 # rotate them, how to anchor them, how to place them, font, size, and color.
 # 
 class plotter:
-    def __init__(self, drawable=''):
+    def __init__(self,
+                 # The default drawable for this plotter. However, you can
+                 # specify a different drawable when making specific graphs
+                 # (which thus overrides this default).
+                 drawable=''
+                 ):
         self.drawable = drawable
         return
 
@@ -3170,157 +3252,254 @@ class plotter:
 # 
 class axis:
     def __init__(self,
-                 drawable      = '',        
-                 linecolor     = 'black',   # color of axis line
-                 linewidth     = 1.0,       # width of axis line
+                 drawable      = '',
 
-                 # dash parameters; will make axes dashed, but not tic marks
+                 # The color of axis line.
+                 linecolor     = 'black',
+
+                 # The width of axis line.
+                 linewidth     = 1.0,       
+
+                 # dash parameters; will make axes dashed, but not tic marks.
+                 # 0 means no dashes; otherwise use a list to specify the
+                 # dash pattern (e.g., [2,2], or [2,3,2], etc.).
                  linedash      = 0,
 
-                 # which axes to draw: 'xy', 'x', 'y', 'box' are options
+                 # Which axes to draw: 'xy', 'x', 'y', 'box' are the options.
                  style         = 'xy',
 
-                 # labels 'in'or'out'? for xaxis, 'out' means below/'in' above;
-                 # for yaxis,'out' means left/'in' right
+                 # Labels 'in' or 'out'? for xaxis, 'out' means below and
+                 # 'in' above; for yaxis,'out' means left/'in' right
                  labelstyle    = 'out',
 
-                 # are tics 'in', 'out', or 'centered'? (inside the axes,
+                 # Are tics 'in', 'out', or 'centered'? (inside the axes,
                  # outside them, or centered upon the axes)
                  ticstyle      = 'out',
 
-                 # whether to draw the actual axes or not
+                 # Whether to draw the actual axes or not; useful if you just
+                 # want to draw the tic marks, for example.
                  doaxis        = True,
 
-                 # whether to put labels on or not
+                 # Whether to put labels on or not.
                  dolabels      = True,
 
-                 # whether to put majortics on axes or not
+                 # Whether to put majortics on axes or not.
                  domajortics   = True,
 
-                 # whether to put major tics on x-axis
+                 # Whether to put major tics on x-axis.
                  doxmajortics  = True,
 
-                 # whether to put major tics on y-axis
+                 # Whether to put major tics on y-axis.
                  doymajortics  = True,
 
-                 # whether to put minortics on axes or not
+                 # Whether to put minortics on axes or not.
                  dominortics   = False,
 
-                 # whether to put major tics on x-axis
+                 # Whether to put major tics on x-axis.
                  doxminortics  = True,
 
-                 # whether to put major tics on y-axis
+                 # Whether to put major tics on y-axis.
                  doyminortics  = True,
 
-                 # whether to put labels on x-axis
+                 # Whether to put labels on x-axis.
                  doxlabels     = True,
 
-                 # whether to put labels on y-axis
+                 # Whether to put labels on y-axis.
                  doylabels     = True,      
 
-                 # min/max values to draw xaxis between; empty means whole range
+                 # The min/max values to draw xaxis between; empty (default)
+                 # means the whole range.
                  xaxisrange    = '',
 
-                 # min/max values to draw yaxis between; empty means whole range
+                 # The min/max values to draw yaxis between; empty (default)
+                 # means the whole range.
                  yaxisrange    = '',
 
-                 # y value x-axis is located at; empty->min; ignored by 'box'
+                 # The y value that the x-axis is located at; empty gives you
+                 # the min; ignored by 'box'.
                  xaxisposition = '',
 
-                 # x value y-axis is located at; empty->min; ignored by 'box'
+                 # The x value that the y-axis is located at; empty gives you
+                 # the min; ignored by 'box'.
                  yaxisposition = '',        
 
-                 # [x1,x2,step] (will put labels and major tics from x1 to x2
-                 # with step between each); can leave any of these empty and
-                 # the routine will fill in a guess (either the min or max of
-                 # the range, or a guess for the step), e.g., 0,,2 means start
-                 # at 0, fill in the max of the xrange for a max value, and
-                 # set the step to 2. The default is to guess these values.
+                 # [x1,x2,step] will put labels and major tics from 'x1' to 'x2'
+                 # with 'step' between each; can leave any of these empty ('')
+                 # and the method will fill in a guess (either the min or max 
+                 # of range, or a guess for the step), e.g., [0,'',2] means
+                 # start at 0, fill in the max of the xrange for a max value,
+                 # and set the step to 2. The default is to guess these values.
                  xauto         = ['','',''],
 
-                 # specify labels/majortics by hand with a list of form:
-                 # [[x1,'label1'],[x2,'label2']...]
+                 # Specify labels/majortics by hand with a list of form:
+                 # [['label1', x1], ['label2', x2]...]. Can also be filled in
+                 # from a table column with method table.getaxislabels(column=).
                  xmanual       = '',        
 
-                 # similar to xauto/xmanual, but for the yaxis
+                 # Similar to xauto, but for the y-axis.
                  yauto         = ['','',''],
+
+                 # Similar to xmanual, but for y-axis.
                  ymanual       = '',        
 
-                 # size of the major tics, size of the minor tics
-                 ticmajorsize  = 4.0,       
+                 # Size of the major tics.
+                 ticmajorsize  = 4.0,
+
+                 # Size of the minor tics.
                  ticminorsize  = 2.5,       
 
                  # how many minor tics between each major tic (x axis)
-                 # how many minor tics between each major tic (y axis)
                  xminorticcnt  = 1,
+
+                 # how many minor tics between each major tic (y axis)
                  yminorticcnt  = 1,         
 
-                 xlabelfont      = 'default', # font to use (if any)
-                 xlabelfontsize  = 10.0,      # font size of labels (if any)
-                 xlabelfontcolor = 'black',   # font color
-                 xlabelrotate   = 0,          # rotation for x labels
+                 # Font to use for x labels.
+                 xlabelfont      = 'default',
 
-                 # if non-empty, put a background colored square behind xlabels
+                 # font size of labels for x labels.
+                 xlabelfontsize  = 10.0,
+
+                 # font color for x labels.
+                 xlabelfontcolor = 'black',
+
+                 # Rotation for x labels, in degrees. If not 0, 90 is common.
+                 xlabelrotate   = 0,          
+
+                 # If non-empty, put a background colored square behind xlabels.
                  xlabelbgcolor = '',
-                 # text anchor for labels along the x axis; empty means guess
+                 
+                 # Text anchor for labels along the x axis; empty means guess.
                  xlabelanchor   = '',
 
-                 # format string for xlabels; e.g., %d for ints; empty (default)
+                 # Format string for xlabels; e.g., %d for ints; empty (default)
                  # implies best guess; can also use this to add decoration to
                  # the label, e.g., '%i %%' will add a percent sign to each
                  # integer label, and so forth.
                  xlabelformat   = '',         
 
-                 ylabelfont      = 'default', # font to use (if any)
-                 ylabelfontsize  = 10.0,      # font size of labels (if any)
-                 ylabelfontcolor = 'black',   # font color
-                 ylabelrotate   = 0,          # specified rotation for y labels
-                 ylabelbgcolor = '',          # just like xbgcolor
-                 ylabelanchor   = '',         # just like xanchor
-                 ylabelformat   = '',         # just like xformat
+                 # Font to use for y labels.
+                 ylabelfont      = 'default',
 
-                 # what to multiple xlabel by; e.g., if 10, 1->10, 2->20, etc.
-                 xlabeltimes   = 1,           
-                 # similar to xmul, but for ylabels
+                 # font size of labels for y labels.
+                 ylabelfontsize  = 10.0,
+
+                 # font color for y labels.
+                 ylabelfontcolor = 'black',
+
+                 # Rotation for x labels, in degrees. If not 0, 90 is common.
+                 ylabelrotate   = 0,          
+
+                 # If non-empty, put a background colored square behind ylabels.
+                 ylabelbgcolor = '',
+                 
+                 # Text anchor for labels along the x axis; empty means guess.
+                 ylabelanchor   = '',
+
+                 # Format string for y labels; see xlabelformat for details.
+                 ylabelformat   = '',         
+
+                 # What to multiply xlabel values by; e.g., if 10, 1 becomes 10,
+                 # 2 becomes 20, and so forth.
+                 xlabeltimes   = 1,
+                 
+                 # Similar to xlabeltimes, but for y label values.
                  ylabeltimes   = 1,           
 
-                 # shift xlabels left/right, up/down (+4,-3 -> right 4, down 3)
+                 # Shift xlabels left/right, up/down (+4,-3 -> right 4, down 3)
                  xlabelshift   = [0,0],
-                 # similar to xshift, but for ylabels
+                 
+                 # Similar to xshift, but for ylabels.
                  ylabelshift   = [0,0],       
 
-                 xtitle        = '',          # title along the x axis
-                 xtitlefont    = 'default',   # xtitle font to use
-                 xtitlesize    = 10,          # xtitle font size
-                 xtitlecolor   = 'black',     # xtitle font color
-                 xtitleplace   = 'c',         # c - center, l - left, r - right
-                 xtitlecoord   = '',          # coordinates of title; if empty,
-                                              # guess (adjust with -xtitleshift)
-                 xtitleshift   = [0,0],       # use this to adjust title place
-                 xtitlerotate  = 0,           # how much to rotate the title
-                 xtitleanchor  = '',          # how to anchor text; empty->guess
-                 xtitlebgcolor = '',          # if not-empty, color behind title
+                 # Title along the X axis.
+                 xtitle        = '',
 
-                 ytitle        = '',          # as above
-                 ytitlefont    = 'default',   # 
-                 ytitlesize    = 10,          # 
-                 ytitlecolor   = 'black',     # 
-                 ytitleplace   = 'c',         # 
-                 ytitlecoord   = '',          # 
-                 ytitleshift   = [0,0],       # 
-                 ytitlerotate  = 90.0,        # 
-                 ytitleanchor  = '',          # 
-                 ytitlebgcolor = '',          # 
+                 # Font to use for x title.
+                 xtitlefont    = 'default',
 
-                 title         = '',          # main title of axis
-                 titlefont     = 'default',   # rest are as above
-                 titlesize     = 10.0,        # 
-                 titlecolor    = 'black',     # 
-                 titleplace    = 'c',         # 
-                 titleshift    = [0,0],       # 
-                 titlerotate   = 0,           # 
-                 titleanchor   = '',          # 
-                 titlebgcolor  = '',          # 
+                 # Font size for x title.
+                 xtitlesize    = 10,
+
+                 # Font color for xtitle.
+                 xtitlecolor   = 'black',
+
+                 # General placement of xtitle:
+                 # 'c' for center, 'l' for left, 'r' for right.
+                 xtitleplace   = 'c',
+
+                 # Coordinates of title; if empty, guess (you can always
+                 # adjust final placement with -xtitleshift).
+                 xtitlecoord   = '',          
+
+                 # Use this to adjust title place left/right, up/down.
+                 xtitleshift   = [0,0],
+
+                 # How much (in degrees) to rotate the title.
+                 xtitlerotate  = 0,
+
+                 # How to anchor text; empty means best guess.
+                 xtitleanchor  = '',
+
+                 # If not-empty, color behind title.
+                 xtitlebgcolor = '',          
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitle        = '',          
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitlefont    = 'default',   
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitlesize    = 10,          
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitlecolor   = 'black',     
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitleplace   = 'c',         
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitlecoord   = '',          
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitleshift   = [0,0],       
+
+                 # Same as with xtitle, but for ytitle (default is different).
+                 ytitlerotate  = 90.0,        
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitleanchor  = '',          
+
+                 # Same as with xtitle, but for ytitle.
+                 ytitlebgcolor = '',          
+
+                 # Main title of the graph.
+                 title         = '',          
+
+                 # Same as with xtitle, but for main title.
+                 titlefont     = 'default',   
+
+                 # Same as with xtitle, but for main title.
+                 titlesize     = 10.0,        
+
+                 # Same as with xtitle, but for main title.
+                 titlecolor    = 'black',     
+
+                 # Same as with xtitle, but for main title.
+                 titleplace    = 'c',         
+
+                 # Same as with xtitle, but for main title.
+                 titleshift    = [0,0],       
+
+                 # Same as with xtitle, but for main title.
+                 titlerotate   = 0,           
+
+                 # Same as with xtitle, but for main title.
+                 titleanchor   = '',          
+
+                 # Same as with xtitle, but for main title.
+                 titlebgcolor  = '',          
                  ):
         assert(drawable != '')
 
@@ -3569,7 +3748,7 @@ class axis:
         # height and width
         height = fontsize
         canvas = drawable.canvas
-        width  = canvas.stringwidth(label, fontsize)
+        width  = canvas.stringWidth(label, fontsize)
 
         # get anchors
         a = anchor.split(',')
@@ -4002,31 +4181,42 @@ class axis:
 #
 class grid:
     def __init__(self,
-                 drawable  = '',           # the relevant drawable
-                 linecolor = 'black',      # color of axis line
-                 linewidth = 0.5,          # width of axis line
+                 # The relevant drawable upon which to place this grid.
+                 drawable  = '',
 
-                 # dash parameters; will make axes dashed, but not tic marks
+                 # The color of grid lines.
+                 linecolor = 'black',
+
+                 # The width of grid lines.
+                 linewidth = 0.5,          
+
+                 # Make grid lines dashed as per usual patterns. Examples:
+                 # 0 for no dashes, [2,2] for length 2 lines with length 2
+                 # spaces, etc.
                  linedash  = 0,
-                 # specify false to turn off grid in x direction (vert. lines)
+                 
+                 # Specify false to turn off grid in x direction
+                 # (False means no vertical lines).
                  x         = True,
-                 # specify false to turn off grid in y direction (horiz. lines)
+
+                 # Specify false to turn off grid in y direction
+                 # (False means no horizontal lines).
                  y         = True,
 
-                 # empty means whole range, otherwise a 'y1,y2' as beginning
-                 # and end of the  range to draw vertical lines upon
+                 # Empty means whole range, otherwise a [y1,y2] as beginning
+                 # and end of the range to draw vertical lines upon.
                  xrange    = '',
 
-                 # how much space to skip between each grid line; if log scale,
-                 # this will be used in a multiplicative way
+                 # How much space to skip between each x. grid line. 
+                 # If log scale, this will be used in a multiplicative manner.
                  xstep     = '',
 
-                 # empty means whole range, otherwise a 'x1,x2' as beginning
-                 # and end of the  range to draw horizontal lines upon
+                 # Empty means whole range, otherwise a [x1,x2] as beginning
+                 # and end of the range to draw horizontal lines upon.
                  yrange    = '',
 
-                 # how much space to skip between each grid line; if log scale,
-                 # this will be used in a multiplicative way
+                 # How much space to skip between each y grid line.
+                 # if log scale, this will be used in a multiplicative manner.
                  ystep     = '',           
                  ):
 
@@ -4090,7 +4280,8 @@ class grid:
 # Then, call draw() to make it on the plot.
 # 
 class legend:
-    def __init__(self):
+    def __init__(self
+                 ):
         # 'info' field will track each picture and text in the legend
         # All the work is done later - when legend is drawn.
         self.info = []
