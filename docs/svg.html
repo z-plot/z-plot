@@ -4,11 +4,99 @@
 <p>
 <b> Initialize class with following parameters:</b>
 <table>
-<tr><td><b>title</b></td> <td>-</td><td>default: 'default.svg'</td><td>-</td><td> name of the output file</td> </tr>
-<tr><td><b>dimensions</b></td> <td>-</td><td>default: ['3in','2in']</td><td>-</td><td> size of the drawing surface</td> </tr>
-<tr><td><b>font</b></td> <td>-</td><td>default: 'Helvetica'</td><td>-</td><td> default font for text</td> </tr>
-<tr><td><b>verbose</b></td> <td>-</td><td>default: False</td><td>-</td><td> whether to add more info into output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td><b>script</b></td> <td>-</td><td>default: __file__</td><td>-</td><td> name of the file calling into zplot; recorded in header of output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.svg'</td><td style="width:10px"></td><td> name of the output file</td> </tr>
+<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> size of the drawing surface</td> </tr>
+<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> default font for text</td> </tr>
+<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> whether to add more info into output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> name of the file calling into zplot; recorded in header of output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> Method render</h3><table>
+
+<p> 
+ Use this routine when all done with making graphics to print out all the commands you've been queueing up to a file. 
+</p>
+</table>
+</p>
+
+<h3> Method line</h3><table>
+
+<p> 
+ Use this to draw a line on the canvas. Can also add an optional arrow. 
+</p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of the line. A list of [x,y] pairs. Can</td></tr><tr><td></td><td></td><td></td><td></td><td> be as long as you like (not just two points).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the line.</td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of the line.</td> </tr>
+<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> For turns in the line, how turn should be rounded.</td></tr><tr><td></td><td></td><td></td><td></td><td> Options include 'miter', 'bevel', 'round'.</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is just do hard turns (miter).</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td></td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern of the line. '0' means no dashes.</td></tr><tr><td></td><td></td><td></td><td></td><td> Otherwise, a list describing the on/off pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>closepath</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Can use this to close the path (and perhaps fill it).</td></tr><tr><td></td><td></td><td></td><td></td><td> However, not really supported right now.</td> </tr>
+<tr><td style="width:150px"><b>arrow</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Turn an arrow at last segment on or off.</td> </tr>
+<tr><td style="width:150px"><b>arrowheadlength</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Length of arrow head.</td> </tr>
+<tr><td style="width:150px"><b>arrowheadwidth</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Width of arrow head.</td> </tr>
+<tr><td style="width:150px"><b>arrowlinecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of arrow head line.</td> </tr>
+<tr><td style="width:150px"><b>arrowlinewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 0.5</td><td style="width:10px"></td><td> Width of line that makes arrow head.</td> </tr>
+<tr><td style="width:150px"><b>arrowfill</b></td><td style="width:10px"></td><td style="width:150px">default: True</td><td style="width:10px"></td><td> Fill arrow head with solid color?</td> </tr>
+<tr><td style="width:150px"><b>arrowfillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color to fill arrow head with.</td> </tr>
+<tr><td style="width:150px"><b>arrowstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'normal'</td><td style="width:10px"></td><td> Style to use. 'normal' is one option. There are no others.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+</table>
+</p>
+
+<h3> Method text</h3><table>
+
+<p> 
+ Use this routine to place text on the canvas. Most options are obvious: the expected coordinate pair, color, text, font, size - the size of the font, rotation - which way the text should be rotated, but the anchor can be a bit confusing. Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed. Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h), and middle (m), again all determining the placement of the text relative to the y coordinate specified. 
+</p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates for text on the canvas.</td> </tr>
+<tr><td style="width:150px"><b>text</b></td><td style="width:10px"></td><td style="width:150px">default: 'text'</td><td style="width:10px"></td><td> Actual text to place on the canvas.</td> </tr>
+<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'default'</td><td style="width:10px"></td><td> Typeface to use.</td> </tr>
+<tr><td style="width:150px"><b>color</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of letters.</td> </tr>
+<tr><td style="width:150px"><b>size</b></td><td style="width:10px"></td><td style="width:150px">default: 16</td><td style="width:10px"></td><td> Font size.</td> </tr>
+<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate text by this many degrees.</td> </tr>
+<tr><td style="width:150px"><b>anchor</b></td><td style="width:10px"></td><td style="width:150px">default: 'c'</td><td style="width:10px"></td><td> Anchor: can either just specify left/right</td></tr><tr><td></td><td></td><td></td><td></td><td> (e.g., 'c' for center, 'l' for left justify, 'r' for right)</td></tr><tr><td></td><td></td><td></td><td></td><td> or can also specify vertical alignment (e.g., 'l,h' for left justify and high justify,</td></tr><tr><td></td><td></td><td></td><td></td><td> 'r,c' for right and center, 'l,l' for left and low).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind text? Empty means no.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>bgborder</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Border (black) around background color?</td> </tr>
+</table>
+</p>
+
+<h3> Method box</h3><table>
+
+<p> 
+ Makes a box at coords specifying the bottom-left and upper-right corners. Options: - Can change the surrounding line (linewidth=0 removes it) - Can fill with solid or pattern When filling with non-solid pattern, can add a background color so as not to be see-through. 
+</p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of box, from [x1,y1] to [x2,y2].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines that draws box.</td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of those lines. 0 means unlined box.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern in lines around box?</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default, otherwise consider</td></tr><tr><td></td><td></td><td></td><td></td><td> 'miter', 'round', or 'bevel'.</td> </tr>
+<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Should box be filled? If so, specify here.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the fill pattern.</td> </tr>
+<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Type of fill pattern. Right now, all are 'solid'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of fill pattern includes size of each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Also includes spacing between each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate the box by this many degrees.</td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Put a background color behind the box. Useful when pattern has</td></tr><tr><td></td><td></td><td></td><td></td><td> see-through parts in it.</td> </tr>
+</table>
+</p>
+
+<h3> Method circle</h3><table>
+
+<p> 
+ Can just make circles with this. Can fill them too. Exciting! 
+</p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates of center of circle in [x,y].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>radius</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Radius of circle.</td> </tr>
+<tr><td style="width:150px"><b>scale</b></td><td style="width:10px"></td><td style="width:150px">default: [1,1]</td><td style="width:10px"></td><td> Scale in x direction and y direction, to make</td></tr><tr><td></td><td></td><td></td><td></td><td> an ellipse, for example.</td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines of circle.</td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of lines of circle.</td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Whether line is dashed or not.</td> </tr>
+<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Fill circle with colored pattern?</td> </tr>
+<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Which color?</td> </tr>
+<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Which pattern?</td> </tr>
+<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of pattern: size of each marker.</td> </tr>
+<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Details of pattern: space between each marker.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind circle, useful if fill pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> has some holes in it.</td> </tr>
 </table>
 </p>
 </html>

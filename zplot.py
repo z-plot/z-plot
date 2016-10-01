@@ -55,7 +55,7 @@ def abort(str):
 
 
 #
-# class color
+# --class-- color
 #
 # Separate class just to map color names to RGB values.
 # Not of general use.
@@ -246,7 +246,7 @@ class color:
 
 
 #
-# CLASS util
+# --class-- util
 #
 # Class util has a number of shared utility methods for use across
 # all real canvas types; thus, each should inherit from here to use them.
@@ -440,14 +440,12 @@ class util:
 # END: canvas
 
 #
-# CLASS svg
+# --class-- svg
 #
-# Use this to make an SVG drawing surface
+# Use this to make an SVG drawing surface. A good source of info on SVG:
+# https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg.
 #
 class svg(util): 
-    #
-    # __init__()
-    #
     def __init__(self, 
                  # name of the output file
                  title='default.svg',
@@ -493,44 +491,78 @@ class svg(util):
         #
         # init svg output header
         #
-        # This is taken from http://tutorials.jenkov.com/svg
-        #
         self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
                  'xmlns:xlink="http://www.w3.org/1999/xlink">')
         return
 
     # 
-    # render()
+    # --method-- render
     # 
-    # Use this routine to print out all the postscript commands you've been
-    # queueing up to a file or 'stdout' (default).
+    # Use this routine when all done with making graphics to print out all
+    # the commands you've been queueing up to a file.
     # 
-    def render(self):
+    def render(self,
+               ):
         self.out('</svg>')
         self.dump(self.title)
         return
 
     #
-    # line()
+    # --method-- line
     #
-    # Use this to draw a line on the canvas.
+    # Use this to draw a line on the canvas. Can also add an optional arrow.
     # 
     def line(self,
+             # Coordinates of the line. A list of [x,y] pairs. Can
+             # be as long as you like (not just two points).
              coord           = [[0,0],[0,0]],
+
+             # Color of the line.
              linecolor       = 'black',
+
+             # Width of the line.
              linewidth       = 1,
+
+             # For turns in the line, how turn should be rounded.
+             # Options include 'miter', 'bevel', 'round'.
+             # Default is just do hard turns (miter).
              linejoin        = 0,
+
+             
              linecap         = 0,
+
+             # Dash pattern of the line. '0' means no dashes.
+             # Otherwise, a list describing the on/off pattern
+             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
              linedash        = 0,
+
+             # Can use this to close the path (and perhaps fill it).
+             # However, not really supported right now.
              closepath       = False,
+
+             # Turn an arrow at last segment on or off.
              arrow           = False,
+
+             # Length of arrow head.
              arrowheadlength = 4,
+
+             # Width of arrow head.
              arrowheadwidth  = 3,
+
+             # Color of arrow head line.
              arrowlinecolor  = 'black',
+
+             # Width of line that makes arrow head.
              arrowlinewidth  = 0.5,
+
+             # Fill arrow head with solid color?
              arrowfill       = True,
-             arrowfillcolor  = 'black', 
-             arrowstyle      = 'normal'
+
+             # Color to fill arrow head with.
+             arrowfillcolor  = 'black',
+
+             # Style to use. 'normal' is one option. There are no others.
+             arrowstyle      = 'normal',
             ):
         # ARROW NOT IMPLEMENTED (YET)
         assert(arrow == False)
@@ -548,6 +580,10 @@ class svg(util):
         self.__startstyle()
         self.outnl('stroke="%s" ' % linecolor)
         self.outnl('stroke-width="%.2fpx" ' % linewidth)
+        if linejoin != 0:
+            assert(linejoin == 'miter' or linejoin == 'bevel' or \
+                   linejoin == 'round')
+            self.outnl('stroke-linejoin="%%s" ' % linejoin)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % \
                                 self.__getdash(linedash))
@@ -608,11 +644,12 @@ class svg(util):
             else:
                 outdash = outdash + ',' + str(e)
         return outdash
-        
-    # text()
+
     # 
-    # Use this routine to place text on the canvas. Most options are obvious
-    # (the expected coordinate pair, color, text, font, size - the size of the
+    # --method-- text
+    # 
+    # Use this routine to place text on the canvas. Most options are obvious:
+    # the expected coordinate pair, color, text, font, size - the size of the
     # font, rotation - which way the text should be rotated, but the anchor can
     # be a bit confusing. Basically, the anchor determines where, relative to
     # the coordinate pair (x,y), the text should be placed. Simple anchoring
@@ -625,14 +662,35 @@ class svg(util):
     # coordinate specified.
     # 
     def text(self,
+             # Coordinates for text on the canvas.
              coord    = [0,0],
+
+             # Actual text to place on the canvas.
              text     = 'text',
+
+             # Typeface to use.
              font     = 'default',
+
+             # Color of letters.
              color    = 'black',
+
+             # Font size.
              size     = 16,
+
+             # Rotate text by this many degrees.
              rotate   = 0,
+
+             # Anchor: can either just specify left/right
+             # (e.g., 'c' for center, 'l' for left justify, 'r' for right)
+             # or can also specify vertical alignment
+             # (e.g., 'l,h' for left justify and high justify,
+             # 'r,c' for right and center, 'l,l' for left and low).
              anchor   = 'c',
+
+             # Background color behind text? Empty means no.
              bgcolor  = '',
+
+             # Border (black) around background color?
              bgborder = 1,
              ):
         color = self.__getcolor(color)
@@ -688,9 +746,9 @@ class svg(util):
         return
 
     # 
-    # box()
+    # --method-- box
     #
-    # Makes a box at coords specifying the bottom-left and upper-right corners
+    # Makes a box at coords specifying the bottom-left and upper-right corners.
     # Options:
     # - Can change the surrounding line (linewidth=0 removes it)
     # - Can fill with solid or pattern
@@ -698,21 +756,48 @@ class svg(util):
     # as not to be see-through.
     # 
     def box(self,
+            # Coordinates of box, from [x1,y1] to [x2,y2].
             coord       = [[0,0],[0,0]],
+
+            # Color of lines that draws box.
             linecolor   = 'black',
+
+            # Width of those lines. 0 means unlined box.
             linewidth   = 1,
+
+            # Dash pattern in lines around box?
             linedash    = 0,
+
+            # How should corners be done? 0 is default, otherwise consider
+            # 'miter', 'round', or 'bevel'.
             linecap     = 0,
+
+            # Should box be filled? If so, specify here.
             fill        = False,
+
+            # Color of the fill pattern.
             fillcolor   = 'black',
+
+            # Type of fill pattern. Right now, all are 'solid'.
             fillstyle   = 'solid',
+
+            # Details of fill pattern includes size of each marker in pattern.
             fillsize    = 3,
+
+            # Also includes spacing between each marker in pattern.
             fillskip    = 4,
+
+            # Rotate the box by this many degrees.
             rotate      = 0,
+
+            # Put a background color behind the box. Useful when pattern has
+            # see-through parts in it.
             bgcolor     = '',
             ):
-        # DOES NOT YET SUPPORT OTHER FILLS
+        # DOES NOT YET SUPPORT SOME FEATURES
         assert(fillstyle == 'solid')
+        assert(rotate == 0)
+        assert(bgcolor == '')
         
         x1, y1 = coord[0][0], self.__converty(coord[0][1])
         x2, y2 = coord[1][0], self.__converty(coord[1][1])
@@ -758,26 +843,54 @@ class svg(util):
         assert(0 == 1)
         return
 
-    # circle()
+    # 
+    # --method-- circle
     #
-    # Can just make circles with this. Filled or not.
+    # Can just make circles with this. Can fill them too. Exciting!
     #
     def circle(self,
+               # Coordinates of center of circle in [x,y].
                coord     = [0,0],
+
+               # Radius of circle.
                radius    = 1,
+
+               # Scale in x direction and y direction, to make
+               # an ellipse, for example.
                scale     = [1,1],
+
+               # Color of lines of circle.
                linecolor = 'black',
+
+               # Width of lines of circle.
                linewidth = 1,
+
+               # Whether line is dashed or not.
                linedash  = 0,
+
+               # Fill circle with colored pattern?
                fill      = False,
+
+               # Which color?
                fillcolor = 'black',
+
+               # Which pattern?
                fillstyle = 'solid',
+
+               # Details of pattern: size of each marker.
                fillsize  = 3,
+
+               # Details of pattern: space between each marker.
                fillskip  = 4,
-               bgcolor   = ''
+
+               # Background color behind circle, useful if fill pattern
+               # has some holes in it.
+               bgcolor   = '',
                ):
-        # DOES NOT YET SUPPORT OTHER FILL STYLES
+        # DOES NOT SUPPORT SOME STUFF
         assert(fillstyle == 'solid')
+        assert(bgcolor == '')
+
         x, y = coord[0], self.__converty(coord[1])
         self.out('<circle cx="%.2f" cy="%.2f" r="%.2f" ' % (x, y, radius))
         self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
@@ -1306,7 +1419,7 @@ class postscript(util):
              arrowlinewidth  = 0.5,
              arrowfill       = True,
              arrowfillcolor  = 'black', 
-             arrowstyle      = 'normal'
+             arrowstyle      = 'normal',
             ):
 
         # save the context to begin
@@ -1398,8 +1511,8 @@ class postscript(util):
     # 
     # text()
     # 
-    # Use this routine to place text on the canvas. Most options are obvious
-    # (the expected coordinate pair, color, text, font, size - the size of the
+    # Use this routine to place text on the canvas. Most options are obvious:
+    # the expected coordinate pair, color, text, font, size - the size of the
     # font, rotation - which way the text should be rotated, but the anchor can
     # be a bit confusing. Basically, the anchor determines where, relative to
     # the coordinate pair (x,y), the text should be placed. Simple anchoring
@@ -2368,7 +2481,7 @@ class table:
 # END: class table
 
 # 
-# class plotter
+# --class-- plotter
 #
 # Use this to draw some points on a drawable. There are some obvious parameters:
 # which drawable, which table, which x and y columns from the table to use, the
@@ -2391,56 +2504,110 @@ class plotter:
         return
 
     #
-    # points()
+    # --method-- points
     #
-    # Use this to draw points onto the drawing surface. Lots of options...
+    # Use this to draw points, as specified by x,y of a table, onto a drawable.
+    # Basically, how you make a scatter plot is with the points() method.
     #
     def points(self,
-               drawable        = '',        # name of the drawable area
-               table           = '',        # name of table to use
-               where           = '',        # where clause: which rows to plot?
-               xfield          = 'c0',      # table column with x data
-               yfield          = 'c1',      # table column with y data
-               shift           = [0,0],     # shift points in x,y direction
-               size            = 2.0,       # overall size of marker;
-                                            # used unless sizefield is specified
-               style           = 'xline',   # label,hline,vline,plusline,xline,
-                                            # dline1,dline2,dline12,square,
-                                            # circle,triangle,utriangle,diamond,
-                                            # star,asterisk
-               sizefield       = '',        # if specified, table column with
-                                            # sizes for each point
-               sizediv         = '',        # if using sizefield, use sizediv to
-                                            # scale each value (each sizefield
-                                            # gets divided by sizediv)
-               linecolor       = 'black',   # color of the line of the marker
-               linewidth       = 1.0,       # width of lines used to draw marker
-               fill            = False,     # for some shapes, filling makes
-                                            # sense; if desired, mark this true
-               fillcolor       = 'black',   # if filling, use this fill color
-               fillstyle       = 'solid',   # if filling, which fill style 
-               fillsize        = 3.0,       # size of object in pattern
-               fillskip        = 4.0,       # space between object in pattern
-               labelfield      = '',        # if specified, table column with
-                                            # labels for each point
-               labelformat     = '%s',      # if specified, table column with
-                                            # labels for each point
-               labelrotate     = 0,         # if using labels, rotate labels
-               labelanchor     = 'c,c',     # if using labels, how to anchor 
-               labelplace      = 'c',       # if using labels, place text:
-                                            # (c) centered on point, (s) below
-                                            # point, (n) above point, (w) west
-                                            # of point, (e) east of point
-               labelshift      = [0,0],     # shift text in x,y direction
-               labelfont       = 'default', # if using labels, what font 
-               labelsize       = 6.0,       # if using labels, font for label
-               labelcolor      = 'black',   # if using labels, what color font
-               labelbgcolor    = '',        # if using labels, put a background
-                                            # color behind each
-               legend          = '',        # which legend?
-               legendtext      = '',        # text to add to legend
-               stackfields     = [],        # fields to add to yfield to
-                                            # determine y coord
+               # Drawable object to place points onto.
+               drawable        = '',
+
+               # Table object to suck data from. 
+               table           = '',
+
+               # Where clause: which rows to plot? Default is all rows.
+               where           = '',
+
+               # Table column with x data.
+               xfield          = 'c0',
+
+               # Table column with y data.
+               yfield          = 'c1',
+
+               # Shift points in x,y direction by this amount.
+               shift           = [0,0],
+
+               # Size of each point; used unless sizefield is specified.
+               size            = 2.0,       
+
+               # Lots of styles available for these points, including:
+               # label, hline, vline, plusline, xline, dline1, dline2, dline12,
+               # square, circle, triangle, utriangle, diamond, star, asterisk.
+               style           = 'xline',
+
+               # If specified, table column with sizes for each point.
+               # Allows point size to vary which is a nice feature.
+               sizefield       = '',        
+
+               # If using sizefield, use sizediv to scale each value (each sizefield
+               # gets divided by sizediv to get to the final size).
+               sizediv         = '',        
+
+               # Color of the line of the marker.
+               linecolor       = 'black',
+
+               # Width of lines used to draw marker.
+               linewidth       = 1.0,
+
+               # For some shapes, filling makes sense; if desired, mark this true.
+               fill            = False,
+
+               # If filling, use this fill color. 
+               fillcolor       = 'black',
+
+               # If filling, which fill style: solid, hline, vline, hvline,
+               # dline1, dline2, dline12, circle, square, triangle, utriangle.
+               fillstyle       = 'solid',
+
+               # Size of object in pattern.
+               fillsize        = 3.0,
+
+               # Space between object in pattern.
+               fillskip        = 4.0,
+
+               # If specified, table column with labels for each point.
+               labelfield      = '',        
+
+               # If specified, table column with labels for each point.
+               labelformat     = '%s',      
+
+               # If using labels, rotate labels by this many degrees.
+               labelrotate     = 0,
+
+               # If using labels, how to anchor them. 'x,y' where x can be
+               # 'c' or 'l' or 'r' (for center, left, right) and y can be
+               # 'c' or 'h' or 'l' for center, high, low).
+               labelanchor     = 'c,c',
+
+               # If using labels, place text: 'c' centered on point,
+               # 's' below [south], 'n' above [north], 'e' east, 'w' west.
+               labelplace      = 'c',
+
+               # Shift text in label x,y direction
+               labelshift      = [0,0],
+
+               # If using labels, what font.
+               labelfont       = 'default',
+
+               # If using labels, fontsize for label.
+               labelsize       = 6.0,
+
+               # If using labels, what color font.
+               labelcolor      = 'black',
+
+               # If using labels, put a background color behind each.
+               labelbgcolor    = '',        
+
+               # Which legend object to use to add legend text to.
+               legend          = '',
+
+               # Text to add to legend.
+               legendtext      = '',
+
+               # Fields to add to yfield to determine y coord.
+               # Can use this instead of table methods.
+               stackfields     = [],        
                ):
         if drawable == '':
             drawable = self.drawable
@@ -2511,43 +2678,68 @@ class plotter:
 
 
     # 
-    # horizontalbars()
+    # --method-- horizontalbars
     # 
     # Use this to plot horizontal bars. The options are quite similar to the
     # vertical cousin of this routine, except (somehow) less feature-filled
     # (hint: lazy programmer).
     # 
     def horizontalbars(self,
+                       # Drawable object on which to put the bars.
                        drawable    = '',
+
+                       # Table from which to draw data.
                        table       = '',
+
+                       # SQL select to subset the data as need be.
                        where       = '',
+
+                       # Table column with x values.
                        xfield      = 'c0',
+
+                       # Table column with y values.
                        yfield      = 'c1',
 
-                       # if specified, table column with xlo data; use if bars
-                       # don't start at the minimum of the range
+                       # If specified, table column with xlo data; use if bars
+                       # don't start at the minimum of the range.
                        xloval      = '',
 
-                       # width of the bars
+                       # Width of the bars.
                        barwidth    = 1.0,
 
-                       # color, width of lines
+                       # Color of the lines.
                        linecolor   = 'black',
+
+                       # Width of the lines. 0 means no lines at all!
                        linewidth   = 1.0,
 
-                       # if filling, description of fill of bars
+                       # Whether to fill each bar with some pattern.
                        fill        = False,
+
+                       # Fill color for bars (if fill=True).
                        fillcolor   = 'black',
+
+                       # Fill style for bars (if fill=True).
                        fillstyle   = 'solid',
+
+                       # Fill size (if pattern has a marker of some size in it).
                        fillsize    = 3,
+
+                       # Fill space between markers (if pattern has marker in it).
                        fillskip    = 4,
 
-                       # background color for legend text, + other legend stuff
+                       # Background color for bar - can make sense if pattern
+                       # contains little markers, for example, because you can use
+                       # this to fill in a background color then.
                        bgcolor     = '',
+
+                       # Legend object (if using a legend).
                        legend      = '',
+
+                       # Text for legend.
                        legendtext  = '',
 
-                       # fields to add to yfield to determine y coord
+                       # Fields to add to yfield to determine y coord.
                        stackfields = [],       
                        ):
         if drawable == '':
