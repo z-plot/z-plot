@@ -1837,8 +1837,8 @@ class drawable:
                  # Canvas object upon which to draw.
                  canvas     = '',
 
-                 # Dimensions of the drawable surface; e.g., ['1in','1in']
-                 # if left as empty list, will make a guess as to size.
+                 # Dimensions of the drawable surface; e.g., ['1in','1in']. 
+                 # If left as empty list, will make a guess as to size.
                  dimensions = [],
 
                  # Lower-left corner of drawable should be placed at this
@@ -2385,7 +2385,7 @@ class plotter:
                  # The default drawable for this plotter. However, you can
                  # specify a different drawable when making specific graphs
                  # (which thus overrides this default).
-                 drawable=''
+                 drawable='',
                  ):
         self.drawable = drawable
         return
@@ -3252,6 +3252,7 @@ class plotter:
 # 
 class axis:
     def __init__(self,
+                 # The drawable object upon which to draw this axis.
                  drawable      = '',
 
                  # The color of axis line.
@@ -4288,14 +4289,18 @@ class legend:
     # END: __init__
 
     # 
-    # legend()
+    # method draw()
+    # 
     # Use this to draw a legend given the current entries in the legend.
-    # Lots of options are available.
     # 
     def draw(self,
+             # Legend draws directly onto canvas.
              canvas      = '',        
 
-             # where to place the legend (lower left point)
+             # Where to place the legend (lower left point).
+             # Note these are canvas coordinates; if you want to use a
+             # drawable's coordinated (e.g., drawable 'd'), call d.map([x,y])
+             # and pass the result into 'coord' here for the desired outcome.
              coord       = '',
 
              # which side to place the text on, right or left?
