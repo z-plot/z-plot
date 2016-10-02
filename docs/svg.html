@@ -2,9 +2,9 @@
 
 <h2> Class svg</h2>
 
-<p>  Use this to make an SVG drawing surface. A good source of info on SVG: https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg. </p>
+<p>  Use this to make an SVG drawing surface. A good source of info on SVG: https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg.  Not super complete right now, in particular in support of making arbitrary shapes and things like that inside of boxes. </p>
 <p>
-<b> Initialize class with following parameters:</b>
+<b>Initialize with following parameters:</b>
 <table>
 <tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.svg'</td><td style="width:10px"></td><td> name of the output file</td> </tr>
 <tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> size of the drawing surface</td> </tr>
@@ -26,8 +26,8 @@
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of the line. A list of [x,y] pairs. Can</td></tr><tr><td></td><td></td><td></td><td></td><td> be as long as you like (not just two points).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the line.</td> </tr>
 <tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of the line.</td> </tr>
-<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> For turns in the line, how turn should be rounded.</td></tr><tr><td></td><td></td><td></td><td></td><td> Options include 'miter', 'bevel', 'round'.</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is just do hard turns (miter).</td> </tr>
-<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Shape used at end of line ('butt', 'round', 'square')</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> For turns in the line, how turn should be rounded.</td></tr><tr><td></td><td></td><td></td><td></td><td> Options include 0->'miter', 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is just do hard turns (miter).</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Shape used at end of line (0->'butt', 1->'round', 2->'square')</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern of the line. '0' means no dashes.</td></tr><tr><td></td><td></td><td></td><td></td><td> Otherwise, a list describing the on/off pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>closepath</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Can use this to close the path (and perhaps fill it).</td></tr><tr><td></td><td></td><td></td><td></td><td> However, not really supported right now.</td> </tr>
 <tr><td style="width:150px"><b>arrow</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Turn an arrow at last segment on or off.</td> </tr>
@@ -63,7 +63,7 @@
 <tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines that draws box.</td> </tr>
 <tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of those lines. 0 means unlined box.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern in lines around box?</td> </tr>
-<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default, otherwise consider</td></tr><tr><td></td><td></td><td></td><td></td><td> 'miter', 'round', or 'bevel'.</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default; 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Should box be filled? If so, specify here.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the fill pattern.</td> </tr>
 <tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Type of fill pattern. Right now, all are 'solid'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>

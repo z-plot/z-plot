@@ -461,6 +461,9 @@ class util:
 # Use this to make an SVG drawing surface. A good source of info on SVG:
 # https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg.
 #
+# Not super complete right now, in particular in support of making arbitrary
+# shapes and things like that inside of boxes. 
+#
 class svg(util): 
     def __init__(self, 
                  # name of the output file
@@ -540,11 +543,11 @@ class svg(util):
              linewidth       = 1,
 
              # For turns in the line, how turn should be rounded.
-             # Options include 'miter', 'bevel', 'round'.
+             # Options include 0->'miter', 1->'round', 2->'bevel'.
              # Default is just do hard turns (miter).
              linejoin        = 0,
 
-             # Shape used at end of line ('butt', 'round', 'square')
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
              linecap         = 0,
 
              # Dash pattern of the line. '0' means no dashes.
@@ -596,12 +599,20 @@ class svg(util):
         self.outnl('stroke="%s" ' % linecolor)
         self.outnl('stroke-width="%.2fpx" ' % linewidth)
         if linejoin != 0:
-            assert(linejoin == 'miter' or linejoin == 'bevel' or \
-                   linejoin == 'round')
+            if linejoin == 1:
+                linejoin = 'round'
+            elif linejoin == 2:
+                linejoin = 'bevel'
+            else:
+                print 'bad linejoin'
             self.outnl('stroke-linejoin="%%s" ' % linejoin)
         if linecap != 0:
-            assert(linecap == 'butt' or linecap == 'square' or \
-                   linecap == 'round')
+            if linecap == 1:
+                linecap = 'round'
+            elif linejoin == 2:
+                linejoin = 'square'
+            else:
+                print 'bad linecap'
             self.outnl('stroke-linecap="%%s" ' % linecap)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % \
@@ -783,8 +794,7 @@ class svg(util):
             # Dash pattern in lines around box?
             linedash    = 0,
 
-            # How should corners be done? 0 is default, otherwise consider
-            # 'miter', 'round', or 'bevel'.
+            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
             linecap     = 0,
 
             # Should box be filled? If so, specify here.
@@ -1286,8 +1296,7 @@ class postscript(util):
     #
     # __init__ 
     # 
-    # initialize everything for this particular canvas
-    # (one drawing surface per PS canvas, saved to exactly one file, of course)
+    # Create a postscript canvas. 
     # 
     def __init__(self,
                  # Name of the output file.
@@ -1418,20 +1427,54 @@ class postscript(util):
     # Use this to draw a line on the canvas.
     # 
     def line(self,
+             # Coordinates of the line. A list of [x,y] pairs. Can
+             # be as long as you like (not just two points).
              coord           = [[0,0],[0,0]],
+
+             # Color of the line.
              linecolor       = 'black',
+
+             # Width of the line.
              linewidth       = 1,
+
+             # For turns in the line, how turn should be rounded.
+             # Options include 0->'miter', 1->'round', 2->'bevel'
+             # Default is miter
              linejoin        = 0,
+
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
              linecap         = 0,
+             
+             # Dash pattern of the line. '0' means no dashes.
+             # Otherwise, a list describing the on/off pattern
+             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
              linedash        = 0,
+
+             # Can use this to close the path (and perhaps fill it).
              closepath       = False,
+
+             # Turn an arrow at last segment on or off.
              arrow           = False,
+
+             # Length of arrow head.
              arrowheadlength = 4,
+
+             # Width of arrow head.
              arrowheadwidth  = 3,
+
+             # Color of arrow head line.
              arrowlinecolor  = 'black',
+
+             # Width of line that makes arrow head.
              arrowlinewidth  = 0.5,
+
+             # Fill arrow head with solid color?
              arrowfill       = True,
+
+             # Color to fill arrow head with.
              arrowfillcolor  = 'black', 
+
+             # Style to use. 'normal' is one option. There are no others.
              arrowstyle      = 'normal',
             ):
 
@@ -1521,7 +1564,7 @@ class postscript(util):
         # END: line()
 
     # 
-    # text()
+    # --method-- text
     # 
     # Use this routine to place text on the canvas. Most options are obvious:
     # the expected coordinate pair, color, text, font, size - the size of the
@@ -1537,14 +1580,35 @@ class postscript(util):
     # coordinate specified.
     # 
     def text(self,
+             # Coordinates for text on the canvas.
              coord    = [0,0],
+
+             # Actual text to place on the canvas.
              text     = 'text',
+
+             # Typeface to use.
              font     = 'default',
+
+             # Color of letters.
              color    = 'black',
+
+             # Font size.
              size     = 10,
-             rotate   = 0,
+
+             # Anchor: can either just specify left/right
+             # (e.g., 'c' for center, 'l' for left justify, 'r' for right)
+             # or can also specify vertical alignment
+             # (e.g., 'l,h' for left justify and high justify,
+             # 'r,c' for right and center, 'l,l' for left and low).
              anchor   = 'c',
+
+             # Rotate text by this many degrees.
+             rotate   = 0,
+
+             # Background color behind text? Empty means no.
              bgcolor  = '',
+
+             # Border (black) around background color?
              bgborder = 1,
              ):
 
@@ -1648,25 +1712,49 @@ class postscript(util):
     # 
     # box()
     #
-    # Makes a box at coords specifying the bottom-left and upper-right corners
-    # Options:
-    # - Can change the surrounding line (linewidth=0 removes it)
-    # - Can fill with solid or pattern
-    # When filling with non-solid pattern, can add a background color so
-    # as not to be see-through.
+    #
+    # Makes a box at coords specifying the bottom-left and upper-right corners.
+    # Can change the width of the surrounding line (linewidth=0 removes it).
+    # Can fill with solid or pattern. When filling with non-solid pattern, can
+    # add a background color so as not to be see-through.
+    # 
     # 
     def box(self,
+            # Coordinates of box, from [x1,y1] to [x2,y2].
             coord       = [[0,0],[0,0]],
+
+            # Color of lines that draws box.
             linecolor   = 'black',
+
+            # Width of those lines. 0 means unlined box.
             linewidth   = 1,
+
+            # Dash pattern in lines around box?
             linedash    = 0,
+
+            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
             linecap     = 0,
+
+            # Should box be filled? If so, specify here.
             fill        = False,
+
+            # Color of the fill pattern.
             fillcolor   = 'black',
+
+            # Type of fill pattern. Right now, all are 'solid'.
             fillstyle   = 'solid',
+
+            # Details of fill pattern includes size of each marker in pattern.
             fillsize    = 3,
+
+            # Also includes spacing between each marker in pattern.
             fillskip    = 4,
+
+            # Rotate the box by this many degrees.
             rotate      = 0,
+
+            # Put a background color behind the box. Useful when pattern has
+            # see-through parts in it.
             bgcolor     = '',
             ):
 
@@ -1716,63 +1804,28 @@ class postscript(util):
         return
         # END: box()
 
-    # 
-    # box3()
     #
-    # Makes a box at coords specifying the bottom-left and upper-right corners
-    # Options:
-    # - Can change the surrounding line (linewidth=0 removes it)
-    # - Can fill with solid or pattern
-    # When filling with non-solid pattern, can add a background color so
-    # as not to be see-through.
-    # 
-    def box3(self,
-             coord       = [0,0],
-             xwidth      = 10,
-             ywidth      = 10,
-             center      = 'l,l',
-             linecolor   = 'black',
-             linewidth   = 1,
-             linedash    = 0,
-             linecap     = 0,
-             fill        = False,
-             fillcolor   = 'black',
-             fillstyle   = 'solid',
-             fillsize    = 3,
-             fillskip    = 4,
-             rotate      = 0,
-             bgcolor     = '',
-            ):
-
-        # pull out each element of the path
-        assert(len(coord) == 2)
-        x1 = float(coord[0])
-        y1 = float(coord[1])
-        x2 = x1 + (xwidth * math.cos(math.radians(rotate)))
-        y2 = y1 + (xwidth * math.sin(math.radians(rotate)))
-        x3 = x2 - (ywidth * math.cos(math.radians(90.0 - rotate)))
-        y3 = y2 + (ywidth * math.sin(math.radians(90.0 - rotate)))
-        x4 = x1 - (ywidth * math.cos(math.radians(90.0 - rotate)))
-        y4 = y1 + (ywidth * math.sin(math.radians(90.0 - rotate)))
-        self.polygon(coord=[[x1,y1],[x2,y2],[x3,y3],[x4,y4]],
-                     linecolor=linecolor, linewidth=linewidth,
-                     linedash=linedash, linecap=linecap, fill=fill,
-                     fillcolor=fillcolor, fillstyle=fillstyle,
-                     fillsize=fillsize, fillskip=fillskip)
-        return
-    # END: box3()
-
-    #
-    # arc()
+    # --method-- arc
     #
     # Can make circles, or partial circles (arcs), with this.
     #
     def arc(self,
+            # Coordinates of arc center [x, y].
             coord     = [],
+
+            # What angle to draw arc (from X degrees to Y degrees).
             angle     = [0.0,360.0],
+
+            # Radius of arc.
             radius    = 1,
+
+            # Line color of arc.
             linecolor = 'black',
+
+            # Width of line of arc.
             linewidth = 1,
+
+            # Dash pattern for arc line.
             linedash  = 0,
             ):
         
@@ -1796,23 +1849,48 @@ class postscript(util):
     # END: arc
 
     #
-    # circle()
+    # --method-- circle
     #
     # Can just make circles with this. Filled or not.
     #
     def circle(self,
+               # Coordinates of center of circle in [x,y].
                coord     = [0,0],
+
+               # Radius of circle.
                radius    = 1,
+
+               # Scale in x direction and y direction, to make
+               # an ellipse, for example.
                scale     = [1,1],
+
+               # Color of lines of circle.
                linecolor = 'black',
+
+               # Width of lines of circle.
                linewidth = 1,
+
+               # Whether line is dashed or not.
                linedash  = 0,
+
+               # Fill circle with colored pattern?
                fill      = False,
+
+               # Which color?
                fillcolor = 'black',
+
+               # Which pattern?
                fillstyle = 'solid',
+
+               # Details of pattern: size of each marker.
                fillsize  = 3,
+
+               # Details of pattern: space between each marker.
                fillskip  = 4,
-               bgcolor   = ''
+
+               # Background color behind circle, useful if fill pattern
+               # has some holes in it.
+               bgcolor   = '',
                ):
         # pull out each element of the path
         assert(len(coord) == 2)

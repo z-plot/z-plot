@@ -4,7 +4,7 @@
 
 <p>  Creates a drawable region onto which graphs can be drawn. Must define the xrange and yrange, which are each min,max pairs, so that the drawable can translate data in table into points on the graph. Also, must select which type of scale each axis is, e.g., linear, log10, and so forth. If unspecified, coordinates (the x,y location of the lower left of the drawable) and dimensions (the width, height of the drawable) will be guessed at; specifying these allows control over where and how big the drawable is. Other options do things like place a background color behind the entire drawable or make an outline around it. </p>
 <p>
-<b> Initialize class with following parameters:</b>
+<b>Initialize with following parameters:</b>
 <table>
 <tr><td style="width:150px"><b>canvas</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Canvas object upon which to draw.</td> </tr>
 <tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> Dimensions of the drawable surface; e.g., ['1in','1in'].</td></tr><tr><td></td><td></td><td></td><td></td><td> If left as empty list, will make a guess as to size.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>

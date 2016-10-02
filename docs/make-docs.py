@@ -1,5 +1,13 @@
 #! /usr/bin/env python
 
+#
+# make-docs
+#
+# A pretty ugly little program to strip comments
+# out of the zplot.py file and make some rudimentary
+# documentation.
+#
+
 def remove_char(str, c):
     s = str.split(c)
     if len(s) > 1:
@@ -33,7 +41,6 @@ def output_comments_para(class_fd, comments):
 # FORMAT of this line is:
 #   PARAMETER = DEFAULT ,
 def get_parameter(class_fd, line, comments):
-
     parameter = line.split('=')[0].strip()
     print '  parameter [%s]' % parameter
 
@@ -136,7 +143,7 @@ for line in fd:
             func_name = remove_char(tmp[1], '(')
             if func_name == '__init__':
                 class_fd.write('<p>\n')
-                class_fd.write('<b> Initialize class with following parameters:</b>\n')
+                class_fd.write('<b>Initialize with following parameters:</b>\n')
                 class_fd.write('<table>\n')
                 in_init = True
                 comments = []
