@@ -3058,7 +3058,7 @@ class plotter:
         return [anchor, place]
 
     #
-    # verticalbars()
+    # --method-- verticalbars
     #
     # Use this to plot vertical bars on a drawable. A basic plot will specify
     # the table, xfield, and yfield. Bars will be drawn from the minimum of the
@@ -3079,10 +3079,19 @@ class plotter:
     # bar, as determined by fillcolor, fillstyle, and fillsize and fillskip.
     # 
     def verticalbars(self,
+                     # drawable to place vertical bars upon.
                      drawable      = '',
+
+                     # table to get data from.
                      table         = '',
+
+                     # SQL clause to subset some of the data
                      where         = '',
+
+                     # xfield to use
                      xfield        = 'c0',
+
+                     # yfield to use
                      yfield        = 'c1',
 
                      # if specified, table column with ylo data; use if bars
@@ -3257,7 +3266,7 @@ class plotter:
     # END: verticalbars()
 
     #
-    # line()
+    # --method-- line
     # 
     # Use this function to plot lines. It is one of the simplest routines there
     # is -- basically, it takes the x and y fields and plots a line thru them.
@@ -3266,43 +3275,83 @@ class plotter:
     # including color, width, and dash pattern.
     # 
     def line(self,
+             # Drawable object to place points onto.
              drawable     = '',
+
+             # Table object to suck data from. 
              table        = '', 
+
+             # Where clause: which rows to plot? Default is all rows.
              where        = '', 
+
+             # Table column with x data.
              xfield       = 'c0', 
+
+             # Table column with y data.
              yfield       = 'c1',
 
-             # plot the data in a stairstep manner (e.g., CDF)
-             stairstep    = False,   
-             linecolor    = 'black', 
+             # plot the data in a stairstep manner (e.g., CDF) if this is True
+             stairstep    = False,
+
+             # color of line.
+             linecolor    = 'black',
+
+             # width of line.
              linewidth    = 1.0,
+
+             # specifies "linejoin".
+             # Options include 0->'miter', 1->'round', 2->'bevel'
+             # Default is miter
              linejoin     = 0,
+
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
              linecap      = 0,
 
-             # dash pattern - 0 means no dashes
+             # dash pattern - 0 means no dashes.
+             # [2,2] means line of 2, space of 2
              linedash     = 0,
 
              # if specified, table column with labels for each point in line.
              # Rest of label args spec things about the lables.
              labelfield   = '',      
-             labelplace   = 'n',     
+
+             # which direction from point to place label. n->north, etc.
+             labelplace   = 'n',
+
+             # which font to use
              labelfont    = 'default',
+
+             # size of text for labels.
              labelsize    = 8.0,
+
+             # color of label text.
              labelcolor   = 'black',
+
+             # how to anchor the text relative to the point.
              labelanchor  = 'c',
-             labelrotate  = 0,       
+
+             # angle (degrees) to rotate text.
+             labelrotate  = 0,
+
+             # shift the labels by [x,y]
              labelshift   = [0,0],
+
+             # format string to use for labels
              labelformat  = '%s',
+
+             # put a box of color behind each label
              labelbgcolor = '',
+             
              # if using labels, how much to offset from point by
              labeloffset  = 3.0,
 
-             # legend info
-             legend       = '',       
+             # legend object to use for this; '' means none.
+             legend       = '',
+
+             # text to associate with this specific line in legend.
              legendtext   = '',       
 
              # if adding points as well - a convenience?
-             # why not just use lines and points?
              symbstyle    = '',
              symbsize     = 2,
              symbfill     = False,
@@ -3389,16 +3438,17 @@ class plotter:
     # END: line()
 
     #
-    # function()
+    # --method-- function
     #
     # Use function() to plot a function right onto a drawable. The function
     # should simply take one argument (e.g., x) and return the value of the
     # function (e.g., f(x)).
     # 
     def function(self,
+                 # drawable to place function upon.
                  drawable   = '',
 
-                 # the function, such as 'x*x'
+                 # the function, such as 'x*x' or 'x' or '3*x + 10', etc.
                  function   = '',
                  
                  # the x-range the function should be plotted over [xmin,xmax]
@@ -3411,13 +3461,19 @@ class plotter:
                  # if given, limit function to values between low/hi y values
                  ylimit     = ['',''],
 
-                 # line width, color, and dash pattern
-                 linewidth  = 1,      
+                 # line width
+                 linewidth  = 1,
+
+                 # line color
                  linecolor  = 'black',
+
+                 # dash pattern; 0 for none.
                  linedash   = 0,
 
-                 # legend info
-                 legend     = '',     
+                 # legend object
+                 legend     = '',
+
+                 # text to associate with this line.
                  legendtext = '',     
                  ):
         if drawable == '':
@@ -3449,7 +3505,7 @@ class plotter:
     # END: function()
 
     # 
-    # horizontalintervals()
+    # --method-- horizontalintervals
     #
     # Use this to plot interval markers in the x direction. The y column has
     # the y value for each interval, and draws the interval between the ylo and
@@ -3458,16 +3514,35 @@ class plotter:
     # assemble box plots.
     #
     def horizontalintervals(self,
-                            drawable  = '', # name of the drawable area
-                            table     = '', # name of table to use
-                            where     = '', # select a subset of the table?
-                            yfield    = '', # table column with y data
-                            xlofield  = '', # table column with xlo data
-                            xhifield  = '', # table column with xhi data
-                            align     = 'c', # c-center u-upper l-lower n-none
-                            linecolor = 'black', # color of the line
-                            linewidth = 1,  # width of all lines
-                            devwidth  = 3,  # width of interval marker on top
+                            # drawable object
+                            drawable  = '',
+
+                            # table object with data
+                            table     = '',
+
+                            # select a subset of the table?
+                            where     = '',
+
+                            # table column with y data
+                            yfield    = '',
+
+                            # table column with xlo data
+                            xlofield  = '',
+
+                            # table column with xhi data
+                            xhifield  = '',
+
+                            # c-center u-upper l-lower n-none
+                            align     = 'c',
+
+                            # color of the line
+                            linecolor = 'black',
+
+                            # width of all lines
+                            linewidth = 1,
+
+                            # width of interval marker on top
+                            devwidth  = 3,  
                             ):
         if drawable == '':
             drawable = self.drawable
@@ -3515,7 +3590,7 @@ class plotter:
     # END: horizontalintervals()
 
     # 
-    # verticalintervals()
+    # --method-- verticalintervals
     # 
     # Use this to plot interval markers in the y direction. The x column has
     # the x value for each interval, and draws the interval between the ylo and
@@ -3583,7 +3658,7 @@ class plotter:
     # END: verticalintervals()
 
     #
-    # METHOD verticalfill()
+    # --method-- verticalfill
     #
     # Use this function to fill a vertical region between either the values in
     # yfield and the minimum of the y-range (default), the yfield values and
@@ -3591,22 +3666,48 @@ class plotter:
     # Any pattern and color combination can be used to fill the filled space.
     # 
     def verticalfill(self,
-                     drawable   = '',  # name of the drawable area
-                     table      = '',  # name of table to use
-                     where      = '',  # where clause?
-                     xfield     = '',  # table column with x data
-                     yfield     = '',  # table column with y data
-                     ylofield   = '',  # if not empty, use this table column
-                                       # to fill down to this value
-                     yloval     = '',  # if no ylofield, use this value to fill
-                                       # down to; if empty, use min of y-range
-                     stairstep  = False, # use stairsteps in making fill
-                     fillcolor  = 'lightgrey', #  fill color (if used)
-                     fillstyle  = 'solid',     # solid, boxes, circles, ...
-                     fillsize   = 3,   # size of object in pattern
-                     fillskip   = 4,   # space between object in pattern
-                     legend     = '',  # which legend object?
-                     legendtext = '',  # text to add to legend
+                     # the drawable object
+                     drawable   = '',
+
+                     # table object
+                     table      = '',
+
+                     # where clause to select subset of data if need be
+                     where      = '',
+
+                     # table column with x data
+                     xfield     = '',
+
+                     # table column with y data
+                     yfield     = '',
+
+                     # if not empty, use this table column to fill down to this value
+                     ylofield   = '',  
+
+                     # if no ylofield, use this value to fill down to;
+                     # if empty, use min of y-range
+                     yloval     = '',  
+
+                     # use stairsteps in making fill
+                     stairstep  = False,
+
+                     #  fill color (if used)
+                     fillcolor  = 'lightgrey',
+
+                     # solid, boxes, circles, ...
+                     fillstyle  = 'solid',
+
+                     # size of object in pattern
+                     fillsize   = 3,
+
+                     # space between object in pattern
+                     fillskip   = 4,
+
+                     # which legend object?
+                     legend     = '',
+
+                     # text to add to legend
+                     legendtext = '',  
                      ):
         if drawable == '':
             drawable = self.drawable
