@@ -1,0 +1,521 @@
+<html>
+
+<table>
+<tr>
+
+<td width=50pt></td>
+
+<td width=300pt>
+
+<h1> An Introduction To Zplot (Python Version)</h1>
+<h4> by Remzi H. Arpaci-Dusseau <br/>
+(translated from the <a href="http://www.cs.wisc.edu/~remzi/zplot.pdf">
+    original paper</a> based on the Tcl version) 
+</h4>
+
+
+<h2> Abstract</h2>
+<p>
+We introduce Zplot, a Python library for making two-dimensional data
+plots.  Zplot provides a simple set of primitives that allow users to input
+and manipulate data, plot said data in a variety of formats, and decorate the
+resulting graphs with axes, labels, and other textual accents. Zplot then
+outputs encapsulated PostScript for ease of inclusion in technical documents;
+rudimentary support for SVG is also provided.
+</p>
+
+<h2> Introduction</h2>
+<p> 
+Zplot is a simple Python library that allows the creation of two-dimensional
+data graphics in a flexible and powerful manner. Typical graphs are created
+with only a few lines of code, and complex and intricate graphs can be
+produced from only tens of lines of code. Additionally, because Zplot
+graph-creation is simply Python, one can bring to bear all the power of
+programming to create visualizations. Repetitive tasks can be performed in
+loops, and useful primitives can be encapsulated in functions.
+</p>
+
+<p> In this document, we describe Zplot. First, we give an overview of the
+tool and the basic primitives it provides. Then, we describe each of the basic
+routines in more detail, showing how they can be combined to produce a wide
+range of interesting graphs. Zplot drawing routines are all built upon a set
+of low-level PostScript-generating commands (there is also a new SVG driver);
+these commands hide many of the details of generating correct PostScript (or
+SVG) from the rest of Zplot, boiling down most activities to simple drawing
+commands that place lines, shapes, and text on the drawing surface.
+</p> 
+
+<h2> Overview</h2>
+
+<p>
+We now describe the basic primitives provided by Zplot. Let us start with a
+typical (if simple) graph as an example, and use this to drive the discussion
+of the different elements of Zplot. A typical graphing script might be written
+as follows:
+
+<blockquote>
+<pre>
+# import the library
+from zplot import *
+
+# describe the drawing surface
+c = postscript(title='example1.eps', dimensions=['3in', '2.4in'])
+
+# load some data
+t = table(file='example1.data')
+
+# make a drawable region for a graph
+d = drawable(canvas=c, xrange=[0,10], yrange=[0,10],
+             coord=['0.5in','0.4in'], dimensions=['2.3in','1.7in'])
+
+# make some axes
+axis(drawable=d, title='A Sample Graph', xtitle='The X-Axis',
+     ytitle='The Y-Axis')
+
+# plot the points
+p = plotter()
+p.points(drawable=d, table=t, xfield='x', yfield='y', style='triangle',
+         linecolor='red', fill=True, fillcolor='red')
+
+# finally, output the graph to a file
+c.render()
+</pre>
+</blockquote>
+
+<p>
+The output of this graph is
+shown <a href="../examples/original-paper/example1.eps"> here;</a> it is made
+from <a href="../examples/original-paper/example1.data"> this data set</a>
+using <a href="../examples/original-paper/example1.py"> this script.</a>
+</p>
+
+<p> In this example, the user creates a graph by first describing the drawing
+surface by creating a <a href="postscript.html">postscript object</a> and
+specifying its dimensions. Then, the user creates a <a href="table.html">table
+object</a> to load data from a file, getting the data from a file
+file.data. The user, wishing to plot the data, now creates a drawable region
+by creating a <a href="drawable.html">drawable object</a>; doing so defines
+where on the canvas the drawable is, and also how to map data points onto the
+drawing surface (e.g., the range of x values and y values that map onto this
+drawable); note that interesting graphs can use more than one drawable to
+great effect. With a drawable defined, the user can create
+a <a href="plotter.html"> plotter object</a>, call one of a variety of
+plotting routines (e.g., <a href="plotter.html#points">points()</a>) to plot
+the data onto the drawable. The plotting routines generally take a large
+number of arguments, enabling a wide variety of plots to be produced; in this
+case, the user chooses to draw a red triangle at each (x,y) point of the
+graph. Finally, the user adds some graphical and textual decorations to help
+clarify the graph (in this case, by simply creating
+an <a href="axis.html">axis object</a>), and then renders the PostScript to a
+file by calling the <a href="postscript.html#render">render()</a> method of
+the postscript object.  We now describe each of these primitives in more
+detail.
+</p> 
+
+<p> 
+Note that each of these routines takes a large number of optional parameters.
+Read more about them in the documentation page.
+</p> 
+
+<h2> Tables</h2>
+
+<p> There are numerous routines available to users to input and manipulate
+data; these are found in the <a href="table.html">table object</a> and related
+methods. The most commonly used approach is simply to create a table object
+and pass in a file name; creating a table in this way will read the file into
+memory and thus make it ready to be plotted. A typical data file (such 
+as <a href="../examples/original-paper/example1.data"> example1.data</a>
+above) looks like this:
+
+<p> 
+<pre>
+# x y
+0 0
+1 1
+2 2
+3 3
+4 6
+...
+9 4
+10 8
+</pre>
+</p> 
+
+<p> 
+The first line contains the <b>schema</b> for the table, with names for each
+column; these names are subsequently used to refer to the data when
+manipulating it or drawing it to the screen. If no schema is specified, one
+can simply refer to each column by the names 'c0', 'c1', and so forth. The
+default is to use whitespace as a separator; however, one can specify a
+different separator (such as a comma or colon) as need be.
+</p> 
+
+<p> 
+One powerful aspect of tables in zplot is that they utilize SQLite; this
+allows one to perform database-like selections over data and thus subset and
+manipulate data readily. Here is an example that selects data from a table 
+with y-values above 5 by creating a new table <code>thi</code>, and plots
+green circles around said points (the results of which are shown in the figure
+linked below). 
+</p> 
+
+<p> 
+<pre>
+# load some data
+t = table(file='example2.data')
+thi = table(table=t, where='y > 5')
+
+...
+
+# plot the points
+p = plotter()
+p.points(drawable=d, table=t, xfield='x', yfield='y', style='triangle',
+         linecolor='red', fill=True, fillcolor='red')
+p.points(drawable=d, table=thi, xfield='x', yfield='y', style='circle',
+         linecolor='green', size='5', linewidth=2)
+</pre>
+</p> 
+
+
+<p> This example is shown <a href="../examples/original-paper/example2.eps">
+here;</a> it is made from <a href="../examples/original-paper/example2.data">
+this data set</a> using <a href="../examples/original-paper/example2.py"> this
+script.</a>  
+</p> 
+
+<p> There are a number of other useful table functions which are not covered
+here, mostly for manipulating and summarizing data; see <a href="table.html">
+the table method APIs</a> for more information. For example,
+the <a href="table.html#update">update()</a> method allows arbitrary SQL
+updates to be performed.
+</p> 
+
+<h2>Drawable</h2>
+
+<p> The drawable is likely the most important abstraction that Zplot
+implements. A drawable is created by instantiating a <a href="drawable.html">
+drawable object. </a> The powerful aspect of a drawable is that it enables a
+user to place multiple (potentially overlapping) drawable regions onto the
+drawing surface. This feature can be used to implement a number of interesting
+graphs. For example, in the figure below (Figure 5 in this 
+a <a href="http://research.cs.wisc.edu/adsl/Publications/dgraid-fast04.pdf">FAST
+paper</a>), two regions of the graph are of interest but hard to see due to
+their small size. Thus, one can create two additional drawables and plot
+closeups of the data in those regions. 
+</p> 
+
+<p> The FAST paper graph can be
+seen <a href="../examples/original-paper/dgraid.eps"> here;</a> it is made
+from <a href="../examples/original-paper/dgraid.copy.data"> this file</a>
+and <a href="../examples/original-paper/dgraid.nocopy.data"> this file</a>
+using <a href="../examples/original-paper/dgraid.py"> this script.</a>  Two
+closeups are made in the lower graph, with only a few lines of code required
+to do so.
+</p> 
+
+<p> This example also demonstrates a number of parameters that the drawable
+object can be passed when creating it. For example, a user can specify its
+exact position with the <code>coord</code> parameter and its size with the
+<code>dimensions</code> parameter.
+</p> 
+
+<p> Multiple drawables can also be used to plot data with multiple y axes in a
+simple and straightforward manner. In this example, we plot the same data from
+the example above, except onto an overlapping drawable that maps the y range
+from 0 up to 20 (instead of 0 to 10). 
+<p> This third example is
+shown <a href="../examples/original-paper/example3.eps"> here;</a> it is made
+from <a href="../examples/original-paper/example3.data"> this data set</a>
+using <a href="../examples/original-paper/example3.py"> this script</a> (this
+script is also shown below).  The script creates two drawables, the right one
+with a y-range that is twice as high as the left one. The same data is plotted
+on both drawables, but with different scales.
+</p> 
+
+
+<p> 
+<pre>
+# import the library
+from zplot import *
+
+# describe the drawing surface
+c = postscript(title='example3.eps', dimensions=['3.3in', '2.4in'])
+
+# load some data
+t = table(file='example3.data')
+
+# make a drawable region for a graph
+d1 = drawable(canvas=c, xrange=[0,10], yrange=[0,10],
+             coord=['0.5in','0.4in'], dimensions=['2.3in','1.7in'])
+d2 = drawable(canvas=c, xrange=[0,10], yrange=[0,20],
+             coord=['0.5in','0.4in'], dimensions=['2.3in','1.7in'])
+
+# make some axes
+axis(drawable=d1, title='A Sample Graph', xtitle='The X-Axis',
+     ytitle='The Y-Axis')
+axis(drawable=d2, style='y', title='', ytitle='The Second Y-Axis',
+     yaxisposition=10, yauto=[0,20,4], labelstyle='in', ticstyle='in')
+
+# plot the points
+p = plotter()
+p.points(drawable=d1, table=t, xfield='x', yfield='y', style='triangle',
+         linecolor='red', fill=True, fillcolor='red')
+p.points(drawable=d2, table=t, xfield='x', yfield='y', style='triangle',
+         linecolor='green', fill=True, fillcolor='green')
+    
+# finally, output the graph to a file
+c.render()
+</pre>
+</p> 
+
+<h2> The Plotter Object</h2>
+
+<p> 
+
+The <a href="plotter.html"> plotter object</a> is used to plot data onto
+drawables. It provides numerous plotting methods to get this job done:
+<ul>
+<li> <a href="plotter.html#points"> points()</a>, which plots points onto a drawable</li>
+<li> <a href="plotter.html#line"> line()</a>, which plots a line</li>
+<li> <a href="plotter.html#horizontalbars"> horizontalbars()</a>, which can be
+  used to make horizontal bar graphs</li>
+<li> <a href="plotter.html#verticalbars"> verticalbars()</a>, which can be
+  used to make vertical bar graphs </li>
+<li> <a href="plotter.html#horizontalintervals"> horizontalintervals()</a>,
+  which can make short intervals (lines between two points, perhaps to show
+  confidence intervals) in a horizontal direction</li>
+<li> <a href="plotter.html#verticalintervals"> verticalintervals()</a>, as
+  above, but in the vertical direction</li>
+<li> <a href="plotter.html#verticalfill"> verticalfill()</a>, which can
+  create a filled graph (as one would use in a stacked line graph)</li>
+<li> <a href="plotter.html#function"> function()</a>, which can plot an
+  arbitrary function over an interval</li>
+</ul>
+</p> 
+
+<p>
+This next example shows a number of different possibilities from the above,
+all combined into a single script. The graph is
+shown <a href="../examples/original-paper/example-multi.eps"> here;</a> it is
+made from <a href="../examples/original-paper/example-multi.data"> this data
+set</a> using <a href="../examples/original-paper/example-multi.py"> this
+script.</a> One interesting point is that multiple types from above can be
+combined to make more interesting plots; for example, a box-and-whiskers type
+plot is simply a combination of vertical intervals, vertical bars, and
+points. 
+</p>
+
+<p> Another example plots a number of different patterns in a set of
+stacked bars. As one can see, patterns such as diagonal lines and triangles
+can be used to fill a region, allowing for the creation of bar graphs with
+many different types of data within. The example is
+  shown <a href="../examples/original-paper/example4.eps"> here;</a> it is
+  made from <a href="../examples/original-paper/example4.data"> this data 
+set</a> using <a href="../examples/original-paper/example4.py"> this
+    script.</a>
+</p>
+
+
+<h2>Axes, Tics, and Labels</h2>
+
+<p>
+A single complex object supports the generation of axes, tic marks, and labels
+for a graph. It is (not surprisingly) called the <a href="axis.html">axis
+object</a>. It has too many arguments to describe here in any detail; see
+the <a href="axis.html"> documentation page</a> for details. However, it is
+often quite simple to use. For example, to specify the title, label for the
+x-axis, and label for the y-axis, one simple do the following:
+</p> 
+
+<p> 
+<pre>
+axis(drawable=d, title='Title', xtitle='X-Axis', ytitle='Y-Axis')
+</pre>
+</p> 
+
+<p> Internal algorithms compute reasonable locations for said labels
+(depending on whether tic marks are used, for example). Further, when the
+guesses are wrong, one can use a shift argument to move the text to a more
+appropriate location (e.g., the <b>titleshift</b> argument can be passed the
+value [3,0] to bump it 3 points to the right). Many of the other options deal
+with customizations such as font selection, rotation, color, and so forth.
+</p> 
+
+
+<h2>Legend</h2>
+
+<p>
+Finally, Zplot provides support in most plotting routines for the addition of
+a legend via a legend object; see documentation <a href="legend.html">
+here.</a> Each given plot method (such
+as <a href="plotter.html#line">line()</a>) takes an optional <b>legend</b>
+parameter which specifies the legend object, and a <b>legendtext</b> parameter
+which indicates the name to be associated with the data. The script should
+subsequently call the <a href="legend.html#draw">draw()</a> method to place
+the legend on the screen and control its appearance.
+This <a href="../examples/original-paper/example4.py"> script</a> contains the
+following example (some lines omitted for brevity):
+</p> 
+
+<p>
+<pre>
+...
+L = legend()
+
+p = plotter()
+p.verticalbars(drawable=d, table=b5, xfield='x', yfield='y', fill=True, 
+               fillcolor='darkgray', bgcolor='white', barwidth=0.9, legend=L,
+               legendtext='Stuff', linewidth=0.5)
+...
+L.draw(canvas=c, coord=d.map([6,8]), down=True, width=15, height=15)
+c.render()
+</pre>
+</p>
+
+
+<h2>PostScript Generation</h2>
+
+<p>
+Zplot is built on top of a number of underlying canvas primitives. Two types
+of canvases are currently supported: a <a href="postscript.html"> postscript
+object</a> and a (currently rudimentary) <a href="svg.html"> svg object</a>,
+which output graphs in postscript and SVG formats respectively.  The former is
+useful for inclusion in LaTeX papers, whereas the latter can be useful for web
+pages. Each of these provide the basic ability to draw shapes as well as place
+text into the figure the user is making. Furthermore, the primitives provided
+by the canvases are used by the plotting routines and thus make said plotting
+code canvas-neutral.
+</p> 
+
+<p> One method found in these classes is <a href="postscript.html#line">
+<code>line()</code></a>, which lets the user draw a line directly on the
+canvas.  The method is passed a set of coordinates, some basic information
+about the line, and then produces a line that connects the coordinates in the
+resulting PostScript. All PostScript primitives take coordinates in PostScript
+<i>ems</i>, each of which is 1/72nd of an inch.  The line method takes
+additional arguments that allow the addition of an arrow to the end of the
+line; we omit these parameters for the sake of space;
+see <a href="postscript.html#line"> this</a> for more information.
+</p> 
+
+<p> An example of some of the subtle differences in lines is
+shown <a href="../examples/original-paper/example-psline.eps"> here;</a> it is
+made using <a href="../examples/original-paper/example-psline.py"> this
+script.</a>
+</p> 
+
+<p> There are a few other raw drawing methods, such as 
+<a href="postscript.html#box"> <code>box()</code></a>,
+<a href="postscript.html#arc"> <code>arc()</code></a>,
+<a href="postscript.html#circle"> <code>circle()</code></a>,
+<a href="postscript.html#polygon"> <code>polygon()</code></a>, all of which
+make the shape one might expect.
+</p>
+
+Each of these shape routines take a variety of arguments that describe their
+coordinates, and then all take three different sets of arguments that
+characterize the line around the shape (<code>line*</code>), the fill of the
+shape (<code>-fill*</code>), and the background color behind the shape
+(<code>bgcolor</code>). The line descriptors match those of
+the <code>line()</code> method above, and the background color is
+straightforward. Most interesting, then, is the variety and flexibility
+provided by the pattern descriptions.
+</p> 
+
+<p> Parameters further allow users to specify a fill pattern for a region. The
+most important parameter is <code>fillstyle</code>, which determines how the
+region is filled. Current styles that are supported include <code>solid,
+hline, vline, dline1, dline2, circle, square, triangle, utriangle</code>; more
+are added occasionally. Each pattern takes two arguments to determine its
+contents: a <code>fillsize</code> and <code>fillskip</code>. Within a given
+pattern, <code>fillsize</code> determines the size of each element in the
+pattern, and <code>fillskip</code> the space between each element. </p>
+
+
+<p> An example shape and pattern collection is
+shown <a href="../examples/original-paper/example-pattern.eps"> here;</a> data
+is available <a href="../examples/original-paper/example-pattern.data">
+here;</a> it is made
+using <a href="../examples/original-paper/example-pattern.py"> this
+script.</a>
+</p> 
+
+<p> The last canvas method we describe
+is <a href="postscript.html#text">text()</a>, which draws text onto the
+screen. Most of its parameters are straightforward. However, the most crucial
+argument to understand is the <code>anchor</code>. This parameter describes
+how the text should be anchored relative to the coordinate that was passed to
+the routine. The parameter takes the form of a comma-separated
+string <code>'xanchor,yanchor'</code>, where xanchor specifies the anchoring
+of the text in the x direction (either <code>l</code> for left, <code>c</code>
+for center, or <code>r</code> for right), and yanchor the anchoring in the y
+direction (<code>l</code> for low, <code>c</code> for center,
+and <code>h</code> for high). The figure below shows the different
+possible anchors (the coordinates passed to the text drawing routine are
+highlighted with a red circle).
+</p>
+
+<p> 
+The anchoring graph is 
+shown <a href="../examples/original-paper/example-anchor.eps"> here;</a> it is made
+using <a href="../examples/original-paper/example-anchor.py"> this script.</a>
+</p> 
+
+<h3> Programmability</h3>
+
+<p> One of the major advantages of Zplot versus other plotting packages is
+that the user simply writes Python. Thus, one can write functions and use code
+to simplify the task at hand; one is not limited by some artificial
+graph-specification language. </p>
+
+<p> EXAMPLE WOULD BE GOOD HERE.</p>
+
+<h3> Related Work </h3>
+
+<p>
+Zplot was a tool born of frustration
+with <a href="http://gnuplot.sourceforge.net/">gnuplot</a>. Gnuplot provides
+excellent support for simple line graphs and scatter plots, as well as
+numerous other graph types. However, its lack of reasonable support for bar
+charts was one of the main driving forces behind Zplot. One positive of
+gnuplot was its PostScript driver; the PostScript produced by gnuplot was
+clear and easy to read, sparking an initial interest in that language, and
+thus (indirectly) making Zplot possible. Great PostScript resources, for those
+who are interested, are
+the <a href="https://www-cdf.fnal.gov/offline/PostScript/BLUEBOOK.PDF"> blue
+book</a>, <a href="https://www.adobe.com/products/postscript/pdfs/PLRM.pdf">red
+book</a>, and (to some extent),
+the <a href="https://www-cdf.fnal.gov/offline/PostScript/GREENBK.PDF">green
+book</a>; all are available online.
+</p>
+
+<p>
+As Zplot was demonstrated to others, many people were reminded of
+<a href="http://ploticus.sourceforge.net/doc/welcome.html">Ploticus</a>, which
+is a more powerful and complete tool than gnuplot and is capable of producing
+a large variety of interesting graph types. Many of the features found in
+Zplot are also found in ploticus (e.g., a ploticus <code>area</code> is akin
+to a Zplot <code>drawable</code>), and we often use examples from the Ploticus
+web page to determine whether Zplot can easily do what Ploticus already
+does. However, Ploticus is complex, and harder to modify, comprised of over
+60,000 lines of C code. Zplot, in contrast, consists of a few thousand lines
+of Python. This comparison is certainly unfair, as Zplot is not as powerful as
+Ploticus, but the point remains.</p>
+
+
+<h3> Conclusions</h3>
+
+<p>
+We have introduced Zplot, a pure Python library for drawing PostScript (and
+SVG) figures. Zplot provides a number of powerful but simple tools for making
+beautiful two-dimensional plots.  Dive into the <a href=".">documentation</a>,
+or, better yet, look at existing <a href="../examples/"> examples</a> to learn
+more.
+</p>
+
+
+</td></tr>
+</table>
+
+</html>
+

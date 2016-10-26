@@ -10,7 +10,7 @@
 </table>
 </p>
 
-<h3> plotter.points()</h3><table>
+<h3 id=points> plotter.points()</h3><table>
 
 <p>  Use this to draw points, as specified by x,y of a table, onto a drawable. Basically, how you make a scatter plot is with the points() method. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Drawable object to place points onto.</td> </tr>
@@ -46,7 +46,7 @@
 </table>
 </p>
 
-<h3> plotter.horizontalbars()</h3><table>
+<h3 id=horizontalbars> plotter.horizontalbars()</h3><table>
 
 <p>  Use this to plot horizontal bars. The options are quite similar to the vertical cousin of this routine, except (somehow) less feature-filled (hint: lazy programmer). </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Drawable object on which to put the bars.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -70,7 +70,7 @@
 </table>
 </p>
 
-<h3> plotter.verticalbars()</h3><table>
+<h3 id=verticalbars> plotter.verticalbars()</h3><table>
 
 <p>  Use this to plot vertical bars on a drawable. A basic plot will specify the table, xfield, and yfield. Bars will be drawn from the minimum of the range to the y value found in the table. If the bars should start at some value other than the minimum of the range (for example, when the yaxis extends below zero, or you are building a stacked bar chart), two options are available: ylofield and yloval. ylofield specifies a column of a table that has the low values for each bar, i.e., a bar will be drawn at the value specifed by the xfield starting at the ylofield value and going up to the yfield value. yloval can be used instead when there is just a single low value to draw all bars down to. Some other interesting options: labelfield, which lets you add a label to each bar by giving a column of labels (use rotate, anchor, place, font, fontsize, and fontcolor flags to control details of the labels); barwidth, which determines how wide each bar is in the units of the x-axis; linecolor, which determines the color of the line surrounding the box, and linewidth, which determines its thickness (or 0 to not have one); and of course the color and fill of the bar, as determined by fillcolor, fillstyle, and fillsize and fillskip. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> drawable to place vertical bars upon.</td> </tr>
@@ -106,7 +106,7 @@
 </table>
 </p>
 
-<h3> plotter.line()</h3><table>
+<h3 id=line> plotter.line()</h3><table>
 
 <p>  Use this function to plot lines. It is one of the simplest routines there is -- basically, it takes the x and y fields and plots a line thru them. It does NOT sort them, though, so you might need to do that first if you want the line to look pretty. The usual line arguments can be used, including color, width, and dash pattern. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Drawable object to place points onto.</td> </tr>
@@ -139,7 +139,7 @@
 </table>
 </p>
 
-<h3> plotter.function()</h3><table>
+<h3 id=function> plotter.function()</h3><table>
 
 <p>  Use function() to plot a function right onto a drawable. The function should simply take one argument (e.g., x) and return the value of the function (e.g., f(x)). </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> drawable to place function upon.</td> </tr>
@@ -155,7 +155,7 @@
 </table>
 </p>
 
-<h3> plotter.horizontalintervals()</h3><table>
+<h3 id=horizontalintervals> plotter.horizontalintervals()</h3><table>
 
 <p>  Use this to plot interval markers in the x direction. The y column has the y value for each interval, and draws the interval between the ylo and yhi column values. The marker can take on many forms, as specified by the 'align' flag. Note the 'b' type in particular, which can be used to assemble box plots. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> drawable object</td> </tr>
@@ -171,7 +171,7 @@
 </table>
 </p>
 
-<h3> plotter.verticalintervals()</h3><table>
+<h3 id=verticalintervals> plotter.verticalintervals()</h3><table>
 
 <p>  Use this to plot interval markers in the y direction. The x column has the x value for each interval, and draws the interval between the ylo and yhi column values. The marker can take on many forms, as specified by the 'align' flag. Note the 'b' type in particular, which can be used to assemble box plots. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td></td> </tr>
@@ -187,7 +187,7 @@
 </table>
 </p>
 
-<h3> plotter.verticalfill()</h3><table>
+<h3 id=verticalfill> plotter.verticalfill()</h3><table>
 
 <p>  Use this function to fill a vertical region between either the values in yfield and the minimum of the y-range (default), the yfield values and the values in the ylofield, or the yfield values and a single yloval. Any pattern and color combination can be used to fill the filled space. </p>
 <tr><td style="width:150px"><b>drawable</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> the drawable object</td> </tr>

@@ -1,5 +1,12 @@
 #! /usr/bin/env python
 
+#
+# This example creates a simple line graph. Using the data found
+# in 'line.data', it makes a simple plot using all the basic features
+# you'd expect to find in a zplot graph. The file is more commented
+# than most you would likely create yourself.
+#
+
 from zplot import *
 
 # populate zplot table from data file

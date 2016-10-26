@@ -110,7 +110,7 @@ for line in fd:
         method_name = tmp[2]
         print 'class %s: method %s()' % (class_name, method_name)
         class_fd.write('\n')
-        class_fd.write('<h3> %s.%s()</h3>' % (class_name, method_name))
+        class_fd.write('<h3 id=%s> %s.%s()</h3>' % (method_name, class_name, method_name))
         class_fd.write('<table>\n')
         in_method = True
 

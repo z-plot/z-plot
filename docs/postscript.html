@@ -14,13 +14,13 @@
 </table>
 </p>
 
-<h3> postscript.render()</h3><table>
+<h3 id=render> postscript.render()</h3><table>
 
 <p>  Use this routine to print out all the postscript commands you've been queueing up to a file or 'stdout' (default). </p>
 </table>
 </p>
 
-<h3> postscript.line()</h3><table>
+<h3 id=line> postscript.line()</h3><table>
 
 <p>  Use this to draw a line on the canvas. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of the line. A list of [x,y] pairs. Can</td></tr><tr><td></td><td></td><td></td><td></td><td> be as long as you like (not just two points).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -41,7 +41,7 @@
 </table>
 </p>
 
-<h3> postscript.text()</h3><table>
+<h3 id=text> postscript.text()</h3><table>
 
 <p>  Use this routine to place text on the canvas. Most options are obvious: the expected coordinate pair, color, text, font, size - the size of the font, rotation - which way the text should be rotated, but the anchor can be a bit confusing. Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed. Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h), and middle (m), again all determining the placement of the text relative to the y coordinate specified. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates for text on the canvas.</td> </tr>
@@ -56,7 +56,25 @@
 </table>
 </p>
 
-<h3> postscript.arc()</h3><table>
+<h3 id=box> postscript.box()</h3><table>
+
+<p>  Makes a box at coords specifying the bottom-left and upper-right corners. Can change the width of the surrounding line (linewidth=0 removes it). Can fill with solid or pattern. When filling with non-solid pattern, can add a background color so as not to be see-through. </p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of box, from [x1,y1] to [x2,y2].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines that draws box.</td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of those lines. 0 means unlined box.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern in lines around box?</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default; 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Should box be filled? If so, specify here.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the fill pattern.</td> </tr>
+<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Type of fill pattern. Right now, all are 'solid'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of fill pattern includes size of each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Also includes spacing between each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate the box by this many degrees.</td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Put a background color behind the box. Useful when pattern has</td></tr><tr><td></td><td></td><td></td><td></td><td> see-through parts in it.</td> </tr>
+</table>
+</p>
+
+<h3 id=arc> postscript.arc()</h3><table>
 
 <p>  Can make circles, or partial circles (arcs), with this. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> Coordinates of arc center [x, y].</td> </tr>
@@ -68,7 +86,7 @@
 </table>
 </p>
 
-<h3> postscript.circle()</h3><table>
+<h3 id=circle> postscript.circle()</h3><table>
 
 <p>  Can just make circles with this. Filled or not. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates of center of circle in [x,y].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -83,6 +101,23 @@
 <tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of pattern: size of each marker.</td> </tr>
 <tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Details of pattern: space between each marker.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind circle, useful if fill pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> has some holes in it.</td> </tr>
+</table>
+</p>
+
+<h3 id=polygon> postscript.polygon()</h3><table>
+
+<p>  Use this method to make an arbitrary polygon, by passing in its coordinates. All the usual arguments are specified.  </p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> The list of [x,y] pairs that form the coordinates.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> The color of the surrounding line (if width > 0).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> The width of the line (0 for no line).</td> </tr>
+<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> The linecap.</td> </tr>
+<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> The line dash pattern.</td> </tr>
+<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Fill the polygon?</td> </tr>
+<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> What color to fill it?</td> </tr>
+<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> What style to fill it with?</td> </tr>
+<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> The fill size...</td> </tr>
+<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> ...and the skip.</td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> A background color if there is no fill; useful</td></tr><tr><td></td><td></td><td></td><td></td><td> behind a pattern.</td> </tr>
 </table>
 </p>
 </html>

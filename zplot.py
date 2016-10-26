@@ -1033,10 +1033,10 @@ class postscript(util):
         self.out(str(float(linewidth)) + ' slw')
 
     def __setlinecap(self, linecap):
-        self.out(str(float(linecap)) + ' slc')
+        self.out(str(int(linecap)) + ' slc')
 
     def __setlinejoin(self, linejoin):
-        self.out(str(float(linejoin)) + ' slj')
+        self.out(str(int(linejoin)) + ' slj')
 
     def __setlinedash(self, linedash):
         self.out('[ ')
@@ -1710,14 +1710,12 @@ class postscript(util):
         # END: text()
 
     # 
-    # box()
-    #
+    # --method-- box
     #
     # Makes a box at coords specifying the bottom-left and upper-right corners.
     # Can change the width of the surrounding line (linewidth=0 removes it).
     # Can fill with solid or pattern. When filling with non-solid pattern, can
     # add a background color so as not to be see-through.
-    # 
     # 
     def box(self,
             # Coordinates of box, from [x1,y1] to [x2,y2].
@@ -1948,17 +1946,46 @@ class postscript(util):
         return
         # END: circle()
 
+    #
+    # --method-- polygon
+    #
+    # Use this method to make an arbitrary polygon, by passing in its
+    # coordinates. All the usual arguments are specified.
+    #
+    #
     def polygon(self,
+                # The list of [x,y] pairs that form the coordinates.
                 coord      = [],
+
+                # The color of the surrounding line (if width > 0).
                 linecolor  = 'black',
+
+                # The width of the line (0 for no line).
                 linewidth  = 1,
+
+                # The linecap.
                 linecap    = 0,
+
+                # The line dash pattern.
                 linedash   = 0,
+
+                # Fill the polygon?
                 fill       = False,
+
+                # What color to fill it?
                 fillcolor  = 'black',
+
+                # What style to fill it with?
                 fillstyle  = 'solid',
+
+                # The fill size... 
                 fillsize   = 3,
+
+                # ...and the skip.
                 fillskip   = 4,
+
+                # A background color if there is no fill; useful
+                # behind a pattern.
                 bgcolor    = '',
                 ):
         # find minx,miny and maxx,maxy
@@ -2332,7 +2359,6 @@ class table:
                         element.append(i)
                     count = count + 1
                 data.append(element)
-            
             # generate unique name - undoubtedly not the way to do this.
             self.dbname = 'tmp' + str(random.randint(0,9999999))
         elif self.file != '':
