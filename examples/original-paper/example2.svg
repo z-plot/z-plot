@@ -1,0 +1,33 @@
+<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: Remzis-MacBook-Air.local-->
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M 35.50,144.00 L 202.10,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 36.00,144.50 L 36.00,21.10 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 36.00,148.00 L 36.00,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 69.12,148.00 L 69.12,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 102.24,148.00 L 102.24,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 135.36,148.00 L 135.36,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 168.48,148.00 L 168.48,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,148.00 L 201.60,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,144.00 L 36.00,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,119.52 L 36.00,119.52 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,95.04 L 36.00,95.04 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,70.56 L 36.00,70.56 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,46.08 L 36.00,46.08 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 32.00,21.60 L 36.00,21.60 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<text x="36.00" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 0</text>
+<text x="69.12" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 2</text>
+<text x="102.24" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 4</text>
+<text x="135.36" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 6</text>
+<text x="168.48" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 8</text>
+<text x="201.60" y="158.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> 10</text>
+<text x="29.00" y="147.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 0</text>
+<text x="29.00" y="123.12" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 2</text>
+<text x="29.00" y="98.64" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 4</text>
+<text x="29.00" y="74.16" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 6</text>
+<text x="29.00" y="49.68" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 8</text>
+<text x="29.00" y="25.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 10</text>
+<text x="118.80" y="14.10" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> A Sample Graph</text>
+<text x="118.80" y="171.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> The X-Axis</text>
+<text x="13.70" y="82.80" transform="rotate(-90.00 13.70,82.80)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> The Y-Axis</text>
+</svg>

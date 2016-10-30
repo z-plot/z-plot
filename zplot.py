@@ -847,6 +847,8 @@ class svg(util):
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
         if fill:
             self.outnl('fill="%s" ' % fillcolor)
+        else:
+            self.outnl('fill="none" ')
         self.outnl('></rect>')
         return
 
@@ -945,10 +947,9 @@ class svg(util):
                 bgcolor    = '',
                 ):
         abort('POLYGON not implemented in SVG yet')
+        
         return
     # END: polygon
-
-
 # END: class svg
 
 #
@@ -2048,6 +2049,19 @@ class postscript(util):
         return
         # END: polygon
     # END: class postscript
+
+#
+# general canvas factory
+#
+def make_canvas(canvas='eps', title='default', dimensions=['3in','2in'], font='Helvetica', verbose=False, script=__file__):
+    if canvas == 'eps':
+        return postscript(title + '.eps', dimensions, font, verbose, script)
+    elif canvas == 'svg':
+        return svg(title + '.svg', dimensions, font, verbose, script)
+    else:
+        print 'canvas type %s not supported' % canvas
+    return
+
 
 #
 # --class-- drawable

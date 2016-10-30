@@ -4,7 +4,11 @@
 from zplot import *
 
 # describe the drawing surface
-c = postscript(title='example2.eps', dimensions=['3in', '2.4in'])
+import sys
+if len(sys.argv) > 1:
+    c = svg(title='example2.svg', dimensions=['3in', '2.4in'])
+else:
+    c = postscript(title='example2.eps', dimensions=['3in', '2.4in'])
 
 # load some data
 t = table(file='example2.data')
