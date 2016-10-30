@@ -1,4 +1,4 @@
-<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/GitHub/zplot/zplot.pyc host: Remzis-MacBook-Pro.local-->
+<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: Remzis-MacBook-Air.local-->
 <svg xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
 <path d="M 35.50,108.00 L 201.50,108.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
@@ -12,16 +12,16 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <path d="M 32.00,61.50 L 36.00,61.50 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 32.00,38.25 L 36.00,38.25 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 32.00,15.00 L 36.00,15.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
-<text x="56.62" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> A</text>
-<text x="97.88" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> B</text>
-<text x="139.12" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> C</text>
-<text x="180.38" y="123.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> D</text>
-<text x="29.00" y="111.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 0</text>
-<text x="29.00" y="87.75" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 20</text>
-<text x="29.00" y="64.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 40</text>
-<text x="29.00" y="41.25" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 60</text>
-<text x="29.00" y="18.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 80</text>
-<text x="118.50" y="136.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Operation</text>
+<text x="56.62" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> A</text>
+<text x="97.88" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> B</text>
+<text x="139.12" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> C</text>
+<text x="180.38" y="122.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> D</text>
+<text x="29.00" y="111.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 0</text>
+<text x="29.00" y="88.35" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 20</text>
+<text x="29.00" y="65.10" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 40</text>
+<text x="29.00" y="41.85" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 60</text>
+<text x="29.00" y="18.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> 80</text>
+<text x="118.50" y="135.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Operation</text>
 <text x="12.20" y="61.50" transform="rotate(-90.00 12.20,61.50)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Latency (ms)</text>
 <rect x="40.12" y="49.88" height="58.12" width="33.00" stroke="#000000" stroke-width="0.5" fill="red" ></rect>
 <rect x="81.38" y="55.69" height="52.31" width="33.00" stroke="#000000" stroke-width="0.5" fill="red" ></rect>
@@ -36,9 +36,9 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect x="122.62" y="61.50" height="29.06" width="33.00" stroke="#000000" stroke-width="0.5" fill="blue" ></rect>
 <rect x="163.88" y="44.06" height="11.62" width="33.00" stroke="#000000" stroke-width="0.5" fill="blue" ></rect>
 <rect x="66.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="red" ></rect>
-<text x="80.00" y="23.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> CPU</text>
+<text x="80.00" y="23.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> CPU</text>
 <rect x="106.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="green" ></rect>
-<text x="120.00" y="23.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Net</text>
+<text x="120.00" y="23.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Net</text>
 <rect x="146.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="blue" ></rect>
-<text x="160.00" y="23.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Disk</text>
+<text x="160.00" y="23.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Disk</text>
 </svg>
