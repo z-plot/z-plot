@@ -4,7 +4,9 @@
 from zplot import *
 
 # describe the drawing surface
-c = postscript(title='example3.eps', dimensions=['3.3in', '2.4in'])
+import sys
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='example3', dimensions=['3.3in', '2.4in'])
 
 # load some data
 t = table(file='example3.data')
@@ -20,6 +22,7 @@ axis(drawable=d1, title='A Sample Graph', xtitle='The X-Axis',
      ytitle='The Y-Axis')
 axis(drawable=d2, style='y', title='', ytitle='The Second Y-Axis',
      yaxisposition=10, yauto=[0,20,4], labelstyle='in', ticstyle='in')
+     
 
 # plot the points
 p = plotter()

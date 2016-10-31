@@ -1,4 +1,4 @@
-<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: Remzis-MacBook-Air.local-->
+<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: cs-eduroam-117.cs.wisc.edu-->
 <svg xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
 <path d="M 35.50,144.00 L 202.10,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
@@ -30,6 +30,20 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <text x="118.80" y="14.10" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> A Sample Graph</text>
 <text x="118.80" y="164.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> The X-Axis</text>
 <text x="13.70" y="82.80" transform="rotate(-90.00 13.70,82.80)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> The Y-Axis</text>
+<path d="M 201.60,144.50 L 201.60,21.10 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,144.00 L 205.60,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,119.52 L 205.60,119.52 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,95.04 L 205.60,95.04 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,70.56 L 205.60,70.56 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,46.08 L 205.60,46.08 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 201.60,21.60 L 205.60,21.60 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<text x="208.60" y="144.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 0</text>
+<text x="208.60" y="119.52" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 4</text>
+<text x="208.60" y="95.04" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 8</text>
+<text x="208.60" y="70.56" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 12</text>
+<text x="208.60" y="46.08" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 16</text>
+<text x="208.60" y="21.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> 20</text>
+<text x="225.40" y="82.80" transform="rotate(-90.00 225.40,82.80)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> The Second Y-Axis</text>
 <polygon points="50.56,133.76 52.56,129.76 54.56,133.76 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="67.12,121.52 69.12,117.52 71.12,121.52 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="83.68,109.28 85.68,105.28 87.68,109.28 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
@@ -40,6 +54,14 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <polygon points="166.48,121.52 168.48,117.52 170.48,121.52 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="183.04,97.04 185.04,93.04 187.04,97.04 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="199.60,48.08 201.60,44.08 203.60,48.08 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
-<circle cx="102.24" cy="70.56" r="5.00" stroke="#007f00" stroke-width="2" fill="none"></circle>
-<circle cx="201.60" cy="46.08" r="5.00" stroke="#007f00" stroke-width="2" fill="none"></circle>
+<polygon points="50.56,139.88 52.56,135.88 54.56,139.88 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="67.12,133.76 69.12,129.76 71.12,133.76 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="83.68,127.64 85.68,123.64 87.68,127.64 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="100.24,109.28 102.24,105.28 104.24,109.28 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="116.80,127.64 118.80,123.64 120.80,127.64 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="133.36,133.76 135.36,129.76 137.36,133.76 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="149.92,139.88 151.92,135.88 153.92,139.88 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="166.48,133.76 168.48,129.76 170.48,133.76 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="183.04,121.52 185.04,117.52 187.04,121.52 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
+<polygon points="199.60,97.04 201.60,93.04 203.60,97.04 " stroke="#007f00" stroke-width="1.0" fill="green" ></polygon>
 </svg>

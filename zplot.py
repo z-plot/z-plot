@@ -748,15 +748,15 @@ class svg(util):
             abort('bad anchor ' + anchor)
 
         if right == 'l':
-            yshift = 0
+            baseline = 'baseline'
         elif right == 'c':
-            yshift = -size * 0.36
+            baseline = 'middle'
         elif right == 'h':
-            yshift = -size * 0.72
+            baseline = 'hanging'
         else:
             abort('bad anchor ' + anchor)
 
-        x, y = coord[0], self.__converty(coord[1] + yshift)
+        x, y = coord[0], self.__converty(coord[1])
 
         self.out('<text x="%.2f" y="%.2f" ' % (x, y))
         if rotate != 0:
@@ -767,6 +767,7 @@ class svg(util):
         self.outnl('font-size: %d; ' % size)
         self.outnl('fill: %s; ' % color)
         self.outnl('text-anchor: %s; ' % anchor)
+        self.outnl('alignment-baseline: %s; ' % baseline)
         self.outnl('"> ')
         self.outnl(text)
         self.outnl('</text>')
@@ -867,7 +868,7 @@ class svg(util):
             linedash  = 0,
             ):
         # DOES NOT WORK NOW
-        assert(0 == 1)
+        abort('arc not implemented yet')
         return
 
     # 
@@ -919,13 +920,17 @@ class svg(util):
         assert(bgcolor == '')
 
         x, y = coord[0], self.__converty(coord[1])
-        self.out('<circle cx="%.2f" cy="%.2f" r="%.2f" ' % (x, y, radius))
+        self.out('<circle cx="%.2f" ' % float(x))
+        self.outnl('cy="%.2f" ' % float(y))
+        self.outnl('r="%.2f" ' % float(radius))
         self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
         self.outnl('stroke-width="%s" ' % linewidth)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
         if fill:
-            self.outnl('fill="%s" ' % fillcolor)
+            self.outnl('fill="%s"' % fillcolor)
+        else:
+            self.outnl('fill="none"')
         self.outnl('></circle>')
         return
     # END: circle
@@ -934,20 +939,61 @@ class svg(util):
     # polygon()
     #
     def polygon(self,
+                # The list of [x,y] pairs that form the coordinates.
                 coord      = [],
+
+                # The color of the surrounding line (if width > 0).
                 linecolor  = 'black',
+
+                # The width of the line (0 for no line).
                 linewidth  = 1,
+
+                # The linecap.
                 linecap    = 0,
+
+                # The line dash pattern.
                 linedash   = 0,
+
+                # Fill the polygon?                
                 fill       = False,
+
+                # What color to fill it?
                 fillcolor  = 'black',
+
+                # What style to fill it with?
                 fillstyle  = 'solid',
+
+                # The fill size... 
                 fillsize   = 3,
+
+                # ...and the skip.
                 fillskip   = 4,
+
+                # A background color if there is no fill; useful
+                # behind a pattern.
                 bgcolor    = '',
                 ):
-        abort('POLYGON not implemented in SVG yet')
-        
+        # if the background should be filled, do that here
+        if bgcolor != '':
+            abort('Polygon background not implemented yet in SVG')
+
+        # FORMAT:
+        #   <polygon points="60,20 100,40 100,80 60,100 20,80 20,40"/>
+        self.out('<polygon points="')
+        for c in coord:
+            self.outnl('%.2f,%.2f ' % (c[0], self.__converty(c[1])))
+        self.outnl('" ')
+        if linewidth > 0:
+            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+            self.outnl('stroke-width="%s" ' % linewidth)
+        if linedash != 0:
+            self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
+        if fill:
+            self.outnl('fill="%s" ' % fillcolor)
+        else:
+            self.outnl('fill="none" ')
+        self.outnl('></polygon>')
+
         return
     # END: polygon
 # END: class svg
@@ -2053,13 +2099,14 @@ class postscript(util):
 #
 # general canvas factory
 #
-def make_canvas(canvas='eps', title='default', dimensions=['3in','2in'], font='Helvetica', verbose=False, script=__file__):
+def make_canvas(canvas='eps', title='default', dimensions=['3in','2in'],
+                font='Helvetica', verbose=False, script=__file__):
     if canvas == 'eps':
         return postscript(title + '.eps', dimensions, font, verbose, script)
     elif canvas == 'svg':
         return svg(title + '.svg', dimensions, font, verbose, script)
     else:
-        print 'canvas type %s not supported' % canvas
+        abort('canvas type [%s] not supported' % canvas)
     return
 
 

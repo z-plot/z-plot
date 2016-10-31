@@ -40,6 +40,4 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <polygon points="166.48,121.52 168.48,117.52 170.48,121.52 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="183.04,97.04 185.04,93.04 187.04,97.04 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
 <polygon points="199.60,48.08 201.60,44.08 203.60,48.08 " stroke="#ff0000" stroke-width="1.0" fill="red" ></polygon>
-<circle cx="102.24" cy="70.56" r="5.00" stroke="#007f00" stroke-width="2" fill="none"></circle>
-<circle cx="201.60" cy="46.08" r="5.00" stroke="#007f00" stroke-width="2" fill="none"></circle>
 </svg>

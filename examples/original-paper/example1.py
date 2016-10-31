@@ -5,10 +5,8 @@ from zplot import *
 
 # describe the drawing surface
 import sys
-if len(sys.argv) > 1:
-    c = svg(title='example1.svg', dimensions=['3in', '2.4in'])
-else:
-    c = postscript(title='example1.eps', dimensions=['3in', '2.4in'])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='example1', dimensions=['3in', '2.4in'])
 
 # load some data
 t = table(file='example1.data')

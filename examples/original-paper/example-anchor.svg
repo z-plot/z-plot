@@ -1,22 +1,22 @@
 <!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.py host: Remzis-MacBook-Air.local-->
 <svg xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
-<text x="10.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Anchor Is l,l</text>
-<text x="10.00" y="33.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Anchor Is l,c</text>
-<text x="10.00" y="17.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; "> Anchor Is l,h</text>
-<circle cx="10.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="10.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="10.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<text x="100.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Anchor Is c,l</text>
-<text x="100.00" y="33.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Anchor Is c,c</text>
-<text x="100.00" y="17.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; "> Anchor Is c,h</text>
-<circle cx="100.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="100.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="100.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<text x="190.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> Anchor Is r,l</text>
-<text x="190.00" y="33.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> Anchor Is r,c</text>
-<text x="190.00" y="17.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; "> Anchor Is r,h</text>
-<circle cx="190.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="190.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
-<circle cx="190.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red" ></circle>
+<text x="10.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: baseline; "> Anchor Is l,l</text>
+<text x="10.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Anchor Is l,c</text>
+<text x="10.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: hanging; "> Anchor Is l,h</text>
+<circle cx="10.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="10.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="10.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<text x="100.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Anchor Is c,l</text>
+<text x="100.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: middle; "> Anchor Is c,c</text>
+<text x="100.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Anchor Is c,h</text>
+<circle cx="100.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="100.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="100.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<text x="190.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: baseline; "> Anchor Is r,l</text>
+<text x="190.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Anchor Is r,c</text>
+<text x="190.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: hanging; "> Anchor Is r,h</text>
+<circle cx="190.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="190.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="190.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
 </svg>
