@@ -3,7 +3,9 @@
 from zplot import *
 
 # describe the drawing surface
-c = postscript(title='example-multi.eps', dimensions=[300,210])
+import sys
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='example-multi', dimensions=[300,210])
 
 t = table(file='example-multi.data')
 t.addcolumns(columns=['ylower','yhigher'])
@@ -23,7 +25,7 @@ p.points(drawable=d23, table=t, xfield='x', yfield='y', style='xline', linewidth
 
 # linespoints
 d2 = drawable(canvas=c, xrange=[0,11], yrange=[0,10], coord=[150,10], dimensions=[60,40])
-axis(drawable=d2, title='Lines & Points', domajortics=False, dolabels=False)
+axis(drawable=d2, title='Lines + Points', domajortics=False, dolabels=False)
 p.line(drawable=d2, table=t, xfield='x', yfield='y', linewidth=0.5)
 p.points(drawable=d2, table=t, xfield='x', yfield='y', style='xline', linewidth=0.5)
 

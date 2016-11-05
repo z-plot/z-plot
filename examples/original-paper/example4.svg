@@ -1,0 +1,106 @@
+<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="380.00" height="240.00" src="example4.svg"> -->
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<!-- pattern: triangle -->
+<pattern id="zplot_pattern_1" width="6.00" height="6.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,6.00 3.00,2.00 5.00,6.00 1.00,6.00" style="stroke: gray; stroke-width: 0.0; fill: gray"> </polyline> </pattern>
+
+<!-- pattern: dline1 -->
+<pattern id="zplot_pattern_0" width="7.00" height="7.00" patternUnits="userSpaceOnUse"> <path d="M-1,1 l2,-2 M0,7.00 l7.00,-7.00 M6.00,8.00 l2,-2" style="stroke:gray; stroke-width:3.00"></path> </pattern>
+
+
+</defs>
+<path d="M 49.50,190.00 L 300.50,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 50.00,190.50 L 50.00,39.50 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 50.00,194.00 L 50.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 91.67,194.00 L 91.67,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 133.33,194.00 L 133.33,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 175.00,194.00 L 175.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 216.67,194.00 L 216.67,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 258.33,194.00 L 258.33,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 300.00,194.00 L 300.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,190.00 L 50.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,162.73 L 50.00,162.73 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,135.45 L 50.00,135.45 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,108.18 L 50.00,108.18 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,80.91 L 50.00,80.91 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<path d="M 46.00,53.64 L 50.00,53.64 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
+<text x="50.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 0</text>
+<text x="91.67" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1</text>
+<text x="133.33" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 2</text>
+<text x="175.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 3</text>
+<text x="216.67" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 4</text>
+<text x="258.33" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 5</text>
+<text x="300.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 6</text>
+<text x="43.00" y="190.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="43.00" y="162.73" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 2</text>
+<text x="43.00" y="135.45" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 4</text>
+<text x="43.00" y="108.18" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 6</text>
+<text x="43.00" y="80.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 8</text>
+<text x="43.00" y="53.64" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 10</text>
+<text x="175.00" y="32.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Lots of Patterns</text>
+<text x="175.00" y="210.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> The X-Axis</text>
+<text x="27.70" y="115.00" transform="rotate(-90.00 27.70,115.00)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> The Y-Axis</text>
+<rect x="72.92" y="67.27" height="122.73" width="37.50" fill="white" ></rect>
+<rect x="72.92" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="darkgray" ></rect>
+<rect x="114.58" y="67.27" height="122.73" width="37.50" fill="white" ></rect>
+<rect x="114.58" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="darkgray" ></rect>
+<rect x="156.25" y="53.64" height="136.36" width="37.50" fill="white" ></rect>
+<rect x="156.25" y="53.64" height="136.36" width="37.50" stroke="#000000" stroke-width="0.5" fill="darkgray" ></rect>
+<rect x="197.92" y="60.45" height="129.55" width="37.50" fill="white" ></rect>
+<rect x="197.92" y="60.45" height="129.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="darkgray" ></rect>
+<rect x="239.58" y="80.91" height="109.09" width="37.50" fill="white" ></rect>
+<rect x="239.58" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="darkgray" ></rect>
+<rect x="72.92" y="108.18" height="81.82" width="37.50" fill="white" ></rect>
+<rect x="72.92" y="108.18" height="81.82" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="114.58" y="80.91" height="109.09" width="37.50" fill="white" ></rect>
+<rect x="114.58" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="156.25" y="80.91" height="109.09" width="37.50" fill="white" ></rect>
+<rect x="156.25" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="197.92" y="67.27" height="122.73" width="37.50" fill="white" ></rect>
+<rect x="197.92" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="239.58" y="94.55" height="95.45" width="37.50" fill="white" ></rect>
+<rect x="239.58" y="94.55" height="95.45" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="72.92" y="121.82" height="68.18" width="37.50" fill="white" ></rect>
+<rect x="72.92" y="121.82" height="68.18" width="37.50" stroke="#000000" stroke-width="0.5" fill="lightgrey" ></rect>
+<rect x="114.58" y="135.45" height="54.55" width="37.50" fill="white" ></rect>
+<rect x="114.58" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="lightgrey" ></rect>
+<rect x="156.25" y="94.55" height="95.45" width="37.50" fill="white" ></rect>
+<rect x="156.25" y="94.55" height="95.45" width="37.50" stroke="#000000" stroke-width="0.5" fill="lightgrey" ></rect>
+<rect x="197.92" y="108.18" height="81.82" width="37.50" fill="white" ></rect>
+<rect x="197.92" y="108.18" height="81.82" width="37.50" stroke="#000000" stroke-width="0.5" fill="lightgrey" ></rect>
+<rect x="239.58" y="135.45" height="54.55" width="37.50" fill="white" ></rect>
+<rect x="239.58" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="lightgrey" ></rect>
+<rect x="72.92" y="149.09" height="40.91" width="37.50" fill="white" ></rect>
+<rect x="72.92" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="114.58" y="149.09" height="40.91" width="37.50" fill="white" ></rect>
+<rect x="114.58" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="156.25" y="135.45" height="54.55" width="37.50" fill="white" ></rect>
+<rect x="156.25" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="197.92" y="121.82" height="68.18" width="37.50" fill="white" ></rect>
+<rect x="197.92" y="121.82" height="68.18" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="239.58" y="162.73" height="27.27" width="37.50" fill="white" ></rect>
+<rect x="239.58" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="72.92" y="176.36" height="13.64" width="37.50" fill="white" ></rect>
+<rect x="72.92" y="176.36" height="13.64" width="37.50" stroke="#000000" stroke-width="0.5" fill="mintcream" ></rect>
+<rect x="114.58" y="162.73" height="27.27" width="37.50" fill="white" ></rect>
+<rect x="114.58" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="mintcream" ></rect>
+<rect x="156.25" y="162.73" height="27.27" width="37.50" fill="white" ></rect>
+<rect x="156.25" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="mintcream" ></rect>
+<rect x="197.92" y="149.09" height="40.91" width="37.50" fill="white" ></rect>
+<rect x="197.92" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="mintcream" ></rect>
+<rect x="239.58" y="176.36" height="13.64" width="37.50" fill="white" ></rect>
+<rect x="239.58" y="176.36" height="13.64" width="37.50" stroke="#000000" stroke-width="0.5" fill="mintcream" ></rect>
+<rect x="300.00" y="73.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="darkgray" ></rect>
+<text x="319.00" y="80.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Stuff</text>
+<rect x="300.00" y="91.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_0)" ></rect>
+<text x="319.00" y="98.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Things</text>
+<rect x="300.00" y="109.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="lightgrey" ></rect>
+<text x="319.00" y="116.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Junk</text>
+<rect x="300.00" y="127.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_1)" ></rect>
+<text x="319.00" y="134.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Yards</text>
+<rect x="300.00" y="145.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="mintcream" ></rect>
+<text x="319.00" y="152.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Dogs</text>
+</svg>

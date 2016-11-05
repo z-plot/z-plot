@@ -430,17 +430,26 @@ class util:
     # utility routines for recording steps and then output'ing at end
     #
 
+    # prepend a command
+    def prepend(self, outStr):
+        self.commands.insert(0, outStr)
+        return
+
+    def outAfter(self, outStr, index):
+        self.commands.insert(index, outStr)
+        return index + 1
+
     # add a new command
     def out(self, outStr):
         self.commands.append(outStr)
-        return
+        return len(self.commands)
 
     # add a command to the previously added line
     def outnl(self, outStr):
         assert(len(self.commands) > 0)
         idx = len(self.commands) - 1
         self.commands[idx] = self.commands[idx] + outStr
-        return
+        return len(self.commands)
 
     # output the commands
     def dump(self, outfile):
@@ -489,7 +498,7 @@ class svg(util):
         self.version = 'python version 1.0'
 
         # SHOULD INCLUDE SOME INFO IN HEADER (in html comment form)
-        self.__comment('Creator: %s version %s script: %s host: %s' % \
+        self.__comment(' Creator: %s version %s script: %s host: %s ' % \
                  (self.program, self.version, os.path.abspath(script),
                   socket.gethostname()))
 
@@ -507,12 +516,135 @@ class svg(util):
 
         self.colors = color()
 
+        # ADD SOME INFO ABOUT HOW TO INCLUDE INTO HTML...
+        self.__comment(' Include into html file with following line: ')
+        self.__comment(' <img width="%.2f" height="%.2f" src="%s"> ' % \
+                       (float(self.width), float(self.height), self.title))
+
         #
         # init svg output header
         #
-        self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
-                 'xmlns:xlink="http://www.w3.org/1999/xlink">')
+        self.defsMarker = \
+                        self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
+                                 'xmlns:xlink="http://www.w3.org/1999/xlink">')
+
+        #
+        # need place to record patterns needed by script
+        #
+        self.patterns = {}
+     
         return
+
+    #
+    # internal routine to make patterns based on what user wants
+    #
+    # good info here:
+    # http://stackoverflow.com/questions/13069446/
+    #       simple-fill-pattern-in-svg-diagonal-hatching
+    # on how to do diagonal lines as patterns
+    def __makepatterns(self):
+        cnt = 0
+        patternString = ''
+        for p in self.patterns:
+            pattern = p[0]
+            fillsize, fillskip = float(p[1]), float(p[2])
+            fillcolor = p[3]
+            patternString += '<!-- pattern: %s -->\n' % pattern
+            patternString += '<pattern id="%s" ' % \
+                             self.patterns[(p[0], p[1], p[2], p[3])]
+            fsum = fillsize + fillskip
+            patternString += 'width="%.2f" height="%.2f" ' % (fsum, fsum) + \
+                             'patternUnits="userSpaceOnUse"> '
+
+            if pattern == 'hline':
+                patternString += '<polyline points="%.2f,%.2f %.2f,%.2f " ' % \
+                                 (0, fsum/2.0, fsum, fsum/2.0) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'fill: none; ' + \
+                                 'stroke-width: %d;"> ' % (fillskip) + \
+                                 '</polyline> '
+            elif pattern == 'vline':
+                patternString += '<polyline points="%.2f,%.2f %.2f,%.2f " ' % \
+                                 (fsum/2.0, 0, fsum/2.0, fsum) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'fill: none; ' + \
+                                 'stroke-width: %d;"> ' % (fillskip) + \
+                                 '</polyline> '
+            elif pattern == 'hvline':
+                patternString += '<polyline points="%.2f,%.2f %.2f,%.2f " ' % \
+                                 (fsum/2.0, 0, fsum/2.0, fsum) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'fill: none; ' + \
+                                 'stroke-width: %d;"> ' % (fillskip) + \
+                                 '</polyline> ' + \
+                                 '<polyline points="%.2f,%.2f %.2f,%.2f " ' % \
+                                 (0, fsum/2.0, fsum, fsum/2.0) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'fill: none; ' + \
+                                 'stroke-width: %d;"> ' % (fillskip) + \
+                                 '</polyline> '
+            elif pattern == 'dline1':
+                patternString += '<path d="M-1,1 l2,-2 ' + \
+                                 'M0,%.2f l%.2f,-%.2f ' % (fsum, fsum, fsum) + \
+                                 'M%.2f,%.2f l2,-2" ' % (fsum - 1, fsum + 1) + \
+                                 'style="stroke:%s; ' % fillcolor + \
+                                 'stroke-width:%.2f"></path> ' % fillsize
+            elif pattern == 'dline2':
+                patternString += '<path d="M%.2f,1 l-2,-2 ' % (fsum + 1) + \
+                                 'M%.2f,%.2f l-%.2f,-%.2f ' % (fsum, fsum,
+                                                               fsum, fsum) + \
+                                 'M1,%.2f l-2,-2" ' % (fsum + 1) + \
+                                 'style="stroke:%s; ' % fillcolor + \
+                                 'stroke-width:%.2f"></path> ' % fillsize
+            elif pattern == 'dline12':
+                patternString += '<path d="M-1,1 l2,-2 ' + \
+                                 'M0,%.2f l%.2f,-%.2f ' % (fsum, fsum, fsum) + \
+                                 'M%.2f,%.2f l2,-2" ' % (fsum-1, fsum+1) + \
+                                 'style="stroke:%s; ' % fillcolor + \
+                                 'stroke-width:%.2f"></path> ' % fillsize + \
+                                 '<path d="M%.2f,1 l-2,-2 ' % (fsum+1) + \
+                                 'M%.2f,%.2f l-%.2f,-%.2f ' % (fsum, fsum,
+                                                               fsum, fsum) + \
+                                 'M1,%.2f l-2,-2" ' % (fsum+1) + \
+                                 'style="stroke:%s; ' % fillcolor + \
+                                 'stroke-width:%.2f"></path> ' % fillsize
+            elif pattern == 'triangle':
+                patternString += '<polyline ' + \
+                                 'points="%.2f,%.2f ' % (1.0, fsum) + \
+                                 '%.2f,%.2f ' % (fsum/2.0, 2.0) + \
+                                 '%.2f,%.2f ' % (fsum - 1.0, fsum) + \
+                                 '%.2f,%.2f" ' % (1.0, fsum) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'stroke-width: 0.0; ' + \
+                                 'fill: %s"> </polyline> ' % fillcolor
+            elif pattern == 'utriangle':
+                patternString += '<polyline points="%.2f,%.2f ' % (1.0, 2.0) + \
+                                 '%.2f,%.2f ' % (fsum/2.0, fsum) + \
+                                 '%.2f,%.2f " ' % (fsum - 1.0, 2.0) + \
+                                 'style="stroke: %s; ' % fillcolor + \
+                                 'stroke-width: 0.0; ' + \
+                                 'fill: %s"> </polyline> ' % fillcolor
+            elif pattern == 'circle':
+                patternString += '<circle cx="%.2f" ' % (fsum/2.0) + \
+                                 'cy="%.2f" ' % (fsum/2.0) + \
+                                 'r="%.2f" ' % fillsize + \
+                                 'stroke="%s" ' % fillcolor + \
+                                 'stroke-width="0" ' + \
+                                 'fill="%s">' % (fillcolor) + \
+                                 '</circle>'
+            elif pattern == 'square':
+                x = fsum/2.0 - fillsize/2.0
+                y = fillsize/2.0
+                patternString += '<rect x="%.2f" y="%.2f" ' % (x, y) + \
+                                 'height="%.2f" width="%.2f" ' % (fillsize,
+                                                                  fillsize) + \
+                                 'fill="%s">' % fillcolor + \
+                                 '</rect>'
+
+            # end all patterns here
+            patternString += '</pattern>\n\n'
+            cnt += 1
+        return patternString
 
     # 
     # --method-- render
@@ -523,6 +655,16 @@ class svg(util):
     def render(self,
                ):
         self.out('</svg>')
+
+        # now, add in patterns, at the point near the beginning of
+        # this SVG's definition.
+        patternString = self.__makepatterns()
+
+        # now insert defs into beginning of SVG
+        marker = self.outAfter('<defs>', self.defsMarker)
+        marker = self.outAfter(patternString, marker)
+        self.outAfter('</defs>', marker)
+        
         self.dump(self.title)
         return
 
@@ -774,6 +916,73 @@ class svg(util):
 
         return
 
+    #
+    # record new patterns or give out name of old ones
+    #
+    def __recordpattern(self, fillstyle, fillsize, fillskip, fillcolor):
+        e = (str(fillstyle), '%.2f' % float(fillsize), \
+             '%.2f' % float(fillskip), fillcolor)
+        if e in self.patterns:
+            return self.patterns[e]
+        else:
+            index = len(self.patterns)
+            self.patterns[e] = 'zplot_pattern_%d' % index
+            return self.patterns[e]
+        return
+
+    #
+    # does the work for box()
+    #
+    def __makerect(self,
+            coord       = [[0,0],[0,0]],
+            linecolor   = 'black',
+            linewidth   = 1,
+            linedash    = 0,
+            linecap     = 0,
+            fill        = False,
+            fillcolor   = 'black',
+            fillstyle   = 'solid',
+            fillsize    = 3,
+            fillskip    = 4,
+            rotate      = 0,
+            ):
+        # print 'box', fillstyle, fillsize, fillskip
+        if fillstyle != 'solid':
+            pattern = self.__recordpattern(fillstyle, fillsize, fillskip,
+                                           fillcolor)
+        
+        x1, y1 = coord[0][0], self.__converty(coord[0][1])
+        x2, y2 = coord[1][0], self.__converty(coord[1][1])
+        if x1 > x2:
+            x = x2
+            w = x1 - x2
+        else:
+            x = x1
+            w = x2 - x1
+        if y1 > y2:
+            y = y2
+            h = y1 - y2
+        else:
+            y = y1
+            h = y2 - y1
+        self.out('<rect x="%.2f" y="%.2f" ' % (x, y))
+        self.outnl('height="%.2f" width="%.2f" ' % (h, w))
+        if linewidth > 0:
+            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+            self.outnl('stroke-width="%s" ' % linewidth)
+        if linedash != 0:
+            self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
+        if fill:
+            if fillstyle == 'solid':
+                self.outnl('fill="%s" ' % fillcolor)
+            else:
+                self.outnl('fill="url(#%s)" ' % pattern)
+        else:
+            self.outnl('fill="none" ')
+        self.outnl('></rect>')
+        return
+        
+
     # 
     # --method-- box
     #
@@ -821,36 +1030,15 @@ class svg(util):
             bgcolor     = '',
             ):
         # DOES NOT YET SUPPORT SOME FEATURES
-        assert(fillstyle == 'solid')
         assert(rotate == 0)
-        assert(bgcolor == '')
-        
-        x1, y1 = coord[0][0], self.__converty(coord[0][1])
-        x2, y2 = coord[1][0], self.__converty(coord[1][1])
-        if x1 > x2:
-            x = x2
-            w = x1 - x2
-        else:
-            x = x1
-            w = x2 - x1
-        if y1 > y2:
-            y = y2
-            h = y1 - y2
-        else:
-            y = y1
-            h = y2 - y1
-        self.out('<rect x="%.2f" y="%.2f" ' % (x, y))
-        self.outnl('height="%.2f" width="%.2f" ' % (h, w))
-        if linewidth > 0:
-            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
-            self.outnl('stroke-width="%s" ' % linewidth)
-        if linedash != 0:
-            self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
-        if fill:
-            self.outnl('fill="%s" ' % fillcolor)
-        else:
-            self.outnl('fill="none" ')
-        self.outnl('></rect>')
+
+        if bgcolor != '':
+            self.__makerect(coord, linecolor, 0, linedash,
+                            linecap, True, bgcolor, 'solid', 0, 0, rotate)
+            
+        self.__makerect(coord, linecolor, linewidth, linedash,
+                        linecap, fill, fillcolor, fillstyle, fillsize,
+                        fillskip, rotate)
         return
 
 
@@ -1145,8 +1333,6 @@ class postscript(util):
 	    self.__fill()
             return
             
-        # XXX - needs to update these values
-        # self.__makeboxbigger(x1, y1, x2, y2, 10.0)
         delta = 10
         if x2 > x1:
             x1 = x1 - delta
@@ -1410,7 +1596,7 @@ class postscript(util):
         self.out('zdict begin')
         self.out('/cpx 0 def')
         self.out('/cpy 0 def')
-        self.out('/recordcp {currentpoint /cpy exch def /cpx exch def} bind def')
+        self.out('/reccp {currentpoint /cpy exch def /cpx exch def} bind def')
         self.out('/m {moveto} bind def')
         self.out('/l {lineto} bind def')
         self.out('/mr {rmoveto} bind def')
@@ -1428,9 +1614,9 @@ class postscript(util):
         self.out('/sd  {setdash} bind def')
         # XXX -- triangle not implemented (yet) -- expects x y size on stack
         # self.out('/triangle {pop pop pop} bind def')  
-        self.out('/lshow {show recordcp} def')
-        self.out('/rshow {dup stringwidth pop neg 0 mr show recordcp} def')
-        self.out('/cshow {dup stringwidth pop -2 div 0 mr show recordcp} def')
+        self.out('/lshow {show reccp} def')
+        self.out('/rshow {dup stringwidth pop neg 0 mr show reccp} def')
+        self.out('/cshow {dup stringwidth pop -2 div 0 mr show reccp} def')
         self.out('end')
         self.out('zdict begin')
 
@@ -2319,7 +2505,7 @@ class drawable:
     def map(self,
             # The coordinates to translate from the drawable coordinate system
             # to the canvas raw coordinates. Coordinates can be a single list
-            # [x,y] or, for a line for example, a list of points [[x1,y1],[x2,y2]].
+            # [x,y] or, for e.g. a line, a list of points [[x1,y1],[x2,y2]].
             coord=['',''],
             ):
         if type(coord) == types.ListType:
@@ -2587,8 +2773,8 @@ class table:
     # 
     def update(self,
                # Specify how to set values in one column. Can just set a column
-               # to a specific value (e.g., set='c0 = 100') or can do math across
-               # some columns (e.g., set='c0 = c0 + c1'). 
+               # to a specific value (e.g., set='c0 = 100') or can do math 
+               # across some columns (e.g., set='c0 = c0 + c1'). 
                set='',
 
                # Can operate on a subset of rows via selection.
@@ -2874,8 +3060,8 @@ class plotter:
                # Allows point size to vary which is a nice feature.
                sizefield       = '',        
 
-               # If using sizefield, use sizediv to scale each value (each sizefield
-               # gets divided by sizediv to get to the final size).
+               # If using sizefield, use sizediv to scale each value (each 
+               # sizefield gets divided by sizediv to get to the final size).
                sizediv         = '',        
 
                # Color of the line of the marker.
@@ -2884,7 +3070,7 @@ class plotter:
                # Width of lines used to draw marker.
                linewidth       = 1.0,
 
-               # For some shapes, filling makes sense; if desired, mark this true.
+               # For some shapes, filling makes sense; if desired, mark True.
                fill            = False,
 
                # If filling, use this fill color. 
@@ -3059,12 +3245,12 @@ class plotter:
                        # Fill size (if pattern has a marker of some size in it).
                        fillsize    = 3,
 
-                       # Fill space between markers (if pattern has marker in it).
+                       # Fill space between markers (if pattern has marker).
                        fillskip    = 4,
 
                        # Background color for bar - can make sense if pattern
-                       # contains little markers, for example, because you can use
-                       # this to fill in a background color then.
+                       # contains little markers, for example, because you can 
+                       # use this to fill in a background color then.
                        bgcolor     = '',
 
                        # Legend object (if using a legend).
@@ -3768,7 +3954,7 @@ class plotter:
                      # table column with y data
                      yfield     = '',
 
-                     # if not empty, use this table column to fill down to this value
+                     # if not empty, fill down to this column value
                      ylofield   = '',  
 
                      # if no ylofield, use this value to fill down to;
@@ -5042,7 +5228,7 @@ class legend:
     # END: draw()
 
     # 
-    # Method used by plotters to add some info about a legend to the legend list. 
+    # Method used by plotters to add info about a legend to the legend list.
     # If 'entry' is specified, this will add the text (if any) to the existing
     # text in that spot, and also add the picture to the list of pictures to be
     # drawn for this entry. If 'entry' is not specified, simply use the current

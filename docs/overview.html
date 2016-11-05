@@ -83,7 +83,15 @@ c.render()
 </blockquote>
 
 <p>
-The output of this graph is
+<center>
+<a href="../examples/original-paper/example1.svg">
+<img src="../examples/original-paper/example1.svg"></svg></a><br></br>
+<b> Figure 1:</b> The most bare-boned of plots that one can make with Zplot.
+</center>
+</p>
+
+<p>
+The EPS version of this graph is
 shown <a href="../examples/original-paper/example1.eps"> here;</a> it is made
 from <a href="../examples/original-paper/example1.data"> this data set</a>
 using <a href="../examples/original-paper/example1.py"> this script.</a>
@@ -176,11 +184,23 @@ p.points(drawable=d, table=thi, xfield='x', yfield='y', style='circle',
 </pre>
 </p> 
 
+<p>
+<center>
+<a href="../examples/original-paper/example2.svg">
+<img width=216 height=172.8 
+src="../examples/original-paper/example2.svg"></img></a><br></br>
+<b> Figure 2: Table Selection.</b> The example uses a simple table
+selection to find y-values that are greater than 5. Then, these
+points are plotted as green circles.
+</center>
+</p>
 
-<p> This example is shown <a href="../examples/original-paper/example2.eps">
-here;</a> it is made from <a href="../examples/original-paper/example2.data">
-this data set</a> using <a href="../examples/original-paper/example2.py"> this
-script.</a>  
+
+<p> This example is shown in
+postscript <a href="../examples/original-paper/example2.eps"> here;</a> it is
+made from <a href="../examples/original-paper/example2.data"> this data
+set</a> using <a href="../examples/original-paper/example2.py"> this
+script.</a>
 </p> 
 
 <p> There are a number of other useful table functions which are not covered
@@ -204,6 +224,18 @@ their small size. Thus, one can create two additional drawables and plot
 closeups of the data in those regions. 
 </p> 
 
+<p>
+<center>
+<a href="../examples/original-paper/dgraid.svg">
+<img width="400" height="290" src="../examples/original-paper/dgraid.svg">
+</img>
+</a><br></br>
+<b> Figure 3: Nested Plots.</b> A plot from an earlier paper of ours
+is recreated. Two closeups are made in the lower graph, with
+only a few lines of Python code required.
+</center>
+</p>
+
 <p> The FAST paper graph can be
 seen <a href="../examples/original-paper/dgraid.eps"> here;</a> it is made
 from <a href="../examples/original-paper/dgraid.copy.data"> this file</a>
@@ -218,6 +250,18 @@ object can be passed when creating it. For example, a user can specify its
 exact position with the <code>coord</code> parameter and its size with the
 <code>dimensions</code> parameter.
 </p> 
+
+<p>
+<center>
+<a href="../examples/original-paper/example3.svg">
+<img width="237.6" height="172.8" src="../examples/original-paper/example3.svg">
+</img>
+</a><br></br>
+<b> Figure 4: Multiple Y Axes.</b> The script creates two drawables,
+the right one with a y-range that is twice as high as the
+left one. The same data is plotted on both.
+</center>
+</p>
 
 <p> Multiple drawables can also be used to plot data with multiple y axes in a
 simple and straightforward manner. In this example, we plot the same data from
@@ -294,15 +338,26 @@ drawables. It provides numerous plotting methods to get this job done:
 </p> 
 
 <p>
-This next example shows a number of different possibilities from the above,
-all combined into a single script. The graph is
-shown <a href="../examples/original-paper/example-multi.eps"> here;</a> it is
-made from <a href="../examples/original-paper/example-multi.data"> this data
-set</a> using <a href="../examples/original-paper/example-multi.py"> this
+<center>
+<a href="../examples/original-paper/example-multi.svg">
+<img width=300 height=210
+src="../examples/original-paper/example-multi.svg"></img></a><br></br>
+<b> Figure 5: Multiple Plot Types.</b> This example plots a number
+of different plot types, as described in each title. Of course, many
+other variations are possible.
+</center>
+</p>
+
+
+<p>
+This next example, shown in Figure 5 above, presents a number of different
+possibilities from the above, all combined into a single script. The EPS graph
+is shown <a href="../examples/original-paper/example-multi.eps"> here;</a> it
+is made from <a href="../examples/original-paper/example-multi.data"> this
+data set</a> using <a href="../examples/original-paper/example-multi.py"> this
 script.</a> One interesting point is that multiple types from above can be
 combined to make more interesting plots; for example, a box-and-whiskers type
-plot is simply a combination of vertical intervals, vertical bars, and
-points. 
+plot is simply a combination of vertical intervals, vertical bars, and points.
 </p>
 
 <p> Another example plots a number of different patterns in a set of
@@ -314,6 +369,20 @@ many different types of data within. The example is
 set</a> using <a href="../examples/original-paper/example4.py"> this
     script.</a>
 </p>
+
+<p>
+<center>
+<a href="../examples/original-paper/example4.svg">
+<img width="380.00" height="240.00" src="../examples/original-paper/example4.svg">
+</img>
+</a><br></br>
+<b> Figure 6: Multiple Patterns.</b> 
+This example plots a number of different patterns in a set of stacked bars. As
+one can see, patterns such as diagonal lines and triangles can be used to fill
+a region. The example also includes a legend.
+</center>
+</p>
+
 
 
 <h2>Axes, Tics, and Labels</h2>

@@ -1,0 +1,49 @@
+<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.py host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="100.00" height="110.00" src="manybars.svg"> -->
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<!-- pattern: hvline -->
+<pattern id="zplot_pattern_2" width="2.00" height="2.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,0.00 1.00,2.00 " style="stroke: darkgray; fill: none;stroke-width: 1;"> </polyline> <polyline points="0.00,1.00 2.00,1.00 " style="stroke: darkgray; fill: none;stroke-width: 1;"> </polyline> </pattern>
+
+<!-- pattern: dline2 -->
+<pattern id="zplot_pattern_4" width="3.00" height="3.00" patternUnits="userSpaceOnUse"> <path d="M4.00,1 l-2,-2 M3.00,3.00 l-3.00,-3.00 M1,4.00 l-2,-2" style="stroke:darkgray; stroke-width:1.00"></path> </pattern>
+
+<!-- pattern: triangle -->
+<pattern id="zplot_pattern_8" width="4.00" height="4.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,4.00 2.00,2.00 3.00,4.00 1.00,4.00" style="stroke: darkgray; stroke-width: 0.0; fill: darkgray"> </polyline> </pattern>
+
+<!-- pattern: hline -->
+<pattern id="zplot_pattern_0" width="2.00" height="2.00" patternUnits="userSpaceOnUse"> <polyline points="0.00,1.00 2.00,1.00 " style="stroke: darkgray; fill: none;stroke-width: 1;"> </polyline> </pattern>
+
+<!-- pattern: vline -->
+<pattern id="zplot_pattern_1" width="2.00" height="2.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,0.00 1.00,2.00 " style="stroke: darkgray; fill: none;stroke-width: 1;"> </polyline> </pattern>
+
+<!-- pattern: utriangle -->
+<pattern id="zplot_pattern_9" width="4.00" height="4.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,2.00 2.00,4.00 3.00,2.00 " style="stroke: darkgray; stroke-width: 0.0; fill: darkgray"> </polyline> </pattern>
+
+<!-- pattern: dline12 -->
+<pattern id="zplot_pattern_5" width="2.50" height="2.50" patternUnits="userSpaceOnUse"> <path d="M-1,1 l2,-2 M0,2.50 l2.50,-2.50 M1.50,3.50 l2,-2" style="stroke:darkgray; stroke-width:0.50"></path> <path d="M3.50,1 l-2,-2 M2.50,2.50 l-2.50,-2.50 M1,3.50 l-2,-2" style="stroke:darkgray; stroke-width:0.50"></path> </pattern>
+
+<!-- pattern: dline1 -->
+<pattern id="zplot_pattern_3" width="3.00" height="3.00" patternUnits="userSpaceOnUse"> <path d="M-1,1 l2,-2 M0,3.00 l3.00,-3.00 M2.00,4.00 l2,-2" style="stroke:darkgray; stroke-width:1.00"></path> </pattern>
+
+<!-- pattern: square -->
+<pattern id="zplot_pattern_7" width="2.00" height="2.00" patternUnits="userSpaceOnUse"> <rect x="0.50" y="0.50" height="1.00" width="1.00" fill="darkgray"></rect></pattern>
+
+<!-- pattern: circle -->
+<pattern id="zplot_pattern_6" width="3.00" height="3.00" patternUnits="userSpaceOnUse"> <circle cx="1.50" cy="1.50" r="1.00" stroke="darkgray" stroke-width="0" fill="darkgray"></circle></pattern>
+
+
+</defs>
+<rect x="5.00" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_0)" ></rect>
+<rect x="14.09" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_1)" ></rect>
+<rect x="23.18" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_2)" ></rect>
+<rect x="32.27" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_3)" ></rect>
+<rect x="41.36" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_4)" ></rect>
+<rect x="50.45" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_5)" ></rect>
+<rect x="59.55" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_6)" ></rect>
+<rect x="68.64" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_7)" ></rect>
+<rect x="77.73" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_8)" ></rect>
+<rect x="86.82" y="5.00" height="100.00" width="8.18" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_9)" ></rect>
+</svg>

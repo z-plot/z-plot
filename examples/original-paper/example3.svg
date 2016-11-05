@@ -1,6 +1,11 @@
-<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: cs-eduroam-117.cs.wisc.edu-->
+<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="237.60" height="172.80" src="example3.svg"> -->
 <svg xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+
+</defs>
 <path d="M 35.50,144.00 L 202.10,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 36.00,144.50 L 36.00,21.10 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
 <path d="M 36.00,148.00 L 36.00,144.00 " stroke="#000000" stroke-width="1.00px" fill="none"></path>
