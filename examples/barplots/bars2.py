@@ -1,5 +1,15 @@
 #! /usr/bin/env python
 
+# 
+# --example-- 
+# 
+# This example shows a simple bar graph with a green background.
+# It uses simple table selection to divide the data into low and
+# high values, and then plots each subset with different colors.
+# It also uses the grid() class to create some other graph
+# accoutrement.
+# 
+
 from zplot import *
 
 c = postscript(title='bars2.eps', dimensions=[300, 140])
