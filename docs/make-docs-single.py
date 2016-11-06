@@ -67,7 +67,7 @@ def get_parameter(class_fd, line, comments):
     return        
 
 
-fd = open('../zplot.py')
+fd = open('../zplot/zplot.py')
 
 class_fd = open('./in.docs.html', 'w')
 
