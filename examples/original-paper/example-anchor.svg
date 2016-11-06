@@ -1,6 +1,11 @@
-<!--Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.py host: Remzis-MacBook-Air.local-->
+<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.py host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="200.00" height="60.00" src="example-anchor.svg"> -->
 <svg xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+
+</defs>
 <text x="10.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: baseline; "> Anchor Is l,l</text>
 <text x="10.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Anchor Is l,c</text>
 <text x="10.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: hanging; "> Anchor Is l,h</text>

@@ -1,13 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<table>
-<tr>
+    <title> Overview </title>
 
-<td width=50pt></td>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<td width=300pt>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<h1> An Introduction To Zplot (Python Version)</h1>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1> An Introduction To Zplot (Python)</h1>
 <h4> by Remzi H. Arpaci-Dusseau <br/>
 (translated from the <a href="http://www.cs.wisc.edu/~remzi/zplot.pdf">
     original paper</a> based on the Tcl version) 
@@ -334,6 +349,8 @@ drawables. It provides numerous plotting methods to get this job done:
   create a filled graph (as one would use in a stacked line graph)</li>
 <li> <a href="plotter.html#function"> function()</a>, which can plot an
   arbitrary function over an interval</li>
+<li> <a href="plotter.html#heat"> heat()</a>, which can make a heat map
+  (a form of a 3D graph)</li>
 </ul>
 </p> 
 
@@ -524,8 +541,18 @@ possible anchors (the coordinates passed to the text drawing routine are
 highlighted with a red circle).
 </p>
 
+<p>
+<center>
+<a href="../examples/original-paper/example-anchor.svg">
+<img width="200.0" height="60.0" src="../examples/original-paper/example-anchor.svg"></img>
+</a><br></br>
+<b> Figure 7: Text Anchors.</b> 
+This example shows how to specify text anchors.
+</center>
+</p>
+
 <p> 
-The anchoring graph is 
+The anchoring EPS graph is 
 shown <a href="../examples/original-paper/example-anchor.eps"> here;</a> it is made
 using <a href="../examples/original-paper/example-anchor.py"> this script.</a>
 </p> 
@@ -583,8 +610,7 @@ more.
 </p>
 
 
-</td></tr>
-</table>
-
+</div>
+</body>
 </html>
 

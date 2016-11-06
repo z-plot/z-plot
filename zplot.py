@@ -227,7 +227,7 @@ class color:
     # Just get the color
     def get(self, color):
         if color not in self.color_list:
-            print 'color %s not valid; returning 0 0 0'
+            print 'color %s not valid; returning 0 0 0' % color
             return '0 0 0'
         return self.color_list[color]
 
@@ -273,8 +273,6 @@ class util:
         return
 
     #
-    # convert()
-    #
     # Used to convert from whatever into points
     #
     def convert(self, unitStr):
@@ -289,8 +287,6 @@ class util:
             return float(u[0]) * 72.0
         return float(unitStr)
 
-    #
-    # stringWidth()
     #
     # This is a complete hack, and can be very wrong depending on the fontface
     # (which it should clearly be dependent upon). The problem, of course: only
@@ -320,8 +316,6 @@ class util:
             total = total + add
         return (fontsize * total)
 
-    #
-    # shape()
     #
     # Use this to draw a shape on the plotting surface. Lots of possibilities,
     # including square, circle, triangle, utriangle, plusline, hline, vline,
@@ -535,6 +529,10 @@ class svg(util):
      
         return
 
+    # Simple utility to get color as hex value
+    def getcolor(self, value):
+        return self.colors.getAsHex(value)
+
     #
     # internal routine to make patterns based on what user wants
     #
@@ -729,7 +727,7 @@ class svg(util):
         assert(arrow == False)
         assert(closepath == False)
         
-        linecolor = self.__getcolor(linecolor)
+        linecolor = self.getcolor(linecolor)
         point = coord[0]
         self.__startpath()
         self.__moveto(point[0], point[1])
@@ -804,9 +802,6 @@ class svg(util):
     def __converty(self, y):
         return self.height - y
 
-    def __getcolor(self, value):
-        return self.colors.getAsHex(value)
-
     def __getdash(self, linedash):
         outdash = ''
         for e in linedash:
@@ -864,7 +859,7 @@ class svg(util):
              # Border (black) around background color?
              bgborder = 1,
              ):
-        color = self.__getcolor(color)
+        color = self.getcolor(color)
         if font == 'default':
             font = 'Helvetica'
 
@@ -968,7 +963,7 @@ class svg(util):
         self.out('<rect x="%.2f" y="%.2f" ' % (x, y))
         self.outnl('height="%.2f" width="%.2f" ' % (h, w))
         if linewidth > 0:
-            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+            self.outnl('stroke="%s" ' % self.getcolor(linecolor))
             self.outnl('stroke-width="%s" ' % linewidth)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
@@ -1111,7 +1106,7 @@ class svg(util):
         self.out('<circle cx="%.2f" ' % float(x))
         self.outnl('cy="%.2f" ' % float(y))
         self.outnl('r="%.2f" ' % float(radius))
-        self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+        self.outnl('stroke="%s" ' % self.getcolor(linecolor))
         self.outnl('stroke-width="%s" ' % linewidth)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
@@ -1172,7 +1167,7 @@ class svg(util):
             self.outnl('%.2f,%.2f ' % (c[0], self.__converty(c[1])))
         self.outnl('" ')
         if linewidth > 0:
-            self.outnl('stroke="%s" ' % self.__getcolor(linecolor))
+            self.outnl('stroke="%s" ' % self.getcolor(linecolor))
             self.outnl('stroke-width="%s" ' % linewidth)
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
@@ -1192,6 +1187,9 @@ class svg(util):
 # Use this class to make a postscript drawing surface.
 #
 class postscript(util):
+    def getcolor(self, value):
+        return value
+
     def comment(self, comments):
         self.comments += comments
 
@@ -4055,6 +4053,83 @@ class plotter:
             legend.add(text=legendtext, picture=t)
         return
     # END: verticalfill()
+
+    # --method-- heat
+    #
+    # Use this to plot a heat map. A heat map takes x,y,heat triples and
+    # plots a gray-shaded box with darkness proportional to (heat/divisor)
+    # and of size (width by height) at each (x,y) coordinate.
+    # 
+    def heat(self,
+             # drawable object 
+             drawable = '',
+
+             # name of table to use
+             table = '',
+
+             # subset of table via query?
+             where = '',
+
+             # table column with x data
+             xfield = 'c0',
+
+             # table column with y data
+             yfield = 'c1',
+
+             # table column with heat data
+             hfield = 'heat',
+
+             # width of each rectangle
+             width = 1,
+
+             # height of each rectangle
+             height = 1,
+
+             # how much to divide heat value by
+             divisor = 1.0,
+
+             # if true, add labels to each heat region reflecting count value
+             label = False,
+
+             # if using labels, what font should be used
+             labelfont = 'default', 
+
+             # if using labels, what color is the font
+             labelcolor = 'orange',
+
+             # if using labels, what font size should be used
+             labelsize = 6.0,
+
+             # if using labels, what should the format be
+             labelformat = '%.2f', 
+             ):
+        # get rindex
+        rindex = table.getrindex()
+        xindex = rindex[xfield]
+        yindex = rindex[yfield]
+        hindex = rindex[hfield]
+
+        canvas = drawable.canvas
+
+        for r in table.query(where):
+            tx = drawable.translate('x', r[xindex])
+            ty = drawable.translate('y', r[yindex])
+            h = float(r[hindex])
+
+            heat = h / divisor
+
+            w = drawable.scale('x', width)
+            h = drawable.scale('y', height)
+
+            # absence of color is black (0,0,0)
+            scolor = 1.0 - heat
+            color = canvas.getcolor('%s,%s,%s' % (scolor, scolor, scolor))
+
+            canvas.box(coord=[[tx,ty],[tx+w, ty+w]], linewidth=0, fill=True,
+                       fillcolor=color, fillstyle='solid')
+        return
+    # END heat()
+    
 # END: class plotter
 
 #
@@ -5096,7 +5171,7 @@ class grid:
 # to make the legend on the plot.
 # 
 class legend:
-    def __init__(self
+    def __init__(self,
                  ):
         # 'info' field will track each picture and text in the legend
         # All the work is done later - when legend is drawn.

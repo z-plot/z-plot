@@ -81,9 +81,10 @@ p.horizontalbars(drawable=d6, table=t, xfield='x', yfield='y', barwidth=0.8, fil
 
 # heat
 #Table -table h -file "file.heat"
-#Drawable -drawable d7 -xrange 0,6 -yrange 0,6 -coord 220,150 -dimensions 60,40
-#PlotHeat -table h -drawable d7 -xfield c0 -yfield c1 -hfield c2 -divisor 4.0
-#AxesTicsLabels -title "Heat" -drawable d7 -majortics f -labels f
+h = table(file='example-multi.heat')
+d7 = drawable(canvas=c, xrange=[0,6], yrange=[0,6], coord=[220,150], dimensions=[60,40])
+p.heat(drawable=d7, table=h, xfield='c0', yfield='c1', hfield='c2', divisor=4.0)
+axis(drawable=d7, title='Heat', domajortics=False, dolabels=False)
 
 # finally, output the graph to a file
 c.render()
