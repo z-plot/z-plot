@@ -1,0 +1,4 @@
+
+all:
+	./make-docs.csh
+
