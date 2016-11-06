@@ -1,8 +1,12 @@
 #! /usr/bin/env python
 
 from zplot import *
+import sys
 
-c = postscript(title='devol.eps', dimensions=['400','340'])
+import sys
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='devol', dimensions=['400','340'])
+
 t = table(file='devol.data')
 t.addcolumns(['month','year'])
 t.update(set='month = substr(date, 1, 2)')
@@ -16,7 +20,7 @@ grid(drawable=d, ystep=200, xstep=1, linecolor='lightgrey')
 axis(drawable=d, style='y', yauto=['','',200])
 axis(drawable=d, style='x', xmanual=t.getaxislabels(column='month'),
      xlabelrotate=90, xlabelanchor='r,c', xlabelfontsize=7,
-     title='Number of Inquiries Per Month', titlesize='8',
+     title='Number of Inquiries Per Month', titlesize=8,
      titlefont='Courier-Bold', xtitle='Year and Month',
      xtitleshift=[0,-15])
 

@@ -846,7 +846,7 @@ class svg(util):
              color    = 'black',
 
              # Font size.
-             size     = 16,
+             size     = 10,
 
              # Rotate text by this many degrees.
              rotate   = 0,
