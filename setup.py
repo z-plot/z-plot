@@ -9,7 +9,7 @@ setup(
     author = 'Remzi H. Arpaci-Dusseau',
     author_email = 'remzi.arpacidusseau@gmail.com',
     url = 'https://github.com/z-plot/z-plot', 
-    download_url = 'https://github.com/z-plot/z-plot/tarball/1.1', 
+    download_url = 'https://github.com/z-plot/z-plot/tarball/1.2', 
     keywords = ['plotting', 'graphing', 'postscript', 'svg'], 
     classifiers = [],
     )
