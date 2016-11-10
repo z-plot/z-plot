@@ -464,6 +464,10 @@ class util:
 # Use this to make an SVG drawing surface. A good source of info on SVG:
 # https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg.
 #
+# Also a good source of info on markers:
+#   http://vanseodesign.com/web-design/svg-markers/
+# (useful for drawing arrowheads, for example)
+#
 # Not super complete right now, in particular in support of making arbitrary
 # shapes and things like that inside of boxes. 
 #
@@ -518,20 +522,62 @@ class svg(util):
         #
         # init svg output header
         #
-        self.defsMarker = \
-                        self.out('<svg xmlns="http://www.w3.org/2000/svg"\n' + \
-                                 'xmlns:xlink="http://www.w3.org/1999/xlink">')
-
+        self.defsIndex = \
+                       self.out('<svg xmlns="http://www.w3.org/2000/svg" ' + \
+                                'xmlns:xlink="http://www.w3.org/1999/xlink" ' + \
+                                'width="%.2f" height="%.2f">' % (float(self.width), \
+                                                                 float(self.height)))
+        
         #
-        # need place to record patterns needed by script
+        # need place to record patterns/arrows needed by script
         #
         self.patterns = {}
+        self.arrows = {}
      
         return
 
     # Simple utility to get color as hex value
     def getcolor(self, value):
         return self.colors.getAsHex(value)
+
+    #
+    # internal routine to make arrow descriptions for current graph
+    # 
+    def __makearrows(self):
+        cnt = 0
+        arrowString = ''
+        for a in self.arrows:
+            tmp = a.split('-')
+            arrowheadlength = float(tmp[0])
+            arrowheadwidth  = float(tmp[1])
+            arrowlinecolor  = tmp[2]
+            arrowlinewidth  = float(tmp[3])
+            if tmp[4] == 'False':
+                arrowfill   = False
+            else:
+                arrowfill   = True
+            arrowfillcolor  = tmp[5]
+            key = self.arrows[a]
+
+            # XXX should 'userSpaceOnUse' be 'strokeWidth' ?
+            arrowString += '<!-- arrow marker -->\n' + \
+                           '<marker id="%s" ' % key + \
+                           'markerWidth="%.2f" ' % (arrowheadlength+20) + \
+                           'markerHeight="%.2f" ' % (arrowheadwidth+20) + \
+                           'refX="2" refY="%.2f" ' % (arrowheadwidth/2.0+2) + \
+                           'orient="auto" markerUnits="userSpaceOnUse"> ' + \
+                           '<path d="M2,2 L2,%.2f L%.2f,%.2f z" ' % \
+                           (arrowheadwidth+2, arrowheadlength+2,
+                            arrowheadwidth/2.0+2)
+            if arrowfill == False:
+                arrowString += 'style="stroke: %s; ' % arrowfillcolor + \
+                               'stroke-linejoin: miter; ' + \
+                               'fill: none; ' + \
+                               'stroke-width: %.2f;" /> ' % (arrowlinewidth)
+            else:
+                arrowString += 'fill="%s" /> ' % arrowfillcolor
+            arrowString += '</marker>\n' 
+        return arrowString
 
     #
     # internal routine to make patterns based on what user wants
@@ -657,11 +703,13 @@ class svg(util):
         # now, add in patterns, at the point near the beginning of
         # this SVG's definition.
         patternString = self.__makepatterns()
+        arrowString = self.__makearrows()
 
         # now insert defs into beginning of SVG
-        marker = self.outAfter('<defs>', self.defsMarker)
-        marker = self.outAfter(patternString, marker)
-        self.outAfter('</defs>', marker)
+        index = self.outAfter('<defs>', self.defsIndex)
+        index = self.outAfter(patternString, index)
+        index = self.outAfter(arrowString, index)
+        self.outAfter('</defs>', index)
         
         self.dump(self.title)
         return
@@ -723,9 +771,9 @@ class svg(util):
              # Style to use. 'normal' is one option. There are no others.
              arrowstyle      = 'normal',
             ):
-        # ARROW NOT IMPLEMENTED (YET)
-        assert(arrow == False)
+        # NOT IMPLEMENTED (YET)
         assert(closepath == False)
+        assert(arrowstyle == 'normal')
         
         linecolor = self.getcolor(linecolor)
         point = coord[0]
@@ -757,7 +805,14 @@ class svg(util):
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % \
                                 self.__getdash(linedash))
-        self.outnl('fill="none"')
+        self.outnl('fill="none" ')
+
+        if arrow:
+            label = self.__recordarrow(arrowheadlength, arrowheadwidth,
+                                       arrowlinecolor, arrowlinewidth,
+                                       arrowfill, arrowfillcolor)
+            self.outnl('marker-end="url(#%s)"' % label)
+
         self.__endstyle()
         self.__endpath()
         return
@@ -910,6 +965,24 @@ class svg(util):
         self.outnl('</text>')
 
         return
+
+    #
+    # record arrow
+    #
+    def __recordarrow(self, arrowheadlength, arrowheadwidth,
+                      arrowlinecolor, arrowlinewidth,
+                      arrowfill, arrowfillcolor):
+        key = '%.2f-%.2f-%s-%.2f-%s-%s' % (arrowheadlength, arrowheadwidth,
+                                           arrowlinecolor, arrowlinewidth,
+                                           str(arrowfill), arrowfillcolor)
+        if key not in self.arrows:
+            self.arrows[key] = 'zplot_arrow_marker_%d' % len(self.arrows)
+            return self.arrows[key]
+        else:
+            return self.arrows[key]
+        print key
+        return
+
 
     #
     # record new patterns or give out name of old ones

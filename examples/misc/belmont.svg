@@ -1,0 +1,196 @@
+<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="612.00" height="259.20" src="belmont.svg"> -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="612.00" height="259.20">
+<defs>
+
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_1" markerWidth="24.00" markerHeight="23.00" refX="2" refY="3.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,5.00 L6.00,3.50 z" fill="forestgreen" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_2" markerWidth="24.00" markerHeight="23.00" refX="2" refY="3.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,5.00 L6.00,3.50 z" fill="orange" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_0" markerWidth="24.00" markerHeight="23.00" refX="2" refY="3.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,5.00 L6.00,3.50 z" fill="black" /> </marker>
+
+</defs>
+<rect x="46.52" y="78.71" height="41.38" width="528.31" fill="lightgrey" ></rect>
+<rect x="40.00" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="53.04" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="66.09" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="79.13" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="92.18" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="105.22" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="118.27" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="131.31" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="144.36" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="157.40" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="170.45" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="183.49" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="196.54" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="209.58" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="222.63" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="235.67" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="248.72" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="261.76" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="274.80" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="287.85" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="300.89" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="313.94" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="326.98" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="340.03" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="353.07" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="366.12" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="379.16" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="392.21" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="405.25" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="418.30" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="431.34" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="444.39" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="457.43" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="470.48" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="483.52" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="496.56" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="509.61" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="522.65" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="535.70" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="548.74" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="561.79" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="574.83" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<rect x="587.88" y="20.40" height="208.80" width="6.52" fill="lavender" ></rect>
+<path d="M 49.78,99.40 L 578.09,99.40 " stroke="#000000" stroke-width="0.50px" stroke-dasharray="2,2" fill="none" ></path>
+<text x="108.48" y="134.20" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Overall Average(149.19 +/- 1.78)</text>
+<path d="M 105.22,134.20 L 72.61,106.36 " stroke="#000000" stroke-width="0.50px" fill="none" marker-end="url(#zplot_arrow_marker_0)"></path>
+<text x="180.23" y="43.60" style="font-family: Helvetica; font-size: 7; fill: #218c21; text-anchor: start; alignment-baseline: middle; "> Running Average</text>
+<path d="M 176.97,43.60 L 124.79,66.80 " stroke="#218c21" stroke-width="0.50px" fill="none" marker-end="url(#zplot_arrow_marker_1)"></path>
+<path d="M 39.50,229.20 L 594.90,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 40.00,229.70 L 40.00,19.90 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 72.61,233.20 L 72.61,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 137.84,233.20 L 137.84,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 203.06,233.20 L 203.06,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 268.28,233.20 L 268.28,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 333.51,233.20 L 333.51,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 398.73,233.20 L 398.73,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 463.95,233.20 L 463.95,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 529.18,233.20 L 529.18,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 594.40,233.20 L 594.40,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,229.20 L 40.00,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,206.00 L 40.00,206.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,182.80 L 40.00,182.80 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,159.60 L 40.00,159.60 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,136.40 L 40.00,136.40 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,113.20 L 40.00,113.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,90.00 L 40.00,90.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,66.80 L 40.00,66.80 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,43.60 L 40.00,43.60 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 36.00,20.40 L 40.00,20.40 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<text x="72.61" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1930</text>
+<text x="137.84" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1940</text>
+<text x="203.06" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1950</text>
+<text x="268.28" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1960</text>
+<text x="333.51" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1970</text>
+<text x="398.73" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1980</text>
+<text x="463.95" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1990</text>
+<text x="529.18" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 2000</text>
+<text x="594.40" y="236.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 2010</text>
+<text x="33.00" y="229.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 138</text>
+<text x="33.00" y="206.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 140</text>
+<text x="33.00" y="182.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 142</text>
+<text x="33.00" y="159.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 144</text>
+<text x="33.00" y="136.40" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 146</text>
+<text x="33.00" y="113.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 148</text>
+<text x="33.00" y="90.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 150</text>
+<text x="33.00" y="66.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 152</text>
+<text x="33.00" y="43.60" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 154</text>
+<text x="33.00" y="20.40" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 156</text>
+<text x="317.20" y="12.90" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Belmont</text>
+<text x="317.20" y="249.20" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Year</text>
+<text x="10.80" y="124.80" transform="rotate(-90.00 10.80,124.80)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Time (Seconds)</text>
+<path d="M 46.52,64.48 L 53.04,64.48 L 53.04,62.16 L 59.57,62.16 L 59.57,52.88 L 66.09,52.88 L 66.09,57.52 L 72.61,57.52 L 72.61,71.44 L 79.13,71.44 L 79.13,94.64 L 85.66,94.64 L 85.66,57.52 L 92.18,57.52 L 92.18,59.84 L 98.70,59.84 L 98.70,99.28 L 105.22,99.28 L 105.22,83.04 L 111.75,83.04 L 111.75,90.00 L 118.27,90.00 L 118.27,106.24 L 124.79,106.24 L 124.79,96.96 L 131.31,96.96 L 131.31,94.64 L 137.84,94.64 L 137.84,94.64 L 144.36,94.64 L 144.36,78.40 L 150.88,78.40 L 150.88,99.28 L 157.40,99.28 L 157.40,110.88 L 163.92,110.88 L 163.92,64.48 L 170.45,64.48 L 170.45,87.68 L 176.97,87.68 L 176.97,80.72 L 183.49,80.72 L 183.49,96.96 L 190.01,96.96 L 190.01,110.88 L 196.54,110.88 L 196.54,87.68 L 203.06,87.68 L 203.06,106.24 L 209.58,106.24 L 209.58,101.60 L 216.10,101.60 L 216.10,87.68 L 222.63,87.68 L 222.63,106.24 L 229.15,106.24 L 229.15,80.72 L 235.67,80.72 L 235.67,101.60 L 242.19,101.60 L 242.19,92.32 L 248.72,92.32 L 248.72,129.44 L 255.24,129.44 L 255.24,87.68 L 261.76,87.68 L 261.76,108.56 L 268.28,108.56 L 268.28,99.28 L 274.80,99.28 L 274.80,99.28 L 281.33,99.28 L 281.33,103.92 L 287.85,103.92 L 287.85,87.68 L 294.37,87.68 L 294.37,108.56 L 300.89,108.56 L 300.89,108.56 L 307.42,108.56 L 307.42,94.64 L 313.94,94.64 L 313.94,103.92 L 320.46,103.92 L 320.46,122.48 L 326.98,122.48 L 326.98,103.92 L 333.51,103.92 L 333.51,43.60 L 340.03,43.60 L 340.03,85.36 L 346.55,85.36 L 346.55,113.20 L 353.07,113.20 L 353.07,159.60 L 359.60,159.60 L 359.60,99.28 L 366.12,99.28 L 366.12,110.88 L 372.64,110.88 L 372.64,101.60 L 379.16,101.60 L 379.16,94.64 L 385.68,94.64 L 385.68,127.12 L 392.21,127.12 L 392.21,106.24 L 398.73,106.24 L 398.73,92.32 L 405.25,92.32 L 405.25,101.60 L 411.77,101.60 L 411.77,110.88 L 418.30,110.88 L 418.30,115.52 L 424.82,115.52 L 424.82,122.48 L 431.34,122.48 L 431.34,124.80 L 437.86,124.80 L 437.86,92.32 L 444.39,92.32 L 444.39,110.88 L 450.91,110.88 L 450.91,131.76 L 457.43,131.76 L 457.43,136.40 L 463.95,136.40 L 463.95,122.48 L 470.48,122.48 L 470.48,113.20 L 477.00,113.20 L 477.00,136.40 L 483.52,136.40 L 483.52,92.32 L 490.04,92.32 L 490.04,127.12 L 496.56,127.12 L 496.56,66.80 L 503.09,66.80 L 503.09,103.92 L 509.61,103.92 L 509.61,103.92 L 516.13,103.92 L 516.13,101.60 L 522.65,101.60 L 522.65,115.52 L 529.18,115.52 L 529.18,76.08 L 535.70,76.08 L 535.70,127.12 L 542.22,127.12 L 542.22,93.36 L 548.74,93.36 L 548.74,110.18 L 555.27,110.18 L 555.27,119.00 L 561.79,119.00 L 561.79,104.50 L 568.31,104.50 L 568.31,115.40 L 574.83,115.40 L 574.83,104.62 " stroke="#000000" stroke-width="0.50px" fill="none" ></path>
+<text x="49.78" y="226.20" transform="rotate(-90.00 49.78,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Crusader</text>
+<text x="56.31" y="226.20" transform="rotate(-90.00 56.31,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Chance Shot</text>
+<text x="62.83" y="226.20" transform="rotate(-90.00 62.83,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Vito</text>
+<text x="69.35" y="226.20" transform="rotate(-90.00 69.35,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Blue Larkspur</text>
+<text x="75.87" y="226.20" transform="rotate(-90.00 75.87,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Gallant Fox</text>
+<text x="82.40" y="226.20" transform="rotate(-90.00 82.40,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Twenty Grand</text>
+<text x="88.92" y="226.20" transform="rotate(-90.00 88.92,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Faireno</text>
+<text x="95.44" y="226.20" transform="rotate(-90.00 95.44,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Hurryoff</text>
+<text x="101.96" y="226.20" transform="rotate(-90.00 101.96,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Peace Chance</text>
+<text x="108.48" y="226.20" transform="rotate(-90.00 108.48,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Omaha</text>
+<text x="115.01" y="226.20" transform="rotate(-90.00 115.01,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Granville</text>
+<text x="121.53" y="226.20" transform="rotate(-90.00 121.53,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> War Admiral</text>
+<text x="128.05" y="226.20" transform="rotate(-90.00 128.05,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Pasteurized</text>
+<text x="134.57" y="226.20" transform="rotate(-90.00 134.57,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Johnstown</text>
+<text x="141.10" y="226.20" transform="rotate(-90.00 141.10,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Bimelech</text>
+<text x="147.62" y="226.20" transform="rotate(-90.00 147.62,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Whirlaway</text>
+<text x="154.14" y="226.20" transform="rotate(-90.00 154.14,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Shut Out</text>
+<text x="160.66" y="226.20" transform="rotate(-90.00 160.66,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Count Fleet</text>
+<text x="167.19" y="226.20" transform="rotate(-90.00 167.19,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Bounding Home</text>
+<text x="173.71" y="226.20" transform="rotate(-90.00 173.71,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Pavot</text>
+<text x="180.23" y="226.20" transform="rotate(-90.00 180.23,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Assault</text>
+<text x="186.75" y="226.20" transform="rotate(-90.00 186.75,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Phalanx</text>
+<text x="193.28" y="226.20" transform="rotate(-90.00 193.28,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Citation</text>
+<text x="199.80" y="226.20" transform="rotate(-90.00 199.80,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Capot</text>
+<text x="206.32" y="226.20" transform="rotate(-90.00 206.32,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Middleground</text>
+<text x="212.84" y="226.20" transform="rotate(-90.00 212.84,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Counterpoint</text>
+<text x="219.36" y="226.20" transform="rotate(-90.00 219.36,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> One Count</text>
+<text x="225.89" y="226.20" transform="rotate(-90.00 225.89,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Native Dancer</text>
+<text x="232.41" y="226.20" transform="rotate(-90.00 232.41,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> High Gun</text>
+<text x="238.93" y="226.20" transform="rotate(-90.00 238.93,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Nashua</text>
+<text x="245.45" y="226.20" transform="rotate(-90.00 245.45,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Needles</text>
+<text x="251.98" y="226.20" transform="rotate(-90.00 251.98,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Gallant Man</text>
+<text x="258.50" y="226.20" transform="rotate(-90.00 258.50,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Cavan</text>
+<text x="265.02" y="226.20" transform="rotate(-90.00 265.02,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Sword Dancer</text>
+<text x="271.54" y="226.20" transform="rotate(-90.00 271.54,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Celtic Ash</text>
+<text x="278.07" y="226.20" transform="rotate(-90.00 278.07,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Sherluck</text>
+<text x="284.59" y="226.20" transform="rotate(-90.00 284.59,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Jaipur</text>
+<text x="291.11" y="226.20" transform="rotate(-90.00 291.11,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Chateaugay</text>
+<text x="297.63" y="226.20" transform="rotate(-90.00 297.63,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Quadrangle</text>
+<text x="304.16" y="226.20" transform="rotate(-90.00 304.16,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Hail To All</text>
+<text x="310.68" y="226.20" transform="rotate(-90.00 310.68,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Amberoid</text>
+<text x="317.20" y="226.20" transform="rotate(-90.00 317.20,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Damascus</text>
+<text x="323.72" y="226.20" transform="rotate(-90.00 323.72,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Stage Door Johnny</text>
+<text x="330.24" y="226.20" transform="rotate(-90.00 330.24,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Arts and Letters</text>
+<text x="336.77" y="226.20" transform="rotate(-90.00 336.77,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> High Echelon</text>
+<text x="343.29" y="226.20" transform="rotate(-90.00 343.29,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Pass Catcher</text>
+<text x="349.81" y="226.20" transform="rotate(-90.00 349.81,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Riva Ridge</text>
+<text x="356.33" y="226.20" transform="rotate(-90.00 356.33,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Secretariat</text>
+<text x="362.86" y="226.20" transform="rotate(-90.00 362.86,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Little Current</text>
+<text x="369.38" y="226.20" transform="rotate(-90.00 369.38,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Avatar</text>
+<text x="375.90" y="226.20" transform="rotate(-90.00 375.90,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Bold Forbes</text>
+<text x="382.42" y="226.20" transform="rotate(-90.00 382.42,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Seattle Slew</text>
+<text x="388.95" y="226.20" transform="rotate(-90.00 388.95,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Affirmed</text>
+<text x="395.47" y="226.20" transform="rotate(-90.00 395.47,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Coastal</text>
+<text x="401.99" y="226.20" transform="rotate(-90.00 401.99,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Temperence Hill</text>
+<text x="408.51" y="226.20" transform="rotate(-90.00 408.51,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Summing</text>
+<text x="415.04" y="226.20" transform="rotate(-90.00 415.04,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Conquistador Cielo</text>
+<text x="421.56" y="226.20" transform="rotate(-90.00 421.56,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Caveat</text>
+<text x="428.08" y="226.20" transform="rotate(-90.00 428.08,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Swale</text>
+<text x="434.60" y="226.20" transform="rotate(-90.00 434.60,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Creme Fraiche</text>
+<text x="441.12" y="226.20" transform="rotate(-90.00 441.12,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Danzig Connection</text>
+<text x="447.65" y="226.20" transform="rotate(-90.00 447.65,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Bet Twice</text>
+<text x="454.17" y="226.20" transform="rotate(-90.00 454.17,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Risen Star</text>
+<text x="460.69" y="226.20" transform="rotate(-90.00 460.69,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Easy Goer</text>
+<text x="467.21" y="226.20" transform="rotate(-90.00 467.21,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Go And Go</text>
+<text x="473.74" y="226.20" transform="rotate(-90.00 473.74,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Hansel</text>
+<text x="480.26" y="226.20" transform="rotate(-90.00 480.26,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> A.P. Indy</text>
+<text x="486.78" y="226.20" transform="rotate(-90.00 486.78,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Colonial Affair</text>
+<text x="493.30" y="226.20" transform="rotate(-90.00 493.30,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Tabasco Cat</text>
+<text x="499.83" y="226.20" transform="rotate(-90.00 499.83,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Thunder Gulch</text>
+<text x="506.35" y="226.20" transform="rotate(-90.00 506.35,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Editor's Note</text>
+<text x="512.87" y="226.20" transform="rotate(-90.00 512.87,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Touch Gold</text>
+<text x="519.39" y="226.20" transform="rotate(-90.00 519.39,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Victory Gallop</text>
+<text x="525.92" y="226.20" transform="rotate(-90.00 525.92,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Lemon Drop Kid</text>
+<text x="532.44" y="226.20" transform="rotate(-90.00 532.44,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Commendable</text>
+<text x="538.96" y="226.20" transform="rotate(-90.00 538.96,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Point Given</text>
+<text x="545.48" y="226.20" transform="rotate(-90.00 545.48,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Sarava</text>
+<text x="552.00" y="226.20" transform="rotate(-90.00 552.00,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Empire Maker</text>
+<text x="558.53" y="226.20" transform="rotate(-90.00 558.53,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Birdstone</text>
+<text x="565.05" y="226.20" transform="rotate(-90.00 565.05,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Afleet Alex</text>
+<text x="571.57" y="226.20" transform="rotate(-90.00 571.57,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Jazil</text>
+<text x="578.09" y="226.20" transform="rotate(-90.00 578.09,226.20)" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Rags to Riches</text>
+<path d="M 49.78,229.20 L 56.31,229.20 L 62.83,229.20 L 69.35,229.20 L 75.87,229.20 L 82.40,229.20 L 88.92,229.20 L 95.44,229.20 L 101.96,229.20 L 108.48,229.20 L 115.01,229.20 L 121.53,229.20 L 128.05,229.20 L 134.57,229.20 L 141.10,229.20 L 147.62,229.20 L 154.14,229.20 L 160.66,229.20 L 167.19,229.20 L 173.71,229.20 L 180.23,229.20 L 186.75,229.20 L 193.28,229.20 L 199.80,229.20 L 206.32,229.20 L 212.84,229.20 L 219.36,229.20 L 225.89,229.20 L 232.41,229.20 L 238.93,229.20 L 245.45,229.20 L 251.98,229.20 L 258.50,229.20 L 265.02,229.20 L 271.54,229.20 L 278.07,229.20 L 284.59,229.20 L 291.11,229.20 L 297.63,229.20 L 304.16,229.20 L 310.68,229.20 L 317.20,229.20 L 323.72,229.20 L 330.24,229.20 L 336.77,229.20 L 343.29,229.20 L 349.81,229.20 L 356.33,229.20 L 362.86,229.20 L 369.38,229.20 L 375.90,229.20 L 382.42,229.20 L 388.95,229.20 L 395.47,229.20 L 401.99,229.20 L 408.51,229.20 L 415.04,229.20 L 421.56,229.20 L 428.08,229.20 L 434.60,229.20 L 441.12,229.20 L 447.65,229.20 L 454.17,229.20 L 460.69,229.20 L 467.21,229.20 L 473.74,229.20 L 480.26,229.20 L 486.78,229.20 L 493.30,229.20 L 499.83,229.20 L 506.35,229.20 L 512.87,229.20 L 519.39,229.20 L 525.92,229.20 L 532.44,229.20 L 538.96,229.20 L 545.48,229.20 L 552.00,229.20 L 558.53,229.20 L 565.05,229.20 L 571.57,229.20 L 578.09,229.20 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
+<path d="M 49.78,64.48 L 56.31,63.32 L 62.83,59.84 L 69.35,59.26 L 75.87,61.70 L 82.40,67.18 L 88.92,65.80 L 95.44,65.06 L 101.96,68.86 L 108.48,70.28 L 115.01,72.08 L 121.53,74.92 L 128.05,76.61 L 134.57,77.90 L 141.10,79.01 L 147.62,78.98 L 154.14,80.17 L 160.66,81.88 L 167.19,80.96 L 173.71,81.30 L 180.23,81.28 L 186.75,81.98 L 193.28,83.24 L 199.80,83.42 L 206.32,84.34 L 212.84,85.00 L 219.36,85.10 L 225.89,85.86 L 232.41,85.68 L 238.93,86.21 L 245.45,86.40 L 251.98,87.75 L 258.50,87.75 L 265.02,88.36 L 271.54,88.68 L 278.07,88.97 L 284.59,89.37 L 291.11,89.33 L 297.63,89.83 L 304.16,90.29 L 310.68,90.39 L 317.20,90.72 L 323.72,91.46 L 330.24,91.74 L 336.77,90.67 L 343.29,90.56 L 349.81,91.03 L 356.33,92.47 L 362.86,92.60 L 369.38,92.97 L 375.90,93.14 L 382.42,93.17 L 388.95,93.80 L 395.47,94.04 L 401.99,94.00 L 408.51,94.14 L 415.04,94.43 L 421.56,94.80 L 428.08,95.27 L 434.60,95.77 L 441.12,95.71 L 447.65,95.95 L 454.17,96.52 L 460.69,97.15 L 467.21,97.53 L 473.74,97.77 L 480.26,98.34 L 486.78,98.26 L 493.30,98.68 L 499.83,98.22 L 506.35,98.29 L 512.87,98.38 L 519.39,98.42 L 525.92,98.65 L 532.44,98.35 L 538.96,98.73 L 545.48,98.67 L 552.00,98.80 L 558.53,99.06 L 565.05,99.13 L 571.57,99.34 L 578.09,99.40 " stroke="#218c21" stroke-width="0.50px" fill="none" ></path>
+<path d="M 574.83,104.62 L 581.36,104.62 " stroke="#000000" stroke-width="0.50px" fill="none" ></path>
+<text x="379.16" y="159.60" style="font-family: Helvetica; font-size: 7; fill: #ffa500; text-anchor: start; alignment-baseline: middle; "> Why we remember Secretariat</text>
+<text x="356.33" y="226.20" transform="rotate(-90.00 356.33,226.20)" style="font-family: Helvetica; font-size: 6; fill: #ffa500; text-anchor: start; alignment-baseline: middle; "> Secretariat</text>
+<path d="M 375.90,159.60 L 366.12,159.60 " stroke="#ffa500" stroke-width="0.50px" fill="none" marker-end="url(#zplot_arrow_marker_2)"></path>
+</svg>
