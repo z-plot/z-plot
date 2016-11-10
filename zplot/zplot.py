@@ -493,7 +493,7 @@ class svg(util):
         self.commands = []
         
         self.program = 'zplot'
-        self.version = 'python version 1.0'
+        self.version = 'python version 1.3'
 
         # SHOULD INCLUDE SOME INFO IN HEADER (in html comment form)
         self.__comment(' Creator: %s version %s script: %s host: %s ' % \
@@ -1622,7 +1622,7 @@ class postscript(util):
         self.commands = []
         
         self.program = 'zplot'
-        self.version = 'python version 1.0'
+        self.version = 'python version 1.3'
         self.default = font
 
         self.date    = str(time.strftime('%X %x %Z'))
