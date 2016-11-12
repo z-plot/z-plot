@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 
 from zplot import *
+import sys
 
-t = table('km.data')
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='km', dimensions=['4in','2.5in'])
 
-c = postscript(title='km.eps', dimensions=['4in','2.5in'])
 d = drawable(canvas=c, xrange=[0,50], yrange=[0.0,1.0])
+t = table('km.data')
 
 p = plotter()
 L = legend()

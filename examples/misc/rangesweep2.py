@@ -2,12 +2,14 @@
 
 # source the library; assumes it is in PYTHONPATH or installed
 from zplot import *
+import sys
 
 all = table(file='rangesweep2.data')
 a = table(table=all, where='c1 == \'a\'')
 b = table(table=all, where='c1 == \'b\'')
 
-c = postscript(title='rangesweep2.eps', dimensions=[300, 250])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='rangesweep2', dimensions=[300, 250])
 d = drawable(canvas=c, xrange=[0,120], yrange=[0,100], coord=[40,40],
              dimensions=[250,200])
 
