@@ -1,0 +1,33 @@
+<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Air.local -->
+<!-- Include into html file with following line: -->
+<!-- <img width="180.00" height="180.00" src="example-arrow.svg"> -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="180.00" height="180.00">
+<defs>
+
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_2" markerWidth="26.00" markerHeight="23.00" refX="2" refY="3.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,5.00 L8.00,3.50 z" style="stroke: black; stroke-linejoin: miter; fill: none; stroke-width: 0.50;" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_0" markerWidth="22.00" markerHeight="21.00" refX="2" refY="2.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,3.00 L4.00,2.50 z" style="stroke: black; stroke-linejoin: miter; fill: none; stroke-width: 0.50;" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_4" markerWidth="30.00" markerHeight="25.00" refX="2" refY="4.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,7.00 L12.00,4.50 z" style="stroke: black; stroke-linejoin: miter; fill: none; stroke-width: 0.50;" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_1" markerWidth="24.00" markerHeight="22.00" refX="2" refY="3.00" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,4.00 L6.00,3.00 z" fill="black" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_6" markerWidth="34.00" markerHeight="27.00" refX="2" refY="5.50" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,9.00 L16.00,5.50 z" style="stroke: black; stroke-linejoin: miter; fill: none; stroke-width: 0.50;" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_3" markerWidth="28.00" markerHeight="24.00" refX="2" refY="4.00" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,6.00 L10.00,4.00 z" fill="black" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_5" markerWidth="32.00" markerHeight="26.00" refX="2" refY="5.00" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,8.00 L14.00,5.00 z" fill="black" /> </marker>
+<!-- arrow marker -->
+<marker id="zplot_arrow_marker_7" markerWidth="36.00" markerHeight="28.00" refX="2" refY="6.00" orient="auto" markerUnits="userSpaceOnUse"> <path d="M2,2 L2,10.00 L18.00,6.00 z" fill="black" /> </marker>
+
+</defs>
+<path d="M 90.00,90.00 L 150.00,90.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_0)"></path>
+<path d="M 90.00,90.00 L 150.00,30.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_1)"></path>
+<path d="M 90.00,90.00 L 90.00,30.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_2)"></path>
+<path d="M 90.00,90.00 L 30.00,30.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_3)"></path>
+<path d="M 90.00,90.00 L 30.00,90.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_4)"></path>
+<path d="M 90.00,90.00 L 30.00,150.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_5)"></path>
+<path d="M 90.00,90.00 L 90.00,150.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_6)"></path>
+<path d="M 90.00,90.00 L 150.00,150.00 " stroke="#000000" stroke-width="1.00px" fill="none" marker-end="url(#zplot_arrow_marker_7)"></path>
+</svg>

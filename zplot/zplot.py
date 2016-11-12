@@ -1860,7 +1860,8 @@ class postscript(util):
                     self.__stroke()
                 else:
                     self.__setcolor(arrowfillcolor)
-                    self.__fill()
+                    if arrowfill:
+                        self.__fill()
                 self.__grestore()
 
         self.__grestore()
