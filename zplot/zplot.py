@@ -258,6 +258,7 @@ class color:
         return '#%s%s%s' % (self.floatToRgb(r),
                             self.floatToRgb(g),
                             self.floatToRgb(b))
+
 # END: class color
 
 
@@ -957,7 +958,7 @@ class svg(util):
         self.outnl('style="')
         self.outnl('font-family: %s; ' % font)
         self.outnl('font-size: %d; ' % size)
-        self.outnl('fill: %s; ' % color)
+        self.outnl('fill: %s; ' % self.getcolor(color))
         self.outnl('text-anchor: %s; ' % anchor)
         self.outnl('alignment-baseline: %s; ' % baseline)
         self.outnl('"> ')
@@ -1042,7 +1043,7 @@ class svg(util):
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
         if fill:
             if fillstyle == 'solid':
-                self.outnl('fill="%s" ' % fillcolor)
+                self.outnl('fill="%s" ' % self.getcolor(fillcolor))
             else:
                 self.outnl('fill="url(#%s)" ' % pattern)
         else:
@@ -1184,7 +1185,7 @@ class svg(util):
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
         if fill:
-            self.outnl('fill="%s"' % fillcolor)
+            self.outnl('fill="%s"' % self.getcolor(fillcolor))
         else:
             self.outnl('fill="none"')
         self.outnl('></circle>')
@@ -1245,7 +1246,7 @@ class svg(util):
         if linedash != 0:
             self.outnl('stroke-dasharray="%s" ' % self.__getdash(linedash))
         if fill:
-            self.outnl('fill="%s" ' % fillcolor)
+            self.outnl('fill="%s" ' % self.getcolor(fillcolor))
         else:
             self.outnl('fill="none" ')
         self.outnl('></polygon>')

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 from zplot import *
+import sys
 
 t = table('stackedarea.data', separator=':')
 # c1 eastern   c2 central   c3 mountain   c4 pacific
@@ -10,7 +11,9 @@ t.update(set='c1_sum = c1')
 t.update(set='c2_sum = c1 + c2')
 t.update(set='c3_sum = c1 + c2 + c3')
 t.update(set='c4_sum = c1 + c2 + c3 + c4')
-c = postscript(title='stackedarea.eps', dimensions=['4.5in','3in'])
+
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='stackedarea', dimensions=['4.5in','3in'])
 d = drawable(canvas=c, dimensions=['3.5in','2.0in'], coord=['0.5in','0.5in'],
              xrange=[0,9], yrange=[0,200])
 p = plotter()
