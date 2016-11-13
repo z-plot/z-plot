@@ -2,7 +2,8 @@
 
 from zplot import *
 
-c = postscript(title='scatter10.eps', dimensions=['3.5in', '3.5in'])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='scatter10', dimensions=['3.5in', '3.5in'])
 
 t = table(file='scatter10.data')
 for col in ['ylo', 'yhi', 'xlo', 'xhi']:

@@ -2,7 +2,8 @@
 
 from zplot import *
 
-c = postscript(title='scatter3.eps', dimensions=[310,310])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='scatter3', dimensions=[310,310])
 t = table(file='scatter3.data')
 
 d = drawable(canvas=c, xrange=[0,80], yrange=[0,80], dimensions=[260,260],
