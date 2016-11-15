@@ -542,7 +542,38 @@ that the user simply writes Python. Thus, one can write functions and use code
 to simplify the task at hand; one is not limited by some artificial
 graph-specification language. </p>
 
-<p> EXAMPLE WOULD BE GOOD HERE.</p>
+<p> In this example, we define two new functions: <code>
+label_with_arrow()</code> and <code>circle_with_text()</code>. The first draws
+a label at a particular spot on the canvas, and the second draws a circle with
+some text inside of it. Each are just plain Python functions that call various
+Zplot primitives to get their work done. </p>
+
+<p> The example also shows how you can use classic constructs like loops,
+randomization, and other similar constructs to ease the creation of
+interesting visualizations. In this example, we create a number of green
+random dots via a simple loop.
+</p>
+
+<p> 
+The EPS graph is
+shown <a href="../examples/original-paper/example-fancylabel.eps"> here;</a> it is
+made using <a href="../examples/original-paper/example-fancylabel.py"> this
+script.</a> The SVG is shown below in Figure 8.
+</p> 
+
+<p>
+<center>
+<a href="../examples/original-paper/example-fancylabel.svg">
+<img width="600.0" height="600.0" src="../examples/original-paper/example-fancylabel.svg"></img>
+</a><br></br>
+<b> Figure 8: Programmability.</b> 
+This example shows how you can use Python programmability to make certain
+types of visualizations more readily.
+</center>
+</p>
+
+<p>
+</p>
 
 <h3> Related Work </h3>
 
@@ -582,8 +613,15 @@ Ploticus, but the point remains.</p>
 <p>
 We have introduced Zplot, a pure Python library for drawing PostScript (and
 SVG) figures. Zplot provides a number of powerful but simple tools for making
-beautiful two-dimensional plots.  Dive into the <a href=".">documentation</a>,
-or, better yet, look at existing <a href="../examples/"> examples</a> to learn
-more.
+beautiful two-dimensional plots.  Dive into
+the <a href="../docs/">documentation</a>, or, better yet, look at
+existing <a href="../examples/"> examples</a> to learn more.
 </p>
 
+<p>
+.
+<p>
+
+<p>
+.
+<p>
