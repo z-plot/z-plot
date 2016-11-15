@@ -12,7 +12,8 @@
 
 from zplot import *
 
-c = postscript(title='bars2.eps', dimensions=[300, 140])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, title='bars2', dimensions=[300, 140])
 d = drawable(canvas=c, xrange=[89,102], yrange=[-15,30], coord=[0,25],
              dimensions=[300,100])
 

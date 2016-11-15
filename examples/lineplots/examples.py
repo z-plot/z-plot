@@ -6,7 +6,8 @@
 
 from zplot import *
 
-c = postscript(title='examples.eps', dimensions=['3.5in','2.95in'])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = make_canvas(ctype, 'examples', dimensions=['3.5in','2.95in'])
 
 t = table(file='examples.data')
 

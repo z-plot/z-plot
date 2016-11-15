@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: examples.eps
-%%Creator: zplot version:python version 1.0 script:/Users/remzi/Projects/Zplot-New/z-plot/zplot.pyc host:Remzis-MacBook-Air.local
-%%CreationDate: 10:43:45 10/30/16 CDT
+%%Creator: zplot version:python version 1.3 script:/Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host:wifi-798.cs.wisc.edu
+%%CreationDate: 10:27:28 11/15/16 CST
 %%DocumentFonts: (atend)
 %%BoundingBox: 0 0 252.0 212.4
 %%Orientation: Portrait
@@ -11,7 +11,7 @@
 zdict begin
 /cpx 0 def
 /cpy 0 def
-/recordcp {currentpoint /cpy exch def /cpx exch def} bind def
+/reccp {currentpoint /cpy exch def /cpx exch def} bind def
 /m {moveto} bind def
 /l {lineto} bind def
 /mr {rmoveto} bind def
@@ -27,9 +27,9 @@ zdict begin
 /slj {setlinejoin} bind def
 /sc  {setrgbcolor} bind def
 /sd  {setdash} bind def
-/lshow {show recordcp} def
-/rshow {dup stringwidth pop neg 0 mr show recordcp} def
-/cshow {dup stringwidth pop -2 div 0 mr show recordcp} def
+/lshow {show reccp} def
+/rshow {dup stringwidth pop neg 0 mr show reccp} def
+/cshow {dup stringwidth pop -2 div 0 mr show reccp} def
 end
 zdict begin
 gs
