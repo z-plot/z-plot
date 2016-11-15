@@ -509,10 +509,10 @@ code canvas-neutral.
 <code>line()</code></a>, which lets the user draw a line directly on the
 canvas.  The method is passed a set of coordinates, some basic information
 about the line, and then produces a line that connects the coordinates in the
-resulting PostScript. All PostScript primitives take coordinates in PostScript
-<i>ems</i>, each of which is 1/72nd of an inch.  The line method takes
-additional arguments that allow the addition of an arrow to the end of the
-line; we omit these parameters for the sake of space;
+resulting PostScript. All PostScript (and SVG) primitives take coordinates in
+PostScript <i>ems</i>, each of which is 1/72nd of an inch.  The line method
+takes additional arguments that allow the addition of an arrow to the end of
+the line; we omit these parameters for the sake of space;
 see <a href="postscript.html#line"> this</a> for more information.
 </p> 
 
@@ -532,8 +532,9 @@ make the shape one might expect.
 
 Each of these shape routines take a variety of arguments that describe their
 coordinates, and then all take three different sets of arguments that
-characterize the line around the shape (<code>line*</code>), the fill of the
-shape (<code>-fill*</code>), and the background color behind the shape
+characterize the line around the shape (e.g., <code>linewidth, linejoin,
+linecap, linedash</code>), the fill of the shape (<code>fill,
+fillstyle</code>), and the background color behind any non-solid fill pattern
 (<code>bgcolor</code>). The line descriptors match those of
 the <code>line()</code> method above, and the background color is
 straightforward. Most interesting, then, is the variety and flexibility
@@ -544,7 +545,7 @@ provided by the pattern descriptions.
 most important parameter is <code>fillstyle</code>, which determines how the
 region is filled. Current styles that are supported include <code>solid,
 hline, vline, dline1, dline2, circle, square, triangle, utriangle</code>; more
-are added occasionally. Each pattern takes two arguments to determine its
+are added from time to time. Each pattern takes two arguments to determine its
 contents: a <code>fillsize</code> and <code>fillskip</code>. Within a given
 pattern, <code>fillsize</code> determines the size of each element in the
 pattern, and <code>fillskip</code> the space between each element. </p>
