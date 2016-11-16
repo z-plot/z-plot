@@ -1,4 +1,15 @@
 Create plotter examples for these:
 
-verticalfill.py
-function.py
+  verticalfill.py
+  function.py
+
+Do more examples from:
+  
+   ploticus website:
+     http://ploticus.sourceforge.net/doc/welcome.html
+
+   R graphs website:
+     http://www.r-graph-gallery.com/all-graphs/
+
+
+
