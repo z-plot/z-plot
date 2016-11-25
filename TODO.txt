@@ -11,5 +11,11 @@ Do more examples from:
    R graphs website:
      http://www.r-graph-gallery.com/all-graphs/
 
+PDF driver?
+  https://brendanzagaeski.appspot.com/0005.html
+  http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_1-7.pdf
+  https://blog.idrsolutions.com/2013/01/understanding-the-pdf-file-format-overview/
+
+
 
 
