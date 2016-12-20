@@ -459,6 +459,227 @@ class util:
         return
 # END: canvas
 
+
+class pdf(util):
+    def __init__(self, 
+                 # name of the output file
+                 title='default.pdf',
+
+                 # size of the drawing surface
+                 dimensions=['3in','2in'],
+
+                 # default font for text
+                 font='Helvetica',
+
+                 # whether to add more info into output file
+                 verbose=False,
+
+                 # name of the file calling into zplot;
+                 # recorded in header of output file
+                 script=__file__,
+                 ):
+        self.font = font
+        self.title = title
+        self.width = self.convert(str(dimensions[0]))
+        self.height = self.convert(str(dimensions[1]))
+
+        self.colors = color()
+
+        #
+        # first attempt at RAW PDF header
+        #
+        self.commands = []
+
+        self.lengths = []
+        
+        self.pdfout('%PDF-1.7')
+        self.pdfout('1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj')
+        self.pdfout('2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj')
+        self.pdfout('3 0 obj <</Type /Page /Parent 2 0 R /Resources 4 0 R /MediaBox [0 0 %d %d] /Contents 6 0 R>> endobj' % (self.width, self.height))
+        self.pdfout('4 0 obj <</Font <</F1 5 0 R>>>> endobj')
+        self.pdfout('5 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Helvetica>> endobj')
+        print self.lengths
+
+        # for tmp out buffering feature
+        self.tmpstr = ''
+        
+        return
+
+    def pdfout(self, s):
+        length = len(s)
+        self.out(s)
+        self.lengths.append(length + 1)
+        return
+
+    def tmpout(self, s):
+        self.tmpstr += s + '\n'
+
+    def __setcolor(self, value):
+        tmp = value.split(',')
+        if len(tmp) > 1:
+            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
+        else:
+            c = self.colors.get(value)
+        self.tmpout(c + ' RG')
+        return
+
+    def render(self):
+        # put all the drawing commands, etc., into the 6th object now
+        out_str = '6 0 obj <</Length %d>>\n' % len(self.tmpstr)
+        out_str += 'stream\n'
+        out_str += self.tmpstr
+        out_str += 'endstream\n'
+        out_str += 'endobj'
+        self.pdfout(out_str)
+
+        # and then the trailer
+        self.pdfout('xref')
+        self.pdfout('0 7')  # always 7 objects, the way we make the PDF
+        self.pdfout('0000000000 65535 f')
+        cnt = 0
+        for i in range(7):
+            e = self.lengths[i]
+            cnt += e
+
+            # have to output this as length 10 number with 0's leading
+            # the number (cnt) is the byte offset of the object, from 0-6,
+            # in the PDF
+            target_len = 10
+            curr_len = len(str(cnt))
+            out_str = ''
+            for i in range(target_len - curr_len):
+                out_str += '0'
+            out_str += str(cnt)
+            self.pdfout('%s 00000 n' % out_str)
+        self.pdfout('trailer <</Size 7/Root 1 0 R>>')
+        self.pdfout('startxref')
+        cnt = 0
+        for e in self.lengths:
+            cnt += e
+        # total bytes in the ...
+        self.out('%d' % cnt)
+        self.out('%%EOF')
+
+        self.dump(self.title)
+        return
+
+    def line(self,
+             # Coordinates of the line. A list of [x,y] pairs. Can
+             # be as long as you like (not just two points).
+             coord           = [[0,0],[0,0]],
+
+             # Color of the line.
+             linecolor       = 'black',
+
+             # Width of the line.
+             linewidth       = 1,
+
+             # For turns in the line, how turn should be rounded.
+             # Options include 0->'miter', 1->'round', 2->'bevel'.
+             # Default is just do hard turns (miter).
+             linejoin        = 0,
+
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
+             linecap         = 0,
+
+             # Dash pattern of the line. '0' means no dashes.
+             # Otherwise, a list describing the on/off pattern
+             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
+             linedash        = 0,
+
+             # Can use this to close the path (and perhaps fill it).
+             # However, not really supported right now.
+             closepath       = False,
+
+             # Turn an arrow at last segment on or off.
+             arrow           = False,
+
+             # Length of arrow head.
+             arrowheadlength = 4,
+
+             # Width of arrow head.
+             arrowheadwidth  = 3,
+
+             # Color of arrow head line.
+             arrowlinecolor  = 'black',
+
+             # Width of line that makes arrow head.
+             arrowlinewidth  = 0.5,
+
+             # Fill arrow head with solid color?
+             arrowfill       = True,
+
+             # Color to fill arrow head with.
+             arrowfillcolor  = 'black',
+
+             # Style to use. 'normal' is one option. There are no others.
+             arrowstyle      = 'normal',
+            ):
+        self.tmpout('q')
+
+        if linecolor != 'black':
+            self.__setcolor(linecolor)
+        if linewidth != 0:
+            self.tmpout('%.2f w' % linewidth)
+        if linecap == 1 or linecap == 2:
+            self.tmpout('%d J' % linecap)
+        if linejoin == 1 or linejoin == 2:
+            self.tmpout('%d j' % linejoin)
+
+        point = coord[0]
+        self.tmpout('%.2f %.2f m' % (point[0], point[1]))
+        for i in range(1, len(coord)):
+            point = coord[i]
+            self.tmpout('%.2f %.2f l' % (point[0], point[1]))
+        if closepath:
+            self.tmpout('h')
+        self.tmpout('S')
+        self.tmpout('Q')
+        return
+
+    def box(self,
+            # Coordinates of box, from [x1,y1] to [x2,y2].
+            coord       = [[0,0],[0,0]],
+
+            # Color of lines that draws box.
+            linecolor   = 'black',
+
+            # Width of those lines. 0 means unlined box.
+            linewidth   = 1,
+
+            # Dash pattern in lines around box?
+            linedash    = 0,
+
+            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
+            linecap     = 0,
+
+            # Should box be filled? If so, specify here.
+            fill        = False,
+
+            # Color of the fill pattern.
+            fillcolor   = 'black',
+
+            # Type of fill pattern. Right now, all are 'solid'.
+            fillstyle   = 'solid',
+
+            # Details of fill pattern includes size of each marker in pattern.
+            fillsize    = 3,
+
+            # Also includes spacing between each marker in pattern.
+            fillskip    = 4,
+
+            # Rotate the box by this many degrees.
+            rotate      = 0,
+
+            # Put a background color behind the box. Useful when pattern has
+            # see-through parts in it.
+            bgcolor     = '',
+            ):
+
+        
+        
+        return
+
 #
 # --class-- svg
 #
@@ -1082,7 +1303,7 @@ class svg(util):
             # Color of the fill pattern.
             fillcolor   = 'black',
 
-            # Type of fill pattern. Right now, all are 'solid'.
+            # Type of fill pattern. 
             fillstyle   = 'solid',
 
             # Details of fill pattern includes size of each marker in pattern.
