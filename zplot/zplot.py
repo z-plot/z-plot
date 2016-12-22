@@ -261,7 +261,10 @@ class color:
 
 # END: class color
 
-
+#
+# A simple class to get font size information. The data is stripped
+# from a bunch of .afm files found on the "internet".
+#
 class fontsize:
     def __init__(self,
                  ):
@@ -496,8 +499,7 @@ class fontsize:
                                      'k':549, 'l':549, 'm':576, 'n':521, 'o':549, 
                                      'p':549, 'q':521, 'r':549, 's':603, 't':439, 
                                      'u':576, 'v':713, 'w':686, 'x':493, 'y':686, 
-                                     'z':494, '{':480, '|':200, '}':480, '~':549
-                                     }
+                                     'z':494, '{':480, '|':200, '}':480, '~':549}
         self.font_width['Times-Bold'] = {' ':250, '!':333, '"':555, '#':500, 
                                          '$':500, '%':1000, '&':833, "'":333, 
                                          '(':333, ')':333, '*':500, '+':570, 
@@ -628,7 +630,6 @@ class fontsize:
         return
 
     def stringwidth(self, font, size, string):
-        # print 'lookup', font, size, 'string (%s)' % string
         if font == 'default':
             font = 'Helvetica'
         if font not in self.font_list:
@@ -1041,7 +1042,7 @@ class pdf(util):
         if fill and fillcolor != 'black':
             self.__setfillcolor(fillcolor)
         if linewidth != 0:
-            self.tmpout('%.2f w' % linewidth)
+            self.tmpout('%.2f w' % float(linewidth))
 
         assert(len(coord) == 2)
         sx, sy = coord[0][0], coord[0][1]
@@ -1051,17 +1052,12 @@ class pdf(util):
         self.tmpout('%.2f %.2f l' % (sx, ey))
         self.tmpout('%.2f %.2f l' % (ex, ey))
         self.tmpout('%.2f %.2f l' % (ex, sy))
-
-        # closepath
-        self.tmpout('h')
-
+        
+        self.tmpout('h') # closepath
         if fill:
             self.tmpout('f')
         self.tmpout('S')
-            
-
         self.tmpout('Q')
-        
         return
 
     def box(self,
@@ -1104,7 +1100,8 @@ class pdf(util):
             ):
 
         # do outline first
-        self.__dobox(coord, linewidth, linecolor, False, fillcolor)
+        if linewidth != 0:
+            self.__dobox(coord, linewidth, linecolor, False, fillcolor)
         if bgcolor != '':
             self.__dobox(coord, 0, linecolor, True, bgcolor)
         # now do fill
@@ -1182,6 +1179,107 @@ class pdf(util):
         # finally, just output text and be done
         self.tmpout('(%s) Tj' % text)
         self.tmpout('ET')
+        return
+
+    def __do_circle(self, coord, radius, linecolor, linewidth, linedash,
+                    fill, fillcolor, fillstyle, fillsize, fillskip):
+        self.tmpout('q')
+        xc, yc = coord[0], coord[1]
+                             
+        if linecolor != 'black':
+            self.__setlinecolor(linecolor)
+        if linewidth != 0:
+            self.tmpout('%.2f w' % linewidth)
+        if linedash != 0:
+            dashpattern = ''
+            for d in linedash:
+                dashpattern += '%s ' % str(d)
+            self.tmpout('[%s] 0 d' % dashpattern)
+        if fill and fillcolor != 'black':
+            self.__setfillcolor(fillcolor)
+
+        magic = radius * 0.552;
+        x0p, y0p = xc - radius, yc
+        self.tmpout('%.2f %.2f m' % (x0p, y0p))
+
+        x0p, y0p = xc - radius, yc
+        x1, y1 = x0p, y0p + magic
+        x2, y2 = x0p + radius - magic, y0p + radius
+        x3, y3 = x0p + radius,         y0p + radius
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+
+        x0p, y0p = xc, yc + radius
+        x1, y1 = x0p + magic, y0p              
+        x2, y2 = x0p + radius,     y0p - radius + magic
+        x3, y3 = x0p + radius,     y0p - radius         
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+
+        x0p, y0p = xc + radius, yc
+        x1, y1 = x0p,               y0p - magic
+        x2, y2 = x0p - radius + magic, y0p - radius    
+        x3, y3 = x0p - radius,          y0p - radius    
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+
+        x0p, y0p = xc, yc - radius
+        x1, y1 = x0p - magic,               y0p
+        x2, y2 = x0p - radius, y0p + radius - magic   
+        x3, y3 = x0p - radius,          y0p + radius    
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+        
+        if fill:
+            self.tmpout('f')
+        self.tmpout('S')
+        self.tmpout('Q')
+        return
+
+    def circle(self,
+               # Coordinates of center of circle in [x,y].
+               coord     = [0,0],
+
+               # Radius of circle.
+               radius    = 1,
+
+               # Scale in x direction and y direction, to make
+               # an ellipse, for example.
+               scale     = [1,1],
+
+               # Color of lines of circle.
+               linecolor = 'black',
+
+               # Width of lines of circle.
+               linewidth = 1,
+
+               # Whether line is dashed or not.
+               linedash  = 0,
+
+               # Fill circle with colored pattern?
+               fill      = False,
+
+               # Which color?
+               fillcolor = 'black',
+
+               # Which pattern?
+               fillstyle = 'solid',
+
+               # Details of pattern: size of each marker.
+               fillsize  = 3,
+
+               # Details of pattern: space between each marker.
+               fillskip  = 4,
+
+               # Background color behind circle, useful if fill pattern
+               # has some holes in it.
+               bgcolor   = '',
+               ):
+        # have to assemble the circle from bezier curves
+        # http://stackoverflow.com/questions/1960786/
+        # how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/2007782#2007782
+        if fill:
+            self.__do_circle(coord, radius, linecolor, 0, 0, fill, fillcolor, fillstyle,
+                             fillsize, fillskip)
+        if linewidth != 0:
+            self.__do_circle(coord, radius, linecolor, linewidth, linedash, False,
+                             fillcolor, fillstyle, fillsize, fillskip)
         return
 
 #
