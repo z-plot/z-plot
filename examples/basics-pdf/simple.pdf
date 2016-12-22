@@ -4,7 +4,7 @@
 3 0 obj <</Type /Page /Parent 2 0 R /Resources 4 0 R /MediaBox [0 0 300 300] /Contents 6 0 R>> endobj
 4 0 obj <</Font <</F1 5 0 R>>>> endobj
 5 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Helvetica>> endobj
-6 0 obj <</Length 183>>
+6 0 obj <</Length 395>>
 stream
 q
 1.00 w
@@ -19,7 +19,7 @@ q
 S
 Q
 q
-1.00 0.65 0.00 RG
+1.00 0.65 0.00  RG
 3.00 w
 1 j
 50.00 50.00 m
@@ -27,6 +27,27 @@ q
 100.00 100.00 l
 100.00 50.00 l
 h
+S
+Q
+q
+0.00 0.00 0.50  RG
+10.00 w
+150.00 150.00 m
+150.00 250.00 l
+250.00 250.00 l
+250.00 150.00 l
+h
+S
+Q
+q
+0.00 0.00 0.50  RG
+0.68 0.85 0.90  rg
+150.00 150.00 m
+150.00 250.00 l
+250.00 250.00 l
+250.00 150.00 l
+h
+f
 S
 Q
 endstream
@@ -40,8 +61,8 @@ xref
 0000000213 00000 n
 0000000252 00000 n
 0000000320 00000 n
-0000000551 00000 n
+0000000763 00000 n
 trailer <</Size 7/Root 1 0 R>>
 startxref
-753
+965
 %%EOF

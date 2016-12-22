@@ -16,7 +16,7 @@ c.line(coord=[[50,50],[50,100],[100,100],[100,50]],
 c.box(coord=[[150,150],[250,250]],
       fill=True,
       fillcolor='lightblue',
-      linewidth=2,
+      linewidth=10,
       linecolor='navy')
 
 c.render()
