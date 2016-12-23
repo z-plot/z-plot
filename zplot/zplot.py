@@ -629,6 +629,9 @@ class fontsize:
                           'Times-Roman', 'ZapfDingbats']
         return
 
+    def getfontlist(self):
+        return self.font_list
+
     def stringwidth(self, font, size, string):
         if font == 'default':
             font = 'Helvetica'
@@ -865,6 +868,9 @@ class pdf(util):
         # need class font to get sizes of text
         self.fontsize = fontsize()
 
+        self.fontlist = self.fontsize.getfontlist()
+        self.fontmap = {}
+
         self.colors = color()
 
         #
@@ -877,9 +883,24 @@ class pdf(util):
         self.pdfout('%PDF-1.7')
         self.pdfout('1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj')
         self.pdfout('2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj')
-        self.pdfout('3 0 obj <</Type /Page /Parent 2 0 R /Resources 4 0 R /MediaBox [0 0 %d %d] /Contents 6 0 R>> endobj' % (self.width, self.height))
-        self.pdfout('4 0 obj <</Font <</F1 5 0 R>>>> endobj')
-        self.pdfout('5 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Helvetica>> endobj')
+        self.pdfout('3 0 obj <</Type /Page ' + \
+                    '/MediaBox [0 0 %d %d] ' % (self.width, self.height) + \
+                    '/Parent 2 0 R /Resources 4 0 R /Contents %d 0 R>> ' % \
+                    (5 + len(self.fontlist)) + 'endobj')
+        # http://www.amccormack.net/2012-01-22-anatomy-of-a-pdf-document.html
+        # /Resources << /ProcSet 6 0 R /Font << /F1 7 0 R >> >>
+        # self.pdfout(
+        out_str = '4 0 obj <</Font <<'
+        for i in range(len(self.fontlist)):
+            out_str += '/F%d %d 0 R ' % (i+1, i+5)
+            self.fontmap[self.fontlist[i]] = i+1
+        out_str += '>>>> endobj'
+        self.pdfout(out_str)
+        num = 5
+        for f in self.fontlist:
+            self.pdfout('%d 0 obj <</Type /Font /Subtype /Type1 ' % num + \
+                        '/BaseFont /%s>> endobj' % f)
+            num += 1
 
         # for tmp out buffering feature
         self.tmpstr = ''
@@ -917,7 +938,7 @@ class pdf(util):
 
     def render(self):
         # put all the drawing commands, etc., into the 6th object now
-        out_str = '6 0 obj <</Length %d>>\n' % len(self.tmpstr)
+        out_str = '%d 0 obj <</Length %d>>\n' % (len(self.lengths), len(self.tmpstr))
         out_str += 'stream\n'
         out_str += self.tmpstr
         out_str += 'endstream\n'
@@ -925,11 +946,12 @@ class pdf(util):
         self.pdfout(out_str)
 
         # and then the trailer
+        num_objects = len(self.lengths)
         self.pdfout('xref')
-        self.pdfout('0 7')  # always 7 objects, the way we make the PDF
+        self.pdfout('0 %d' % num_objects) 
         self.pdfout('0000000000 65535 f')
         cnt = 0
-        for i in range(7):
+        for i in range(num_objects):
             e = self.lengths[i]
             cnt += e
 
@@ -943,7 +965,7 @@ class pdf(util):
                 out_str += '0'
             out_str += str(cnt)
             self.pdfout('%s 00000 n' % out_str)
-        self.pdfout('trailer <</Size 7/Root 1 0 R>>')
+        self.pdfout('trailer <</Size %d/Root 1 0 R>>' % num_objects)
         self.pdfout('startxref')
         cnt = 0
         for e in self.lengths:
@@ -1163,8 +1185,14 @@ class pdf(util):
             dy = -size * .72
         
         self.tmpout('BT')
-        # assume Helvetica right now
-        self.tmpout('/F1 %.2f Tf' % size) 
+
+        if font == 'default':
+            font = 'Helvetica'
+        if font not in self.fontmap:
+            print 'font %s not found' % font
+            return
+        fontnum = self.fontmap[font]
+        self.tmpout('/F%d %.2f Tf' % (fontnum, size))
 
         if rotate == 0:
             self.tmpout('%.2f %.2f Td' % (x + dx, y + dy))
