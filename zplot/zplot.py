@@ -651,6 +651,13 @@ class fontsize:
 # all real canvas types; thus, each should inherit from here to use them.
 #
 class util:
+    # 
+    # Shared thing needed to get info about fonts
+    fontinfo = fontsize()
+
+    #
+    # Initializer does nothing interesting 
+    #
     def __init__(self,
                  ):
         return
@@ -671,33 +678,10 @@ class util:
         return float(unitStr)
 
     #
-    # This is a complete hack, and can be very wrong depending on the fontface
-    # (which it should clearly be dependent upon). The problem, of course: only
-    # the ps interpreter really knows how wide the string is: e.g., put the
-    # string on the stack and call 'stringwidth'. But of course, we don't want
-    # to have to invoke that to get the result (a pain). We could build in a
-    # table that has all the answers for supported fonts (Helvetica, TimesRoman,
-    # etc.) but that is a complete pain as well. So, for now, we just make a
-    # rough guess based on the length of the string and the size of the font.
-    # 
-    def stringWidth(self, str, fontsize):
-        length = len(str)
-        total  = 0.0
-        for i in range(0,length):
-            c = str[i]
-            if re.search(c, "ABCDEFGHJKLMNOPQRSTUVWXYZ234567890") != None:
-                add = 0.69
-            elif re.search(c, "abcdeghkmnopqrsuvwxyz1I") != None:
-                add = 0.54
-            elif re.search(c, ".fijlt") != None:
-                add = 0.3
-            elif re.search(c, "-") != None:
-                add = 0.3
-            else:
-                # be conservative for all others
-                add = 0.65
-            total = total + add
-        return (fontsize * total)
+    # Used to get string width of various fonts
+    #
+    def getstringwidth(self, font, fontsize, text):
+        return self.fontinfo.stringwidth(font, fontsize, text)
 
     #
     # Use this to draw a shape on the plotting surface. Lots of possibilities,
@@ -904,7 +888,6 @@ class pdf(util):
 
         # for tmp out buffering feature
         self.tmpstr = ''
-        
         return
 
     def pdfout(self, s):
@@ -1120,7 +1103,6 @@ class pdf(util):
             # see-through parts in it.
             bgcolor     = '',
             ):
-
         # do outline first
         if linewidth != 0:
             self.__dobox(coord, linewidth, linecolor, False, fillcolor)
@@ -1200,7 +1182,7 @@ class pdf(util):
             rotate = math.radians(rotate)
             cos, sin = math.cos(rotate), math.sin(rotate)
             xdx, xdy = dx * cos, dx * sin
-            ydx, ydy = dy * cos, dy * sin
+            ydx, ydy = -dy * sin, dy * cos
             self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f Tm' % (cos, sin, -sin, cos,
                                                               x + xdx + ydx,
                                                               y + xdy + ydy))
@@ -1213,6 +1195,7 @@ class pdf(util):
                     fill, fillcolor, fillstyle, fillsize, fillskip):
         self.tmpout('q')
         xc, yc = coord[0], coord[1]
+        radius = float(radius)
                              
         if linecolor != 'black':
             self.__setlinecolor(linecolor)
@@ -1308,6 +1291,87 @@ class pdf(util):
         if linewidth != 0:
             self.__do_circle(coord, radius, linecolor, linewidth, linedash, False,
                              fillcolor, fillstyle, fillsize, fillskip)
+        return
+
+    def __dopolygon(self, coord, linecolor, linewidth, linecap, linedash,
+                    fill, fillcolor, fillstyle, fillsize, fillskip):
+        self.tmpout('q')
+
+        if linecolor != 'black':
+            self.__setlinecolor(linecolor)
+        if fill and fillcolor != 'black':
+            self.__setfillcolor(fillcolor)
+        if linewidth != 0:
+            self.tmpout('%.2f w' % float(linewidth))
+        if linedash != 0:
+            dashpattern = ''
+            for d in linedash:
+                dashpattern += '%s ' % str(d)
+            self.tmpout('[%s] 0 d' % dashpattern)
+        if linecap == 1 or linecap == 2:
+            self.tmpout('%d J' % linecap)
+        #if linejoin == 1 or linejoin == 2:
+        #    self.tmpout('%d j' % linejoin)
+        px, py = coord[0][0], coord[0][1]
+        self.tmpout('%.2f %.2f m' % (px, py))
+        for p in range(1,len(coord)):
+            self.tmpout('%.2f %.2f l' % (coord[p][0], coord[p][1]))
+        self.tmpout('h') # closepath
+        if fill:
+            self.tmpout('f')
+        self.tmpout('S') # stroke
+        self.tmpout('Q')
+        return
+
+    #
+    # polygon()
+    #
+    def polygon(self,
+                # The list of [x,y] pairs that form the coordinates.
+                coord      = [],
+
+                # The color of the surrounding line (if width > 0).
+                linecolor  = 'black',
+
+                # The width of the line (0 for no line).
+                linewidth  = 1,
+
+                # The linecap.
+                linecap    = 0,
+
+                # The line dash pattern.
+                linedash   = 0,
+
+                # Fill the polygon?                
+                fill       = False,
+
+                # What color to fill it?
+                fillcolor  = 'black',
+
+                # What style to fill it with?
+                fillstyle  = 'solid',
+
+                # The fill size... 
+                fillsize   = 3,
+
+                # ...and the skip.
+                fillskip   = 4,
+
+                # A background color if there is no fill; useful
+                # behind a pattern.
+                bgcolor    = '',
+                ):
+        # do outline first
+        if linewidth != 0:
+            self.__dopolygon(coord, linecolor, linewidth, linecap, linedash,
+                             False, fillcolor, fillstyle, fillsize, fillskip)
+        if bgcolor != '':
+            self.__dopolygon(coord, linecolor, linewidth, linecap, linedash,
+                             True, bgcolor, 'solid', fillsize, fillskip)
+        # now do fill
+        if fill:
+            self.__dopolygon(coord, linecolor, 0, linecap, linedash,
+                             True, fillcolor, fillstyle, fillsize, fillskip)
         return
 
 #
@@ -5558,17 +5622,12 @@ class axis:
         return
     #END: __init__()
 
-    def __recordlabel(self,
-                      drawable,
-                      values,
-                      axis,
-                      x, y,
-                      label,
+    def __recordlabel(self, drawable, values, axis, x, y, label,
                       font, fontsize, anchor, rotate):
         # height and width
         height = fontsize
         canvas = drawable.canvas
-        width  = canvas.stringWidth(label, fontsize)
+        width  = canvas.getstringwidth(font, fontsize, label)
 
         # get anchors
         a = anchor.split(',')
