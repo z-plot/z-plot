@@ -861,8 +861,8 @@ class pdf(util):
         # first attempt at RAW PDF header
         #
         self.commands = []
-
         self.lengths = []
+        self.tmpstr = ''
         
         self.pdfout('%PDF-1.7')
         self.pdfout('1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj')
@@ -886,37 +886,6 @@ class pdf(util):
                         '/BaseFont /%s>> endobj' % f)
             num += 1
 
-        # for tmp out buffering feature
-        self.tmpstr = ''
-        return
-
-    def pdfout(self, s):
-        length = len(s)
-        self.out(s)
-        self.lengths.append(length + 1)
-        return
-
-    def tmpout(self, s):
-        self.tmpstr += s + '\n'
-
-    #
-    # HELPER functions for the drawing commands like line(), box(), etc.
-    #
-    def __setcolor(self, value, command):
-        tmp = value.split(',')
-        if len(tmp) > 1:
-            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
-        else:
-            c = self.colors.get(value)
-        self.tmpout(c + ' %s' % command)
-        return
-
-    def __setlinecolor(self, value):
-        self.__setcolor(value, ' RG')
-        return
-
-    def __setfillcolor(self, value):
-        self.__setcolor(value, ' rg')
         return
 
     def render(self):
@@ -960,6 +929,152 @@ class pdf(util):
         self.dump(self.title)
         return
 
+    #
+    # Wrappers needed to accumulate PDF statements
+    # or pdf drawing/text commands
+    #
+    def pdfout(self, s):
+        length = len(s)
+        self.out(s)
+        self.lengths.append(length + 1)
+        return
+
+    def tmpout(self, s):
+        self.tmpstr += s + '\n'
+        return
+
+    #
+    # HELPER functions for the drawing commands like line(), box(), etc.
+    #
+    def __setcolor(self, value, command):
+        tmp = value.split(',')
+        if len(tmp) > 1:
+            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
+        else:
+            c = self.colors.get(value)
+        self.tmpout(c + ' %s' % command)
+        return
+
+    def __setlinecolor(self, value):
+        self.__setcolor(value, ' RG')
+        return
+
+    def __setfillcolor(self, value):
+        self.__setcolor(value, ' rg')
+        return
+
+    def __setlinewidth(self, value):
+        self.tmpout('%.2f w' % float(value))
+        return
+
+    def __setlinecap(self, value):
+        if value != 0 or value != 1 or value != 2:
+            print 'bad linecap', value
+            return
+        self.tmpout('%d J' % value)
+        return
+
+    def __setlinejoin(self, value):
+        if value != 0 or value != 1 or value != 2:
+            print 'bad linejoin', value
+            return
+        self.tmpout('%d j' % value)
+        return
+
+    def __setlinedash(self, value):
+        dashpattern = ''
+        for d in value:
+            dashpattern += '%s ' % str(d)
+        self.tmpout('[%s] 0 d' % dashpattern)
+        return
+
+    def __moveto(self, x, y):
+        self.tmpout('%.2f %.2f m' % (float(x), float(y)))
+        return
+
+    def __curveto(self, x1, y1, x2, y2, x3, y3):
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % \
+                    (x1, y1, x2, y2, x3, y3))
+        return
+
+    def __lineto(self, x, y):
+        self.tmpout('%.2f %.2f l' % (float(x), float(y)))
+        return
+
+    def __closepath(self):
+        self.tmpout('h')
+        return
+
+    def __stroke(self):
+        self.tmpout('S')
+        return
+
+    def __fill(self):
+        self.tmpout('f')
+        return
+
+    def __gsave(self):
+        self.tmpout('q')
+        return
+
+    def __grestore(self):
+        self.tmpout('Q')
+        return
+
+    def __begintext(self):
+        self.tmpout('BT')
+        return
+
+    def __endtext(self):
+        self.tmpout('ET')
+        return
+
+    def __textmoveto(self, x, y, dx, dy):
+        self.tmpout('%.2f %.2f Td' % (x + dx, y + dy))
+        return
+
+    def __textmovetorotate(self, x, y, dx, dy, angle):
+        angle = math.radians(angle)
+        cos, sin = math.cos(angle), math.sin(angle)
+        xdx, xdy = dx * cos, dx * sin
+        ydx, ydy = -dy * sin, dy * cos
+        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f Tm' % (cos, sin, -sin, cos,
+                                                          x + xdx + ydx,
+                                                          y + xdy + ydy))
+        return
+
+    def __puttext(self, text):
+        self.tmpout('(%s) Tj' % text)
+        return
+
+    def __setfont(self, font, size):
+        if font == 'default':
+            font = 'Helvetica'
+        if font not in self.fontmap:
+            print 'font %s not found' % font
+            return
+        fontnum = self.fontmap[font]
+        self.tmpout('/F%d %.2f Tf' % (fontnum, size))
+        return
+
+    def __clip(self):
+        self.tmpout('W')
+        return
+
+    def __clipbox(self, x1, y1, x2, y2):
+        self.__moveto(x1, y1)
+        self.__lineto(x1, y2)
+        self.__lineto(x2, y2)
+        self.__lineto(x2, y1)
+        self.__lineto(x1, y1)
+        self.__closepath()
+        self.__clip()
+        # self.tmpout('n')
+        return
+
+    #
+    #
+    #
     def line(self,
              # Coordinates of the line. A list of [x,y] pairs. Can
              # be as long as you like (not just two points).
@@ -1012,57 +1127,58 @@ class pdf(util):
              # Style to use. 'normal' is one option. There are no others.
              arrowstyle      = 'normal',
             ):
-        self.tmpout('q')
-
+        self.__gsave()
         if linecolor != 'black':
             self.__setlinecolor(linecolor)
         if linewidth != 0:
-            self.tmpout('%.2f w' % linewidth)
-        if linecap == 1 or linecap == 2:
-            self.tmpout('%d J' % linecap)
-        if linejoin == 1 or linejoin == 2:
-            self.tmpout('%d j' % linejoin)
+            self.__setlinewidth(linewidth)
+        if linecap != 0:
+            self.__setlinecap(linecap)
+        if linejoin != 0:
+            self.__setlinejoin(linejoin)
         if linedash != 0:
-            dashpattern = ''
-            for d in linedash:
-                dashpattern += '%s ' % str(d)
-            self.tmpout('[%s] 0 d' % dashpattern)
-
+            self.__setlinedash(linedash)
+        # now draw line: move to first point, then draw lines to remaining pts.
         point = coord[0]
-        self.tmpout('%.2f %.2f m' % (point[0], point[1]))
+        self.__moveto(point[0], point[1])
         for i in range(1, len(coord)):
             point = coord[i]
-            self.tmpout('%.2f %.2f l' % (point[0], point[1]))
+            self.__lineto(point[0], point[1])
         if closepath:
-            self.tmpout('h')
-        self.tmpout('S')
-        self.tmpout('Q')
+            self.__closepath()
+        self.__stroke()
+        self.__grestore()
         return
 
+    #
+    # Internal routine to draw box
+    #
     def __dobox(self, coord, linewidth, linecolor, fill, fillcolor):
-        self.tmpout('q')
+        self.__gsave()
+
+        # self.__clipbox(10, 10, 100, 100)
 
         if linecolor != 'black':
             self.__setlinecolor(linecolor)
         if fill and fillcolor != 'black':
             self.__setfillcolor(fillcolor)
         if linewidth != 0:
-            self.tmpout('%.2f w' % float(linewidth))
+            self.__setlinewidth(linewidth)
 
         assert(len(coord) == 2)
         sx, sy = coord[0][0], coord[0][1]
         ex, ey = coord[1][0], coord[1][1]
 
-        self.tmpout('%.2f %.2f m' % (sx, sy))
-        self.tmpout('%.2f %.2f l' % (sx, ey))
-        self.tmpout('%.2f %.2f l' % (ex, ey))
-        self.tmpout('%.2f %.2f l' % (ex, sy))
+        self.__moveto(sx, sy)
+        self.__lineto(sx, ey)
+        self.__lineto(ex, ey)
+        self.__lineto(ex, sy)
         
-        self.tmpout('h') # closepath
+        self.__closepath()
         if fill:
-            self.tmpout('f')
-        self.tmpout('S')
-        self.tmpout('Q')
+            self.__fill()
+        self.__stroke()
+        self.__grestore()
         return
 
     def box(self,
@@ -1103,15 +1219,17 @@ class pdf(util):
             # see-through parts in it.
             bgcolor     = '',
             ):
-        # do outline first
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__dobox(coord, 0, linecolor, True, bgcolor)
+        if fill:
+            self.__dobox(coord, 0, linecolor, fill, fillcolor)
         if linewidth != 0:
             self.__dobox(coord, linewidth, linecolor, False, fillcolor)
-        if bgcolor != '':
-            self.__dobox(coord, 0, linecolor, True, bgcolor)
-        # now do fill
-        self.__dobox(coord, 0, linecolor, fill, fillcolor)
         return
 
+    #
+    # text
+    #
     def text(self,
              # Coordinates for text on the canvas.
              coord    = [0,0],
@@ -1154,8 +1272,10 @@ class pdf(util):
             left_right = anchor
             up_down = 'l'
 
+        # need width of string to adjust size based on anchor
         fontwidth = self.fontsize.stringwidth(font, size, text)
 
+        # adjust text placement based on anchors 
         dx, dy = 0, 0
         if left_right == 'r':
             dx = -fontwidth
@@ -1165,82 +1285,71 @@ class pdf(util):
             dy = -size * .36
         elif up_down == 'h':
             dy = -size * .72
-        
-        self.tmpout('BT')
 
-        if font == 'default':
-            font = 'Helvetica'
-        if font not in self.fontmap:
-            print 'font %s not found' % font
-            return
-        fontnum = self.fontmap[font]
-        self.tmpout('/F%d %.2f Tf' % (fontnum, size))
-
+        # now just move to location and output text
+        # rotation requires a little extra work ...
+        self.__begintext()
+        self.__setfont(font, size)
         if rotate == 0:
-            self.tmpout('%.2f %.2f Td' % (x + dx, y + dy))
-        if rotate != 0:
-            rotate = math.radians(rotate)
-            cos, sin = math.cos(rotate), math.sin(rotate)
-            xdx, xdy = dx * cos, dx * sin
-            ydx, ydy = -dy * sin, dy * cos
-            self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f Tm' % (cos, sin, -sin, cos,
-                                                              x + xdx + ydx,
-                                                              y + xdy + ydy))
-        # finally, just output text and be done
-        self.tmpout('(%s) Tj' % text)
-        self.tmpout('ET')
+            self.__textmoveto(x, y, dx, dy)
+        else:
+            self.__textmovetorotate(x, y, dx, dy, rotate)
+        self.__puttext(text)
+        self.__endtext()
         return
 
     def __do_circle(self, coord, radius, linecolor, linewidth, linedash,
                     fill, fillcolor, fillstyle, fillsize, fillskip):
-        self.tmpout('q')
         xc, yc = coord[0], coord[1]
         radius = float(radius)
                              
+        self.__gsave()
         if linecolor != 'black':
             self.__setlinecolor(linecolor)
         if linewidth != 0:
-            self.tmpout('%.2f w' % linewidth)
+            self.__setlinewidth(linewidth)
         if linedash != 0:
-            dashpattern = ''
-            for d in linedash:
-                dashpattern += '%s ' % str(d)
-            self.tmpout('[%s] 0 d' % dashpattern)
+            self.__setlinedash(linedash)
         if fill and fillcolor != 'black':
             self.__setfillcolor(fillcolor)
 
+        # Have to assemble the circle from bezier curves(!)
+        # One good description of this is found here (URL over next 3 lines):
+        # http://stackoverflow.com/questions/1960786/
+        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
+        #   2007782#2007782
         magic = radius * 0.552;
         x0p, y0p = xc - radius, yc
-        self.tmpout('%.2f %.2f m' % (x0p, y0p))
+        self.__moveto(x0p, y0p)
 
         x0p, y0p = xc - radius, yc
         x1, y1 = x0p, y0p + magic
         x2, y2 = x0p + radius - magic, y0p + radius
         x3, y3 = x0p + radius,         y0p + radius
-        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+        self.__curveto(x1, y1, x2, y2, x3, y3)
 
         x0p, y0p = xc, yc + radius
         x1, y1 = x0p + magic, y0p              
         x2, y2 = x0p + radius,     y0p - radius + magic
         x3, y3 = x0p + radius,     y0p - radius         
-        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+        self.__curveto(x1, y1, x2, y2, x3, y3)
 
         x0p, y0p = xc + radius, yc
         x1, y1 = x0p,               y0p - magic
         x2, y2 = x0p - radius + magic, y0p - radius    
         x3, y3 = x0p - radius,          y0p - radius    
-        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+        self.__curveto(x1, y1, x2, y2, x3, y3)
 
         x0p, y0p = xc, yc - radius
         x1, y1 = x0p - magic,               y0p
         x2, y2 = x0p - radius, y0p + radius - magic   
         x3, y3 = x0p - radius,          y0p + radius    
-        self.tmpout('%.2f %.2f %.2f %.2f %.2f %.2f c' % (x1, y1, x2, y2, x3, y3))
+        self.__curveto(x1, y1, x2, y2, x3, y3)
         
         if fill:
-            self.tmpout('f')
-        self.tmpout('S')
-        self.tmpout('Q')
+            self.__fill()
+        self.__stroke()
+        self.__grestore()
         return
 
     def circle(self,
@@ -1282,45 +1391,44 @@ class pdf(util):
                # has some holes in it.
                bgcolor   = '',
                ):
-        # have to assemble the circle from bezier curves
-        # http://stackoverflow.com/questions/1960786/
-        # how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/2007782#2007782
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__do_circle(coord, radius, linecolor, 0, 0, fill, bgcolor,
+                             'solid', 0, 0)
         if fill:
-            self.__do_circle(coord, radius, linecolor, 0, 0, fill, fillcolor, fillstyle,
-                             fillsize, fillskip)
+            self.__do_circle(coord, radius, linecolor, 0, 0, fill, fillcolor,
+                             fillstyle, fillsize, fillskip)
         if linewidth != 0:
-            self.__do_circle(coord, radius, linecolor, linewidth, linedash, False,
-                             fillcolor, fillstyle, fillsize, fillskip)
+            self.__do_circle(coord, radius, linecolor, linewidth, linedash,
+                             False, fillcolor, fillstyle, fillsize, fillskip)
         return
 
-    def __dopolygon(self, coord, linecolor, linewidth, linecap, linedash,
-                    fill, fillcolor, fillstyle, fillsize, fillskip):
-        self.tmpout('q')
-
+    #
+    # 
+    #
+    def __dopolygon(self, coord, linecolor, linewidth, linecap, linejoin, 
+                    linedash, fill, fillcolor, fillstyle, fillsize, fillskip):
+        self.__gsave()
         if linecolor != 'black':
             self.__setlinecolor(linecolor)
         if fill and fillcolor != 'black':
             self.__setfillcolor(fillcolor)
         if linewidth != 0:
-            self.tmpout('%.2f w' % float(linewidth))
+            self.__setlinewidth(linewidth)
         if linedash != 0:
-            dashpattern = ''
-            for d in linedash:
-                dashpattern += '%s ' % str(d)
-            self.tmpout('[%s] 0 d' % dashpattern)
-        if linecap == 1 or linecap == 2:
-            self.tmpout('%d J' % linecap)
-        #if linejoin == 1 or linejoin == 2:
-        #    self.tmpout('%d j' % linejoin)
+            self.__setlinedash(linedash)
+        if linecap != 0:
+            self.__setlinecap(linecap)
+        if linejoin != 0:
+            self.__setlinejoin(linejoin)
         px, py = coord[0][0], coord[0][1]
-        self.tmpout('%.2f %.2f m' % (px, py))
+        self.__moveto(px, py)
         for p in range(1,len(coord)):
-            self.tmpout('%.2f %.2f l' % (coord[p][0], coord[p][1]))
-        self.tmpout('h') # closepath
+            self.__lineto(coord[p][0], coord[p][1])
+        self.__closepath()
         if fill:
-            self.tmpout('f')
-        self.tmpout('S') # stroke
-        self.tmpout('Q')
+            self.__fill()
+        self.__stroke()
+        self.__grestore()
         return
 
     #
@@ -1338,6 +1446,9 @@ class pdf(util):
 
                 # The linecap.
                 linecap    = 0,
+
+                # The linejoin.
+                linejoin   = 0,
 
                 # The line dash pattern.
                 linedash   = 0,
@@ -1361,17 +1472,17 @@ class pdf(util):
                 # behind a pattern.
                 bgcolor    = '',
                 ):
-        # do outline first
-        if linewidth != 0:
-            self.__dopolygon(coord, linecolor, linewidth, linecap, linedash,
-                             False, fillcolor, fillstyle, fillsize, fillskip)
-        if bgcolor != '':
-            self.__dopolygon(coord, linecolor, linewidth, linecap, linedash,
-                             True, bgcolor, 'solid', fillsize, fillskip)
-        # now do fill
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__dopolygon(coord, linecolor, linewidth, linecap, linejoin,
+                             linedash, True, bgcolor, 'solid', fillsize,
+                             fillskip)
         if fill:
-            self.__dopolygon(coord, linecolor, 0, linecap, linedash,
+            self.__dopolygon(coord, linecolor, 0, linecap, linejoin, linedash,
                              True, fillcolor, fillstyle, fillsize, fillskip)
+        if linewidth != 0:
+            self.__dopolygon(coord, linecolor, linewidth, linecap, linejoin,
+                             linedash, False, fillcolor, fillstyle, fillsize,
+                             fillskip)
         return
 
 #
@@ -2019,7 +2130,6 @@ class svg(util):
         if bgcolor != '':
             self.__makerect(coord, linecolor, 0, linedash,
                             linecap, True, bgcolor, 'solid', 0, 0, rotate)
-            
         self.__makerect(coord, linecolor, linewidth, linedash,
                         linecap, fill, fillcolor, fillstyle, fillsize,
                         fillskip, rotate)
@@ -2122,6 +2232,9 @@ class svg(util):
 
                 # The linecap.
                 linecap    = 0,
+
+                # The linejoin.
+                linejoin   = 0,
 
                 # The line dash pattern.
                 linedash   = 0,
@@ -2599,14 +2712,12 @@ class postscript(util):
         self.out('/slj {setlinejoin} bind def')
         self.out('/sc  {setrgbcolor} bind def')
         self.out('/sd  {setdash} bind def')
-        # XXX -- triangle not implemented (yet) -- expects x y size on stack
-        # self.out('/triangle {pop pop pop} bind def')  
         self.out('/lshow {show reccp} def')
         self.out('/rshow {dup stringwidth pop neg 0 mr show reccp} def')
         self.out('/cshow {dup stringwidth pop -2 div 0 mr show reccp} def')
         self.out('end')
         self.out('zdict begin')
-
+        return
         # END: __init
 
     # 
