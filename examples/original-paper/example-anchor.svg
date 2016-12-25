@@ -1,27 +1,27 @@
-<!-- Creator: zplot version python version 1.0 script: /Users/remzi/Projects/Zplot-New/z-plot/zplot.py host: Remzis-MacBook-Air.local -->
+<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
 <!-- <img width="200.00" height="60.00" src="example-anchor.svg"> -->
-<svg xmlns="http://www.w3.org/2000/svg"
-xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.00" height="60.00">
 <defs>
+
 
 </defs>
 <text x="10.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: baseline; "> Anchor Is l,l</text>
 <text x="10.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Anchor Is l,c</text>
 <text x="10.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: hanging; "> Anchor Is l,h</text>
-<circle cx="10.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="10.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="10.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="10.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="10.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="10.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
 <text x="100.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Anchor Is c,l</text>
 <text x="100.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: middle; "> Anchor Is c,c</text>
 <text x="100.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Anchor Is c,h</text>
-<circle cx="100.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="100.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="100.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="100.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="100.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="100.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
 <text x="190.00" y="50.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: baseline; "> Anchor Is r,l</text>
 <text x="190.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Anchor Is r,c</text>
 <text x="190.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: hanging; "> Anchor Is r,h</text>
-<circle cx="190.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="190.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
-<circle cx="190.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="red"></circle>
+<circle cx="190.00" cy="50.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="190.00" cy="30.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
+<circle cx="190.00" cy="10.00" r="1.00" stroke="#ff0000" stroke-width="1" fill="#ff0000"></circle>
 </svg>

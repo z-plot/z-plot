@@ -1,4 +1,4 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Air.local -->
+<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
 <!-- <img width="300.00" height="250.00" src="rangesweep2.svg"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300.00" height="250.00">
@@ -6,42 +6,42 @@
 
 
 </defs>
-<polygon points="40.00,81.52 40.00,60.70 52.50,83.86 52.50,105.78 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="52.50,105.78 52.50,83.86 65.00,89.56 65.00,96.62 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="65.00,96.62 65.00,89.56 90.00,93.24 90.00,106.26 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="90.00,106.26 90.00,93.24 115.00,80.36 115.00,102.10 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="115.00,102.10 115.00,80.36 140.00,92.28 140.00,113.04 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="140.00,113.04 140.00,92.28 165.00,92.58 165.00,113.60 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="165.00,113.60 165.00,92.58 190.00,89.86 190.00,111.16 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="190.00,111.16 190.00,89.86 215.00,76.12 215.00,97.98 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="215.00,97.98 215.00,76.12 240.00,84.88 240.00,107.66 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="240.00,107.66 240.00,84.88 265.00,75.90 265.00,114.64 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="265.00,114.64 265.00,75.90 290.00,84.88 290.00,113.08 " stroke="#0000ff" stroke-width="0.1" fill="blue" ></polygon>
-<polygon points="40.00,69.10 40.00,52.42 52.50,66.78 52.50,88.18 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="52.50,88.18 52.50,66.78 65.00,67.20 65.00,83.66 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="65.00,83.66 65.00,67.20 90.00,75.80 90.00,91.92 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="90.00,91.92 90.00,75.80 115.00,90.30 115.00,111.22 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="115.00,111.22 115.00,90.30 140.00,63.48 140.00,126.06 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="140.00,126.06 140.00,63.48 165.00,68.48 165.00,93.40 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="165.00,93.40 165.00,68.48 190.00,75.32 190.00,107.06 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="190.00,107.06 190.00,75.32 215.00,72.96 215.00,91.90 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="215.00,91.90 215.00,72.96 240.00,66.88 240.00,89.50 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="240.00,89.50 240.00,66.88 265.00,73.68 265.00,97.24 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
-<polygon points="265.00,97.24 265.00,73.68 290.00,92.62 290.00,113.30 " stroke="#ff0000" stroke-width="0.1" fill="red" ></polygon>
+<polygon points="40.00,81.52 40.00,60.70 52.50,83.86 52.50,105.78 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="52.50,105.78 52.50,83.86 65.00,89.56 65.00,96.62 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="65.00,96.62 65.00,89.56 90.00,93.24 90.00,106.26 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="90.00,106.26 90.00,93.24 115.00,80.36 115.00,102.10 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="115.00,102.10 115.00,80.36 140.00,92.28 140.00,113.04 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="140.00,113.04 140.00,92.28 165.00,92.58 165.00,113.60 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="165.00,113.60 165.00,92.58 190.00,89.86 190.00,111.16 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="190.00,111.16 190.00,89.86 215.00,76.12 215.00,97.98 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="215.00,97.98 215.00,76.12 240.00,84.88 240.00,107.66 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="240.00,107.66 240.00,84.88 265.00,75.90 265.00,114.64 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="265.00,114.64 265.00,75.90 290.00,84.88 290.00,113.08 " stroke="#0000ff" stroke-width="0.1" fill="#0000ff" ></polygon>
+<polygon points="40.00,69.10 40.00,52.42 52.50,66.78 52.50,88.18 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="52.50,88.18 52.50,66.78 65.00,67.20 65.00,83.66 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="65.00,83.66 65.00,67.20 90.00,75.80 90.00,91.92 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="90.00,91.92 90.00,75.80 115.00,90.30 115.00,111.22 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="115.00,111.22 115.00,90.30 140.00,63.48 140.00,126.06 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="140.00,126.06 140.00,63.48 165.00,68.48 165.00,93.40 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="165.00,93.40 165.00,68.48 190.00,75.32 190.00,107.06 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="190.00,107.06 190.00,75.32 215.00,72.96 215.00,91.90 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="215.00,91.90 215.00,72.96 240.00,66.88 240.00,89.50 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="240.00,89.50 240.00,66.88 265.00,73.68 265.00,97.24 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
+<polygon points="265.00,97.24 265.00,73.68 290.00,92.62 290.00,113.30 " stroke="#ff0000" stroke-width="0.1" fill="#ff0000" ></polygon>
 <path d="M 40.00,71.12 L 52.50,94.82 L 65.00,93.08 L 90.00,99.74 L 115.00,91.22 L 140.00,102.66 L 165.00,103.10 L 190.00,100.52 L 215.00,87.04 L 240.00,96.26 L 265.00,95.26 L 290.00,98.98 " stroke="#000000" stroke-width="0.50px" fill="none" ></path>
 <path d="M 40.00,60.76 L 52.50,77.48 L 65.00,75.44 L 90.00,83.86 L 115.00,100.76 L 140.00,94.76 L 165.00,80.94 L 190.00,91.18 L 215.00,82.44 L 240.00,78.20 L 265.00,85.46 L 290.00,102.96 " stroke="#000000" stroke-width="0.50px" stroke-dasharray="4,2" fill="none" ></path>
-<circle cx="40.00" cy="71.12" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="52.50" cy="94.82" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="65.00" cy="93.08" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="90.00" cy="99.74" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="115.00" cy="91.22" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="140.00" cy="102.66" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="165.00" cy="103.10" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="190.00" cy="100.52" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="215.00" cy="87.04" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="240.00" cy="96.26" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="265.00" cy="95.26" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
-<circle cx="290.00" cy="98.98" r="2.00" stroke="#000000" stroke-width="0.25" fill="black"></circle>
+<circle cx="40.00" cy="71.12" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="52.50" cy="94.82" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="65.00" cy="93.08" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="90.00" cy="99.74" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="115.00" cy="91.22" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="140.00" cy="102.66" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="165.00" cy="103.10" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="190.00" cy="100.52" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="215.00" cy="87.04" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="240.00" cy="96.26" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="265.00" cy="95.26" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
+<circle cx="290.00" cy="98.98" r="2.00" stroke="#000000" stroke-width="0.25" fill="#000000"></circle>
 <circle cx="40.00" cy="60.76" r="2.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
 <circle cx="52.50" cy="77.48" r="2.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
 <circle cx="65.00" cy="75.44" r="2.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
@@ -101,10 +101,10 @@
 <text x="33.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 90</text>
 <text x="33.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 100</text>
 <text x="165.00" y="230.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Follow-up Time (months)</text>
-<text x="10.80" y="110.00" transform="rotate(-90.00 10.80,110.00)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Average Night Driving Score</text>
-<rect x="52.50" y="175.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="blue" ></rect>
+<text x="13.32" y="110.00" transform="rotate(-90.00 13.32,110.00)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Average Night Driving Score</text>
+<rect x="52.50" y="175.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#0000ff" ></rect>
 <text x="66.50" y="180.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Treatment A</text>
-<rect x="52.50" y="188.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="red" ></rect>
+<rect x="52.50" y="188.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#ff0000" ></rect>
 <text x="66.50" y="193.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Treatment B</text>
 <text x="165.00" y="10.00" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: middle; alignment-baseline: middle; "> Average Night Driving Score</text>
 <text x="165.00" y="18.00" style="font-family: Helvetica; font-size: 6; fill: #000000; text-anchor: middle; alignment-baseline: middle; "> With Missing Values Imputed Using Approximate Bayesian Bootstrap</text>

@@ -4,10 +4,12 @@
 foreach dir ( * )
     if (-d $dir) then
 	cd $dir
-	foreach py ( *.py )
-	    echo "$count ${dir}/${py}"
-	    @ count += 1
-	    ./${py}
+	foreach type ( "eps" "svg" "pdf" )
+	    foreach py ( *.py )
+		echo "$count ${dir}/${py} $type"
+		@ count += 1
+		./${py} $type
+	    end
 	end
 	cd ..
     endif

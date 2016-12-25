@@ -642,7 +642,7 @@ class fontsize:
         for s in string:
             total_width += self.font_width[font][s]
         return total_width * size / 1000.0
-
+    # END: class fontsize
 
 #
 # --class-- util
@@ -651,8 +651,15 @@ class fontsize:
 # all real canvas types; thus, each should inherit from here to use them.
 #
 class util:
+    #
+    # program and version number
+    #
+    program = 'zplot'
+    version = 'python version 1.3'
+
     # 
     # Shared thing needed to get info about fonts
+    #
     fontinfo = fontsize()
 
     #
@@ -790,11 +797,6 @@ class util:
     #
     # utility routines for recording steps and then output'ing at end
     #
-
-    # prepend a command
-    def prepend(self, outStr):
-        self.commands.insert(0, outStr)
-        return
 
     def outAfter(self, outStr, index):
         self.commands.insert(index, outStr)
@@ -944,6 +946,12 @@ class pdf(util):
         return
 
     #
+    # needed to translate colors
+    #
+    def getcolor(self, value):
+        return value
+
+    #
     # HELPER functions for the drawing commands like line(), box(), etc.
     #
     def __setcolor(self, value, command):
@@ -968,15 +976,17 @@ class pdf(util):
         return
 
     def __setlinecap(self, value):
-        if value != 0 or value != 1 or value != 2:
+        value = int(value)
+        if value != 0 and value != 1 and value != 2:
             print 'bad linecap', value
             return
         self.tmpout('%d J' % value)
         return
 
     def __setlinejoin(self, value):
-        if value != 0 or value != 1 or value != 2:
-            print 'bad linejoin', value
+        value = int(value)
+        if value != 0 and value != 1 and value != 2:
+            print '+ bad linejoin', value
             return
         self.tmpout('%d j' % value)
         return
@@ -1289,6 +1299,8 @@ class pdf(util):
         # now just move to location and output text
         # rotation requires a little extra work ...
         self.__begintext()
+        if color != 'black':
+            self.__setfillcolor(color)
         self.__setfont(font, size)
         if rotate == 0:
             self.__textmoveto(x, y, dx, dy)
@@ -1519,9 +1531,6 @@ class svg(util):
         self.comments = ''
         self.commands = []
         
-        self.program = 'zplot'
-        self.version = 'python version 1.3'
-
         # SHOULD INCLUDE SOME INFO IN HEADER (in html comment form)
         self.__comment(' Creator: %s version %s script: %s host: %s ' % \
                  (self.program, self.version, os.path.abspath(script),
@@ -1819,7 +1828,7 @@ class svg(util):
             elif linejoin == 2:
                 linejoin = 'bevel'
             else:
-                print 'bad linejoin'
+                print 'bad linejoin', linejoin
             self.outnl('stroke-linejoin="%%s" ' % linejoin)
         if linecap != 0:
             if linecap == 1:
