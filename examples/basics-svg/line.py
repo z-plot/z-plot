@@ -5,7 +5,7 @@ from zplot import *
 # populate zplot table from data file
 t = table('line.data')
 
-canvas = svg('/tmp/line.svg', dimensions=['3in','2in'])
+canvas = svg('line.svg', dimensions=['3in','2in'])
 
 # a drawable is a region of a canvas, and is used to convert data
 # coordinates to raw pixel coordinates on the canvas, based on

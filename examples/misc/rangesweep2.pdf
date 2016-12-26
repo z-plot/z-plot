@@ -17,7 +17,7 @@
 16 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Times-Italic>> endobj
 17 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Times-Roman>> endobj
 18 0 obj <</Type /Font /Subtype /Type1 /BaseFont /ZapfDingbats>> endobj
-19 0 obj <</Length 14922>>
+19 0 obj <</Length 15112>>
 stream
 q
 0.00 0.00 1.00  RG
@@ -1103,14 +1103,23 @@ BT
 (Average Night Driving Score) Tj
 ET
 q
-0.00 0.00 1.00  rg
 52.50 65.00 m
 52.50 75.00 l
 62.50 75.00 l
 62.50 65.00 l
+52.50 65.00 l
 h
+W
+n
+0.00 w
+52.50 65.00 m
+52.50 75.00 l
+62.50 75.00 l
+62.50 65.00 l
+52.50 65.00 l
+h
+0.00 0.00 1.00  rg
 f
-S
 Q
 q
 0.50 w
@@ -1127,14 +1136,23 @@ BT
 (Treatment A) Tj
 ET
 q
-1.00 0.00 0.00  rg
 52.50 52.00 m
 52.50 62.00 l
 62.50 62.00 l
 62.50 52.00 l
+52.50 52.00 l
 h
+W
+n
+0.00 w
+52.50 52.00 m
+52.50 62.00 l
+62.50 62.00 l
+62.50 52.00 l
+52.50 52.00 l
+h
+1.00 0.00 0.00  rg
 f
-S
 Q
 q
 0.50 w
@@ -1189,8 +1207,8 @@ xref
 0000001271 00000 n
 0000001342 00000 n
 0000001414 00000 n
-0000016387 00000 n
+0000016577 00000 n
 trailer <</Size 20/Root 1 0 R>>
 startxref
-16838
+17028
 %%EOF
