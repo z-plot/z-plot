@@ -635,6 +635,1465 @@ class fontsize:
     # END: class fontsize
 
 #
+#
+#
+class writer():
+    def __init__(self):
+        self.commands = []
+        return
+
+    # record ...
+    def out_after(self, out_str, index):
+        self.commands.insert(index, out_str)
+        return index + 1
+
+    # add a new command
+    def out(self, out_str):
+        self.commands.append(out_str)
+        return len(self.commands)
+
+    # add a command to the previously added line
+    def outnl(self, out_str):
+        assert(len(self.commands) > 0)
+        idx = len(self.commands) - 1
+        self.commands[idx] = self.commands[idx] + out_str
+        return len(self.commands)
+
+    # output the commands
+    def dump(self, outfile):
+        if outfile == 'stdout':
+            for line in self.commands:
+                print line
+        else:
+            fd = open(outfile, 'w')
+            for line in self.commands:
+                fd.write(line + '\n')
+            fd.close()
+        return
+# END: class writer    
+
+#
+# class postscript_drawer
+#
+class postscript_drawer():
+    def __init__(self, colors, fontinfo, default_font, writer,
+                 title, program, version, script, width, height):
+        self.colors = colors
+        self.fontinfo = fontinfo
+        self.default_font = default_font
+        self.writer = writer
+        self.title = title
+        self.program = program
+        self.version = version
+        self.script = script
+        self.width = width
+        self.height = height
+        self.date = str(time.strftime('%X %x %Z'))
+
+        self.gsave_cnt = 0
+        self.grestore_cnt = 0
+
+        # list of all fonts 
+        self.all_fonts = self.fontinfo.get_font_list()
+        assert(default_font in self.all_fonts)
+        self.font_list = []
+        return
+
+    def make_header(self):
+        # generic eps header
+        self.writer.out('%!PS-Adobe-2.0 EPSF-2.0')
+        self.writer.out('%%Title: ' + str(self.title))
+        self.writer.out('%%Creator: '+ str(self.program) + ' version:' + \
+                        str(self.version) + ' script:' + os.path.abspath(self.script) + \
+                        ' host:'+socket.gethostname())
+        self.writer.out('%%CreationDate: ' + str(self.date))
+        self.writer.out('%%DocumentFonts: (atend)')
+        self.writer.out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + \
+                 str(self.height))
+        self.writer.out('%%Orientation: Portrait')
+        self.writer.out('%%EndComments')
+
+        # zdraw dictionary
+        self.writer.out('% zdraw dictionary')
+        self.writer.out('/zdict 256 dict def')
+        self.writer.out('zdict begin')
+        self.writer.out('/cpx 0 def')
+        self.writer.out('/cpy 0 def')
+        self.writer.out('/reccp {currentpoint /cpy exch def /cpx exch def} bind def')
+        self.writer.out('/m {moveto} bind def')
+        self.writer.out('/l {lineto} bind def')
+        self.writer.out('/mr {rmoveto} bind def')
+        self.writer.out('/lr {rlineto} bind def')
+        self.writer.out('/np {newpath} bind def')
+        self.writer.out('/cp {closepath} bind def')
+        self.writer.out('/st {stroke} bind def')
+        self.writer.out('/fl {fill} bind def')
+        self.writer.out('/gs {gsave} bind def')
+        self.writer.out('/gr {grestore} bind def')
+        self.writer.out('/slw {setlinewidth} bind def')
+        self.writer.out('/slc {setlinecap} bind def')
+        self.writer.out('/slj {setlinejoin} bind def')
+        self.writer.out('/sc  {setrgbcolor} bind def')
+        self.writer.out('/sd  {setdash} bind def')
+        self.writer.out('/lshow {show reccp} def')
+        self.writer.out('/rshow {dup stringwidth pop neg 0 mr show reccp} def')
+        self.writer.out('/cshow {dup stringwidth pop -2 div 0 mr show reccp} def')
+        self.writer.out('end')
+        self.writer.out('zdict begin')
+        return
+
+    def make_trailer(self):
+        # do some checks
+        self.gcheck()
+
+        # generic eps trailer
+        self.writer.out('% zplot .eps epilogue')
+        self.writer.out('end')
+        self.writer.out('showpage')
+        self.writer.out('%%Trailer')
+
+        # make font list
+        font_list = self.getfonts()
+        if len(font_list) > 0:
+            font_str = font_list[0]
+            for i in range(1, len(font_list)):
+                font_str = font_str + ' ' + font_list[i]
+            self.writer.out('%%DocumentFonts: ' + font_str)
+        else:
+            self.writer.out('%%DocumentFonts: ')
+        return
+
+    #
+    # Commands used to draw graphics and text to ps canvas
+    #
+    def gsave(self):
+        self.writer.out('gs')
+        self.gsave_cnt = self.gsave_cnt + 1
+        return
+        
+    def grestore(self):
+        self.writer.out('gr')
+        self.grestore_cnt = self.grestore_cnt + 1
+        return
+
+    def gcheck(self):
+        if self.gsave_cnt != self.grestore_cnt:
+            abort('mismatch in gsaves/grestores')
+        return
+
+    def newpath(self):
+        self.writer.out('np')
+        return
+
+    def moveto(self, p1, p2):
+        self.writer.out(str(float(p1)) + ' ' + str(float(p2)) + ' m')
+        return
+
+    def curveto(self, x1, y1, x2, y2, x3, y3):
+        self.writer.out('%.2f %.2f %.2f %.2f %.2f %.2f curveto' % \
+                   (x1, y1, x2, y2, x3, y3))
+        return
+
+    def rmoveto(self, p1, p2):
+        self.writer.out(str(float(p1)) + ' ' + str(float(p2)) + ' mr')
+        return
+
+    def lineto(self, p1, p2):
+        self.writer.out(str(float(p1)) + ' ' + str(float(p2)) + ' l')
+        return
+
+    def rlineto(self, p1, p2):
+        self.writer.out(str(float(p1)) + ' ' + str(float(p2)) + ' lr')
+        return
+
+    def rotate(self, angle):
+        self.writer.out(str(angle) + ' rotate')
+        return
+        
+    def show(self, text, anchor):
+        if anchor == 'c':
+            self.writer.out('('+text+') cshow')
+	elif anchor == 'l':
+            self.writer.out('('+text+') lshow')
+        elif anchor == 'r':
+            self.writer.out('('+text+') rshow')
+        else:
+	    abort('bad anchor: ' + anchor)
+        return
+
+    def begintext(self):
+        self.gsave()
+        return
+
+    def endtext(self):
+        self.grestore()
+        return
+
+    def showtext(self, text, x, y, dx, dy, rotate):
+        self.moveto(x, y)
+        if rotate != 0:
+            self.gsave()
+            self.rotate(rotate)
+        self.rmoveto(dx, dy)
+        self.show(text, 'l')
+        if rotate != 0:
+            self.grestore()
+        return
+
+    def closepath(self):
+        self.writer.out('cp')
+        return
+
+    def setcolor(self, value):
+        tmp = value.split(',')
+        if len(tmp) > 1:
+            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
+        else:
+            c = self.colors.get(value)
+        self.writer.out(c + ' sc')
+        return
+
+    def setfillcolor(self, value):
+        return self.setcolor(value)
+
+    def setlinecolor(self, value):
+        return self.setcolor(value)
+
+    def setlinewidth(self, linewidth):
+        self.writer.out(str(float(linewidth)) + ' slw')
+        return
+
+    def setlinecap(self, linecap):
+        self.writer.out(str(int(linecap)) + ' slc')
+        return
+
+    def setlinejoin(self, linejoin):
+        self.writer.out(str(int(linejoin)) + ' slj')
+        return
+
+    def setlinedash(self, linedash):
+        self.writer.out('[ ')
+        for seg in linedash:
+            self.writer.outnl(str(seg) + ' ')
+        self.writer.outnl('] 0 sd')
+        return
+
+    def fill(self):
+        self.writer.out('fl')
+        return
+
+    def stroke(self):
+        self.writer.out('st')
+
+    def rectangle(self, x1, y1, x2, y2):
+        self.moveto(x1, y1)
+        self.lineto(x1, y2)
+        self.lineto(x2, y2)
+        self.lineto(x2, y1)
+        return
+
+    def scale(self, x, y):
+        self.writer.out(str(x) + ' ' + str(y) + ' scale')
+        return
+
+    def arc(self, x, y, radius, start, end):
+        self.writer.out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + \
+                   str(start) + ' ' + str(end) + ' arc')
+        return
+
+    def clip(self):
+        self.writer.out('clip')
+        return
+
+    def clipbox(self, x1, y1, x2, y2):
+        self.newpath()
+        self.rectangle(x1, y1, x2, y2)
+        self.closepath()
+        self.clip()
+        return
+
+    def clippoly(self, coord):
+        self.newpath()
+        self.moveto(coord[0][0], coord[0][1])
+        for i in range(1, len(coord)):
+            self.lineto(coord[i][0], coord[i][1])
+        self.closepath()
+        self.clip()
+        return
+
+    def addfont(self, font):
+        if font == 'default':
+            font = self.default_font
+        if font not in self.all_fonts:
+            abort('bad font: %s' % font)
+        if font not in self.font_list:
+            self.font_list.append(font)
+        return
+            
+    def setfont(self, face, size):
+        if face == 'default':
+            face = self.default_font
+        self.writer.out('(' + face + ') findfont ' + str(size) +
+                   ' scalefont setfont')
+        return
+
+    def getfonts(self):
+        return self.font_list
+
+# END class postscript_drawer
+
+#
+# Helper class to output proper PDF commands
+#
+class pdf_drawer():
+    def __init__(self, colors, fontinfo, default_font, writer,
+                 title, program, version, script, width, height):
+        self.colors = colors
+        self.fontinfo = fontinfo
+        self.default_font = default_font
+        self.writer = writer
+        self.title = title
+        self.program = program
+        self.version = version
+        self.script = script
+        self.width = width
+        self.height = height
+        self.date = str(time.strftime('%X %x %Z'))
+
+        self.fontlist = self.fontinfo.get_font_list()
+
+        self.fontmap = {}
+        self.commands = []
+        return
+
+    # http://www.amccormack.net/2012-01-22-anatomy-of-a-pdf-document.html
+    #   /Resources << /ProcSet 6 0 R /Font << /F1 7 0 R >> >>
+    def make_header(self):
+        self.object_lengths = []
+        
+        self.__pdf_out('%PDF-1.7')
+        self.__pdf_out('1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj')
+        self.__pdf_out('2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj')
+        self.__pdf_out('3 0 obj <</Type /Page ' + \
+                    '/MediaBox [0 0 %d %d] ' % (self.width, self.height) + \
+                    '/Parent 2 0 R /Resources 4 0 R /Contents %d 0 R>> ' % \
+                    (5 + len(self.fontlist)) + 'endobj')
+        out_str = '4 0 obj <</Font <<'
+        for i in range(len(self.fontlist)):
+            out_str += '/F%d %d 0 R ' % (i+1, i+5)
+            self.fontmap[self.fontlist[i]] = i+1
+        out_str += '>>>> endobj'
+        self.__pdf_out(out_str)
+        num = 5
+        for f in self.fontlist:
+            self.__pdf_out('%d 0 obj <</Type /Font /Subtype /Type1 ' % num + \
+                        '/BaseFont /%s>> endobj' % f)
+            num += 1
+        return
+
+    def make_trailer(self):
+        # put all the drawing commands, etc., into this one object
+        tmp_str = ''
+        for c in self.commands:
+            tmp_str += '%s\n' % c
+
+        out_str = '%d 0 obj <</Length %d>>\n' % (len(self.object_lengths),
+                                                 len(tmp_str))
+        out_str += 'stream\n'
+        out_str += tmp_str
+        out_str += 'endstream\n'
+        out_str += 'endobj'
+        # output the one object here
+        self.__pdf_out(out_str)
+
+        # And then (finally) the trailer...
+        # First is this little table at the end that has the byte offset
+        # of each object in the PDF document.
+        num_objects = len(self.object_lengths)
+        self.__pdf_out('xref')
+        self.__pdf_out('0 %d' % num_objects) 
+        self.__pdf_out('0000000000 65535 f')
+        cnt = 0
+        for i in range(num_objects):
+            e = self.object_lengths[i]
+            cnt += e
+
+            # have to output this as length 10 number with 0's leading
+            # the number (cnt) is the byte offset of the object, from 0-6,
+            # in the PDF
+            target_len = 10
+            curr_len = len(str(cnt))
+            out_str = ''
+            for i in range(target_len - curr_len):
+                out_str += '0'
+            out_str += str(cnt)
+            self.__pdf_out('%s 00000 n' % out_str)
+        # Then a little bit that points to the root object
+        self.__pdf_out('trailer <</Size %d/Root 1 0 R>>' % num_objects)
+        # And a little thing that gives a byte offset of the offset table
+        self.__pdf_out('startxref')
+        cnt = 0
+        for e in self.object_lengths:
+            cnt += e
+        # byte offset of the last crossref section
+        self.__pdf_out('%d' % cnt)
+        self.__pdf_out('%%EOF')
+        return
+
+    # Wrapper for pdf object to be output
+    def __pdf_out(self, s):
+        length = len(s)
+        self.writer.out(s)
+        self.object_lengths.append(length + 1)
+        return
+
+    def __out(self, command):
+        self.commands.append(command)
+        return
+
+    def __setcolor(self, value, command):
+        tmp = value.split(',')
+        if len(tmp) > 1:
+            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
+        else:
+            c = self.colors.get(value)
+        self.__out(c + ' %s' % command)
+        return
+
+    def setlinecolor(self, value):
+        self.__setcolor(value, ' RG')
+        return
+
+    def setfillcolor(self, value):
+        self.__setcolor(value, ' rg')
+        return
+
+    def setlinewidth(self, value):
+        self.__out('%.2f w' % float(value))
+        return
+
+    def setlinecap(self, value):
+        value = int(value)
+        if value != 0 and value != 1 and value != 2:
+            print 'bad linecap', value
+            return
+        self.__out('%d J' % value)
+        return
+
+    def setlinejoin(self, value):
+        value = int(value)
+        if value != 0 and value != 1 and value != 2:
+            print '+ bad linejoin', value
+            return
+        self.__out('%d j' % value)
+        return
+
+    def setlinedash(self, value):
+        dashpattern = ''
+        for d in value:
+            dashpattern += '%s ' % str(d)
+        self.__out('[%s] 0 d' % dashpattern)
+        return
+
+    def moveto(self, x, y):
+        self.__out('%.2f %.2f m' % (float(x), float(y)))
+        return
+
+    def curveto(self, x1, y1, x2, y2, x3, y3):
+        self.__out('%.2f %.2f %.2f %.2f %.2f %.2f c' % \
+                    (x1, y1, x2, y2, x3, y3))
+        return
+
+    def lineto(self, x, y):
+        self.__out('%.2f %.2f l' % (float(x), float(y)))
+        return
+
+    def rectangle(self, x1, y1, x2, y2):
+        self.moveto(x1, y1)
+        self.lineto(x1, y2)
+        self.lineto(x2, y2)
+        self.lineto(x2, y1)
+        self.lineto(x1, y1)
+        return
+
+    def newpath(self):
+        # PDF has no "newpath" construct
+        return
+    
+    def closepath(self):
+        self.__out('h')
+        return
+
+    def stroke(self):
+        self.__out('S')
+        return
+
+    def fill(self):
+        self.__out('f')
+        return
+
+    def gsave(self):
+        self.__out('q')
+        return
+
+    def grestore(self):
+        self.__out('Q')
+        return
+
+    def begintext(self):
+        self.__out('BT')
+        return
+
+    def endtext(self):
+        self.__out('ET')
+        return
+
+    def __textmoveto(self, x, y, dx, dy):
+        self.__out('%.2f %.2f Td' % (x + dx, y + dy))
+        return
+
+    def __textmovetorotate(self, x, y, dx, dy, angle):
+        angle = math.radians(angle)
+        cos, sin = math.cos(angle), math.sin(angle)
+        xdx, xdy = dx * cos, dx * sin
+        ydx, ydy = -dy * sin, dy * cos
+        self.__out('%.2f %.2f %.2f %.2f %.2f %.2f Tm' % (cos, sin, -sin, cos,
+                                                         x + xdx + ydx,
+                                                         y + xdy + ydy))
+        return
+
+    def __puttext(self, text):
+        self.__out('(%s) Tj' % text)
+        return
+
+    def showtext(self, text, x, y, dx, dy, angle):
+        if angle == 0:
+            self.__textmoveto(x, y, dx, dy)
+        else:
+            self.__textmovetorotate(x, y, dx, dy, angle)
+        self.__puttext(text)
+        return
+
+    def setfont(self, font, size):
+        if font == 'default':
+            font = self.default_font
+        if font not in self.fontmap:
+            print 'font %s not found' % font
+            return
+        fontnum = self.fontmap[font]
+        self.__out('/F%d %.2f Tf' % (fontnum, size))
+        return
+
+    def clip(self):
+        self.__out('W')
+        return
+
+    def clipbox(self, x1, y1, x2, y2):
+        self.moveto(x1, y1)
+        self.lineto(x1, y2)
+        self.lineto(x2, y2)
+        self.lineto(x2, y1)
+        self.lineto(x1, y1)
+        self.closepath()
+        self.clip()
+        self.__out('n')
+        return
+
+    def clippoly(self, coord):
+        self.moveto(coord[0][0], coord[0][1])
+        for i in range(1, len(coord)):
+            self.lineto(coord[i][0], coord[i][1])
+        self.closepath()
+        self.clip()
+        self.__out('n')
+        return
+
+# END class pdf_drawer
+    
+#
+# 
+#
+class canvas:
+    def __init__(self,
+                 # Canvas type: Can be eps, pdf, svg (for now).
+                 canvas_type = 'eps',
+                 
+                 # Base name of the output file. Output will be
+                 # of the form: 'title.canvas_type'
+                 title = 'default',
+
+                 # Size of the drawing surface.
+                 dimensions = ['3in','2in'],
+
+                 # Default font for text.
+                 default_font = 'Helvetica',
+                 
+                 # Whether to add more info into output file.
+                 verbose = False,
+
+                 # Name of the file calling into zplot; recorded in header.
+                 script = __file__,
+                 ):
+        self.canvas_type = canvas_type
+        self.title = title
+        self.dimensions = dimensions
+        self.default_font = default_font
+        self.verbose = verbose
+        self.script = script
+
+        self.program = 'zplot'
+        self.version = 'python version 1.3'
+
+        self.colors = color()
+        self.fontinfo = fontsize()
+        
+        self.output_file = title + '.' + canvas_type
+
+        self.width = self.convert(str(dimensions[0]))
+        self.height = self.convert(str(dimensions[1]))
+
+        # simple helper class used to write contents to a file
+        self.writer = writer()
+
+        if self.canvas_type == 'eps':
+            self.drawer = postscript_drawer(colors=self.colors, fontinfo=self.fontinfo,
+                                            default_font=self.default_font, writer=self.writer,
+                                            title=self.title, program=self.program,
+                                            version=self.version, script=self.script,
+                                            width=self.width, height=self.height)
+        elif self.canvas_type == 'pdf':
+            self.drawer = pdf_drawer(colors=self.colors, fontinfo=self.fontinfo,
+                                     default_font=self.default_font, writer=self.writer,
+                                     title=self.title, program=self.program,
+                                     version=self.version, script=self.script,
+                                     width=self.width, height=self.height)
+        else:
+            abort('bad canvas type [%s]' % self.canvas_type)
+
+        self.drawer.make_header()
+        return
+
+    def render(self):
+        self.drawer.make_trailer()
+        self.writer.dump(self.output_file)
+        return
+
+    #
+    # Used to convert from whatever into points
+    #
+    def convert(self, unit_str):
+        u = unit_str.split('inches')
+        if len(u) > 1:
+            return float(u[0]) * 72.0
+        u = unit_str.split('in')
+        if len(u) > 1:
+            return float(u[0]) * 72.0
+        u = unit_str.split('i')
+        if len(u) > 1:
+            return float(u[0]) * 72.0
+        return float(unit_str)
+
+    #
+    # Used to get string width of various fonts
+    #
+    def get_string_width(self, font, fontsize, text):
+        return self.fontinfo.get_string_width(font, fontsize, text)
+
+    #
+    # Use this to draw a shape on the plotting surface. Lots of possibilities,
+    # including square, circle, triangle, utriangle, plusline, hline, vline,
+    # hvline, xline, dline1, dline2, dline12, diamond, asterisk, ...
+    #
+    # Amazingly, this is all generic, just built on lines, boxes, circles, etc.
+    # 
+    def shape(self,
+              style     = '',      # the possible shapes
+              x         = '',      # x position of shape
+              y         = '',      # y position of shape
+              size      = 3.0,     # size of shape
+              linecolor = 'black', # color of the line of the marker
+              linewidth = 1.0,     # width of lines used to draw the marker
+              linedash  = 0,       # dash pattern - 0 means no dashes
+              fill      = False,   # for some shapes, filling makes sense;
+                                   # if desired, mark this true
+              fillcolor = 'black', # if filling, use this fill color
+              fillstyle = 'solid', # if filling, which fill style to use
+              fillsize  = 3.0,     #  size of object in pattern
+              fillskip  = 4.0,     # space between object in pattern
+              ):
+        if style == 'square':
+	    self.box(coord=[[x-size,y-size],[x+size,y+size]], 
+                     linecolor=linecolor, linewidth=linewidth,  fill=fill,
+                     fillcolor=fillcolor, fillstyle=fillstyle,
+                     fillsize=fillsize, fillskip=fillskip) 
+        elif style == 'circle':
+	    self.circle(coord=[x,y], radius=size, linecolor=linecolor,
+                        linewidth=linewidth, fill=fill, fillcolor=fillcolor,
+                        fillstyle=fillstyle, fillsize=fillsize,
+                        fillskip=fillskip) 
+	elif style == 'triangle':
+	    self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
+                         linecolor=linecolor, linewidth=linewidth,
+                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'utriangle':
+	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'plusline':
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	elif style == 'xline':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline1':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline2':
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'dline12':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	elif style == 'hline': 
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth, linedash=linedash)
+	elif style == 'vline': 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+        elif style == 'hvline':
+	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+	elif style == 'diamond':
+	    self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
+                         linecolor=linecolor, linewidth=linewidth, fill=fill,
+                         fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+	elif style == 'star':
+            s2 = size / 2.0
+            xp  = s2 * math.cos(math.radians(18.0))
+            yp  = s2 * math.sin(math.radians(18.0))
+            xp2 = s2 * math.cos(math.radians(54.0))
+            yp2 = s2 * math.sin(math.radians(54.0))
+	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],
+                                [x-xp,y+yp],[x+xp,y+yp],
+                                [x-xp2,y-yp2],[x,y+s2]],
+                         linecolor=linecolor, linewidth=linewidth,
+                         fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
+                         fillsize=fillsize, fillskip=fillskip) 
+        elif style == 'asterisk':
+	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+                      linecolor=linecolor, linewidth=linewidth) 
+	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+                      linecolor=linecolor, linewidth=linewidth)
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+                      linewidth=linewidth) 
+	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+                      linewidth=linewidth)
+        else:
+            abort('bad choice of point style: ' + style)
+        return
+    # END: shape()
+
+    #
+    # 
+    #
+    def make_pattern(self,
+                     coord     = [],
+                     fillcolor = 'black',
+                     fillstyle = 'solid',
+                     fillsize  = 3,
+                     fillskip  = 4,
+                     ):
+        drawer = self.drawer
+        
+        # bound box
+        assert(len(coord) == 2)
+        assert(len(coord[0]) == 2)
+        assert(len(coord[1]) == 2)
+        x1 = float(coord[0][0])
+        y1 = float(coord[0][1])
+        x2 = float(coord[1][0])
+        y2 = float(coord[1][1])
+
+        fillsize = float(fillsize)
+        fillskip = float(fillskip)
+
+        if fillstyle == 'solid':
+            drawer.newpath()
+            drawer.setlinewidth(0)
+            drawer.rectangle(x1, y1, x2, y2)
+	    drawer.closepath()
+	    drawer.setfillcolor(fillcolor)
+	    drawer.fill()
+            return
+            
+        delta = 10
+        if x2 > x1:
+            x1 = x1 - delta
+            x2 = x2 + delta
+        else:
+            nx1 = x2 - delta
+            nx2 = x1 + delta
+            x1  = nx1
+            x2  = nx2
+
+        if y2 > y1:
+            y1 = y1 - delta
+            y2 = y2 + delta
+        else:
+            ny1 = y2 - delta
+            ny2 = y1 + delta
+            y1  = ny1
+            y2  = ny2
+
+        # this is done for all except the solid ...
+        styleList = ''
+
+        if fillstyle == 'hline':
+            styleList += 'hline '
+            drawer.setlinewidth(fillsize)
+            drawer.setfillcolor(fillcolor)
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+		drawer.rectangle(x1, cy, x2, cy + fillsize)
+		drawer.closepath()
+		drawer.fill()
+		drawer.stroke()
+                cy = cy + fillsize + fillskip
+	elif fillstyle == 'vline':
+            styleList += 'vline '
+	    drawer.setlinewidth(fillsize)
+            drawer.setlinecolor(fillcolor)
+            cx = x1
+            while cx <= x2:
+		drawer.newpath()
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx, y2)
+		drawer.stroke()
+                cx = cx + fillsize + fillskip
+        elif fillstyle == 'hvline':
+            styleList += 'hvline '
+	    drawer.setlinewidth(fillsize)
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+                drawer.setfillcolor(fillcolor)
+		drawer.rectangle(x1, cy, x2, cy + fillsize)
+		drawer.closepath()
+		drawer.fill()
+		drawer.stroke()
+                cy = cy + fillsize + fillskip
+            cx = x1
+            while cx <= x2:
+		drawer.newpath()
+                drawer.setlinecolor(fillcolor)
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx, y2)
+		drawer.stroke()
+                cx = cx + fillsize + fillskip
+	elif fillstyle == 'dline1':
+            styleList += 'dline1 '
+	    drawer.setlinecolor(fillcolor)
+	    drawer.setlinewidth(fillsize)
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+		drawer.moveto(x1, cy)
+		drawer.lineto(x2, (x2-x1)+cy)
+		drawer.stroke()
+                cy = cy + fillskip + fillsize
+            cx = x1
+            while cx <= x2:
+		drawer.newpath()
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx+(y2-y1), y2)
+		drawer.stroke()
+                cx = cx + fillskip + fillsize
+	elif fillstyle == 'dline2':
+            styleList += 'dline2 '
+	    drawer.setlinecolor(fillcolor)
+	    drawer.setlinewidth(fillsize)
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+		drawer.moveto(x2, cy)
+		drawer.lineto(x1, (x2-x1)+cy)
+		drawer.stroke()
+                cy = cy + fillskip + fillsize
+            cx = x2
+            while cx >= x1:
+		drawer.newpath()
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx-(y2-y1), y2)
+		drawer.stroke()
+                cx = cx - (fillskip + fillsize)
+	elif fillstyle == 'dline12':
+            styleList += 'dline12 '
+	    drawer.setlinewidth(fillsize)
+	    drawer.setlinecolor(fillcolor)
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+		drawer.moveto(x1, cy)
+		drawer.lineto(x2, (x2-x1)+cy)
+		drawer.stroke()
+                cy = cy + fillskip + fillsize
+            cx = x1
+            while cx <= x2:
+		drawer.newpath()
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx+(y2-y1), y2)
+		drawer.stroke()
+                cx = cx + fillskip + fillsize
+            cy = y1
+            while cy <= y2:
+		drawer.newpath()
+		drawer.moveto(x2, cy)
+		drawer.lineto(x1, (x2-x1)+cy)
+		drawer.stroke()
+                cy = cy + fillskip + fillsize
+            cx = x2
+            while cx >= x1:
+		drawer.newpath()
+		drawer.moveto(cx, y1)
+		drawer.lineto(cx-(y2-y1), y2)
+		drawer.stroke()
+                cx = cx - (fillskip + fillsize)
+	elif fillstyle == 'circle':
+            styleList += 'circle '
+            cx = x1
+            while cx <= x2:
+                cy = y1
+                while cy <= y2:
+                    drawer.newpath()
+                    # drawer.setfillcolor(fillcolor)
+		    # drawer.circle(cx, cy, fillsize)
+		    drawer.fill()
+		    drawer.stroke()
+                    cy = cy + fillskip + fillsize
+                cx = cx + fillsize + fillskip
+	elif fillstyle == 'square':
+            styleList += 'square '
+            cx = x1
+            while cx <= x2:
+                cy = y1
+                while cy <= y2:
+		    drawer.newpath()
+		    drawer.rectangle(cx, cy, cx+fillsize, cy+fillsize)
+                    drawer.setfillcolor(fillcolor)
+		    drawer.fill()
+		    drawer.stroke()
+                    cy = cy + fillskip + fillsize
+                cx = cx + fillsize + fillskip
+	elif fillstyle == 'triangle':
+            styleList += 'triangle '
+            cx = x1
+            while cx <= x2:
+                cy = y1
+                while cy <= y2:
+		    drawer.newpath()
+		    drawer.moveto(cx-fillsize/2.0, cy)
+		    drawer.lineto(cx+fillsize/2.0, cy)
+		    drawer.lineto(cx, cy+fillsize)
+                    drawer.setfillcolor(fillcolor)
+		    drawer.closepath()
+		    drawer.fill()
+		    drawer.stroke()
+                    cy = cy + fillskip + fillsize
+                cx = cx + fillsize + fillskip
+        elif fillstyle == 'utriangle':
+            styleList += 'utriangle '
+            cx = x1
+            while cx <= x2:
+                cy = y1
+                while cy <= y2:
+		    drawer.newpath()
+                    drawer.setfillcolor(fillcolor)
+		    drawer.moveto(cx-fillsize/2.0, cy+fillsize)
+		    drawer.lineto(cx+fillsize/2.0, cy+fillsize)
+		    drawer.lineto(cx, cy)
+		    drawer.closepath()
+		    drawer.fill()
+		    drawer.stroke()
+                    cy = cy + fillsize + fillsize
+                cx = cx + fillsize + fillskip
+	else:
+            print 'Bad fill style: [%s]' % fillstyle
+	    abort('Should be one of %s' % styleList)
+        return
+    # END: makepattern()
+
+    # 
+    # --method-- text
+    # 
+    # Use this routine to place text on the canvas. Most options are obvious:
+    # the expected coordinate pair, color, text, font, size - the size of the
+    # font, rotation - which way the text should be rotated, but the anchor can
+    # be a bit confusing. Basically, the anchor determines where, relative to
+    # the coordinate pair (x,y), the text should be placed. Simple anchoring
+    # includes left (l), center (c), or right (r), which determines whether the
+    # text starts at the x position specified (left), ends at x (right), or is
+    # centered on the x (center). Adding a second anchor (xanchor,yanchor)
+    # specifies a y position anchoring as well. The three options there are low
+    # (l), which is the default if none is specified, high (h), and middle (m),
+    # again all determining the placement of the text relative to the y
+    # coordinate specified.
+    # 
+    def text(self,
+             # Coordinates for text on the canvas.
+             coord    = [0,0],
+
+             # Actual text to place on the canvas.
+             text     = 'text',
+
+             # Typeface to use.
+             font     = 'default',
+
+             # Color of letters.
+             color    = 'black',
+
+             # Font size.
+             size     = 10,
+
+             # Rotate text by this many degrees.
+             rotate   = 0,
+
+             # Anchor: can either just specify left/right
+             # (e.g., 'c' for center, 'l' for left justify, 'r' for right)
+             # or can also specify vertical alignment
+             # (e.g., 'l,h' for left justify and high justify,
+             # 'r,c' for right and center, 'l,l' for left and low).
+             anchor   = 'c',
+
+             # Background color behind text? Empty means no.
+             bgcolor  = '',
+
+             # Border (black) around background color?
+             bgborder = 1,
+             ):
+        drawer = self.drawer
+        
+        x, y = coord[0], coord[1]
+
+        asplit = anchor.split(',')
+        if len(asplit) == 2:
+            xanchor = asplit[0]
+            yanchor = asplit[1]
+        else:
+            xanchor = anchor
+            yanchor = 'l'
+
+        # need width of string to adjust size based on anchor
+        fontwidth = self.get_string_width(font, size, text)
+
+        # adjust text placement based on anchors 
+        dx, dy = 0, 0
+        if xanchor == 'r':
+            dx = -fontwidth
+        elif xanchor == 'c':
+            dx = -fontwidth / 2.0
+        if yanchor == 'c':
+            dy = -size * .36
+        elif yanchor == 'h':
+            dy = -size * .72
+
+        # do background color first
+        # (not implemented yet)
+
+        # now just move to location and output text
+        # rotation requires a little extra work ...
+        self.drawer.begintext()
+        if color != 'black':
+            self.drawer.setfillcolor(color)
+        self.drawer.setfont(font, size)
+        self.drawer.showtext(text, x, y, dx, dy, rotate)
+        drawer.endtext()
+        return
+
+    # 
+    # --method-- line
+    #
+    # Use this to draw a line on the canvas.
+    # 
+    def line(self,
+             # Coordinates of the line. A list of [x,y] pairs. Can
+             # be as long as you like (not just two points).
+             coord           = [[0,0],[0,0]],
+
+             # Color of the line.
+             linecolor       = 'black',
+
+             # Width of the line.
+             linewidth       = 1,
+
+             # For turns in the line, how turn should be rounded.
+             # Options include 0->'miter', 1->'round', 2->'bevel'.
+             # Default is just do hard turns (miter).
+             linejoin        = 0,
+
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
+             linecap         = 0,
+
+             # Dash pattern of the line. '0' means no dashes.
+             # Otherwise, a list describing the on/off pattern
+             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
+             linedash        = 0,
+
+             # Can use this to close the path (and perhaps fill it).
+             # However, not really supported right now.
+             closepath       = False,
+
+             # Turn an arrow at last segment on or off.
+             arrow           = False,
+
+             # Length of arrow head.
+             arrowheadlength = 4,
+
+             # Width of arrow head.
+             arrowheadwidth  = 3,
+
+             # Color of arrow head line.
+             arrowlinecolor  = 'black',
+
+             # Width of line that makes arrow head.
+             arrowlinewidth  = 0.5,
+
+             # Fill arrow head with solid color?
+             arrowfill       = True,
+
+             # Color to fill arrow head with.
+             arrowfillcolor  = 'black',
+
+             # Style to use. 'normal' is one option. There are no others.
+             arrowstyle      = 'normal',
+            ):
+        drawer = self.drawer
+
+        drawer.gsave()
+        drawer.newpath()
+
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        if linewidth != 0:
+            drawer.setlinewidth(linewidth)
+        if linecap != 0:
+            drawer.setlinecap(linecap)
+        if linejoin != 0:
+            drawer.setlinejoin(linejoin)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+
+        point = coord[0]
+        drawer.moveto(point[0], point[1])
+        for i in range(1, len(coord)):
+            point = coord[i]
+            drawer.lineto(point[0], point[1])
+
+        if closepath:
+            drawer.closepath()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    # 
+    # --method-- box
+    #
+    # Makes a box at coords specifying the bottom-left and upper-right corners.
+    # Can change the width of the surrounding line (linewidth=0 removes it).
+    # Can fill with solid or pattern. When filling with non-solid pattern, can
+    # add a background color so as not to be see-through.
+    # 
+    def box(self,
+            # Coordinates of box, from [x1,y1] to [x2,y2].
+            coord       = [[0,0],[0,0]],
+
+            # Color of lines that draws box.
+            linecolor   = 'black',
+
+            # Width of those lines. 0 means unlined box.
+            linewidth   = 1,
+
+            # Dash pattern in lines around box?
+            linedash    = 0,
+
+            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
+            linecap     = 0,
+
+            # For turns in the line, how turn should be rounded.
+            # Options include 0->'miter', 1->'round', 2->'bevel'.
+            # Default is just do hard turns (miter).
+            linejoin    = 0,
+
+            # Should box be filled? If so, specify here.
+            fill        = False,
+
+            # Color of the fill pattern.
+            fillcolor   = 'black',
+
+            # Type of fill pattern. Right now, all are 'solid'.
+            fillstyle   = 'solid',
+
+            # Details of fill pattern includes size of each marker in pattern.
+            fillsize    = 3,
+
+            # Also includes spacing between each marker in pattern.
+            fillskip    = 4,
+
+            # Rotate the box by this many degrees.
+            rotate      = 0,
+
+            # Put a background color behind the box. Useful when pattern has
+            # see-through parts in it.
+            bgcolor     = '',
+            ):
+        return self.polygon(coord=[[coord[0][0],coord[0][1]],
+                                   [coord[0][0],coord[1][1]],
+                                   [coord[1][0],coord[1][1]],
+                                   [coord[1][0],coord[0][1]]],
+                            linecolor=linecolor, linewidth=linewidth,
+                            linecap=linecap, linejoin=linejoin,
+                            linedash=linedash, fill=fill,
+                            fillcolor=fillcolor, fillstyle=fillstyle,
+                            fillsize=fillsize, fillskip=fillskip,
+                            bgcolor=bgcolor)
+
+    #
+    # Internal routine used to actually draw a circle.
+    # Based on cubic bezier curves.
+    #
+    def __circle(self, drawer, coord, radius, linecolor, linewidth, linedash,
+                 fill, fillcolor, fillstyle, fillsize, fillskip):
+        xc, yc = coord[0], coord[1]
+        radius = float(radius)
+                             
+        drawer.gsave()
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        if linewidth != 0:
+            drawer.setlinewidth(linewidth)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+        if fill:
+            drawer.setfillcolor(fillcolor)
+
+        # Have to assemble the circle from bezier curves(!)
+        # One good description of this is found here (URL over next 3 lines):
+        # http://stackoverflow.com/questions/1960786/
+        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
+        #   2007782#2007782
+        magic = radius * 0.552;
+        x0p, y0p = xc - radius, yc
+        drawer.moveto(x0p, y0p)
+
+        x0p, y0p = xc - radius, yc
+        x1, y1 = x0p, y0p + magic
+        x2, y2 = x0p + radius - magic, y0p + radius
+        x3, y3 = x0p + radius, y0p + radius
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc, yc + radius
+        x1, y1 = x0p + magic, y0p              
+        x2, y2 = x0p + radius, y0p - radius + magic
+        x3, y3 = x0p + radius, y0p - radius         
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc + radius, yc
+        x1, y1 = x0p, y0p - magic
+        x2, y2 = x0p - radius + magic, y0p - radius    
+        x3, y3 = x0p - radius, y0p - radius    
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc, yc - radius
+        x1, y1 = x0p - magic, y0p
+        x2, y2 = x0p - radius, y0p + radius - magic   
+        x3, y3 = x0p - radius, y0p + radius    
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+        
+        if fill:
+            drawer.fill()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    # 
+    # --method-- circle
+    #
+    # Can just make circles with this. Can fill them too. Exciting!
+    #
+    def circle(self,
+               # Coordinates of center of circle in [x,y].
+               coord     = [0,0],
+
+               # Radius of circle.
+               radius    = 1,
+
+               # Scale in x direction and y direction, to make
+               # an ellipse, for example.
+               scale     = [1,1],
+
+               # Color of lines of circle.
+               linecolor = 'black',
+
+               # Width of lines of circle.
+               linewidth = 1,
+
+               # Whether line is dashed or not.
+               linedash  = 0,
+
+               # Fill circle with colored pattern?
+               fill      = False,
+
+               # Which color?
+               fillcolor = 'black',
+
+               # Which pattern?
+               fillstyle = 'solid',
+
+               # Details of pattern: size of each marker.
+               fillsize  = 3,
+
+               # Details of pattern: space between each marker.
+               fillskip  = 4,
+
+               # Background color behind circle, useful if fill pattern
+               # has some holes in it.
+               bgcolor   = '',
+               ):
+        drawer = self.drawer
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__circle(drawer, coord, radius, linecolor, 0, 0,
+                          fill, bgcolor, 'solid', 0, 0)
+        if fill:
+            # CLIP HERE
+            # PATTERN HERE
+            self.__circle(drawer, coord, radius, linecolor, 0, 0,
+                          fill, fillcolor, fillstyle, fillsize, fillskip)
+        if linewidth != 0:
+            self.__circle(drawer, coord, radius, linecolor, linewidth, linedash,
+                          False, fillcolor, fillstyle, fillsize, fillskip)
+        return
+
+
+    #
+    # Internal routine to make a generic polygon
+    #
+    def __polygon(self, drawer, coord, linecolor, linewidth, linecap, linejoin, 
+                  linedash, fill, fillcolor, fillstyle, fillsize, fillskip):
+        drawer.gsave()
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        drawer.setlinewidth(linewidth)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+        if linecap != 0:
+            drawer.setlinecap(linecap)
+        if linejoin != 0:
+            drawer.setlinejoin(linejoin)
+        if fill and fillcolor != 'black':
+            drawer.setfillcolor(fillcolor)
+
+        px, py = coord[0][0], coord[0][1]
+        drawer.moveto(px, py)
+        for p in range(1,len(coord)):
+            drawer.lineto(coord[p][0], coord[p][1])
+        drawer.closepath()
+
+        if fill:
+            drawer.fill()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    #
+    # --method-- polygon
+    #
+    # Use this method to make an arbitrary polygon, by passing in its
+    # coordinates. All the usual arguments are specified.
+    #
+    #
+    def polygon(self,
+                # The list of [x,y] pairs that form the coordinates.
+                coord      = [],
+
+                # The color of the surrounding line (if width > 0).
+                linecolor  = 'black',
+
+                # The width of the line (0 for no line).
+                linewidth  = 1,
+
+                # The linecap.
+                linecap    = 0,
+
+                # The linejoin.
+                linejoin   = 0,
+
+                # The line dash pattern.
+                linedash   = 0,
+
+                # Fill the polygon?                
+                fill       = False,
+
+                # What color to fill it?
+                fillcolor  = 'black',
+
+                # What style to fill it with?
+                fillstyle  = 'solid',
+
+                # The fill size... 
+                fillsize   = 3,
+
+                # ...and the skip.
+                fillskip   = 4,
+
+                # A background color if there is no fill; useful
+                # behind a pattern.
+                bgcolor    = '',
+                ):
+        drawer = self.drawer
+
+        # find min and max of x, y
+        xmin, ymin = coord[0][0], coord[0][1]
+        xmax, ymax = xmin, ymin
+        for p in range(1, len(coord)):
+            if coord[p][0] < xmin: 
+                xmin = coord[p][0]
+            if coord[p][1] < ymin:
+                ymin = coord[p][1]
+            if coord[p][0] > xmax:
+                xmax = coord[p][0]
+            if coord[p][1] > ymax:
+                ymax = coord[p][1]
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__polygon(drawer, coord, linecolor, linewidth, linecap, linejoin,
+                           linedash, True, bgcolor, 'solid', fillsize,
+                           fillskip)
+        if fill:
+            drawer.gsave()
+            drawer.clippoly(coord)
+            self.make_pattern([[xmin,ymin],[xmax,ymax]], fillcolor,
+                              fillstyle, fillsize, fillskip)
+            drawer.grestore()
+        if linewidth != 0:
+            self.__polygon(drawer, coord, linecolor, linewidth, linecap, linejoin,
+                           linedash, False, fillcolor, fillstyle, fillsize,
+                           fillskip)
+        return
+
+#END: class canvas        
+        
+
+#
 # Class canvas_helper has a number of shared utility methods for use across
 # all real canvas types; thus, each should create one of these and use it.
 #
@@ -1002,26 +2461,403 @@ class canvas_helper:
                     cy = cy + fillsize + fillsize
                 cx = cx + fillsize + fillskip
 	else:
-            print 'Bad fill style: ', fillstyle
+            print 'Bad fill style: [%s]' % fillstyle
 	    abort('Should be one of %s' % styleList)
         return
     # END: makepattern()
 
+    def line(self,
+             drawer    = '',
+
+             # Coordinates of the line. A list of [x,y] pairs. Can
+             # be as long as you like (not just two points).
+             coord           = [[0,0],[0,0]],
+
+             # Color of the line.
+             linecolor       = 'black',
+
+             # Width of the line.
+             linewidth       = 1,
+
+             # For turns in the line, how turn should be rounded.
+             # Options include 0->'miter', 1->'round', 2->'bevel'.
+             # Default is just do hard turns (miter).
+             linejoin        = 0,
+
+             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
+             linecap         = 0,
+
+             # Dash pattern of the line. '0' means no dashes.
+             # Otherwise, a list describing the on/off pattern
+             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
+             linedash        = 0,
+
+             # Can use this to close the path (and perhaps fill it).
+             # However, not really supported right now.
+             closepath       = False,
+
+             # Turn an arrow at last segment on or off.
+             arrow           = False,
+
+             # Length of arrow head.
+             arrowheadlength = 4,
+
+             # Width of arrow head.
+             arrowheadwidth  = 3,
+
+             # Color of arrow head line.
+             arrowlinecolor  = 'black',
+
+             # Width of line that makes arrow head.
+             arrowlinewidth  = 0.5,
+
+             # Fill arrow head with solid color?
+             arrowfill       = True,
+
+             # Color to fill arrow head with.
+             arrowfillcolor  = 'black',
+
+             # Style to use. 'normal' is one option. There are no others.
+             arrowstyle      = 'normal',
+            ):
+        drawer.gsave()
+        drawer.newpath()
+
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        if linewidth != 0:
+            drawer.setlinewidth(linewidth)
+        if linecap != 0:
+            drawer.setlinecap(linecap)
+        if linejoin != 0:
+            drawer.setlinejoin(linejoin)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+
+        point = coord[0]
+        drawer.moveto(point[0], point[1])
+        for i in range(1, len(coord)):
+            point = coord[i]
+            drawer.lineto(point[0], point[1])
+
+        if closepath:
+            drawer.closepath()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    def __box(self, drawer, coord, linewidth, linecolor, fill, fillcolor):
+        drawer.gsave()
+
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        if fill and fillcolor != 'black':
+            drawer.setfillcolor(fillcolor)
+        if linewidth != 0:
+            drawer.setlinewidth(linewidth)
+
+        assert(len(coord) == 2)
+        sx, sy = coord[0][0], coord[0][1]
+        ex, ey = coord[1][0], coord[1][1]
+
+        drawer.moveto(sx, sy)
+        drawer.lineto(sx, ey)
+        drawer.lineto(ex, ey)
+        drawer.lineto(ex, sy)
+        drawer.closepath()
+
+        if fill:
+            drawer.fill()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    def box(self,
+            drawer      = '',
+
+            # Coordinates of box, from [x1,y1] to [x2,y2].
+            coord       = [[0,0],[0,0]],
+
+            # Color of lines that draws box.
+            linecolor   = 'black',
+
+            # Width of those lines. 0 means unlined box.
+            linewidth   = 1,
+
+            # Dash pattern in lines around box?
+            linedash    = 0,
+
+            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
+            linecap     = 0,
+
+            # Should box be filled? If so, specify here.
+            fill        = False,
+
+            # Color of the fill pattern.
+            fillcolor   = 'black',
+
+            # Type of fill pattern. Right now, all are 'solid'.
+            fillstyle   = 'solid',
+
+            # Details of fill pattern includes size of each marker in pattern.
+            fillsize    = 3,
+
+            # Also includes spacing between each marker in pattern.
+            fillskip    = 4,
+
+            # Rotate the box by this many degrees.
+            rotate      = 0,
+
+            # Put a background color behind the box. Useful when pattern has
+            # see-through parts in it.
+            bgcolor     = '',
+            ):
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__box(drawer, coord, 0, linecolor, True, bgcolor)
+        if fill:
+            drawer.gsave()
+            drawer.clipbox(coord[0][0], coord[0][1],
+                           coord[1][0], coord[1][1])
+            self.make_pattern(drawer, coord, fillcolor,
+                              fillstyle, fillsize, fillskip)
+            drawer.grestore()
+        if linewidth != 0:
+            self.__box(drawer, coord, linewidth, linecolor, False, fillcolor)
+        return
+
+    def __circle(self, drawer, coord, radius, linecolor, linewidth, linedash,
+                 fill, fillcolor, fillstyle, fillsize, fillskip):
+        xc, yc = coord[0], coord[1]
+        radius = float(radius)
+                             
+        drawer.gsave()
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        if linewidth != 0:
+            drawer.setlinewidth(linewidth)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+        if fill:
+            drawer.setfillcolor(fillcolor)
+            #drawer.gsave()
+            # drawer.clipcircle(xc, yc, radius)
+            #self.make_pattern(drawer,
+            #                  [[xc - radius, yc - radius],
+            #                   [xc + radius, yc + radius]],
+            #                  fillcolor, fillstyle, fillsize, fillskip)
+            #drawer.grestore()
+
+        # Have to assemble the circle from bezier curves(!)
+        # One good description of this is found here (URL over next 3 lines):
+        # http://stackoverflow.com/questions/1960786/
+        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
+        #   2007782#2007782
+        magic = radius * 0.552;
+        x0p, y0p = xc - radius, yc
+        drawer.moveto(x0p, y0p)
+
+        x0p, y0p = xc - radius, yc
+        x1, y1 = x0p, y0p + magic
+        x2, y2 = x0p + radius - magic, y0p + radius
+        x3, y3 = x0p + radius, y0p + radius
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc, yc + radius
+        x1, y1 = x0p + magic, y0p              
+        x2, y2 = x0p + radius, y0p - radius + magic
+        x3, y3 = x0p + radius, y0p - radius         
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc + radius, yc
+        x1, y1 = x0p, y0p - magic
+        x2, y2 = x0p - radius + magic, y0p - radius    
+        x3, y3 = x0p - radius, y0p - radius    
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = xc, yc - radius
+        x1, y1 = x0p - magic, y0p
+        x2, y2 = x0p - radius, y0p + radius - magic   
+        x3, y3 = x0p - radius, y0p + radius    
+        drawer.curveto(x1, y1, x2, y2, x3, y3)
+        
+        if fill:
+            drawer.fill()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    def circle(self,
+               drawer      = '',
+
+               # Coordinates of center of circle in [x,y].
+               coord     = [0,0],
+
+               # Radius of circle.
+               radius    = 1,
+
+               # Scale in x direction and y direction, to make
+               # an ellipse, for example.
+               scale     = [1,1],
+
+               # Color of lines of circle.
+               linecolor = 'black',
+
+               # Width of lines of circle.
+               linewidth = 1,
+
+               # Whether line is dashed or not.
+               linedash  = 0,
+
+               # Fill circle with colored pattern?
+               fill      = False,
+
+               # Which color?
+               fillcolor = 'black',
+
+               # Which pattern?
+               fillstyle = 'solid',
+
+               # Details of pattern: size of each marker.
+               fillsize  = 3,
+
+               # Details of pattern: space between each marker.
+               fillskip  = 4,
+
+               # Background color behind circle, useful if fill pattern
+               # has some holes in it.
+               bgcolor   = '',
+               ):
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__circle(drawer, coord, radius, linecolor, 0, 0,
+                          fill, bgcolor, 'solid', 0, 0)
+        if fill:
+            # CLIP HERE
+            # PATTERN HERE
+            self.__circle(drawer, coord, radius, linecolor, 0, 0,
+                          fill, fillcolor, fillstyle, fillsize, fillskip)
+        if linewidth != 0:
+            self.__circle(drawer, coord, radius, linecolor, linewidth, linedash,
+                          False, fillcolor, fillstyle, fillsize, fillskip)
+        return
+
+
+    def __polygon(self, drawer, coord, linecolor, linewidth, linecap, linejoin, 
+                  linedash, fill, fillcolor, fillstyle, fillsize, fillskip):
+        drawer.gsave()
+        if linecolor != 'black':
+            drawer.setlinecolor(linecolor)
+        drawer.setlinewidth(linewidth)
+        if linedash != 0:
+            drawer.setlinedash(linedash)
+        if linecap != 0:
+            drawer.setlinecap(linecap)
+        if linejoin != 0:
+            drawer.setlinejoin(linejoin)
+        if fill and fillcolor != 'black':
+            drawer.setfillcolor(fillcolor)
+
+        px, py = coord[0][0], coord[0][1]
+        drawer.moveto(px, py)
+        for p in range(1,len(coord)):
+            drawer.lineto(coord[p][0], coord[p][1])
+        drawer.closepath()
+
+        if fill:
+            drawer.fill()
+        drawer.stroke()
+        drawer.grestore()
+        return
+
+    def polygon(self,
+                drawer     = '',
+                
+                # The list of [x,y] pairs that form the coordinates.
+                coord      = [],
+
+                # The color of the surrounding line (if width > 0).
+                linecolor  = 'black',
+
+                # The width of the line (0 for no line).
+                linewidth  = 1,
+
+                # The linecap.
+                linecap    = 0,
+
+                # The linejoin.
+                linejoin   = 0,
+
+                # The line dash pattern.
+                linedash   = 0,
+
+                # Fill the polygon?                
+                fill       = False,
+
+                # What color to fill it?
+                fillcolor  = 'black',
+
+                # What style to fill it with?
+                fillstyle  = 'solid',
+
+                # The fill size... 
+                fillsize   = 3,
+
+                # ...and the skip.
+                fillskip   = 4,
+
+                # A background color if there is no fill; useful
+                # behind a pattern.
+                bgcolor    = '',
+                ):
+        # find min and max of x, y
+        xmin, ymin = coord[0][0], coord[0][1]
+        xmax, ymax = xmin, ymin
+        for p in range(1, len(coord)):
+            if coord[p][0] < xmin: 
+                xmin = coord[p][0]
+            if coord[p][1] < ymin:
+                ymin = coord[p][1]
+            if coord[p][0] > xmax:
+                xmax = coord[p][0]
+            if coord[p][1] > ymax:
+                ymax = coord[p][1]
+        print 'poly'
+        print xmin, ymin, xmax, ymax
+
+        if bgcolor != '' and fillstyle != 'solid':
+            self.__polygon(drawer, coord, linecolor, linewidth, linecap, linejoin,
+                           linedash, True, bgcolor, 'solid', fillsize,
+                           fillskip)
+        if fill:
+            print 'CLIP'
+            drawer.gsave()
+            drawer.clippoly(coord)
+            #self.__polygon(drawer, coord, linecolor, 0, linecap, linejoin, linedash,
+            #               True, fillcolor, fillstyle, fillsize, fillskip)
+            self.make_pattern(drawer, [[xmin,ymin],[xmax,ymax]], fillcolor,
+                              fillstyle, fillsize, fillskip)
+            
+            drawer.grestore()
+        if linewidth != 0:
+            self.__polygon(drawer, coord, linecolor, linewidth, linecap, linejoin,
+                           linedash, False, fillcolor, fillstyle, fillsize,
+                           fillskip)
+        return
+
     # record ...
-    def out_after(self, outStr, index):
-        self.commands.insert(index, outStr)
+    def out_after(self, out_str, index):
+        self.commands.insert(index, out_str)
         return index + 1
 
     # add a new command
-    def out(self, outStr):
-        self.commands.append(outStr)
+    def out(self, out_str):
+        self.commands.append(out_str)
         return len(self.commands)
 
     # add a command to the previously added line
-    def outnl(self, outStr):
+    def outnl(self, out_str):
         assert(len(self.commands) > 0)
         idx = len(self.commands) - 1
-        self.commands[idx] = self.commands[idx] + outStr
+        self.commands[idx] = self.commands[idx] + out_str
         return len(self.commands)
 
     # output the commands
@@ -1056,6 +2892,7 @@ class pdfdrawer():
         return self.commands
     
     def __setcolor(self, value, command):
+        print 'setcolor', value
         tmp = value.split(',')
         if len(tmp) > 1:
             c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
@@ -1065,10 +2902,12 @@ class pdfdrawer():
         return
 
     def setlinecolor(self, value):
+        print 'setlinecolor', value
         self.__setcolor(value, ' RG')
         return
 
     def setfillcolor(self, value):
+        print 'setfillcolor', value
         self.__setcolor(value, ' rg')
         return
 
@@ -1170,6 +3009,14 @@ class pdfdrawer():
         self.__out('(%s) Tj' % text)
         return
 
+    def showtext(self, text, x, y, dx, dy, angle):
+        if angle == 0:
+            self.textmoveto(x, y, dx, dy)
+        else:
+            self.textmovetorotate(x, y, dx, dy, angle)
+        self.puttext(text)
+        return
+
     def setfont(self, font, size):
         if font == 'default':
             font = 'Helvetica'
@@ -1195,591 +3042,15 @@ class pdfdrawer():
         self.__out('n')
         return
 
-#
-#
-#
-class pdf():
-    def __init__(self, 
-                 # name of the output file
-                 title='default.pdf',
-
-                 # size of the drawing surface
-                 dimensions=['3in','2in'],
-
-                 # default font for text
-                 font='Helvetica',
-
-                 # whether to add more info into output file
-                 verbose=False,
-
-                 # name of the file calling into zplot;
-                 # recorded in header of output file
-                 script=__file__,
-                 ):
-        self.font = font
-        self.title = title
-
-        # Helper class: for generic canvas things
-        self.canvas_helper = canvas_helper(self)
-
-        self.width = self.canvas_helper.convert(str(dimensions[0]))
-        self.height = self.canvas_helper.convert(str(dimensions[1]))
-
-        # need class font to get sizes of text
-        self.fontsize = self.canvas_helper.fontinfo
-        self.fontlist = self.fontsize.get_font_list()
-
-        # Need to map human-used fontnames to encoded fontnames (like F1)
-        self.fontmap = {}
-
-        # Helper class: for specific PDF drawing things.
-        self.drawer = pdfdrawer(self.fontmap, self.canvas_helper.colors)
-
-        #
-        # first attempt at RAW PDF header
-        #
-        self.object_lengths = []
-        
-        self.__pdf_out('%PDF-1.7')
-        self.__pdf_out('1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj')
-        self.__pdf_out('2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj')
-        self.__pdf_out('3 0 obj <</Type /Page ' + \
-                    '/MediaBox [0 0 %d %d] ' % (self.width, self.height) + \
-                    '/Parent 2 0 R /Resources 4 0 R /Contents %d 0 R>> ' % \
-                    (5 + len(self.fontlist)) + 'endobj')
-        # http://www.amccormack.net/2012-01-22-anatomy-of-a-pdf-document.html
-        #   /Resources << /ProcSet 6 0 R /Font << /F1 7 0 R >> >>
-        out_str = '4 0 obj <</Font <<'
-        for i in range(len(self.fontlist)):
-            out_str += '/F%d %d 0 R ' % (i+1, i+5)
-            self.fontmap[self.fontlist[i]] = i+1
-        out_str += '>>>> endobj'
-        self.__pdf_out(out_str)
-        num = 5
-        for f in self.fontlist:
-            self.__pdf_out('%d 0 obj <</Type /Font /Subtype /Type1 ' % num + \
-                        '/BaseFont /%s>> endobj' % f)
-            num += 1
-
-        return
-
-    def render(self):
-        # put all the drawing commands, etc., into this one object
-        tmp_str = ''
-        for c in self.drawer.get_commands():
-            tmp_str += '%s\n' % c
-
-        out_str = '%d 0 obj <</Length %d>>\n' % (len(self.object_lengths),
-                                                 len(tmp_str))
-        out_str += 'stream\n'
-        out_str += tmp_str
-        out_str += 'endstream\n'
-        out_str += 'endobj'
-        # output the one object here
-        self.__pdf_out(out_str)
-
-        # And then (finally) the trailer...
-        # First is this little table at the end that has the byte offset
-        # of each object in the PDF document.
-        num_objects = len(self.object_lengths)
-        self.__pdf_out('xref')
-        self.__pdf_out('0 %d' % num_objects) 
-        self.__pdf_out('0000000000 65535 f')
-        cnt = 0
-        for i in range(num_objects):
-            e = self.object_lengths[i]
-            cnt += e
-
-            # have to output this as length 10 number with 0's leading
-            # the number (cnt) is the byte offset of the object, from 0-6,
-            # in the PDF
-            target_len = 10
-            curr_len = len(str(cnt))
-            out_str = ''
-            for i in range(target_len - curr_len):
-                out_str += '0'
-            out_str += str(cnt)
-            self.__pdf_out('%s 00000 n' % out_str)
-        # Then a little bit that points to the root object
-        self.__pdf_out('trailer <</Size %d/Root 1 0 R>>' % num_objects)
-        # And a little thing that gives a byte offset of the offset table
-        self.__pdf_out('startxref')
-        cnt = 0
-        for e in self.object_lengths:
-            cnt += e
-        # byte offset of the last crossref section
-        self.__pdf_out('%d' % cnt)
-        self.__pdf_out('%%EOF')
-
-        self.canvas_helper.dump(self.title)
-        return
-
-    #
-    # Internal APIs for various things
-    #
-
-    # Wrapper for pdf to be output
-    def __pdf_out(self, s):
-        length = len(s)
-        self.canvas_helper.out(s)
-        self.object_lengths.append(length + 1)
-        return
-
-    #
-    # API exported by ALL canvas classes
-    #
-    def convert(self, value):
-        return self.canvas_helper.convert(value)
-
-    def get_string_width(self, font, fontsize, text):
-        return self.canvas_helper.get_string_width(font, fontsize, text)
-
-    def getcolor(self, value):
-        return value
-
-    def shape(self,
-              style     = '',      # the possible shapes
-              x         = '',      # x position of shape
-              y         = '',      # y position of shape
-              size      = 3.0,     # size of shape
-              linecolor = 'black', # color of the line of the marker
-              linewidth = 1.0,     # width of lines used to draw the marker
-              linedash  = 0,       # dash pattern - 0 means no dashes
-              fill      = False,   # for some shapes, filling makes sense;
-                                   # if desired, mark this true
-              fillcolor = 'black', # if filling, use this fill color
-              fillstyle = 'solid', # if filling, which fill style to use
-              fillsize  = 3.0,     #  size of object in pattern
-              fillskip  = 4.0,     # space between object in pattern
-              ):
-        return self.canvas_helper.shape(self, style=style, x=x, y=y, size=size,
-                                        linecolor=linecolor, linewidth=linewidth,
-                                        linedash=linedash, fill=fill,
-                                        fillcolor=fillcolor, fillstyle=fillstyle,
-                                        fillsize=fillsize, fillskip=fillskip)
-
-    #
-    # 
-    #
-    def line(self,
-             # Coordinates of the line. A list of [x,y] pairs. Can
-             # be as long as you like (not just two points).
-             coord           = [[0,0],[0,0]],
-
-             # Color of the line.
-             linecolor       = 'black',
-
-             # Width of the line.
-             linewidth       = 1,
-
-             # For turns in the line, how turn should be rounded.
-             # Options include 0->'miter', 1->'round', 2->'bevel'.
-             # Default is just do hard turns (miter).
-             linejoin        = 0,
-
-             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
-             linecap         = 0,
-
-             # Dash pattern of the line. '0' means no dashes.
-             # Otherwise, a list describing the on/off pattern
-             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
-             linedash        = 0,
-
-             # Can use this to close the path (and perhaps fill it).
-             # However, not really supported right now.
-             closepath       = False,
-
-             # Turn an arrow at last segment on or off.
-             arrow           = False,
-
-             # Length of arrow head.
-             arrowheadlength = 4,
-
-             # Width of arrow head.
-             arrowheadwidth  = 3,
-
-             # Color of arrow head line.
-             arrowlinecolor  = 'black',
-
-             # Width of line that makes arrow head.
-             arrowlinewidth  = 0.5,
-
-             # Fill arrow head with solid color?
-             arrowfill       = True,
-
-             # Color to fill arrow head with.
-             arrowfillcolor  = 'black',
-
-             # Style to use. 'normal' is one option. There are no others.
-             arrowstyle      = 'normal',
-            ):
-        self.drawer.gsave()
-        if linecolor != 'black':
-            self.drawer.setlinecolor(linecolor)
-        if linewidth != 0:
-            self.drawer.setlinewidth(linewidth)
-        if linecap != 0:
-            self.drawer.setlinecap(linecap)
-        if linejoin != 0:
-            self.drawer.setlinejoin(linejoin)
-        if linedash != 0:
-            self.drawer.setlinedash(linedash)
-        # now draw line: move to first point, then draw lines to remaining pts.
-        point = coord[0]
-        self.drawer.moveto(point[0], point[1])
+    def clippoly(self, coord):
+        self.moveto(coord[0][0], coord[0][1])
         for i in range(1, len(coord)):
-            point = coord[i]
-            self.drawer.lineto(point[0], point[1])
-        if closepath:
-            self.drawer.closepath()
-        self.drawer.stroke()
-        self.drawer.grestore()
+            self.lineto(coord[i][0], coord[i][1])
+        self.closepath()
+        self.clip()
+        self.__out('n')
         return
 
-    #
-    # Internal routine to draw box
-    #
-    def __box(self, coord, linewidth, linecolor, fill, fillcolor):
-        self.drawer.gsave()
-
-        if linecolor != 'black':
-            self.drawer.setlinecolor(linecolor)
-        if fill and fillcolor != 'black':
-            self.drawer.setfillcolor(fillcolor)
-        if linewidth != 0:
-            self.drawer.setlinewidth(linewidth)
-
-        assert(len(coord) == 2)
-        sx, sy = coord[0][0], coord[0][1]
-        ex, ey = coord[1][0], coord[1][1]
-
-        self.drawer.moveto(sx, sy)
-        self.drawer.lineto(sx, ey)
-        self.drawer.lineto(ex, ey)
-        self.drawer.lineto(ex, sy)
-        
-        self.drawer.closepath()
-        if fill:
-            self.drawer.fill()
-        self.drawer.stroke()
-        self.drawer.grestore()
-        return
-
-    def box(self,
-            # Coordinates of box, from [x1,y1] to [x2,y2].
-            coord       = [[0,0],[0,0]],
-
-            # Color of lines that draws box.
-            linecolor   = 'black',
-
-            # Width of those lines. 0 means unlined box.
-            linewidth   = 1,
-
-            # Dash pattern in lines around box?
-            linedash    = 0,
-
-            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
-            linecap     = 0,
-
-            # Should box be filled? If so, specify here.
-            fill        = False,
-
-            # Color of the fill pattern.
-            fillcolor   = 'black',
-
-            # Type of fill pattern. Right now, all are 'solid'.
-            fillstyle   = 'solid',
-
-            # Details of fill pattern includes size of each marker in pattern.
-            fillsize    = 3,
-
-            # Also includes spacing between each marker in pattern.
-            fillskip    = 4,
-
-            # Rotate the box by this many degrees.
-            rotate      = 0,
-
-            # Put a background color behind the box. Useful when pattern has
-            # see-through parts in it.
-            bgcolor     = '',
-            ):
-        if bgcolor != '' and fillstyle != 'solid':
-            self.__box(coord, 0, linecolor, True, bgcolor)
-        if fill:
-            self.drawer.gsave()
-            self.drawer.clipbox(coord[0][0], coord[0][1],
-                                coord[1][0], coord[1][1])
-            self.canvas_helper.make_pattern(self.drawer, coord, fillcolor,
-                                            fillstyle, fillsize, fillskip)
-            self.drawer.grestore()
-        if linewidth != 0:
-            self.__box(coord, linewidth, linecolor, False, fillcolor)
-        return
-
-    #
-    # text
-    #
-    def text(self,
-             # Coordinates for text on the canvas.
-             coord    = [0,0],
-
-             # Actual text to place on the canvas.
-             text     = 'text',
-
-             # Typeface to use.
-             font     = 'default',
-
-             # Color of letters.
-             color    = 'black',
-
-             # Font size.
-             size     = 10,
-
-             # Rotate text by this many degrees.
-             rotate   = 0,
-
-             # Anchor: can either just specify left/right
-             # (e.g., 'c' for center, 'l' for left justify, 'r' for right)
-             # or can also specify vertical alignment
-             # (e.g., 'l,h' for left justify and high justify,
-             # 'r,c' for right and center, 'l,l' for left and low).
-             anchor   = 'c',
-
-             # Background color behind text? Empty means no.
-             bgcolor  = '',
-
-             # Border (black) around background color?
-             bgborder = 1,
-             ):
-        x, y = coord[0], coord[1]
-
-        asplit = anchor.split(',')
-        if len(asplit) == 2:
-            left_right = asplit[0]
-            up_down = asplit[1]
-        else:
-            left_right = anchor
-            up_down = 'l'
-
-        # need width of string to adjust size based on anchor
-        fontwidth = self.fontsize.get_string_width(font, size, text)
-
-        # do background color first
-        # this is a pain with rotation...
-        # (not implemented yet)
-
-        # adjust text placement based on anchors 
-        dx, dy = 0, 0
-        if left_right == 'r':
-            dx = -fontwidth
-        elif left_right == 'c':
-            dx = -fontwidth / 2.0
-        if up_down == 'c':
-            dy = -size * .36
-        elif up_down == 'h':
-            dy = -size * .72
-
-        # now just move to location and output text
-        # rotation requires a little extra work ...
-        self.drawer.begintext()
-        if color != 'black':
-            self.drawer.setfillcolor(color)
-        self.drawer.setfont(font, size)
-        if rotate == 0:
-            self.drawer.textmoveto(x, y, dx, dy)
-        else:
-            self.drawer.textmovetorotate(x, y, dx, dy, rotate)
-        self.drawer.puttext(text)
-        self.drawer.endtext()
-        return
-
-    def __circle(self, coord, radius, linecolor, linewidth, linedash,
-                 fill, fillcolor, fillstyle, fillsize, fillskip):
-        xc, yc = coord[0], coord[1]
-        radius = float(radius)
-                             
-        self.drawer.gsave()
-        if linecolor != 'black':
-            self.drawer.setlinecolor(linecolor)
-        if linewidth != 0:
-            self.drawer.setlinewidth(linewidth)
-        if linedash != 0:
-            self.drawer.setlinedash(linedash)
-        if fill and fillcolor != 'black':
-            self.drawer.setfillcolor(fillcolor)
-
-        # Have to assemble the circle from bezier curves(!)
-        # One good description of this is found here (URL over next 3 lines):
-        # http://stackoverflow.com/questions/1960786/
-        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
-        #   2007782#2007782
-        magic = radius * 0.552;
-        x0p, y0p = xc - radius, yc
-        self.drawer.moveto(x0p, y0p)
-
-        x0p, y0p = xc - radius, yc
-        x1, y1 = x0p, y0p + magic
-        x2, y2 = x0p + radius - magic, y0p + radius
-        x3, y3 = x0p + radius, y0p + radius
-        self.drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc, yc + radius
-        x1, y1 = x0p + magic, y0p              
-        x2, y2 = x0p + radius, y0p - radius + magic
-        x3, y3 = x0p + radius, y0p - radius         
-        self.drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc + radius, yc
-        x1, y1 = x0p, y0p - magic
-        x2, y2 = x0p - radius + magic, y0p - radius    
-        x3, y3 = x0p - radius, y0p - radius    
-        self.drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc, yc - radius
-        x1, y1 = x0p - magic, y0p
-        x2, y2 = x0p - radius, y0p + radius - magic   
-        x3, y3 = x0p - radius, y0p + radius    
-        self.drawer.curveto(x1, y1, x2, y2, x3, y3)
-        
-        if fill:
-            self.drawer.fill()
-        self.drawer.stroke()
-        self.drawer.grestore()
-        return
-
-    def circle(self,
-               # Coordinates of center of circle in [x,y].
-               coord     = [0,0],
-
-               # Radius of circle.
-               radius    = 1,
-
-               # Scale in x direction and y direction, to make
-               # an ellipse, for example.
-               scale     = [1,1],
-
-               # Color of lines of circle.
-               linecolor = 'black',
-
-               # Width of lines of circle.
-               linewidth = 1,
-
-               # Whether line is dashed or not.
-               linedash  = 0,
-
-               # Fill circle with colored pattern?
-               fill      = False,
-
-               # Which color?
-               fillcolor = 'black',
-
-               # Which pattern?
-               fillstyle = 'solid',
-
-               # Details of pattern: size of each marker.
-               fillsize  = 3,
-
-               # Details of pattern: space between each marker.
-               fillskip  = 4,
-
-               # Background color behind circle, useful if fill pattern
-               # has some holes in it.
-               bgcolor   = '',
-               ):
-        if bgcolor != '' and fillstyle != 'solid':
-            self.__circle(coord, radius, linecolor, 0, 0, fill, bgcolor,
-                          'solid', 0, 0)
-        if fill:
-            self.__circle(coord, radius, linecolor, 0, 0, fill, fillcolor,
-                          fillstyle, fillsize, fillskip)
-        if linewidth != 0:
-            self.__circle(coord, radius, linecolor, linewidth, linedash,
-                          False, fillcolor, fillstyle, fillsize, fillskip)
-        return
-
-    #
-    # 
-    #
-    def __polygon(self, coord, linecolor, linewidth, linecap, linejoin, 
-                  linedash, fill, fillcolor, fillstyle, fillsize, fillskip):
-        self.drawer.gsave()
-        if linecolor != 'black':
-            self.drawer.setlinecolor(linecolor)
-        if fill and fillcolor != 'black':
-            self.drawer.setfillcolor(fillcolor)
-        if linewidth != 0:
-            self.drawer.setlinewidth(linewidth)
-        if linedash != 0:
-            self.drawer.setlinedash(linedash)
-        if linecap != 0:
-            self.drawer.setlinecap(linecap)
-        if linejoin != 0:
-            self.drawer.setlinejoin(linejoin)
-        px, py = coord[0][0], coord[0][1]
-        self.drawer.moveto(px, py)
-        for p in range(1,len(coord)):
-            self.drawer.lineto(coord[p][0], coord[p][1])
-        self.drawer.closepath()
-        if fill:
-            self.drawer.fill()
-        self.drawer.stroke()
-        self.drawer.grestore()
-        return
-
-    #
-    # polygon()
-    #
-    def polygon(self,
-                # The list of [x,y] pairs that form the coordinates.
-                coord      = [],
-
-                # The color of the surrounding line (if width > 0).
-                linecolor  = 'black',
-
-                # The width of the line (0 for no line).
-                linewidth  = 1,
-
-                # The linecap.
-                linecap    = 0,
-
-                # The linejoin.
-                linejoin   = 0,
-
-                # The line dash pattern.
-                linedash   = 0,
-
-                # Fill the polygon?                
-                fill       = False,
-
-                # What color to fill it?
-                fillcolor  = 'black',
-
-                # What style to fill it with?
-                fillstyle  = 'solid',
-
-                # The fill size... 
-                fillsize   = 3,
-
-                # ...and the skip.
-                fillskip   = 4,
-
-                # A background color if there is no fill; useful
-                # behind a pattern.
-                bgcolor    = '',
-                ):
-        if bgcolor != '' and fillstyle != 'solid':
-            self.__polygon(coord, linecolor, linewidth, linecap, linejoin,
-                           linedash, True, bgcolor, 'solid', fillsize,
-                           fillskip)
-        if fill:
-            self.__polygon(coord, linecolor, 0, linecap, linejoin, linedash,
-                           True, fillcolor, fillstyle, fillsize, fillskip)
-        if linewidth != 0:
-            self.__polygon(coord, linecolor, linewidth, linecap, linejoin,
-                           linedash, False, fillcolor, fillstyle, fillsize,
-                           fillskip)
-        return
-# END: class pdf
 
 #
 # --class-- svg
@@ -2458,7 +3729,6 @@ class svg():
             ):
         # DOES NOT YET SUPPORT SOME FEATURES
         assert(rotate == 0)
-
         if bgcolor != '':
             self.__makerect(coord, linecolor, 0, linedash,
                             linecap, True, bgcolor, 'solid', 0, 0, rotate)
@@ -2615,986 +3885,33 @@ class svg():
     # END: polygon
 # END: class svg
 
-class psdrawer():
-    def __init__(self, colors, canvas_helper, default_font):
-        self.colors = colors
-        self.canvas_helper = canvas_helper
-        self.default_font = default_font
-
-        self.gsave_cnt = 0
-        self.grestore_cnt = 0
-
-        # list of all fonts 
-        self.all_fonts = self.canvas_helper.fontinfo.get_font_list()
-        assert(default_font in self.all_fonts)
-        self.font_list = []
-        return
-
-    #
-    # Internal commands to record 
-    #
-    def __out(self, command):
-        self.canvas_helper.out(command)
-        return
-
-    def __outnl(self, command):
-        self.canvas_helper.outnl(command)
-        return
-
-    def gsave(self):
-        self.__out('gs')
-        self.gsave_cnt = self.gsave_cnt + 1
-        return
-        
-    def grestore(self):
-        self.__out('gr')
-        self.grestore_cnt = self.grestore_cnt + 1
-        return
-
-    def gcheck(self):
-        if self.gsave_cnt != self.grestore_cnt:
-            abort('mismatch in gsaves/grestores')
-        return
-
-    def newpath(self):
-        self.__out('np')
-        return
-
-    def moveto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' m')
-        return
-
-    def rmoveto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' mr')
-        return
-
-    def lineto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' l')
-        return
-
-    def rlineto(self, p1, p2):
-        self.__out(str(float(p1)) + ' ' + str(float(p2)) + ' lr')
-        return
-
-    def rotate(self, angle):
-        self.__out(str(angle) + ' rotate')
-        return
-        
-    def show(self, text, anchor):
-        if anchor == 'c':
-            self.__out('('+text+') cshow')
-	elif anchor == 'l':
-            self.__out('('+text+') lshow')
-        elif anchor == 'r':
-            self.__out('('+text+') rshow')
-        else:
-	    abort('bad anchor: ' + anchor)
-        return
-
-    def closepath(self):
-        self.__out('cp')
-        return
-
-    def setcolor(self, value):
-        tmp = value.split(',')
-        if len(tmp) > 1:
-            c = '%s %s %s' % (tmp[0], tmp[1], tmp[2])
-        else:
-            c = self.colors.get(value)
-        self.__out(c + ' sc')
-        return
-
-    def setfillcolor(self, value):
-        return self.setcolor(value)
-
-    def setlinecolor(self, value):
-        return self.setcolor(value)
-
-    def setlinewidth(self, linewidth):
-        self.__out(str(float(linewidth)) + ' slw')
-        return
-
-    def setlinecap(self, linecap):
-        self.__out(str(int(linecap)) + ' slc')
-        return
-
-    def setlinejoin(self, linejoin):
-        self.__out(str(int(linejoin)) + ' slj')
-        return
-
-    def setlinedash(self, linedash):
-        self.__out('[ ')
-        for seg in linedash:
-            self.__outnl(str(seg) + ' ')
-        self.__outnl('] 0 sd')
-        return
-
-    def fill(self):
-        self.__out('fl')
-        return
-
-    def stroke(self):
-        self.__out('st')
-
-    def rectangle(self, x1, y1, x2, y2):
-        self.moveto(x1, y1)
-        self.lineto(x1, y2)
-        self.lineto(x2, y2)
-        self.lineto(x2, y1)
-        return
-
-    def scale(self, x, y):
-        self.__out(str(x) + ' ' + str(y) + ' scale')
-        return
-
-    def arc(self, x, y, radius, start, end):
-        self.__out(str(x) + ' ' + str(y) + ' ' + str(radius) + ' ' + \
-                   str(start) + ' ' + str(end) + ' arc')
-        return
-
-    def clip(self):
-        self.__out('clip')
-        return
-
-    def clipbox(self, x1, y1, x2, y2):
-        self.newpath()
-        self.rectangle(x1, y1, x2, y2)
-        self.closepath()
-        self.clip()
-        return
-
-    def addfont(self, font):
-        if font == 'default':
-            font = self.default_font
-        if font not in self.all_fonts:
-            abort('bad font: %s' % font)
-        if font not in self.font_list:
-            self.font_list.append(font)
-        return
-            
-    def setfont(self, face, size):
-        if face == 'default':
-            face = self.default_font
-        self.__out('(' + face + ') findfont ' + str(size) +
-                   ' scalefont setfont')
-        return
-
-    def getfonts(self):
-        return self.font_list
-
-
-#
-# --class-- postscript
-# 
-# Use this class to make a postscript drawing surface.
-#
-class postscript():
-    #
-    # __init__ 
-    # 
-    # Create a postscript canvas. 
-    # 
-    def __init__(self,
-                 # Name of the output file.
-                 title='default.eps',
-
-                 # Size of the drawing surface.
-                 dimensions=['3in','2in'],
-
-                 # Default font for text.
-                 font='Helvetica',
-                 
-                 # Whether to add more info into output file.
-                 verbose=False,
-
-                 # Name of the file calling into zplot; recorded in header.
-                 script=__file__,
-                 ):
-        self.canvas_helper = canvas_helper(self)
-
-        # Helper class: for specific PS drawing things.
-        self.drawer = psdrawer(self.canvas_helper.colors, self.canvas_helper, font)
-
-        self.program = self.canvas_helper.program
-        self.version = self.canvas_helper.version
-
-        self.date = str(time.strftime('%X %x %Z'))
-
-        self.title = title
-        
-        assert(len(dimensions) == 2)
-        self.width  = self.canvas_helper.convert(str(dimensions[0]))
-        self.height = self.canvas_helper.convert(str(dimensions[1]))
-
-        # generic eps header
-        self.__ps_out('%!PS-Adobe-2.0 EPSF-2.0')
-        self.__ps_out('%%Title: ' + str(self.title))
-        self.__ps_out('%%Creator: '+ str(self.program) + ' version:' + \
-                 str(self.version) + ' script:' + os.path.abspath(script) + \
-                 ' host:'+socket.gethostname())
-        self.__ps_out('%%CreationDate: ' + str(self.date))
-        self.__ps_out('%%DocumentFonts: (atend)')
-        self.__ps_out('%%BoundingBox: 0 0 ' + str(self.width) + ' ' + \
-                 str(self.height))
-        self.__ps_out('%%Orientation: Portrait')
-        self.__ps_out('%%EndComments')
-
-        # zdraw dictionary
-        self.__ps_out('% zdraw dictionary')
-        self.__ps_out('/zdict 256 dict def')
-        self.__ps_out('zdict begin')
-        self.__ps_out('/cpx 0 def')
-        self.__ps_out('/cpy 0 def')
-        self.__ps_out('/reccp {currentpoint /cpy exch def /cpx exch def} bind def')
-        self.__ps_out('/m {moveto} bind def')
-        self.__ps_out('/l {lineto} bind def')
-        self.__ps_out('/mr {rmoveto} bind def')
-        self.__ps_out('/lr {rlineto} bind def')
-        self.__ps_out('/np {newpath} bind def')
-        self.__ps_out('/cp {closepath} bind def')
-        self.__ps_out('/st {stroke} bind def')
-        self.__ps_out('/fl {fill} bind def')
-        self.__ps_out('/gs {gsave} bind def')
-        self.__ps_out('/gr {grestore} bind def')
-        self.__ps_out('/slw {setlinewidth} bind def')
-        self.__ps_out('/slc {setlinecap} bind def')
-        self.__ps_out('/slj {setlinejoin} bind def')
-        self.__ps_out('/sc  {setrgbcolor} bind def')
-        self.__ps_out('/sd  {setdash} bind def')
-        self.__ps_out('/lshow {show reccp} def')
-        self.__ps_out('/rshow {dup stringwidth pop neg 0 mr show reccp} def')
-        self.__ps_out('/cshow {dup stringwidth pop -2 div 0 mr show reccp} def')
-        self.__ps_out('end')
-        self.__ps_out('zdict begin')
-        return
-        # END: __init
-
-    # 
-    # --method-- render
-    # 
-    # Use this routine to print out all the postscript commands you've been
-    # queueing up to a file or 'stdout' (default).
-    # 
-    def render(self,
-               ):
-        # do some checks
-        self.drawer.gcheck()
-
-        # generic eps trailer
-        self.__ps_out('% zplot .eps epilogue')
-        self.__ps_out('end')
-        self.__ps_out('showpage')
-        self.__ps_out('%%Trailer')
-
-        # make font list
-        font_list = self.drawer.getfonts()
-        if len(font_list) > 0:
-            font_str = font_list[0]
-            for i in range(1, len(font_list)):
-                font_str = font_str + ' ' + font_list[i]
-            self.__ps_out('%%DocumentFonts: ' + font_str)
-        else:
-            self.__ps_out('%%DocumentFonts: ')
-
-        self.canvas_helper.dump(self.title)
-        return
-
-    #
-    # Other APIs that any canvas class must implement
-    #
-    def convert(self, value):
-        return self.canvas_helper.convert(value)
-
-    def get_string_width(self, font, fontsize, text):
-        return self.canvas_helper.get_string_width(font, fontsize, text)
-
-    def shape(self,
-              style     = '',      # the possible shapes
-              x         = '',      # x position of shape
-              y         = '',      # y position of shape
-              size      = 3.0,     # size of shape
-              linecolor = 'black', # color of the line of the marker
-              linewidth = 1.0,     # width of lines used to draw the marker
-              linedash  = 0,       # dash pattern - 0 means no dashes
-              fill      = False,   # for some shapes, filling makes sense;
-                                   # if desired, mark this true
-              fillcolor = 'black', # if filling, use this fill color
-              fillstyle = 'solid', # if filling, which fill style to use
-              fillsize  = 3.0,     #  size of object in pattern
-              fillskip  = 4.0,     # space between object in pattern
-              ):
-        return self.canvas_helper.shape(self, style=style, x=x, y=y, size=size,
-                                        linecolor=linecolor, linewidth=linewidth,
-                                        linedash=linedash, fill=fill,
-                                        fillcolor=fillcolor, fillstyle=fillstyle,
-                                        fillsize=fillsize, fillskip=fillskip)
-
-
-    #
-    # Internal command to add eps line to output
-    #
-    def __ps_out(self, value):
-        self.canvas_helper.out(value)
-        return
-
-    #
-    #
-    #
-    def getcolor(self, value):
-        return value
-
-    # 
-    # --method-- line
-    #
-    # Use this to draw a line on the canvas.
-    # 
-    def line(self,
-             # Coordinates of the line. A list of [x,y] pairs. Can
-             # be as long as you like (not just two points).
-             coord           = [[0,0],[0,0]],
-
-             # Color of the line.
-             linecolor       = 'black',
-
-             # Width of the line.
-             linewidth       = 1,
-
-             # For turns in the line, how turn should be rounded.
-             # Options include 0->'miter', 1->'round', 2->'bevel'
-             # Default is miter
-             linejoin        = 0,
-
-             # Shape used at end of line (0->'butt', 1->'round', 2->'square')
-             linecap         = 0,
-             
-             # Dash pattern of the line. '0' means no dashes.
-             # Otherwise, a list describing the on/off pattern
-             # of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.
-             linedash        = 0,
-
-             # Can use this to close the path (and perhaps fill it).
-             closepath       = False,
-
-             # Turn an arrow at last segment on or off.
-             arrow           = False,
-
-             # Length of arrow head.
-             arrowheadlength = 4,
-
-             # Width of arrow head.
-             arrowheadwidth  = 3,
-
-             # Color of arrow head line.
-             arrowlinecolor  = 'black',
-
-             # Width of line that makes arrow head.
-             arrowlinewidth  = 0.5,
-
-             # Fill arrow head with solid color?
-             arrowfill       = True,
-
-             # Color to fill arrow head with.
-             arrowfillcolor  = 'black', 
-
-             # Style to use. 'normal' is one option. There are no others.
-             arrowstyle      = 'normal',
-            ):
-
-        # save the context to begin
-        self.drawer.gsave()
-
-        # first, draw the line, one component at a time
-        self.drawer.newpath()
-
-        point = coord[0]
-        self.drawer.moveto(point[0], point[1])
-        for i in range(1, len(coord)):
-            point = coord[i]
-            self.drawer.lineto(point[0], point[1])
-
-        # now check for optional other things ...
-        if closepath == True:
-            self.drawer.closepath()
-        if linecolor != 'black':
-            self.drawer.setcolor(linecolor)
-        if linewidth != 1:
-            self.drawer.setlinewidth(linewidth)
-        if linecap != 0:
-            self.drawer.setlinecap(linecap)
-        if linejoin != 0:
-            self.drawer.setlinejoin(linejoin)
-        if linedash != 0:
-            self.drawer.setlinedash(linedash)
-
-        # all done, so stroke and restore
-        self.drawer.stroke()
-
-        # now, do the arrow 
-        if arrow == True:
-            count = len(coord)
-            sx = coord[count-2][0]
-            sy = coord[count-2][1]
-            ex = coord[count-1][0]
-            ey = coord[count-1][1]
-            # use the last line segment to compute the orthogonal vectors
-            vx = ex - sx
-            vy = ey - sy
-            hypot = math.hypot(vx,vy)
-            # get angle of last line segment
-            svx = vx / hypot
-            svy = vy / hypot
-
-            if svx > 0 and svy >= 0:
-                angle = math.atan(abs(svy)/abs(svx))
-            elif svx > 0 and svy < 0:
-                angle = math.radians(360.0) - math.atan(abs(svy)/abs(svx))
-            elif svx < 0 and svy >= 0:
-                angle = math.radians(180.0) - math.atan(abs(svy)/abs(svx))
-            elif svx < 0 and svy < 0:
-                angle = math.radians(180.0) + math.atan(abs(svy)/abs(svx))
-            elif svx == 0 and svy < 0:
-                angle = math.radians(270.0)
-            elif svx == 0 and svy > 0:
-                angle = math.radians(90.0)
-            else:
-                abort('arrow feature clearly broken')
-
-            angle = math.degrees(angle)
-
-            aw = arrowheadwidth/2.0
-            al = arrowheadlength
-
-            for i in range(0,2):
-                self.drawer.gsave()
-                self.drawer.newpath()
-                self.drawer.moveto(ex, ey)
-                self.drawer.rotate(angle)
-                self.drawer.rlineto(0, aw)
-                self.drawer.rlineto(al, -aw)
-                self.drawer.rlineto(-al, -aw)
-                self.drawer.closepath()
-                if i == 1:
-                    self.drawer.setcolor(arrowlinecolor)
-                    self.drawer.setlinewidth(arrowlinewidth)
-                    self.drawer.stroke()
-                else:
-                    self.drawer.setcolor(arrowfillcolor)
-                    if arrowfill:
-                        self.drawer.fill()
-                self.drawer.grestore()
-
-        self.drawer.grestore()
-        return
-        # END: line()
-
-    # 
-    # --method-- text
-    # 
-    # Use this routine to place text on the canvas. Most options are obvious:
-    # the expected coordinate pair, color, text, font, size - the size of the
-    # font, rotation - which way the text should be rotated, but the anchor can
-    # be a bit confusing. Basically, the anchor determines where, relative to
-    # the coordinate pair (x,y), the text should be placed. Simple anchoring
-    # includes left (l), center (c), or right (r), which determines whether the
-    # text starts at the x position specified (left), ends at x (right), or is
-    # centered on the x (center). Adding a second anchor (xanchor,yanchor)
-    # specifies a y position anchoring as well. The three options there are low
-    # (l), which is the default if none is specified, high (h), and middle (m),
-    # again all determining the placement of the text relative to the y
-    # coordinate specified.
-    # 
-    def text(self,
-             # Coordinates for text on the canvas.
-             coord    = [0,0],
-
-             # Actual text to place on the canvas.
-             text     = 'text',
-
-             # Typeface to use.
-             font     = 'default',
-
-             # Color of letters.
-             color    = 'black',
-
-             # Font size.
-             size     = 10,
-
-             # Anchor: can either just specify left/right
-             # (e.g., 'c' for center, 'l' for left justify, 'r' for right)
-             # or can also specify vertical alignment
-             # (e.g., 'l,h' for left justify and high justify,
-             # 'r,c' for right and center, 'l,l' for left and low).
-             anchor   = 'c',
-
-             # Rotate text by this many degrees.
-             rotate   = 0,
-
-             # Background color behind text? Empty means no.
-             bgcolor  = '',
-
-             # Border (black) around background color?
-             bgborder = 1,
-             ):
-
-        self.drawer.addfont(font)
-
-        assert (len(coord) == 2)
-        x = float(coord[0])
-        y = float(coord[1])
-
-        a = anchor.split(',')
-        if len(a) == 1:
-            # just one anchor, assume it is the x anchor
-            xanchor = a[0]
-            yanchor = 'l'
-        elif len(a) == 2:
-            # two anchors
-            xanchor = a[0]
-            yanchor = a[1]
-        else:
-            abort('Bad anchor: ' + str(anchor))
-
-        self.drawer.gsave()
-
-        # XXX - this is just a bit ugly and messy, sorry postscript
-        if bgcolor != '':
-            self.drawer.newpath()
-            self.drawer.setcolor(bgcolor)
-            self.drawer.setfont(font, size)
-            self.drawer.moveto(x, y)
-            if rotate != 0:
-                self.drawer.gsave()
-                self.drawer.rotate(rotate)
-            # now, adjust based on yanchor
-            if yanchor == 'c':
-                self.drawer.rmoveto(0, -0.36 * size)
-            elif yanchor == 'h':
-                self.drawer.rmoveto(0, -0.72 * size) 
-
-            # now, adjust based on xanchor
-            if xanchor == 'l':
-                self.__ps_out('('+ text +') stringwidth pop dup')
-            elif xanchor == 'c':
-                self.__ps_out('('+ text +') stringwidth pop dup -2 div 0 ' + \
-                              'rmoveto dup')
-            elif xanchor == 'r':
-                self.__ps_out('('+ text +') stringwidth pop dup -1 div 0 ' + \
-                              'rmoveto dup')
-            else:
-                abort('xanchor should be: l, c, or r')
-
-            # now get width of string and draw the box
-            # move to left-bottom including borders
-            self.__ps_out('-' + str(bgborder) + ' -' + str(bgborder) + ' rmoveto')
-            # add border*2 to the width (on the stack) and move over
-            self.__ps_out(str(2 * bgborder) + ' add 0 rlineto')
-            # move a line up by the height of characters + border
-            self.__ps_out('0 ' + str((0.72 * size) + (2 * bgborder)) + ' rlineto')
-            # move back down and closepath to finish
-            self.__ps_out('neg ' + str(-2 * bgborder) + ' add 0 rlineto')
-            self.drawer.closepath()
-            self.drawer.fill()
-            if rotate != 0:
-                self.drawer.grestore()
-        # END: if bgcolor != '':
-
-        # now, just draw the text
-        self.drawer.newpath()
-        self.drawer.setcolor(color)
-	self.drawer.setfont(font, size)
-        self.drawer.moveto(x, y)
-        if rotate != 0:
-            self.drawer.gsave()
-            self.drawer.rotate(rotate)
-
-        # 0.36: a magic adjustment to center text in y direction. Based on years
-        # of postscript experience, only change if you actually know something
-        # about how this works, unlike me. BTW: if just 'l', do nothing ...
-        if yanchor == 'c':
-            self.drawer.rmoveto(0, -0.36 * float(size))
-        elif yanchor == 'h':
-            self.drawer.rmoveto(0, -0.72 * float(size))
-        elif yanchor == 'l':
-            nop = 0
-        else:
-            abort('yanchor should be: l, c, or h')
-
-        # TODO: missing text feature.
-        # Need to mark parens specially in postscript (as they are normally
-        # used to mark strings).
-        # Something like this?
-        #   set text [string map { ( \\( ) \\) } $use(text)]
-        # For now, user can deal with it themselves.
-        self.drawer.show(str(text),xanchor)
-        if rotate != 0:
-            self.drawer.grestore()
-        self.drawer.stroke()
-        self.drawer.grestore()
-        return
-        # END: text()
-
-    # 
-    # --method-- box
-    #
-    # Makes a box at coords specifying the bottom-left and upper-right corners.
-    # Can change the width of the surrounding line (linewidth=0 removes it).
-    # Can fill with solid or pattern. When filling with non-solid pattern, can
-    # add a background color so as not to be see-through.
-    # 
-    def box(self,
-            # Coordinates of box, from [x1,y1] to [x2,y2].
-            coord       = [[0,0],[0,0]],
-
-            # Color of lines that draws box.
-            linecolor   = 'black',
-
-            # Width of those lines. 0 means unlined box.
-            linewidth   = 1,
-
-            # Dash pattern in lines around box?
-            linedash    = 0,
-
-            # How should corners be done? 0 is default; 1->'round', 2->'bevel'.
-            linecap     = 0,
-
-            # Should box be filled? If so, specify here.
-            fill        = False,
-
-            # Color of the fill pattern.
-            fillcolor   = 'black',
-
-            # Type of fill pattern. Right now, all are 'solid'.
-            fillstyle   = 'solid',
-
-            # Details of fill pattern includes size of each marker in pattern.
-            fillsize    = 3,
-
-            # Also includes spacing between each marker in pattern.
-            fillskip    = 4,
-
-            # Rotate the box by this many degrees.
-            rotate      = 0,
-
-            # Put a background color behind the box. Useful when pattern has
-            # see-through parts in it.
-            bgcolor     = '',
-            ):
-
-        # pull out each element of the path
-        assert(len(coord) == 2)
-        x1 = float(coord[0][0])
-        y1 = float(coord[0][1])
-        x2 = float(coord[1][0])
-        y2 = float(coord[1][1])
-
-        # the code assumes y2 is bigger than y1, so switch them if need be
-        if y1 > y2:
-            tmp = y2
-            y2 = y1
-            y1 = tmp
-
-        # if the background should be filled, do that here
-        if bgcolor != '':
-            self.drawer.gsave()
-            self.canvas_helper.make_pattern(self.drawer,
-                                            coord=[[x1,y1],[x2,y2]],
-                                            fillcolor=bgcolor,
-                                            fillstyle='solid')
-            self.drawer.grestore()
-
-        # do filled one first
-        if fill == True:
-            self.drawer.gsave()
-            self.drawer.clipbox(x1, y1, x2, y2)
-            self.canvas_helper.make_pattern(self.drawer,
-                                            coord=[[x1,y1],[x2,y2]],
-                                            fillcolor=fillcolor,
-                                            fillstyle=fillstyle,
-                                            fillsize=fillsize,
-                                            fillskip=fillskip)
-            self.drawer.grestore()
-
-        # draw outline box
-        if float(linewidth) > 0.0:
-            self.drawer.gsave()
-            self.drawer.newpath()
-            self.drawer.rectangle(x1, y1, x2, y2)
-            self.drawer.closepath()
-            self.drawer.setcolor(linecolor)
-            self.drawer.setlinewidth(linewidth)
-            if linedash != 0:
-                self.drawer.setlinedash(linedash)
-            if linecap != 0:
-                self.drawer.setlinecap(linecap)
-            self.drawer.stroke()
-            self.drawer.grestore()
-        return
-        # END: box()
-
-    #
-    # --method-- arc
-    #
-    # Can make circles, or partial circles (arcs), with this.
-    #
-    def arc(self,
-            # Coordinates of arc center [x, y].
-            coord     = [],
-
-            # What angle to draw arc (from X degrees to Y degrees).
-            angle     = [0.0,360.0],
-
-            # Radius of arc.
-            radius    = 1,
-
-            # Line color of arc.
-            linecolor = 'black',
-
-            # Width of line of arc.
-            linewidth = 1,
-
-            # Dash pattern for arc line.
-            linedash  = 0,
-            ):
-        
-        # pull out each element of the path
-        assert(len(angle) == 2)
-        assert(len(coord) == 2)
-        x = float(coord[0])
-        y = float(coord[1])
-        radius = float(radius)
-
-        self.drawer.gsave()
-        self.drawer.newpath()
-        self.drawer.arc(x, y, radius, angle[0], angle[1])
-        self.drawer.setcolor(linecolor)
-        self.drawer.setlinewidth(linewidth)
-        if linedash != 0:
-            self.drawer.setlinedash(linedash)
-        self.drawer.stroke()
-        self.drawer.grestore()
-        return
-    # END: arc
-
-    #
-    # --method-- circle
-    #
-    # Can just make circles with this. Filled or not.
-    #
-    def circle(self,
-               # Coordinates of center of circle in [x,y].
-               coord     = [0,0],
-
-               # Radius of circle.
-               radius    = 1,
-
-               # Scale in x direction and y direction, to make
-               # an ellipse, for example.
-               scale     = [1,1],
-
-               # Color of lines of circle.
-               linecolor = 'black',
-
-               # Width of lines of circle.
-               linewidth = 1,
-
-               # Whether line is dashed or not.
-               linedash  = 0,
-
-               # Fill circle with colored pattern?
-               fill      = False,
-
-               # Which color?
-               fillcolor = 'black',
-
-               # Which pattern?
-               fillstyle = 'solid',
-
-               # Details of pattern: size of each marker.
-               fillsize  = 3,
-
-               # Details of pattern: space between each marker.
-               fillskip  = 4,
-
-               # Background color behind circle, useful if fill pattern
-               # has some holes in it.
-               bgcolor   = '',
-               ):
-        # pull out each element of the path
-        assert(len(coord) == 2)
-        x = float(coord[0])
-        y = float(coord[1])
-        radius = float(radius)
-
-        doScale = False
-        if scale[0] != 1:
-            x = x / scale[0]
-            doScale = True
-        if scale[1] != 1:
-            y = y / scale[1]
-            doScale = True
-
-        # if the background should be filled, do that here
-        if bgcolor != '':
-            self.drawer.gsave()
-            self.drawer.newpath()
-            if doScale == True:
-                self.drawer.scale(scale[0],scale[1])
-            self.drawer.arc(x, y, radius, 0, 360)
-            self.drawer.setcolor(bgcolor)
-            self.drawer.fill()
-            self.drawer.grestore()
-
-        # do fill first
-        if fill == True:
-            self.drawer.gsave()
-            self.drawer.newpath()
-            if doScale == True:
-                self.drawer.scale(scale[0],scale[1])
-            self.drawer.arc(x, y, radius, 0, 360)
-            self.drawer.closepath()
-            self.drawer.clip()
-            r = float(radius)
-            self.canvas_helper.make_pattern(self.drawer,
-                                            coord=[[x-radius,y-radius],[x+radius,y+radius]],
-                                            fillcolor=fillcolor, fillstyle=fillstyle,
-                                            fillsize=fillsize, fillskip=fillskip)
-            self.drawer.grestore()
-
-        # make the circle outline now
-        if linewidth > 0.0:
-            self.drawer.gsave()
-            self.drawer.newpath()
-            if doScale == True:
-                self.drawer.scale(scale[0],scale[1])
-            self.drawer.arc(x, y, radius, 0, 360)
-            self.drawer.setcolor(linecolor)
-            self.drawer.setlinewidth(linewidth)
-            if linedash != 0:
-                self.drawer.setlinedash(linedash)
-            self.drawer.stroke()
-            self.drawer.grestore()
-        return
-        # END: circle()
-
-    #
-    # --method-- polygon
-    #
-    # Use this method to make an arbitrary polygon, by passing in its
-    # coordinates. All the usual arguments are specified.
-    #
-    #
-    def polygon(self,
-                # The list of [x,y] pairs that form the coordinates.
-                coord      = [],
-
-                # The color of the surrounding line (if width > 0).
-                linecolor  = 'black',
-
-                # The width of the line (0 for no line).
-                linewidth  = 1,
-
-                # The linecap.
-                linecap    = 0,
-
-                # The line dash pattern.
-                linedash   = 0,
-
-                # Fill the polygon?
-                fill       = False,
-
-                # What color to fill it?
-                fillcolor  = 'black',
-
-                # What style to fill it with?
-                fillstyle  = 'solid',
-
-                # The fill size... 
-                fillsize   = 3,
-
-                # ...and the skip.
-                fillskip   = 4,
-
-                # A background color if there is no fill; useful
-                # behind a pattern.
-                bgcolor    = '',
-                ):
-        # find minx,miny and maxx,maxy
-        xmin = coord[0][0]
-        ymin = coord[0][1]
-        xmax = xmin
-        ymax = ymin
-        for p in range(1,len(coord)):
-            if coord[p][0] < xmin:
-                xmin = coord[p][0]
-            if coord[p][1] < ymin:
-                ymin = coord[p][1]
-            if coord[p][0] > xmax:
-                xmax = coord[p][0]
-            if coord[p][1] > ymax:
-                ymax = coord[p][1]
-
-        # if the background should be filled, do that here
-        if bgcolor != '':
-            self.drawer.gsave()
-            self.drawer.moveto(coord[0][0], coord[0][1]) 
-            for p in range(1,len(coord)):
-                self.drawer.lineto(coord[p][0], coord[p][1])
-            self.drawer.closepath()
-            self.drawer.setcolor(bgcolor)
-            self.drawer.fill()
-            self.drawer.grestore()
-
-        # do filled one first
-        if fill == True:
-            # need to draw proper path to then clip it
-            self.drawer.gsave()
-            self.drawer.moveto(coord[0][0], coord[0][1]) 
-            for p in range(1,len(coord)):
-                self.drawer.lineto(coord[p][0], coord[p][1])
-            self.drawer.closepath()
-            self.drawer.clip()
-            # use minimal x,y pair and max x.y pair to determine patternbox
-            self.canvas_helper.make_pattern(self.drawer,
-                                            coord=[[xmin,ymin],[xmax,ymax]],
-                                            fillcolor=fillcolor, fillstyle=fillstyle,
-                                            fillsize=fillsize, fillskip=fillskip)
-            self.drawer.grestore()
-
-        # now draw outline of polygon
-        if linewidth > 0.0:
-            self.drawer.gsave()
-            self.drawer.moveto(coord[0][0], coord[0][1])
-            for p in range(1,len(coord)):
-                self.drawer.lineto(coord[p][0], coord[p][1])
-            self.drawer.closepath()
-            self.drawer.setcolor(linecolor)
-            self.drawer.setlinewidth(linewidth)
-            if linecap != 0:
-                self.drawer.setlinecap(linecap)
-            if linedash != 0:
-	        self.drawer.setlinedash(linedash)
-            self.drawer.stroke()
-            self.drawer.grestore()
-
-        return
-        # END: polygon
-    # END: class postscript
-
 #
 # general canvas factory
 #
-def make_canvas(canvas='eps', title='default', dimensions=['3in','2in'],
+def make_canvas(canvas_type='eps', title='default', dimensions=['3in','2in'],
                 font='Helvetica', verbose=False, script=__file__):
-    if canvas == 'eps':
-        return postscript(title + '.eps', dimensions, font, verbose, script)
-    elif canvas == 'svg':
+    if canvas_type == 'eps':
+        return canvas('eps', title, dimensions, font, verbose, script)
+    elif canvas_type == 'svg':
         return svg(title + '.svg', dimensions, font, verbose, script)
-    elif canvas == 'pdf':
-        return pdf(title + '.pdf', dimensions, font, verbose, script)
+    elif canvas_type == 'pdf':
+        return canvas('pdf', title, dimensions, font, verbose, script)
     else:
         abort('canvas type [%s] not supported' % canvas)
     return
 
+def postscript(title='default', dimensions=['3in','2in'],
+               font='Helvetica', verbose=False, script=__file__):
+    title_parts = title.split('.')
+    return canvas(title_parts[1], title_parts[0], dimensions, font,
+                  verbose, script)
+    
+def pdf(title='default', dimensions=['3in','2in'],
+        font='Helvetica', verbose=False, script=__file__):
+    title_parts = title.split('.')
+    return canvas(title_parts[1], title_parts[0], dimensions, font,
+                  verbose, script)
+    
 
 #
 # --class-- drawable
