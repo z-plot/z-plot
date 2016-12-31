@@ -1402,7 +1402,7 @@ class svg_drawer:
 
     # svg_drawer: setlinewidth
     def setlinewidth(self, value):
-        self.current_linewidth = value
+        self.current_linewidth = float(value)
         self
 
     # svg_drawer: setlinejoin
@@ -2157,7 +2157,6 @@ class canvas:
         rx, ry = fx + (arrowheadwidth/2.0 * math.cos(angle_right)), \
                  fy + (arrowheadwidth/2.0 * math.sin(angle_right))
         # with three points computed, can just draw a polygon to make the arrow
-        self.circle(coord=[lx,ly], radius=0.5, linewidth=0, fill=True, fillcolor='red')
         self.polygon(coord=[[px, py], [lx, ly], [rx, ry]],
                      fill=arrowfill, fillcolor=arrowfillcolor,
                      linewidth=arrowlinewidth, linecolor=arrowlinecolor)
