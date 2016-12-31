@@ -11,9 +11,11 @@ t = table(file='bars6.data')
 # because tics and axes are different, call axis() twice, once to
 # specify x-axis, the other to specify y-axis
 axis(drawable=d, style='y', yauto=['','',5000])
+
 axis(drawable=d, style='x', doaxis=False, domajortics=False,
      xmanual=[['ABC Corp', 0],['NetStuff',1],['MicroMason',2]],
      xaxisposition=-5000)
+
 grid(drawable=d, x=False, ystep=5000, linecolor='salmon')
 
 c.text(coord=d.map([-0.4,15500]), text='Annual Revenues (thousands)',

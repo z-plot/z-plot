@@ -632,12 +632,11 @@ class fontsize:
         for s in string:
             total_width += self.font_width[font][s]
         return total_width * size / 1000.0
-    # END: class fontsize
 
 #
 #
 #
-class writer():
+class writer:
     def __init__(self):
         self.commands = []
         return
@@ -670,12 +669,11 @@ class writer():
                 fd.write(line + '\n')
             fd.close()
         return
-# END: class writer    
 
 #
 # class postscript_drawer
 #
-class postscript_drawer():
+class postscript_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
                  title, program, version, script, width, height):
         self.colors = colors
@@ -771,7 +769,7 @@ class postscript_drawer():
 
     # postscript_drawer: getcolor
     def getcolor(self, value):
-        return self.colors.get(value)
+        return value
 
     # postscript_drawer: gsave
     def gsave(self):
@@ -983,7 +981,7 @@ class postscript_drawer():
 #
 # Helper class to output proper PDF commands
 #
-class pdf_drawer():
+class pdf_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
                  title, program, version, script, width, height):
         self.colors = colors
@@ -1100,6 +1098,10 @@ class pdf_drawer():
             c = self.colors.get(value)
         self.__out(c + ' %s' % command)
         return
+
+    # pdf_drawer: getcolor
+    def getcolor(self, value):
+        return value
 
     # pdf_drawer: setlinecolor
     def setlinecolor(self, value):
@@ -1282,7 +1284,7 @@ class pdf_drawer():
 #
 # Helper class to output proper SVG commands
 #
-class svg_drawer():
+class svg_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
                  title, program, version, script, width, height):
         self.colors = colors
@@ -1351,8 +1353,6 @@ class svg_drawer():
         # index = self.__out_after(patternString, index)
         # index = self.__out_after(arrowString, index)
         self.__out_after('</defs>', index)
-        
-        self.writer.dump(self.title)
         return
 
     # svg_drawer: __out
@@ -1572,7 +1572,9 @@ class svg_drawer():
         return self.__pattern_num_to_name(self.poly_clip_counter - 1)
 
 #
-# 
+# --class-- canvas
+#
+# Use this to make a drawing surface of type eps, pdf, or svg (for now).
 #
 class canvas:
     def __init__(self,
@@ -2130,6 +2132,38 @@ class canvas:
         drawer.endtext()
         return
 
+    #
+    # Internal routine to draw arrow head at end of line segment
+    #
+    def __do_arrowhead(self, coords, closepath, arrowheadlength, arrowheadwidth,
+                   arrowlinecolor, arrowlinewidth, arrowfill, arrowfillcolor):
+        c = len(coords)
+        # start with last line segment of the line
+        if closepath:
+            sx, sy, fx, fy = coords[c-1][0], coords[c-1][1], coords[0][0], coords[0][1]
+        else:
+            sx, sy, fx, fy = coords[c-2][0], coords[c-2][1], coords[c-1][0], coords[c-1][1]
+        xdiff, ydiff = float(fx) - float(sx), float(fy) - float(sy)
+        # Now project a point out from the last point (fx,fy) to 'arrowheadlength' away
+        angle = math.atan2(ydiff, xdiff)
+        px, py = fx + arrowheadlength * math.cos(angle), \
+                 fy + arrowheadlength * math.sin(angle)
+        # now find other two points of arrowhead, by rotating 90 degrees both
+        # ways and projecting it out from the final x,y points again
+        angle_left  = angle + math.radians(90.0)
+        angle_right = angle - math.radians(90.0)
+        lx, ly = fx + (arrowheadwidth/2.0 * math.cos(angle_left)), \
+                 fy + (arrowheadwidth/2.0 * math.sin(angle_left))
+        rx, ry = fx + (arrowheadwidth/2.0 * math.cos(angle_right)), \
+                 fy + (arrowheadwidth/2.0 * math.sin(angle_right))
+        # with three points computed, can just draw a polygon to make the arrow
+        self.circle(coord=[lx,ly], radius=0.5, linewidth=0, fill=True, fillcolor='red')
+        self.polygon(coord=[[px, py], [lx, ly], [rx, ry]],
+                     fill=arrowfill, fillcolor=arrowfillcolor,
+                     linewidth=arrowlinewidth, linecolor=arrowlinecolor)
+        return
+
+
     # 
     # --method-- line
     #
@@ -2213,7 +2247,17 @@ class canvas:
             drawer.closepath()
         drawer.stroke()
         drawer.grestore()
+
+        if arrow:
+            self.__do_arrowhead(coords=coord, closepath=closepath,
+                                arrowheadlength=arrowheadlength,
+                                arrowheadwidth=arrowheadwidth,
+                                arrowlinecolor=arrowlinecolor,
+                                arrowlinewidth=arrowlinewidth,
+                                arrowfill=arrowfill,
+                                arrowfillcolor=arrowfillcolor)
         return
+    # END: line()
 
     # 
     # --method-- box

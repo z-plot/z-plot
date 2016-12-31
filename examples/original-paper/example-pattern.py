@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 
 from zplot import *
-
-c = postscript(title='example-pattern.eps', dimensions=[335, 40])
+import sys
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = canvas(ctype, title='example-pattern', dimensions=[335, 40])
 
 x = 15
 y = 15

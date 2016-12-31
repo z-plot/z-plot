@@ -62,6 +62,6 @@ p.horizontalbars(**barargs)
 # skipnext=1 to get one row.  We specify the horizontal space
 # between legend symbols (not considering text) with skipspace.
 L.draw(canvas, coord=[d.left()+30, d.top()-5], skipnext=1, skipspace=40)
-  
+
 canvas.render()
 
