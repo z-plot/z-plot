@@ -25,16 +25,16 @@
 <text x="29.00" y="26.62" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> D</text>
 <text x="118.50" y="128.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> Latency (ms)</text>
 <text x="18.78" y="61.50" transform="rotate(-90.00 18.78,61.50)" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> Operation</text>
-<path d="M 36.00,105.67 L 36.00,87.08 L 139.12,87.08 L 139.12,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: red;"/>
-<path d="M 36.00,82.42 L 36.00,63.83 L 128.81,63.83 L 128.81,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: red;"/>
-<path d="M 36.00,59.17 L 36.00,40.58 L 56.62,40.58 L 56.62,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: red;"/>
-<path d="M 36.00,35.92 L 36.00,17.33 L 66.94,17.33 L 66.94,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: red;"/>
-<path d="M 139.12,105.67 L 139.12,87.08 L 149.44,87.08 L 149.44,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: green;"/>
-<path d="M 128.81,82.42 L 128.81,63.83 L 141.19,63.83 L 141.19,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: green;"/>
-<path d="M 56.62,59.17 L 56.62,40.58 L 66.94,40.58 L 66.94,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: green;"/>
-<path d="M 66.94,35.92 L 66.94,17.33 L 128.81,17.33 L 128.81,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: green;"/>
-<path d="M 149.44,105.67 L 149.44,87.08 L 170.06,87.08 L 170.06,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: blue;"/>
-<path d="M 141.19,82.42 L 141.19,63.83 L 165.94,63.83 L 165.94,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: blue;"/>
-<path d="M 66.94,59.17 L 66.94,40.58 L 118.50,40.58 L 118.50,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: blue;"/>
-<path d="M 128.81,35.92 L 128.81,17.33 L 149.44,17.33 L 149.44,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: blue;"/>
+<path d="M 36.00,105.67 L 36.00,87.08 L 139.12,87.08 L 139.12,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;"/>
+<path d="M 36.00,82.42 L 36.00,63.83 L 128.81,63.83 L 128.81,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;"/>
+<path d="M 36.00,59.17 L 36.00,40.58 L 56.62,40.58 L 56.62,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;"/>
+<path d="M 36.00,35.92 L 36.00,17.33 L 66.94,17.33 L 66.94,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;"/>
+<path d="M 139.12,105.67 L 139.12,87.08 L 149.44,87.08 L 149.44,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: #007f00;"/>
+<path d="M 128.81,82.42 L 128.81,63.83 L 141.19,63.83 L 141.19,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: #007f00;"/>
+<path d="M 56.62,59.17 L 56.62,40.58 L 66.94,40.58 L 66.94,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: #007f00;"/>
+<path d="M 66.94,35.92 L 66.94,17.33 L 128.81,17.33 L 128.81,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: #007f00;"/>
+<path d="M 149.44,105.67 L 149.44,87.08 L 170.06,87.08 L 170.06,105.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: #0000ff;"/>
+<path d="M 141.19,82.42 L 141.19,63.83 L 165.94,63.83 L 165.94,82.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: #0000ff;"/>
+<path d="M 66.94,59.17 L 66.94,40.58 L 118.50,40.58 L 118.50,59.17 Z" style="stroke: #000000; stroke-width: 0.00; fill: #0000ff;"/>
+<path d="M 128.81,35.92 L 128.81,17.33 L 149.44,17.33 L 149.44,35.92 Z" style="stroke: #000000; stroke-width: 0.00; fill: #0000ff;"/>
 </svg>

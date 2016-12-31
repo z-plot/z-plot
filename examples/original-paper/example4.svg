@@ -1,106 +1,876 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
-<!-- <img width="380.00" height="240.00" src="example4.svg"> -->
+<!-- <img width="380.00" height="240.00" src="example4"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380.00" height="240.00">
 <defs>
-<!-- pattern: triangle -->
-<pattern id="zplot_pattern_1" width="6.00" height="6.00" patternUnits="userSpaceOnUse"> <polyline points="1.00,6.00 3.00,2.00 5.00,6.00 1.00,6.00" style="stroke: gray; stroke-width: 0.0; fill: gray"> </polyline> </pattern>
-
-<!-- pattern: dline1 -->
-<pattern id="zplot_pattern_0" width="7.00" height="7.00" patternUnits="userSpaceOnUse"> <path d="M-1,1 l2,-2 M0,7.00 l7.00,-7.00 M6.00,8.00 l2,-2" style="stroke:gray; stroke-width:3.00"></path> </pattern>
-
-
-
+<clipPath id="zplot_pattern_0"> <polyline points="72.92,190.00 72.92,108.18 110.42,108.18 110.42,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <polyline points="114.58,190.00 114.58,80.91 152.08,80.91 152.08,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <polyline points="156.25,190.00 156.25,80.91 193.75,80.91 193.75,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <polyline points="197.92,190.00 197.92,67.27 235.42,67.27 235.42,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <polyline points="239.58,190.00 239.58,94.55 277.08,94.55 277.08,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <polyline points="72.92,190.00 72.92,149.09 110.42,149.09 110.42,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_6"> <polyline points="114.58,190.00 114.58,149.09 152.08,149.09 152.08,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_7"> <polyline points="156.25,190.00 156.25,135.45 193.75,135.45 193.75,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_8"> <polyline points="197.92,190.00 197.92,121.82 235.42,121.82 235.42,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_9"> <polyline points="239.58,190.00 239.58,162.73 277.08,162.73 277.08,190.00"/> </clipPath>
+<clipPath id="zplot_pattern_10"> <polyline points="300.00,106.41 300.00,91.41 315.00,91.41 315.00,106.41"/> </clipPath>
+<clipPath id="zplot_pattern_11"> <polyline points="300.00,142.41 300.00,127.41 315.00,127.41 315.00,142.41"/> </clipPath>
 </defs>
-<path d="M 49.50,190.00 L 300.50,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 50.00,190.50 L 50.00,39.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 50.00,194.00 L 50.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 91.67,194.00 L 91.67,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 133.33,194.00 L 133.33,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 175.00,194.00 L 175.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 216.67,194.00 L 216.67,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 258.33,194.00 L 258.33,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 300.00,194.00 L 300.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,190.00 L 50.00,190.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,162.73 L 50.00,162.73 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,135.45 L 50.00,135.45 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,108.18 L 50.00,108.18 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,80.91 L 50.00,80.91 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 46.00,53.64 L 50.00,53.64 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="50.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 0</text>
-<text x="91.67" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 1</text>
-<text x="133.33" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 2</text>
-<text x="175.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 3</text>
-<text x="216.67" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 4</text>
-<text x="258.33" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 5</text>
-<text x="300.00" y="197.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 6</text>
-<text x="43.00" y="190.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
-<text x="43.00" y="162.73" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 2</text>
-<text x="43.00" y="135.45" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 4</text>
-<text x="43.00" y="108.18" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 6</text>
-<text x="43.00" y="80.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 8</text>
-<text x="43.00" y="53.64" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 10</text>
-<text x="175.00" y="32.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Lots of Patterns</text>
-<text x="175.00" y="210.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> The X-Axis</text>
-<text x="28.88" y="115.00" transform="rotate(-90.00 28.88,115.00)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> The Y-Axis</text>
-<rect x="72.92" y="67.27" height="122.73" width="37.50" fill="#ffffff" ></rect>
-<rect x="72.92" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="#a8a8a8" ></rect>
-<rect x="114.58" y="67.27" height="122.73" width="37.50" fill="#ffffff" ></rect>
-<rect x="114.58" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="#a8a8a8" ></rect>
-<rect x="156.25" y="53.64" height="136.36" width="37.50" fill="#ffffff" ></rect>
-<rect x="156.25" y="53.64" height="136.36" width="37.50" stroke="#000000" stroke-width="0.5" fill="#a8a8a8" ></rect>
-<rect x="197.92" y="60.45" height="129.55" width="37.50" fill="#ffffff" ></rect>
-<rect x="197.92" y="60.45" height="129.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="#a8a8a8" ></rect>
-<rect x="239.58" y="80.91" height="109.09" width="37.50" fill="#ffffff" ></rect>
-<rect x="239.58" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="#a8a8a8" ></rect>
-<rect x="72.92" y="108.18" height="81.82" width="37.50" fill="#ffffff" ></rect>
-<rect x="72.92" y="108.18" height="81.82" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
-<rect x="114.58" y="80.91" height="109.09" width="37.50" fill="#ffffff" ></rect>
-<rect x="114.58" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
-<rect x="156.25" y="80.91" height="109.09" width="37.50" fill="#ffffff" ></rect>
-<rect x="156.25" y="80.91" height="109.09" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
-<rect x="197.92" y="67.27" height="122.73" width="37.50" fill="#ffffff" ></rect>
-<rect x="197.92" y="67.27" height="122.73" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
-<rect x="239.58" y="94.55" height="95.45" width="37.50" fill="#ffffff" ></rect>
-<rect x="239.58" y="94.55" height="95.45" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_0)" ></rect>
-<rect x="72.92" y="121.82" height="68.18" width="37.50" fill="#ffffff" ></rect>
-<rect x="72.92" y="121.82" height="68.18" width="37.50" stroke="#000000" stroke-width="0.5" fill="#d3d3d3" ></rect>
-<rect x="114.58" y="135.45" height="54.55" width="37.50" fill="#ffffff" ></rect>
-<rect x="114.58" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="#d3d3d3" ></rect>
-<rect x="156.25" y="94.55" height="95.45" width="37.50" fill="#ffffff" ></rect>
-<rect x="156.25" y="94.55" height="95.45" width="37.50" stroke="#000000" stroke-width="0.5" fill="#d3d3d3" ></rect>
-<rect x="197.92" y="108.18" height="81.82" width="37.50" fill="#ffffff" ></rect>
-<rect x="197.92" y="108.18" height="81.82" width="37.50" stroke="#000000" stroke-width="0.5" fill="#d3d3d3" ></rect>
-<rect x="239.58" y="135.45" height="54.55" width="37.50" fill="#ffffff" ></rect>
-<rect x="239.58" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="#d3d3d3" ></rect>
-<rect x="72.92" y="149.09" height="40.91" width="37.50" fill="#ffffff" ></rect>
-<rect x="72.92" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
-<rect x="114.58" y="149.09" height="40.91" width="37.50" fill="#ffffff" ></rect>
-<rect x="114.58" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
-<rect x="156.25" y="135.45" height="54.55" width="37.50" fill="#ffffff" ></rect>
-<rect x="156.25" y="135.45" height="54.55" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
-<rect x="197.92" y="121.82" height="68.18" width="37.50" fill="#ffffff" ></rect>
-<rect x="197.92" y="121.82" height="68.18" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
-<rect x="239.58" y="162.73" height="27.27" width="37.50" fill="#ffffff" ></rect>
-<rect x="239.58" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="url(#zplot_pattern_1)" ></rect>
-<rect x="72.92" y="176.36" height="13.64" width="37.50" fill="#ffffff" ></rect>
-<rect x="72.92" y="176.36" height="13.64" width="37.50" stroke="#000000" stroke-width="0.5" fill="#f4fff9" ></rect>
-<rect x="114.58" y="162.73" height="27.27" width="37.50" fill="#ffffff" ></rect>
-<rect x="114.58" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="#f4fff9" ></rect>
-<rect x="156.25" y="162.73" height="27.27" width="37.50" fill="#ffffff" ></rect>
-<rect x="156.25" y="162.73" height="27.27" width="37.50" stroke="#000000" stroke-width="0.5" fill="#f4fff9" ></rect>
-<rect x="197.92" y="149.09" height="40.91" width="37.50" fill="#ffffff" ></rect>
-<rect x="197.92" y="149.09" height="40.91" width="37.50" stroke="#000000" stroke-width="0.5" fill="#f4fff9" ></rect>
-<rect x="239.58" y="176.36" height="13.64" width="37.50" fill="#ffffff" ></rect>
-<rect x="239.58" y="176.36" height="13.64" width="37.50" stroke="#000000" stroke-width="0.5" fill="#f4fff9" ></rect>
-<rect x="300.00" y="73.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="#a8a8a8" ></rect>
-<text x="319.00" y="80.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Stuff</text>
-<rect x="300.00" y="91.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_0)" ></rect>
-<text x="319.00" y="98.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Things</text>
-<rect x="300.00" y="109.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="#d3d3d3" ></rect>
-<text x="319.00" y="116.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Junk</text>
-<rect x="300.00" y="127.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="url(#zplot_pattern_1)" ></rect>
-<text x="319.00" y="134.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Yards</text>
-<rect x="300.00" y="145.41" height="15.00" width="15.00" stroke="#000000" stroke-width="0.25" fill="#f4fff9" ></rect>
-<text x="319.00" y="152.91" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Dogs</text>
+<path d="M 49.50,190.00 L 300.50,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 50.00,190.50 L 50.00,39.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 50.00,194.00 L 50.00,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 91.67,194.00 L 91.67,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 133.33,194.00 L 133.33,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 175.00,194.00 L 175.00,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 216.67,194.00 L 216.67,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 258.33,194.00 L 258.33,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 300.00,194.00 L 300.00,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,190.00 L 50.00,190.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,162.73 L 50.00,162.73 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,135.45 L 50.00,135.45 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,108.18 L 50.00,108.18 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,80.91 L 50.00,80.91 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 46.00,53.64 L 50.00,53.64 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="50.00" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 0</text>
+<text x="91.67" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 1</text>
+<text x="133.33" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 2</text>
+<text x="175.00" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 3</text>
+<text x="216.67" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 4</text>
+<text x="258.33" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 5</text>
+<text x="300.00" y="197.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 6</text>
+<text x="43.00" y="190.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="43.00" y="162.73" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 2</text>
+<text x="43.00" y="135.45" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 4</text>
+<text x="43.00" y="108.18" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 6</text>
+<text x="43.00" y="80.91" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 8</text>
+<text x="43.00" y="53.64" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 10</text>
+<text x="175.00" y="32.50" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> Lots of Patterns</text>
+<text x="175.00" y="210.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> The X-Axis</text>
+<text x="28.88" y="115.00" transform="rotate(-90.00 28.88,115.00)" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> The Y-Axis</text>
+<path d="M 72.92,190.00 L 72.92,67.27 L 110.42,67.27 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #a8a8a8;"/>
+<path d="M 72.92,190.00 L 72.92,67.27 L 110.42,67.27 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 114.58,190.00 L 114.58,67.27 L 152.08,67.27 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #a8a8a8;"/>
+<path d="M 114.58,190.00 L 114.58,67.27 L 152.08,67.27 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.25,190.00 L 156.25,53.64 L 193.75,53.64 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #a8a8a8;"/>
+<path d="M 156.25,190.00 L 156.25,53.64 L 193.75,53.64 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 197.92,190.00 L 197.92,60.45 L 235.42,60.45 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #a8a8a8;"/>
+<path d="M 197.92,190.00 L 197.92,60.45 L 235.42,60.45 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 239.58,190.00 L 239.58,80.91 L 277.08,80.91 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #a8a8a8;"/>
+<path d="M 239.58,190.00 L 239.58,80.91 L 277.08,80.91 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 72.92,190.00 L 72.92,108.18 L 110.42,108.18 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 62.92,200.00 L 120.42,142.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,193.00 L 120.42,135.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,186.00 L 120.42,128.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,179.00 L 120.42,121.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,172.00 L 120.42,114.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,165.00 L 120.42,107.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,158.00 L 120.42,100.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,151.00 L 120.42,93.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,144.00 L 120.42,86.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,137.00 L 120.42,79.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,130.00 L 120.42,72.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,123.00 L 120.42,65.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,116.00 L 120.42,58.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,109.00 L 120.42,51.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,102.00 L 120.42,44.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 62.92,200.00 L 164.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 69.92,200.00 L 171.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 76.92,200.00 L 178.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 83.92,200.00 L 185.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 90.92,200.00 L 192.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 97.92,200.00 L 199.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 104.92,200.00 L 206.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 111.92,200.00 L 213.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 118.92,200.00 L 220.73,98.18 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 72.92,190.00 L 72.92,108.18 L 110.42,108.18 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 114.58,190.00 L 114.58,80.91 L 152.08,80.91 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 104.58,200.00 L 162.08,142.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,193.00 L 162.08,135.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,186.00 L 162.08,128.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,179.00 L 162.08,121.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,172.00 L 162.08,114.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,165.00 L 162.08,107.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,158.00 L 162.08,100.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,151.00 L 162.08,93.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,144.00 L 162.08,86.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,137.00 L 162.08,79.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,130.00 L 162.08,72.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,123.00 L 162.08,65.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,116.00 L 162.08,58.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,109.00 L 162.08,51.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,102.00 L 162.08,44.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,95.00 L 162.08,37.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,88.00 L 162.08,30.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,81.00 L 162.08,23.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,74.00 L 162.08,16.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 104.58,200.00 L 233.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 111.58,200.00 L 240.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 118.58,200.00 L 247.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 125.58,200.00 L 254.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 132.58,200.00 L 261.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 139.58,200.00 L 268.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 146.58,200.00 L 275.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 153.58,200.00 L 282.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 160.58,200.00 L 289.67,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 114.58,190.00 L 114.58,80.91 L 152.08,80.91 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.25,190.00 L 156.25,80.91 L 193.75,80.91 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 146.25,200.00 L 203.75,142.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,193.00 L 203.75,135.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,186.00 L 203.75,128.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,179.00 L 203.75,121.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,172.00 L 203.75,114.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,165.00 L 203.75,107.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,158.00 L 203.75,100.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,151.00 L 203.75,93.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,144.00 L 203.75,86.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,137.00 L 203.75,79.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,130.00 L 203.75,72.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,123.00 L 203.75,65.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,116.00 L 203.75,58.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,109.00 L 203.75,51.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,102.00 L 203.75,44.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,95.00 L 203.75,37.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,88.00 L 203.75,30.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,81.00 L 203.75,23.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,74.00 L 203.75,16.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 146.25,200.00 L 275.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 153.25,200.00 L 282.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 160.25,200.00 L 289.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 167.25,200.00 L 296.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 174.25,200.00 L 303.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 181.25,200.00 L 310.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 188.25,200.00 L 317.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 195.25,200.00 L 324.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 202.25,200.00 L 331.34,70.91 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 156.25,190.00 L 156.25,80.91 L 193.75,80.91 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 197.92,190.00 L 197.92,67.27 L 235.42,67.27 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 187.92,200.00 L 245.42,142.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,193.00 L 245.42,135.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,186.00 L 245.42,128.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,179.00 L 245.42,121.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,172.00 L 245.42,114.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,165.00 L 245.42,107.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,158.00 L 245.42,100.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,151.00 L 245.42,93.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,144.00 L 245.42,86.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,137.00 L 245.42,79.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,130.00 L 245.42,72.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,123.00 L 245.42,65.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,116.00 L 245.42,58.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,109.00 L 245.42,51.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,102.00 L 245.42,44.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,95.00 L 245.42,37.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,88.00 L 245.42,30.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,81.00 L 245.42,23.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,74.00 L 245.42,16.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,67.00 L 245.42,9.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,60.00 L 245.42,2.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 187.92,200.00 L 330.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 194.92,200.00 L 337.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 201.92,200.00 L 344.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 208.92,200.00 L 351.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 215.92,200.00 L 358.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 222.92,200.00 L 365.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 229.92,200.00 L 372.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 236.92,200.00 L 379.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 243.92,200.00 L 386.64,57.27 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 197.92,190.00 L 197.92,67.27 L 235.42,67.27 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 239.58,190.00 L 239.58,94.55 L 277.08,94.55 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 229.58,200.00 L 287.08,142.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,193.00 L 287.08,135.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,186.00 L 287.08,128.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,179.00 L 287.08,121.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,172.00 L 287.08,114.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,165.00 L 287.08,107.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,158.00 L 287.08,100.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,151.00 L 287.08,93.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,144.00 L 287.08,86.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,137.00 L 287.08,79.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,130.00 L 287.08,72.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,123.00 L 287.08,65.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,116.00 L 287.08,58.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,109.00 L 287.08,51.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,102.00 L 287.08,44.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,95.00 L 287.08,37.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,88.00 L 287.08,30.50 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 229.58,200.00 L 345.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 236.58,200.00 L 352.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 243.58,200.00 L 359.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 250.58,200.00 L 366.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 257.58,200.00 L 373.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 264.58,200.00 L 380.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 271.58,200.00 L 387.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 278.58,200.00 L 394.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 285.58,200.00 L 401.04,84.55 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 239.58,190.00 L 239.58,94.55 L 277.08,94.55 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 72.92,190.00 L 72.92,121.82 L 110.42,121.82 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #d3d3d3;"/>
+<path d="M 72.92,190.00 L 72.92,121.82 L 110.42,121.82 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 114.58,190.00 L 114.58,135.45 L 152.08,135.45 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #d3d3d3;"/>
+<path d="M 114.58,190.00 L 114.58,135.45 L 152.08,135.45 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.25,190.00 L 156.25,94.55 L 193.75,94.55 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #d3d3d3;"/>
+<path d="M 156.25,190.00 L 156.25,94.55 L 193.75,94.55 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 197.92,190.00 L 197.92,108.18 L 235.42,108.18 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #d3d3d3;"/>
+<path d="M 197.92,190.00 L 197.92,108.18 L 235.42,108.18 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 239.58,190.00 L 239.58,135.45 L 277.08,135.45 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #d3d3d3;"/>
+<path d="M 239.58,190.00 L 239.58,135.45 L 277.08,135.45 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 72.92,190.00 L 72.92,149.09 L 110.42,149.09 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 60.92,200.00 L 64.92,200.00 L 62.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,194.00 L 64.92,194.00 L 62.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,188.00 L 64.92,188.00 L 62.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,182.00 L 64.92,182.00 L 62.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,176.00 L 64.92,176.00 L 62.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,170.00 L 64.92,170.00 L 62.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,164.00 L 64.92,164.00 L 62.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,158.00 L 64.92,158.00 L 62.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,152.00 L 64.92,152.00 L 62.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,146.00 L 64.92,146.00 L 62.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 60.92,140.00 L 64.92,140.00 L 62.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,200.00 L 70.92,200.00 L 68.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,194.00 L 70.92,194.00 L 68.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,188.00 L 70.92,188.00 L 68.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,182.00 L 70.92,182.00 L 68.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,176.00 L 70.92,176.00 L 68.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,170.00 L 70.92,170.00 L 68.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,164.00 L 70.92,164.00 L 68.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,158.00 L 70.92,158.00 L 68.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,152.00 L 70.92,152.00 L 68.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,146.00 L 70.92,146.00 L 68.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 66.92,140.00 L 70.92,140.00 L 68.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,200.00 L 76.92,200.00 L 74.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,194.00 L 76.92,194.00 L 74.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,188.00 L 76.92,188.00 L 74.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,182.00 L 76.92,182.00 L 74.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,176.00 L 76.92,176.00 L 74.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,170.00 L 76.92,170.00 L 74.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,164.00 L 76.92,164.00 L 74.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,158.00 L 76.92,158.00 L 74.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,152.00 L 76.92,152.00 L 74.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,146.00 L 76.92,146.00 L 74.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,140.00 L 76.92,140.00 L 74.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,200.00 L 82.92,200.00 L 80.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,194.00 L 82.92,194.00 L 80.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,188.00 L 82.92,188.00 L 80.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,182.00 L 82.92,182.00 L 80.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,176.00 L 82.92,176.00 L 80.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,170.00 L 82.92,170.00 L 80.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,164.00 L 82.92,164.00 L 80.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,158.00 L 82.92,158.00 L 80.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,152.00 L 82.92,152.00 L 80.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,146.00 L 82.92,146.00 L 80.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 78.92,140.00 L 82.92,140.00 L 80.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,200.00 L 88.92,200.00 L 86.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,194.00 L 88.92,194.00 L 86.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,188.00 L 88.92,188.00 L 86.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,182.00 L 88.92,182.00 L 86.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,176.00 L 88.92,176.00 L 86.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,170.00 L 88.92,170.00 L 86.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,164.00 L 88.92,164.00 L 86.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,158.00 L 88.92,158.00 L 86.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,152.00 L 88.92,152.00 L 86.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,146.00 L 88.92,146.00 L 86.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 84.92,140.00 L 88.92,140.00 L 86.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,200.00 L 94.92,200.00 L 92.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,194.00 L 94.92,194.00 L 92.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,188.00 L 94.92,188.00 L 92.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,182.00 L 94.92,182.00 L 92.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,176.00 L 94.92,176.00 L 92.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,170.00 L 94.92,170.00 L 92.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,164.00 L 94.92,164.00 L 92.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,158.00 L 94.92,158.00 L 92.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,152.00 L 94.92,152.00 L 92.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,146.00 L 94.92,146.00 L 92.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 90.92,140.00 L 94.92,140.00 L 92.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,200.00 L 100.92,200.00 L 98.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,194.00 L 100.92,194.00 L 98.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,188.00 L 100.92,188.00 L 98.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,182.00 L 100.92,182.00 L 98.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,176.00 L 100.92,176.00 L 98.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,170.00 L 100.92,170.00 L 98.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,164.00 L 100.92,164.00 L 98.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,158.00 L 100.92,158.00 L 98.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,152.00 L 100.92,152.00 L 98.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,146.00 L 100.92,146.00 L 98.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 96.92,140.00 L 100.92,140.00 L 98.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,200.00 L 106.92,200.00 L 104.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,194.00 L 106.92,194.00 L 104.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,188.00 L 106.92,188.00 L 104.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,182.00 L 106.92,182.00 L 104.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,176.00 L 106.92,176.00 L 104.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,170.00 L 106.92,170.00 L 104.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,164.00 L 106.92,164.00 L 104.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,158.00 L 106.92,158.00 L 104.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,152.00 L 106.92,152.00 L 104.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,146.00 L 106.92,146.00 L 104.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 102.92,140.00 L 106.92,140.00 L 104.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,200.00 L 112.92,200.00 L 110.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,194.00 L 112.92,194.00 L 110.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,188.00 L 112.92,188.00 L 110.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,182.00 L 112.92,182.00 L 110.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,176.00 L 112.92,176.00 L 110.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,170.00 L 112.92,170.00 L 110.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,164.00 L 112.92,164.00 L 110.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,158.00 L 112.92,158.00 L 110.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,152.00 L 112.92,152.00 L 110.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,146.00 L 112.92,146.00 L 110.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 108.92,140.00 L 112.92,140.00 L 110.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,200.00 L 118.92,200.00 L 116.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,194.00 L 118.92,194.00 L 116.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,188.00 L 118.92,188.00 L 116.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,182.00 L 118.92,182.00 L 116.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,176.00 L 118.92,176.00 L 116.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,170.00 L 118.92,170.00 L 116.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,164.00 L 118.92,164.00 L 116.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,158.00 L 118.92,158.00 L 116.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,152.00 L 118.92,152.00 L 116.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,146.00 L 118.92,146.00 L 116.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 114.92,140.00 L 118.92,140.00 L 116.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 72.92,190.00 L 72.92,149.09 L 110.42,149.09 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 114.58,190.00 L 114.58,149.09 L 152.08,149.09 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 102.58,200.00 L 106.58,200.00 L 104.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,194.00 L 106.58,194.00 L 104.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,188.00 L 106.58,188.00 L 104.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,182.00 L 106.58,182.00 L 104.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,176.00 L 106.58,176.00 L 104.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,170.00 L 106.58,170.00 L 104.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,164.00 L 106.58,164.00 L 104.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,158.00 L 106.58,158.00 L 104.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,152.00 L 106.58,152.00 L 104.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,146.00 L 106.58,146.00 L 104.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 102.58,140.00 L 106.58,140.00 L 104.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,200.00 L 112.58,200.00 L 110.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,194.00 L 112.58,194.00 L 110.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,188.00 L 112.58,188.00 L 110.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,182.00 L 112.58,182.00 L 110.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,176.00 L 112.58,176.00 L 110.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,170.00 L 112.58,170.00 L 110.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,164.00 L 112.58,164.00 L 110.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,158.00 L 112.58,158.00 L 110.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,152.00 L 112.58,152.00 L 110.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,146.00 L 112.58,146.00 L 110.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 108.58,140.00 L 112.58,140.00 L 110.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,200.00 L 118.58,200.00 L 116.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,194.00 L 118.58,194.00 L 116.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,188.00 L 118.58,188.00 L 116.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,182.00 L 118.58,182.00 L 116.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,176.00 L 118.58,176.00 L 116.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,170.00 L 118.58,170.00 L 116.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,164.00 L 118.58,164.00 L 116.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,158.00 L 118.58,158.00 L 116.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,152.00 L 118.58,152.00 L 116.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,146.00 L 118.58,146.00 L 116.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,140.00 L 118.58,140.00 L 116.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,200.00 L 124.58,200.00 L 122.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,194.00 L 124.58,194.00 L 122.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,188.00 L 124.58,188.00 L 122.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,182.00 L 124.58,182.00 L 122.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,176.00 L 124.58,176.00 L 122.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,170.00 L 124.58,170.00 L 122.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,164.00 L 124.58,164.00 L 122.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,158.00 L 124.58,158.00 L 122.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,152.00 L 124.58,152.00 L 122.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,146.00 L 124.58,146.00 L 122.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 120.58,140.00 L 124.58,140.00 L 122.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,200.00 L 130.58,200.00 L 128.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,194.00 L 130.58,194.00 L 128.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,188.00 L 130.58,188.00 L 128.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,182.00 L 130.58,182.00 L 128.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,176.00 L 130.58,176.00 L 128.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,170.00 L 130.58,170.00 L 128.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,164.00 L 130.58,164.00 L 128.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,158.00 L 130.58,158.00 L 128.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,152.00 L 130.58,152.00 L 128.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,146.00 L 130.58,146.00 L 128.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 126.58,140.00 L 130.58,140.00 L 128.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,200.00 L 136.58,200.00 L 134.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,194.00 L 136.58,194.00 L 134.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,188.00 L 136.58,188.00 L 134.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,182.00 L 136.58,182.00 L 134.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,176.00 L 136.58,176.00 L 134.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,170.00 L 136.58,170.00 L 134.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,164.00 L 136.58,164.00 L 134.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,158.00 L 136.58,158.00 L 134.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,152.00 L 136.58,152.00 L 134.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,146.00 L 136.58,146.00 L 134.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 132.58,140.00 L 136.58,140.00 L 134.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,200.00 L 142.58,200.00 L 140.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,194.00 L 142.58,194.00 L 140.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,188.00 L 142.58,188.00 L 140.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,182.00 L 142.58,182.00 L 140.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,176.00 L 142.58,176.00 L 140.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,170.00 L 142.58,170.00 L 140.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,164.00 L 142.58,164.00 L 140.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,158.00 L 142.58,158.00 L 140.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,152.00 L 142.58,152.00 L 140.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,146.00 L 142.58,146.00 L 140.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 138.58,140.00 L 142.58,140.00 L 140.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,200.00 L 148.58,200.00 L 146.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,194.00 L 148.58,194.00 L 146.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,188.00 L 148.58,188.00 L 146.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,182.00 L 148.58,182.00 L 146.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,176.00 L 148.58,176.00 L 146.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,170.00 L 148.58,170.00 L 146.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,164.00 L 148.58,164.00 L 146.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,158.00 L 148.58,158.00 L 146.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,152.00 L 148.58,152.00 L 146.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,146.00 L 148.58,146.00 L 146.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 144.58,140.00 L 148.58,140.00 L 146.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,200.00 L 154.58,200.00 L 152.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,194.00 L 154.58,194.00 L 152.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,188.00 L 154.58,188.00 L 152.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,182.00 L 154.58,182.00 L 152.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,176.00 L 154.58,176.00 L 152.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,170.00 L 154.58,170.00 L 152.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,164.00 L 154.58,164.00 L 152.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,158.00 L 154.58,158.00 L 152.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,152.00 L 154.58,152.00 L 152.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,146.00 L 154.58,146.00 L 152.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 150.58,140.00 L 154.58,140.00 L 152.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,200.00 L 160.58,200.00 L 158.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,194.00 L 160.58,194.00 L 158.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,188.00 L 160.58,188.00 L 158.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,182.00 L 160.58,182.00 L 158.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,176.00 L 160.58,176.00 L 158.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,170.00 L 160.58,170.00 L 158.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,164.00 L 160.58,164.00 L 158.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,158.00 L 160.58,158.00 L 158.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,152.00 L 160.58,152.00 L 158.58,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,146.00 L 160.58,146.00 L 158.58,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 156.58,140.00 L 160.58,140.00 L 158.58,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 114.58,190.00 L 114.58,149.09 L 152.08,149.09 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.25,190.00 L 156.25,135.45 L 193.75,135.45 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 144.25,200.00 L 148.25,200.00 L 146.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,194.00 L 148.25,194.00 L 146.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,188.00 L 148.25,188.00 L 146.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,182.00 L 148.25,182.00 L 146.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,176.00 L 148.25,176.00 L 146.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,170.00 L 148.25,170.00 L 146.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,164.00 L 148.25,164.00 L 146.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,158.00 L 148.25,158.00 L 146.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,152.00 L 148.25,152.00 L 146.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,146.00 L 148.25,146.00 L 146.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,140.00 L 148.25,140.00 L 146.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,134.00 L 148.25,134.00 L 146.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 144.25,128.00 L 148.25,128.00 L 146.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,200.00 L 154.25,200.00 L 152.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,194.00 L 154.25,194.00 L 152.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,188.00 L 154.25,188.00 L 152.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,182.00 L 154.25,182.00 L 152.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,176.00 L 154.25,176.00 L 152.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,170.00 L 154.25,170.00 L 152.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,164.00 L 154.25,164.00 L 152.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,158.00 L 154.25,158.00 L 152.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,152.00 L 154.25,152.00 L 152.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,146.00 L 154.25,146.00 L 152.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,140.00 L 154.25,140.00 L 152.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,134.00 L 154.25,134.00 L 152.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 150.25,128.00 L 154.25,128.00 L 152.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,200.00 L 160.25,200.00 L 158.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,194.00 L 160.25,194.00 L 158.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,188.00 L 160.25,188.00 L 158.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,182.00 L 160.25,182.00 L 158.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,176.00 L 160.25,176.00 L 158.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,170.00 L 160.25,170.00 L 158.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,164.00 L 160.25,164.00 L 158.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,158.00 L 160.25,158.00 L 158.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,152.00 L 160.25,152.00 L 158.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,146.00 L 160.25,146.00 L 158.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,140.00 L 160.25,140.00 L 158.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,134.00 L 160.25,134.00 L 158.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,128.00 L 160.25,128.00 L 158.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,200.00 L 166.25,200.00 L 164.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,194.00 L 166.25,194.00 L 164.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,188.00 L 166.25,188.00 L 164.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,182.00 L 166.25,182.00 L 164.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,176.00 L 166.25,176.00 L 164.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,170.00 L 166.25,170.00 L 164.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,164.00 L 166.25,164.00 L 164.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,158.00 L 166.25,158.00 L 164.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,152.00 L 166.25,152.00 L 164.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,146.00 L 166.25,146.00 L 164.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,140.00 L 166.25,140.00 L 164.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,134.00 L 166.25,134.00 L 164.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 162.25,128.00 L 166.25,128.00 L 164.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,200.00 L 172.25,200.00 L 170.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,194.00 L 172.25,194.00 L 170.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,188.00 L 172.25,188.00 L 170.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,182.00 L 172.25,182.00 L 170.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,176.00 L 172.25,176.00 L 170.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,170.00 L 172.25,170.00 L 170.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,164.00 L 172.25,164.00 L 170.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,158.00 L 172.25,158.00 L 170.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,152.00 L 172.25,152.00 L 170.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,146.00 L 172.25,146.00 L 170.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,140.00 L 172.25,140.00 L 170.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,134.00 L 172.25,134.00 L 170.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 168.25,128.00 L 172.25,128.00 L 170.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,200.00 L 178.25,200.00 L 176.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,194.00 L 178.25,194.00 L 176.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,188.00 L 178.25,188.00 L 176.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,182.00 L 178.25,182.00 L 176.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,176.00 L 178.25,176.00 L 176.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,170.00 L 178.25,170.00 L 176.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,164.00 L 178.25,164.00 L 176.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,158.00 L 178.25,158.00 L 176.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,152.00 L 178.25,152.00 L 176.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,146.00 L 178.25,146.00 L 176.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,140.00 L 178.25,140.00 L 176.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,134.00 L 178.25,134.00 L 176.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 174.25,128.00 L 178.25,128.00 L 176.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,200.00 L 184.25,200.00 L 182.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,194.00 L 184.25,194.00 L 182.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,188.00 L 184.25,188.00 L 182.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,182.00 L 184.25,182.00 L 182.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,176.00 L 184.25,176.00 L 182.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,170.00 L 184.25,170.00 L 182.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,164.00 L 184.25,164.00 L 182.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,158.00 L 184.25,158.00 L 182.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,152.00 L 184.25,152.00 L 182.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,146.00 L 184.25,146.00 L 182.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,140.00 L 184.25,140.00 L 182.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,134.00 L 184.25,134.00 L 182.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 180.25,128.00 L 184.25,128.00 L 182.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,200.00 L 190.25,200.00 L 188.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,194.00 L 190.25,194.00 L 188.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,188.00 L 190.25,188.00 L 188.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,182.00 L 190.25,182.00 L 188.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,176.00 L 190.25,176.00 L 188.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,170.00 L 190.25,170.00 L 188.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,164.00 L 190.25,164.00 L 188.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,158.00 L 190.25,158.00 L 188.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,152.00 L 190.25,152.00 L 188.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,146.00 L 190.25,146.00 L 188.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,140.00 L 190.25,140.00 L 188.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,134.00 L 190.25,134.00 L 188.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 186.25,128.00 L 190.25,128.00 L 188.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,200.00 L 196.25,200.00 L 194.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,194.00 L 196.25,194.00 L 194.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,188.00 L 196.25,188.00 L 194.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,182.00 L 196.25,182.00 L 194.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,176.00 L 196.25,176.00 L 194.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,170.00 L 196.25,170.00 L 194.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,164.00 L 196.25,164.00 L 194.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,158.00 L 196.25,158.00 L 194.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,152.00 L 196.25,152.00 L 194.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,146.00 L 196.25,146.00 L 194.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,140.00 L 196.25,140.00 L 194.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,134.00 L 196.25,134.00 L 194.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 192.25,128.00 L 196.25,128.00 L 194.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,200.00 L 202.25,200.00 L 200.25,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,194.00 L 202.25,194.00 L 200.25,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,188.00 L 202.25,188.00 L 200.25,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,182.00 L 202.25,182.00 L 200.25,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,176.00 L 202.25,176.00 L 200.25,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,170.00 L 202.25,170.00 L 200.25,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,164.00 L 202.25,164.00 L 200.25,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,158.00 L 202.25,158.00 L 200.25,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,152.00 L 202.25,152.00 L 200.25,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,146.00 L 202.25,146.00 L 200.25,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,140.00 L 202.25,140.00 L 200.25,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,134.00 L 202.25,134.00 L 200.25,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 198.25,128.00 L 202.25,128.00 L 200.25,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 156.25,190.00 L 156.25,135.45 L 193.75,135.45 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 197.92,190.00 L 197.92,121.82 L 235.42,121.82 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 185.92,200.00 L 189.92,200.00 L 187.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,194.00 L 189.92,194.00 L 187.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,188.00 L 189.92,188.00 L 187.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,182.00 L 189.92,182.00 L 187.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,176.00 L 189.92,176.00 L 187.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,170.00 L 189.92,170.00 L 187.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,164.00 L 189.92,164.00 L 187.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,158.00 L 189.92,158.00 L 187.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,152.00 L 189.92,152.00 L 187.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,146.00 L 189.92,146.00 L 187.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,140.00 L 189.92,140.00 L 187.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,134.00 L 189.92,134.00 L 187.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,128.00 L 189.92,128.00 L 187.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,122.00 L 189.92,122.00 L 187.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 185.92,116.00 L 189.92,116.00 L 187.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,200.00 L 195.92,200.00 L 193.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,194.00 L 195.92,194.00 L 193.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,188.00 L 195.92,188.00 L 193.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,182.00 L 195.92,182.00 L 193.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,176.00 L 195.92,176.00 L 193.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,170.00 L 195.92,170.00 L 193.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,164.00 L 195.92,164.00 L 193.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,158.00 L 195.92,158.00 L 193.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,152.00 L 195.92,152.00 L 193.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,146.00 L 195.92,146.00 L 193.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,140.00 L 195.92,140.00 L 193.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,134.00 L 195.92,134.00 L 193.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,128.00 L 195.92,128.00 L 193.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,122.00 L 195.92,122.00 L 193.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 191.92,116.00 L 195.92,116.00 L 193.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,200.00 L 201.92,200.00 L 199.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,194.00 L 201.92,194.00 L 199.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,188.00 L 201.92,188.00 L 199.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,182.00 L 201.92,182.00 L 199.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,176.00 L 201.92,176.00 L 199.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,170.00 L 201.92,170.00 L 199.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,164.00 L 201.92,164.00 L 199.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,158.00 L 201.92,158.00 L 199.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,152.00 L 201.92,152.00 L 199.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,146.00 L 201.92,146.00 L 199.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,140.00 L 201.92,140.00 L 199.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,134.00 L 201.92,134.00 L 199.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,128.00 L 201.92,128.00 L 199.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,122.00 L 201.92,122.00 L 199.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,116.00 L 201.92,116.00 L 199.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,200.00 L 207.92,200.00 L 205.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,194.00 L 207.92,194.00 L 205.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,188.00 L 207.92,188.00 L 205.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,182.00 L 207.92,182.00 L 205.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,176.00 L 207.92,176.00 L 205.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,170.00 L 207.92,170.00 L 205.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,164.00 L 207.92,164.00 L 205.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,158.00 L 207.92,158.00 L 205.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,152.00 L 207.92,152.00 L 205.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,146.00 L 207.92,146.00 L 205.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,140.00 L 207.92,140.00 L 205.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,134.00 L 207.92,134.00 L 205.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,128.00 L 207.92,128.00 L 205.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,122.00 L 207.92,122.00 L 205.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 203.92,116.00 L 207.92,116.00 L 205.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,200.00 L 213.92,200.00 L 211.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,194.00 L 213.92,194.00 L 211.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,188.00 L 213.92,188.00 L 211.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,182.00 L 213.92,182.00 L 211.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,176.00 L 213.92,176.00 L 211.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,170.00 L 213.92,170.00 L 211.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,164.00 L 213.92,164.00 L 211.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,158.00 L 213.92,158.00 L 211.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,152.00 L 213.92,152.00 L 211.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,146.00 L 213.92,146.00 L 211.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,140.00 L 213.92,140.00 L 211.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,134.00 L 213.92,134.00 L 211.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,128.00 L 213.92,128.00 L 211.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,122.00 L 213.92,122.00 L 211.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 209.92,116.00 L 213.92,116.00 L 211.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,200.00 L 219.92,200.00 L 217.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,194.00 L 219.92,194.00 L 217.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,188.00 L 219.92,188.00 L 217.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,182.00 L 219.92,182.00 L 217.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,176.00 L 219.92,176.00 L 217.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,170.00 L 219.92,170.00 L 217.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,164.00 L 219.92,164.00 L 217.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,158.00 L 219.92,158.00 L 217.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,152.00 L 219.92,152.00 L 217.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,146.00 L 219.92,146.00 L 217.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,140.00 L 219.92,140.00 L 217.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,134.00 L 219.92,134.00 L 217.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,128.00 L 219.92,128.00 L 217.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,122.00 L 219.92,122.00 L 217.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 215.92,116.00 L 219.92,116.00 L 217.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,200.00 L 225.92,200.00 L 223.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,194.00 L 225.92,194.00 L 223.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,188.00 L 225.92,188.00 L 223.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,182.00 L 225.92,182.00 L 223.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,176.00 L 225.92,176.00 L 223.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,170.00 L 225.92,170.00 L 223.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,164.00 L 225.92,164.00 L 223.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,158.00 L 225.92,158.00 L 223.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,152.00 L 225.92,152.00 L 223.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,146.00 L 225.92,146.00 L 223.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,140.00 L 225.92,140.00 L 223.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,134.00 L 225.92,134.00 L 223.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,128.00 L 225.92,128.00 L 223.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,122.00 L 225.92,122.00 L 223.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 221.92,116.00 L 225.92,116.00 L 223.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,200.00 L 231.92,200.00 L 229.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,194.00 L 231.92,194.00 L 229.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,188.00 L 231.92,188.00 L 229.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,182.00 L 231.92,182.00 L 229.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,176.00 L 231.92,176.00 L 229.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,170.00 L 231.92,170.00 L 229.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,164.00 L 231.92,164.00 L 229.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,158.00 L 231.92,158.00 L 229.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,152.00 L 231.92,152.00 L 229.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,146.00 L 231.92,146.00 L 229.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,140.00 L 231.92,140.00 L 229.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,134.00 L 231.92,134.00 L 229.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,128.00 L 231.92,128.00 L 229.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,122.00 L 231.92,122.00 L 229.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 227.92,116.00 L 231.92,116.00 L 229.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,200.00 L 237.92,200.00 L 235.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,194.00 L 237.92,194.00 L 235.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,188.00 L 237.92,188.00 L 235.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,182.00 L 237.92,182.00 L 235.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,176.00 L 237.92,176.00 L 235.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,170.00 L 237.92,170.00 L 235.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,164.00 L 237.92,164.00 L 235.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,158.00 L 237.92,158.00 L 235.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,152.00 L 237.92,152.00 L 235.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,146.00 L 237.92,146.00 L 235.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,140.00 L 237.92,140.00 L 235.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,134.00 L 237.92,134.00 L 235.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,128.00 L 237.92,128.00 L 235.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,122.00 L 237.92,122.00 L 235.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 233.92,116.00 L 237.92,116.00 L 235.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,200.00 L 243.92,200.00 L 241.92,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,194.00 L 243.92,194.00 L 241.92,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,188.00 L 243.92,188.00 L 241.92,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,182.00 L 243.92,182.00 L 241.92,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,176.00 L 243.92,176.00 L 241.92,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,170.00 L 243.92,170.00 L 241.92,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,164.00 L 243.92,164.00 L 241.92,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,158.00 L 243.92,158.00 L 241.92,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,152.00 L 243.92,152.00 L 241.92,148.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,146.00 L 243.92,146.00 L 241.92,142.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,140.00 L 243.92,140.00 L 241.92,136.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,134.00 L 243.92,134.00 L 241.92,130.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,128.00 L 243.92,128.00 L 241.92,124.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,122.00 L 243.92,122.00 L 241.92,118.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 239.92,116.00 L 243.92,116.00 L 241.92,112.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 197.92,190.00 L 197.92,121.82 L 235.42,121.82 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 239.58,190.00 L 239.58,162.73 L 277.08,162.73 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffffff;"/>
+<path d="M 227.58,200.00 L 231.58,200.00 L 229.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,194.00 L 231.58,194.00 L 229.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,188.00 L 231.58,188.00 L 229.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,182.00 L 231.58,182.00 L 229.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,176.00 L 231.58,176.00 L 229.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,170.00 L 231.58,170.00 L 229.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,164.00 L 231.58,164.00 L 229.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 227.58,158.00 L 231.58,158.00 L 229.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,200.00 L 237.58,200.00 L 235.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,194.00 L 237.58,194.00 L 235.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,188.00 L 237.58,188.00 L 235.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,182.00 L 237.58,182.00 L 235.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,176.00 L 237.58,176.00 L 235.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,170.00 L 237.58,170.00 L 235.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,164.00 L 237.58,164.00 L 235.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 233.58,158.00 L 237.58,158.00 L 235.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,200.00 L 243.58,200.00 L 241.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,194.00 L 243.58,194.00 L 241.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,188.00 L 243.58,188.00 L 241.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,182.00 L 243.58,182.00 L 241.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,176.00 L 243.58,176.00 L 241.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,170.00 L 243.58,170.00 L 241.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,164.00 L 243.58,164.00 L 241.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,158.00 L 243.58,158.00 L 241.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,200.00 L 249.58,200.00 L 247.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,194.00 L 249.58,194.00 L 247.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,188.00 L 249.58,188.00 L 247.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,182.00 L 249.58,182.00 L 247.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,176.00 L 249.58,176.00 L 247.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,170.00 L 249.58,170.00 L 247.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,164.00 L 249.58,164.00 L 247.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 245.58,158.00 L 249.58,158.00 L 247.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,200.00 L 255.58,200.00 L 253.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,194.00 L 255.58,194.00 L 253.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,188.00 L 255.58,188.00 L 253.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,182.00 L 255.58,182.00 L 253.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,176.00 L 255.58,176.00 L 253.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,170.00 L 255.58,170.00 L 253.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,164.00 L 255.58,164.00 L 253.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 251.58,158.00 L 255.58,158.00 L 253.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,200.00 L 261.58,200.00 L 259.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,194.00 L 261.58,194.00 L 259.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,188.00 L 261.58,188.00 L 259.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,182.00 L 261.58,182.00 L 259.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,176.00 L 261.58,176.00 L 259.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,170.00 L 261.58,170.00 L 259.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,164.00 L 261.58,164.00 L 259.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 257.58,158.00 L 261.58,158.00 L 259.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,200.00 L 267.58,200.00 L 265.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,194.00 L 267.58,194.00 L 265.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,188.00 L 267.58,188.00 L 265.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,182.00 L 267.58,182.00 L 265.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,176.00 L 267.58,176.00 L 265.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,170.00 L 267.58,170.00 L 265.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,164.00 L 267.58,164.00 L 265.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 263.58,158.00 L 267.58,158.00 L 265.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,200.00 L 273.58,200.00 L 271.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,194.00 L 273.58,194.00 L 271.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,188.00 L 273.58,188.00 L 271.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,182.00 L 273.58,182.00 L 271.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,176.00 L 273.58,176.00 L 271.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,170.00 L 273.58,170.00 L 271.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,164.00 L 273.58,164.00 L 271.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 269.58,158.00 L 273.58,158.00 L 271.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,200.00 L 279.58,200.00 L 277.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,194.00 L 279.58,194.00 L 277.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,188.00 L 279.58,188.00 L 277.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,182.00 L 279.58,182.00 L 277.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,176.00 L 279.58,176.00 L 277.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,170.00 L 279.58,170.00 L 277.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,164.00 L 279.58,164.00 L 277.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 275.58,158.00 L 279.58,158.00 L 277.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,200.00 L 285.58,200.00 L 283.58,196.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,194.00 L 285.58,194.00 L 283.58,190.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,188.00 L 285.58,188.00 L 283.58,184.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,182.00 L 285.58,182.00 L 283.58,178.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,176.00 L 285.58,176.00 L 283.58,172.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,170.00 L 285.58,170.00 L 283.58,166.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,164.00 L 285.58,164.00 L 283.58,160.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 281.58,158.00 L 285.58,158.00 L 283.58,154.00 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 239.58,190.00 L 239.58,162.73 L 277.08,162.73 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 72.92,190.00 L 72.92,176.36 L 110.42,176.36 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #f4fff9;"/>
+<path d="M 72.92,190.00 L 72.92,176.36 L 110.42,176.36 L 110.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 114.58,190.00 L 114.58,162.73 L 152.08,162.73 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #f4fff9;"/>
+<path d="M 114.58,190.00 L 114.58,162.73 L 152.08,162.73 L 152.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.25,190.00 L 156.25,162.73 L 193.75,162.73 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #f4fff9;"/>
+<path d="M 156.25,190.00 L 156.25,162.73 L 193.75,162.73 L 193.75,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 197.92,190.00 L 197.92,149.09 L 235.42,149.09 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #f4fff9;"/>
+<path d="M 197.92,190.00 L 197.92,149.09 L 235.42,149.09 L 235.42,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 239.58,190.00 L 239.58,176.36 L 277.08,176.36 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #f4fff9;"/>
+<path d="M 239.58,190.00 L 239.58,176.36 L 277.08,176.36 L 277.08,190.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 300.00,88.41 L 300.00,73.41 L 315.00,73.41 L 315.00,88.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: #a8a8a8;"/>
+<path d="M 300.00,88.41 L 300.00,73.41 L 315.00,73.41 L 315.00,88.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="319.00" y="80.91" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Stuff</text>
+<path d="M 290.00,116.41 L 325.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,109.41 L 325.00,74.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,102.41 L 325.00,67.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,95.41 L 325.00,60.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,88.41 L 325.00,53.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,81.41 L 325.00,46.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 290.00,116.41 L 325.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 297.00,116.41 L 332.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 304.00,116.41 L 339.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 311.00,116.41 L 346.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 318.00,116.41 L 353.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 325.00,116.41 L 360.00,81.41 " style="stroke: #7f7f7f; stroke-width: 3.00; fill: none;" clip-path="url(#zplot_pattern_10)"/>
+<path d="M 300.00,106.41 L 300.00,91.41 L 315.00,91.41 L 315.00,106.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="319.00" y="98.91" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Things</text>
+<path d="M 300.00,124.41 L 300.00,109.41 L 315.00,109.41 L 315.00,124.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: #d3d3d3;"/>
+<path d="M 300.00,124.41 L 300.00,109.41 L 315.00,109.41 L 315.00,124.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="319.00" y="116.91" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Junk</text>
+<path d="M 288.00,152.41 L 292.00,152.41 L 290.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 288.00,146.41 L 292.00,146.41 L 290.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 288.00,140.41 L 292.00,140.41 L 290.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 288.00,134.41 L 292.00,134.41 L 290.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 288.00,128.41 L 292.00,128.41 L 290.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 288.00,122.41 L 292.00,122.41 L 290.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,152.41 L 298.00,152.41 L 296.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,146.41 L 298.00,146.41 L 296.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,140.41 L 298.00,140.41 L 296.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,134.41 L 298.00,134.41 L 296.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,128.41 L 298.00,128.41 L 296.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 294.00,122.41 L 298.00,122.41 L 296.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,152.41 L 304.00,152.41 L 302.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,146.41 L 304.00,146.41 L 302.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,140.41 L 304.00,140.41 L 302.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,134.41 L 304.00,134.41 L 302.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,128.41 L 304.00,128.41 L 302.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,122.41 L 304.00,122.41 L 302.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,152.41 L 310.00,152.41 L 308.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,146.41 L 310.00,146.41 L 308.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,140.41 L 310.00,140.41 L 308.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,134.41 L 310.00,134.41 L 308.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,128.41 L 310.00,128.41 L 308.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 306.00,122.41 L 310.00,122.41 L 308.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,152.41 L 316.00,152.41 L 314.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,146.41 L 316.00,146.41 L 314.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,140.41 L 316.00,140.41 L 314.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,134.41 L 316.00,134.41 L 314.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,128.41 L 316.00,128.41 L 314.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 312.00,122.41 L 316.00,122.41 L 314.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,152.41 L 322.00,152.41 L 320.00,148.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,146.41 L 322.00,146.41 L 320.00,142.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,140.41 L 322.00,140.41 L 320.00,136.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,134.41 L 322.00,134.41 L 320.00,130.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,128.41 L 322.00,128.41 L 320.00,124.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 318.00,122.41 L 322.00,122.41 L 320.00,118.41 Z" style="stroke: #7f7f7f; stroke-width: 0.00; fill: #7f7f7f;" clip-path="url(#zplot_pattern_11)"/>
+<path d="M 300.00,142.41 L 300.00,127.41 L 315.00,127.41 L 315.00,142.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="319.00" y="134.91" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Yards</text>
+<path d="M 300.00,160.41 L 300.00,145.41 L 315.00,145.41 L 315.00,160.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: #f4fff9;"/>
+<path d="M 300.00,160.41 L 300.00,145.41 L 315.00,145.41 L 315.00,160.41 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="319.00" y="152.91" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Dogs</text>
 </svg>

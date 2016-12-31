@@ -1,98 +1,95 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
-<!-- <img width="300.00" height="300.00" src="scatter3a.svg"> -->
+<!-- <img width="300.00" height="300.00" src="scatter3a"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300.00" height="300.00">
 <defs>
-
-
 </defs>
-<path d="M 29.50,270.00 L 290.50,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 30.00,270.50 L 30.00,9.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 30.00,274.00 L 30.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 62.50,274.00 L 62.50,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 95.00,274.00 L 95.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 127.50,274.00 L 127.50,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 160.00,274.00 L 160.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 192.50,274.00 L 192.50,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 225.00,274.00 L 225.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 257.50,274.00 L 257.50,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 290.00,274.00 L 290.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,270.00 L 30.00,270.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,237.50 L 30.00,237.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,205.00 L 30.00,205.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,172.50 L 30.00,172.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,140.00 L 30.00,140.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,107.50 L 30.00,107.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,75.00 L 30.00,75.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,42.50 L 30.00,42.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 26.00,10.00 L 30.00,10.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="30.00" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 0</text>
-<text x="62.50" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 10</text>
-<text x="95.00" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 20</text>
-<text x="127.50" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 30</text>
-<text x="160.00" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 40</text>
-<text x="192.50" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 50</text>
-<text x="225.00" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 60</text>
-<text x="257.50" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 70</text>
-<text x="290.00" y="277.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> 80</text>
-<text x="23.00" y="270.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
-<text x="23.00" y="237.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 10</text>
-<text x="23.00" y="205.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 20</text>
-<text x="23.00" y="172.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 30</text>
-<text x="23.00" y="140.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 40</text>
-<text x="23.00" y="107.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 50</text>
-<text x="23.00" y="75.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 60</text>
-<text x="23.00" y="42.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 70</text>
-<text x="23.00" y="10.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 80</text>
-<path d="M 30.00,270.00 L 290.00,10.00 " stroke="#7f7f7f" stroke-width="0.25px" fill="none" ></path>
-<circle cx="46.25" cy="244.00" r="4.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="62.50" cy="240.75" r="5.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="7.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="10.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="85.25" cy="198.50" r="11.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="121.00" cy="182.25" r="11.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="13.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="14.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="14.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="134.00" cy="198.50" r="15.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="166.50" cy="123.75" r="16.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="169.75" cy="143.25" r="16.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="6.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="7.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="205.50" cy="36.00" r="8.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="208.75" cy="91.25" r="9.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="149.75" r="4.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="11.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="14.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="101.00" r="16.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="215.25" cy="94.50" r="17.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="225.00" cy="58.75" r="5.67" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="13.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="14.00" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="212.00" cy="104.25" r="15.33" stroke="#000000" stroke-width="0" fill="#f97f72"></circle>
-<circle cx="46.25" cy="244.00" r="4.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="62.50" cy="240.75" r="5.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="7.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="10.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="85.25" cy="198.50" r="11.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="121.00" cy="182.25" r="11.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="13.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="14.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="14.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="134.00" cy="198.50" r="15.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="166.50" cy="123.75" r="16.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="169.75" cy="143.25" r="16.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="6.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="7.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="205.50" cy="36.00" r="8.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="208.75" cy="91.25" r="9.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="149.75" r="4.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="11.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="14.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="101.00" r="16.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="215.25" cy="94.50" r="17.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="225.00" cy="58.75" r="5.67" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="13.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="14.00" stroke="#000000" stroke-width="0.25" fill="none"></circle>
-<circle cx="212.00" cy="104.25" r="15.33" stroke="#000000" stroke-width="0.25" fill="none"></circle>
+<path d="M 29.50,270.00 L 290.50,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 30.00,270.50 L 30.00,9.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 30.00,274.00 L 30.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 62.50,274.00 L 62.50,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 95.00,274.00 L 95.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 127.50,274.00 L 127.50,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 160.00,274.00 L 160.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 192.50,274.00 L 192.50,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 225.00,274.00 L 225.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 257.50,274.00 L 257.50,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 290.00,274.00 L 290.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,270.00 L 30.00,270.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,237.50 L 30.00,237.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,205.00 L 30.00,205.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,172.50 L 30.00,172.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,140.00 L 30.00,140.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,107.50 L 30.00,107.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,75.00 L 30.00,75.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,42.50 L 30.00,42.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 26.00,10.00 L 30.00,10.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="30.00" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 0</text>
+<text x="62.50" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 10</text>
+<text x="95.00" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 20</text>
+<text x="127.50" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 30</text>
+<text x="160.00" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 40</text>
+<text x="192.50" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 50</text>
+<text x="225.00" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 60</text>
+<text x="257.50" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 70</text>
+<text x="290.00" y="277.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> 80</text>
+<text x="23.00" y="270.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="23.00" y="237.50" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 10</text>
+<text x="23.00" y="205.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 20</text>
+<text x="23.00" y="172.50" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 30</text>
+<text x="23.00" y="140.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 40</text>
+<text x="23.00" y="107.50" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 50</text>
+<text x="23.00" y="75.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 60</text>
+<text x="23.00" y="42.50" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 70</text>
+<text x="23.00" y="10.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 80</text>
+<path d="M 30.00,270.00 L 290.00,10.00 " style="stroke: #7f7f7f; stroke-width: 0.25; fill: none;"/>
+<circle cx="46.25" cy="244.00" r="4.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="62.50" cy="240.75" r="5.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="7.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="10.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="85.25" cy="198.50" r="11.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="121.00" cy="182.25" r="11.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="13.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="14.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="14.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="134.00" cy="198.50" r="15.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="166.50" cy="123.75" r="16.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="169.75" cy="143.25" r="16.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="6.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="7.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="205.50" cy="36.00" r="8.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="208.75" cy="91.25" r="9.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="149.75" r="4.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="11.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="14.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="101.00" r="16.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="215.25" cy="94.50" r="17.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="225.00" cy="58.75" r="5.67" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="13.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="14.00" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="212.00" cy="104.25" r="15.33" style="stroke: #000000; stroke-width: 1.00; fill: #f97f72;"/>
+<circle cx="46.25" cy="244.00" r="4.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="62.50" cy="240.75" r="5.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="7.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="10.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="85.25" cy="198.50" r="11.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="121.00" cy="182.25" r="11.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="13.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="14.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="14.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="134.00" cy="198.50" r="15.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="166.50" cy="123.75" r="16.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="169.75" cy="143.25" r="16.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="6.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="7.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="205.50" cy="36.00" r="8.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="208.75" cy="91.25" r="9.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="149.75" r="4.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="11.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="14.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="101.00" r="16.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="215.25" cy="94.50" r="17.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="225.00" cy="58.75" r="5.67" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="13.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="14.00" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<circle cx="212.00" cy="104.25" r="15.33" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
 </svg>

@@ -55,16 +55,14 @@ import types
 import string
 
 #
-# UTILITY functions
-#
-# Used throughout.
+# UTILITY function(s)
 #
 def abort(str):
     print 'Abort! Reason: (%s)' % str
     exit(1)
 
 #
-# --class-- color
+# --class-- color IGNORE
 #
 # Separate class just to map color names to RGB values.
 # Not of general use.
@@ -252,6 +250,8 @@ class color:
                             self.__float_to_rgb(b))
 # END: class color
 
+# 
+# --class-- fontsize IGNORE
 #
 # A simple class to get font size information. The data is stripped
 # from a bunch of .afm files found on the "internet".
@@ -634,7 +634,10 @@ class fontsize:
         return total_width * size / 1000.0
 
 #
+# --class-- writer IGNORE
 #
+# Simple helper class to buffer commands and write output files.
+# Not of general use.
 #
 class writer:
     def __init__(self):
@@ -671,7 +674,10 @@ class writer:
         return
 
 #
-# class postscript_drawer
+# --class-- postscript_drawer IGNORE
+#
+# Low-level drawing commands for a postscript canvas.
+# Used by upper-level 'canvas' class to make eps plots.
 #
 class postscript_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
@@ -790,7 +796,7 @@ class postscript_drawer:
         return
 
     # postscript_drawer: newpath
-    def newpath(self):
+    def newpath(self, path_type=''):
         self.writer.out('np')
         return
 
@@ -933,6 +939,10 @@ class postscript_drawer:
                    str(start) + ' ' + str(end) + ' arc')
         return
 
+    # postscript_drawer: circle
+    def circle(self, x, y, radius):
+        self.arc(x, y, radius, 0, 360)
+
     # postscript_drawer: clip
     def clip(self):
         self.writer.out('clip')
@@ -979,7 +989,10 @@ class postscript_drawer:
         return
 
 #
-# Helper class to output proper PDF commands
+# --class-- pdf_drawer IGNORE
+#
+# Low-level drawing commands for a PDF canvas.
+# Used by upper-level 'canvas' class to make PDF plots.
 #
 class pdf_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
@@ -1155,6 +1168,42 @@ class pdf_drawer:
                     (x1, y1, x2, y2, x3, y3))
         return
 
+    # pdf_drawer: circle
+    def circle(self, x, y, radius):
+        # Have to assemble the circle from bezier curves(!)
+        # One good description of this is found here (URL over next 3 lines):
+        # http://stackoverflow.com/questions/1960786/
+        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
+        #   2007782#2007782
+        magic = radius * 0.552;
+        x0p, y0p = x - radius, y
+        self.moveto(x0p, y0p)
+
+        x0p, y0p = x - radius, y
+        x1, y1 = x0p, y0p + magic
+        x2, y2 = x0p + radius - magic, y0p + radius
+        x3, y3 = x0p + radius, y0p + radius
+        self.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = x, y + radius
+        x1, y1 = x0p + magic, y0p              
+        x2, y2 = x0p + radius, y0p - radius + magic
+        x3, y3 = x0p + radius, y0p - radius         
+        self.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = x + radius, y
+        x1, y1 = x0p, y0p - magic
+        x2, y2 = x0p - radius + magic, y0p - radius    
+        x3, y3 = x0p - radius, y0p - radius    
+        self.curveto(x1, y1, x2, y2, x3, y3)
+
+        x0p, y0p = x, y - radius
+        x1, y1 = x0p - magic, y0p
+        x2, y2 = x0p - radius, y0p + radius - magic   
+        x3, y3 = x0p - radius, y0p + radius    
+        self.curveto(x1, y1, x2, y2, x3, y3)
+        return
+
     # pdf_drawer: lineto
     def lineto(self, x, y):
         self.__out('%.2f %.2f l' % (float(x), float(y)))
@@ -1170,7 +1219,7 @@ class pdf_drawer:
         return
 
     # pdf_drawer: newpath
-    def newpath(self):
+    def newpath(self, path_type=''):
         # PDF has no "newpath" construct
         return
 
@@ -1282,7 +1331,10 @@ class pdf_drawer:
         return
 
 #
-# Helper class to output proper SVG commands
+# --class-- svg_drawer IGNORE
+#
+# Low-level drawing commands for an SVG canvas.
+# Used by upper-level 'canvas' class to make SVG plots.
 #
 class svg_drawer:
     def __init__(self, colors, fontinfo, default_font, writer,
@@ -1392,12 +1444,14 @@ class svg_drawer:
 
     # svg_drawer: setfillcolor
     def setfillcolor(self, value):
-        self.current_fillcolor = value
+        self.current_fillcolor = self.colors.get_as_hex(value)
+        # print 'setting FILL color', self.current_fillcolor
         return
 
     # svg_drawer: setlinecolor
     def setlinecolor(self, value):
-        self.current_linecolor = value
+        self.current_linecolor = self.colors.get_as_hex(value)
+        # print 'setting LINE color', self.current_linecolor
         return
 
     # svg_drawer: setlinewidth
@@ -1446,17 +1500,26 @@ class svg_drawer:
         return
 
     # svg_drawer: newpath
-    def newpath(self):
+    def newpath(self, path_type='line'):
         self.current_fill      = False
-        self.current_fillcolor = 'none'
+        self.current_fillcolor = 'black'
         self.current_linewidth = 1
         self.current_linecolor = 'black'
         self.current_linedash  = ''
         self.current_linecap   = ''
         self.current_linejoin  = ''
         self.current_pattern   = ''
+        self.path_type         = path_type
 
-        self.__out('<path d="')
+        if path_type == 'circle':
+            self.__out('<circle ')
+        else:
+            self.__out('<path d="')
+        return
+
+    def circle(self, x, y, radius):
+        self.__outnl('cx="%.2f" cy="%.2f" r="%.2f" ' % (x, self.__converty(y),
+                                                        radius))
         return
 
     # svg_drawer: fill
@@ -1484,7 +1547,8 @@ class svg_drawer:
 
     # svg_drawer: stroke
     def stroke(self):
-        self.__outnl('" ')
+        if self.path_type == 'line':
+            self.__outnl('" ')
         self.__outnl('style="')
         self.__outnl('stroke: %s; ' % self.getcolor(self.current_linecolor))
         self.__outnl('stroke-width: %.2f; ' % self.current_linewidth)
@@ -1494,7 +1558,10 @@ class svg_drawer:
             self.__outnl('stroke-linejoin: %s; ' % self.current_linejoin)
         if self.current_linecap != '':
             self.__outnl('stroke-linecap: %s; ' % self.current_linecap)
-        self.__outnl('fill: %s;' % self.current_fillcolor)
+        if self.current_fill:
+            self.__outnl('fill: %s;' % self.current_fillcolor)
+        else:
+            self.__outnl('fill: none;')
         self.__outnl('"')
         if self.current_pattern != '':
             self.__outnl(' clip-path="url(#%s)"' % self.current_pattern)
@@ -1575,6 +1642,8 @@ class svg_drawer:
 # --class-- canvas
 #
 # Use this to make a drawing surface of type eps, pdf, or svg (for now).
+# Most simple plots use a single canvas and one or more drawables to get
+# their work done. 
 #
 class canvas:
     def __init__(self,
@@ -1669,7 +1738,7 @@ class canvas:
         return self.fontinfo.get_string_width(font, fontsize, text)
 
     #
-    # color help
+    # Color help
     #
     def getcolor(self, value):
         return self.drawer.getcolor(value)
@@ -1780,16 +1849,16 @@ class canvas:
     # END: shape()
 
     #
-    # 
+    # Internal routine to make patterns in shapes (like polygons, or circles)
     #
-    def make_pattern(self,
-                     pattern_name = '',
-                     coord        = [],
-                     fillcolor    = 'black',
-                     fillstyle    = 'solid',
-                     fillsize     = 3,
-                     fillskip     = 4,
-                     ):
+    def __make_pattern(self,
+                       pattern_name = '',
+                       coord        = [],
+                       fillcolor    = 'black',
+                       fillstyle    = 'solid',
+                       fillsize     = 3,
+                       fillskip     = 4,
+                       ):
         drawer = self.drawer
         
         # bound box
@@ -1811,7 +1880,6 @@ class canvas:
 	    drawer.closepath()
 	    drawer.setfillcolor(fillcolor)
 	    drawer.fill()
-            # print 'XXX remember additional stroke command XXX'
             drawer.stroke()
             return
             
@@ -1977,9 +2045,9 @@ class canvas:
             while cx <= x2:
                 cy = y1
                 while cy <= y2:
-                    drawer.newpath()
-                    # drawer.setfillcolor(fillcolor)
-		    # drawer.circle(cx, cy, fillsize)
+                    drawer.newpath('circle')
+                    drawer.setfillcolor(fillcolor)
+		    drawer.circle(cx, cy, fillsize)
 		    drawer.fill()
                     drawer.setpattern(pattern_name)
 		    drawer.stroke()
@@ -2135,8 +2203,8 @@ class canvas:
     #
     # Internal routine to draw arrow head at end of line segment
     #
-    def __do_arrowhead(self, coords, closepath, arrowheadlength, arrowheadwidth,
-                   arrowlinecolor, arrowlinewidth, arrowfill, arrowfillcolor):
+    def __arrowhead(self, coords, closepath, arrowheadlength, arrowheadwidth,
+                    arrowlinecolor, arrowlinewidth, arrowfill, arrowfillcolor):
         c = len(coords)
         # start with last line segment of the line
         if closepath:
@@ -2248,13 +2316,13 @@ class canvas:
         drawer.grestore()
 
         if arrow:
-            self.__do_arrowhead(coords=coord, closepath=closepath,
-                                arrowheadlength=arrowheadlength,
-                                arrowheadwidth=arrowheadwidth,
-                                arrowlinecolor=arrowlinecolor,
-                                arrowlinewidth=arrowlinewidth,
-                                arrowfill=arrowfill,
-                                arrowfillcolor=arrowfillcolor)
+            self.__arrowhead(coords=coord, closepath=closepath,
+                             arrowheadlength=arrowheadlength,
+                             arrowheadwidth=arrowheadwidth,
+                             arrowlinecolor=arrowlinecolor,
+                             arrowlinewidth=arrowlinewidth,
+                             arrowfill=arrowfill,
+                             arrowfillcolor=arrowfillcolor)
         return
     # END: line()
 
@@ -2328,8 +2396,9 @@ class canvas:
                  fill, fillcolor, fillstyle, fillsize, fillskip):
         xc, yc = coord[0], coord[1]
         radius = float(radius)
-                             
+
         drawer.gsave()
+        drawer.newpath('circle')
         if linecolor != 'black':
             drawer.setlinecolor(linecolor)
         if linewidth != 0:
@@ -2339,38 +2408,7 @@ class canvas:
         if fill:
             drawer.setfillcolor(fillcolor)
 
-        # Have to assemble the circle from bezier curves(!)
-        # One good description of this is found here (URL over next 3 lines):
-        # http://stackoverflow.com/questions/1960786/
-        #   how-do-you-draw-filled-and-unfilled-circles-with-pdf-primitives/
-        #   2007782#2007782
-        magic = radius * 0.552;
-        x0p, y0p = xc - radius, yc
-        drawer.moveto(x0p, y0p)
-
-        x0p, y0p = xc - radius, yc
-        x1, y1 = x0p, y0p + magic
-        x2, y2 = x0p + radius - magic, y0p + radius
-        x3, y3 = x0p + radius, y0p + radius
-        drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc, yc + radius
-        x1, y1 = x0p + magic, y0p              
-        x2, y2 = x0p + radius, y0p - radius + magic
-        x3, y3 = x0p + radius, y0p - radius         
-        drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc + radius, yc
-        x1, y1 = x0p, y0p - magic
-        x2, y2 = x0p - radius + magic, y0p - radius    
-        x3, y3 = x0p - radius, y0p - radius    
-        drawer.curveto(x1, y1, x2, y2, x3, y3)
-
-        x0p, y0p = xc, yc - radius
-        x1, y1 = x0p - magic, y0p
-        x2, y2 = x0p - radius, y0p + radius - magic   
-        x3, y3 = x0p - radius, y0p + radius    
-        drawer.curveto(x1, y1, x2, y2, x3, y3)
+        drawer.circle(xc, yc, radius)
         
         if fill:
             drawer.fill()
@@ -2428,6 +2466,7 @@ class canvas:
                           fill, bgcolor, 'solid', 0, 0)
         if fill:
             # CLIP HERE
+            # XXX
             # PATTERN HERE
             self.__circle(drawer, coord, radius, linecolor, 0, 0,
                           fill, fillcolor, fillstyle, fillsize, fillskip)
@@ -2547,20 +2586,17 @@ class canvas:
                     if coord[p][1] > ymax:
                         ymax = coord[p][1]
 
-                self.make_pattern(pattern_name=pattern_name, coord=[[xmin,ymin],[xmax,ymax]],
-                                  fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize,
-                                  fillskip=fillskip)
+                self.__make_pattern(pattern_name=pattern_name, coord=[[xmin,ymin],[xmax,ymax]],
+                                    fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize,
+                                    fillskip=fillskip)
                 self.drawer.grestore()
         if linewidth != 0:
             self.__polygon(coord=coord, linecolor=linecolor, linewidth=linewidth,
                            linecap=linecap, linejoin=linejoin, linedash=linedash,
                            fill=False, fillcolor='', fillstyle='', fillsize=0, fillskip=0)
         return
-
 #END: class canvas        
         
-
-
 #
 # general canvas factory
 #
@@ -2576,6 +2612,10 @@ def make_canvas(canvas_type='eps', title='default', dimensions=['3in','2in'],
         abort('canvas type [%s] not supported' % canvas)
     return
 
+#
+# For backwards compatability, we provide these as well.
+# (they used to be separate classes; now all handled by unified 'canvas' class)
+# 
 def postscript(title='default', dimensions=['3in','2in'],
                font='Helvetica', verbose=False, script=__file__):
     title_parts = title.split('.')

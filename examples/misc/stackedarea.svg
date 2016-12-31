@@ -1,85 +1,122 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
-<!-- <img width="324.00" height="216.00" src="stackedarea.svg"> -->
+<!-- <img width="324.00" height="216.00" src="stackedarea"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="324.00" height="216.00">
 <defs>
-
-
 </defs>
-<polygon points="36.00,180.00 36.00,41.04 64.00,59.04 64.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="64.00,180.00 64.00,59.04 92.00,28.08 92.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="92.00,180.00 92.00,28.08 120.00,81.36 120.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="120.00,180.00 120.00,81.36 148.00,67.68 148.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="148.00,180.00 148.00,67.68 176.00,41.04 176.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="176.00,180.00 176.00,41.04 204.00,59.04 204.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="204.00,180.00 204.00,59.04 232.00,28.08 232.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="232.00,180.00 232.00,28.08 260.00,81.36 260.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="260.00,180.00 260.00,81.36 288.00,67.68 288.00,180.00 " stroke="#99cc99" stroke-width="0.1" fill="#99cc99" ></polygon>
-<polygon points="36.00,180.00 36.00,51.12 64.00,65.52 64.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="64.00,180.00 64.00,65.52 92.00,37.44 92.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="92.00,180.00 92.00,37.44 120.00,89.28 120.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="120.00,180.00 120.00,89.28 148.00,72.00 148.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="148.00,180.00 148.00,72.00 176.00,51.12 176.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="176.00,180.00 176.00,51.12 204.00,65.52 204.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="204.00,180.00 204.00,65.52 232.00,37.44 232.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="232.00,180.00 232.00,37.44 260.00,89.28 260.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="260.00,180.00 260.00,89.28 288.00,72.00 288.00,180.00 " stroke="#ffe599" stroke-width="0.1" fill="#ffe599" ></polygon>
-<polygon points="36.00,180.00 36.00,111.60 64.00,111.60 64.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="64.00,180.00 64.00,111.60 92.00,103.68 92.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="92.00,180.00 92.00,103.68 120.00,144.00 120.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="120.00,180.00 120.00,144.00 148.00,120.96 148.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="148.00,180.00 148.00,120.96 176.00,111.60 176.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="176.00,180.00 176.00,111.60 204.00,111.60 204.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="204.00,180.00 204.00,111.60 232.00,103.68 232.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="232.00,180.00 232.00,103.68 260.00,144.00 260.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="260.00,180.00 260.00,144.00 288.00,120.96 288.00,180.00 " stroke="#afe0e5" stroke-width="0.1" fill="#afe0e5" ></polygon>
-<polygon points="36.00,180.00 36.00,125.28 64.00,120.24 64.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="64.00,180.00 64.00,120.24 92.00,111.60 92.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="92.00,180.00 92.00,111.60 120.00,149.76 120.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="120.00,180.00 120.00,149.76 148.00,130.32 148.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="148.00,180.00 148.00,130.32 176.00,125.28 176.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="176.00,180.00 176.00,125.28 204.00,120.24 204.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="204.00,180.00 204.00,120.24 232.00,111.60 232.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="232.00,180.00 232.00,111.60 260.00,149.76 260.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<polygon points="260.00,180.00 260.00,149.76 288.00,130.32 288.00,180.00 " stroke="#ffa500" stroke-width="0.1" fill="#ffa500" ></polygon>
-<path d="M 35.50,180.00 L 288.50,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,180.50 L 36.00,35.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,184.00 L 36.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 64.00,184.00 L 64.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 92.00,184.00 L 92.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 120.00,184.00 L 120.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 148.00,184.00 L 148.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 176.00,184.00 L 176.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 204.00,184.00 L 204.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 232.00,184.00 L 232.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 260.00,184.00 L 260.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 288.00,184.00 L 288.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,180.00 L 36.00,180.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,144.00 L 36.00,144.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,108.00 L 36.00,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,72.00 L 36.00,72.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,36.00 L 36.00,36.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="36.00" y="187.00" transform="rotate(-90.00 36.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 3</text>
-<text x="64.00" y="187.00" transform="rotate(-90.00 64.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 4</text>
-<text x="92.00" y="187.00" transform="rotate(-90.00 92.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 5</text>
-<text x="120.00" y="187.00" transform="rotate(-90.00 120.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 6</text>
-<text x="148.00" y="187.00" transform="rotate(-90.00 148.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 7</text>
-<text x="176.00" y="187.00" transform="rotate(-90.00 176.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 8</text>
-<text x="204.00" y="187.00" transform="rotate(-90.00 204.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 9</text>
-<text x="232.00" y="187.00" transform="rotate(-90.00 232.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 10</text>
-<text x="260.00" y="187.00" transform="rotate(-90.00 260.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 11</text>
-<text x="288.00" y="187.00" transform="rotate(-90.00 288.00,187.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> Test 12</text>
-<text x="29.00" y="180.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
-<text x="29.00" y="144.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 50</text>
-<text x="29.00" y="108.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 100</text>
-<text x="29.00" y="72.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 150</text>
-<text x="29.00" y="36.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 200</text>
-<rect x="50.00" y="5.80" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#99cc99" ></rect>
-<text x="64.00" y="10.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> pacific</text>
-<rect x="110.00" y="5.80" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#ffe599" ></rect>
-<text x="124.00" y="10.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> mountain</text>
-<rect x="170.00" y="5.80" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#afe0e5" ></rect>
-<text x="184.00" y="10.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> central</text>
-<rect x="230.00" y="5.80" height="10.00" width="10.00" stroke="#000000" stroke-width="0.5" fill="#ffa500" ></rect>
-<text x="244.00" y="10.80" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> eastern</text>
+<path d="M 36.00,180.00 L 36.00,41.04 L 64.00,59.04 L 64.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 36.00,180.00 L 36.00,41.04 L 64.00,59.04 L 64.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 64.00,180.00 L 64.00,59.04 L 92.00,28.08 L 92.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 64.00,180.00 L 64.00,59.04 L 92.00,28.08 L 92.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 92.00,180.00 L 92.00,28.08 L 120.00,81.36 L 120.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 92.00,180.00 L 92.00,28.08 L 120.00,81.36 L 120.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 120.00,180.00 L 120.00,81.36 L 148.00,67.68 L 148.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 120.00,180.00 L 120.00,81.36 L 148.00,67.68 L 148.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 148.00,180.00 L 148.00,67.68 L 176.00,41.04 L 176.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 148.00,180.00 L 148.00,67.68 L 176.00,41.04 L 176.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 176.00,180.00 L 176.00,41.04 L 204.00,59.04 L 204.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 176.00,180.00 L 176.00,41.04 L 204.00,59.04 L 204.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 204.00,180.00 L 204.00,59.04 L 232.00,28.08 L 232.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 204.00,180.00 L 204.00,59.04 L 232.00,28.08 L 232.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 232.00,180.00 L 232.00,28.08 L 260.00,81.36 L 260.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 232.00,180.00 L 232.00,28.08 L 260.00,81.36 L 260.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 260.00,180.00 L 260.00,81.36 L 288.00,67.68 L 288.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: #99cc99;"/>
+<path d="M 260.00,180.00 L 260.00,81.36 L 288.00,67.68 L 288.00,180.00 Z" style="stroke: #99cc99; stroke-width: 0.10; fill: none;"/>
+<path d="M 36.00,180.00 L 36.00,51.12 L 64.00,65.52 L 64.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 36.00,180.00 L 36.00,51.12 L 64.00,65.52 L 64.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 64.00,180.00 L 64.00,65.52 L 92.00,37.44 L 92.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 64.00,180.00 L 64.00,65.52 L 92.00,37.44 L 92.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 92.00,180.00 L 92.00,37.44 L 120.00,89.28 L 120.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 92.00,180.00 L 92.00,37.44 L 120.00,89.28 L 120.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 120.00,180.00 L 120.00,89.28 L 148.00,72.00 L 148.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 120.00,180.00 L 120.00,89.28 L 148.00,72.00 L 148.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 148.00,180.00 L 148.00,72.00 L 176.00,51.12 L 176.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 148.00,180.00 L 148.00,72.00 L 176.00,51.12 L 176.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 176.00,180.00 L 176.00,51.12 L 204.00,65.52 L 204.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 176.00,180.00 L 176.00,51.12 L 204.00,65.52 L 204.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 204.00,180.00 L 204.00,65.52 L 232.00,37.44 L 232.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 204.00,180.00 L 204.00,65.52 L 232.00,37.44 L 232.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 232.00,180.00 L 232.00,37.44 L 260.00,89.28 L 260.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 232.00,180.00 L 232.00,37.44 L 260.00,89.28 L 260.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 260.00,180.00 L 260.00,89.28 L 288.00,72.00 L 288.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: #ffe599;"/>
+<path d="M 260.00,180.00 L 260.00,89.28 L 288.00,72.00 L 288.00,180.00 Z" style="stroke: #ffe599; stroke-width: 0.10; fill: none;"/>
+<path d="M 36.00,180.00 L 36.00,111.60 L 64.00,111.60 L 64.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 36.00,180.00 L 36.00,111.60 L 64.00,111.60 L 64.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 64.00,180.00 L 64.00,111.60 L 92.00,103.68 L 92.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 64.00,180.00 L 64.00,111.60 L 92.00,103.68 L 92.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 92.00,180.00 L 92.00,103.68 L 120.00,144.00 L 120.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 92.00,180.00 L 92.00,103.68 L 120.00,144.00 L 120.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 120.00,180.00 L 120.00,144.00 L 148.00,120.96 L 148.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 120.00,180.00 L 120.00,144.00 L 148.00,120.96 L 148.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 148.00,180.00 L 148.00,120.96 L 176.00,111.60 L 176.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 148.00,180.00 L 148.00,120.96 L 176.00,111.60 L 176.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 176.00,180.00 L 176.00,111.60 L 204.00,111.60 L 204.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 176.00,180.00 L 176.00,111.60 L 204.00,111.60 L 204.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 204.00,180.00 L 204.00,111.60 L 232.00,103.68 L 232.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 204.00,180.00 L 204.00,111.60 L 232.00,103.68 L 232.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 232.00,180.00 L 232.00,103.68 L 260.00,144.00 L 260.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 232.00,180.00 L 232.00,103.68 L 260.00,144.00 L 260.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 260.00,180.00 L 260.00,144.00 L 288.00,120.96 L 288.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: #afe0e5;"/>
+<path d="M 260.00,180.00 L 260.00,144.00 L 288.00,120.96 L 288.00,180.00 Z" style="stroke: #afe0e5; stroke-width: 0.10; fill: none;"/>
+<path d="M 36.00,180.00 L 36.00,125.28 L 64.00,120.24 L 64.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 36.00,180.00 L 36.00,125.28 L 64.00,120.24 L 64.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 64.00,180.00 L 64.00,120.24 L 92.00,111.60 L 92.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 64.00,180.00 L 64.00,120.24 L 92.00,111.60 L 92.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 92.00,180.00 L 92.00,111.60 L 120.00,149.76 L 120.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 92.00,180.00 L 92.00,111.60 L 120.00,149.76 L 120.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 120.00,180.00 L 120.00,149.76 L 148.00,130.32 L 148.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 120.00,180.00 L 120.00,149.76 L 148.00,130.32 L 148.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 148.00,180.00 L 148.00,130.32 L 176.00,125.28 L 176.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 148.00,180.00 L 148.00,130.32 L 176.00,125.28 L 176.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 176.00,180.00 L 176.00,125.28 L 204.00,120.24 L 204.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 176.00,180.00 L 176.00,125.28 L 204.00,120.24 L 204.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 204.00,180.00 L 204.00,120.24 L 232.00,111.60 L 232.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 204.00,180.00 L 204.00,120.24 L 232.00,111.60 L 232.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 232.00,180.00 L 232.00,111.60 L 260.00,149.76 L 260.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 232.00,180.00 L 232.00,111.60 L 260.00,149.76 L 260.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 260.00,180.00 L 260.00,149.76 L 288.00,130.32 L 288.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: #ffa500;"/>
+<path d="M 260.00,180.00 L 260.00,149.76 L 288.00,130.32 L 288.00,180.00 Z" style="stroke: #ffa500; stroke-width: 0.10; fill: none;"/>
+<path d="M 35.50,180.00 L 288.50,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,180.50 L 36.00,35.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,184.00 L 36.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 64.00,184.00 L 64.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 92.00,184.00 L 92.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 120.00,184.00 L 120.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 148.00,184.00 L 148.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 176.00,184.00 L 176.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 204.00,184.00 L 204.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 232.00,184.00 L 232.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 260.00,184.00 L 260.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 288.00,184.00 L 288.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,180.00 L 36.00,180.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,144.00 L 36.00,144.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,108.00 L 36.00,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,72.00 L 36.00,72.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,36.00 L 36.00,36.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="36.00" y="187.00" transform="rotate(-90.00 36.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 3</text>
+<text x="64.00" y="187.00" transform="rotate(-90.00 64.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 4</text>
+<text x="92.00" y="187.00" transform="rotate(-90.00 92.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 5</text>
+<text x="120.00" y="187.00" transform="rotate(-90.00 120.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 6</text>
+<text x="148.00" y="187.00" transform="rotate(-90.00 148.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 7</text>
+<text x="176.00" y="187.00" transform="rotate(-90.00 176.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 8</text>
+<text x="204.00" y="187.00" transform="rotate(-90.00 204.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 9</text>
+<text x="232.00" y="187.00" transform="rotate(-90.00 232.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 10</text>
+<text x="260.00" y="187.00" transform="rotate(-90.00 260.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 11</text>
+<text x="288.00" y="187.00" transform="rotate(-90.00 288.00,187.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> Test 12</text>
+<text x="29.00" y="180.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="29.00" y="144.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 50</text>
+<text x="29.00" y="108.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 100</text>
+<text x="29.00" y="72.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 150</text>
+<text x="29.00" y="36.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 200</text>
+<path d="M 50.00,15.80 L 50.00,5.80 L 60.00,5.80 L 60.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: #99cc99;"/>
+<path d="M 50.00,15.80 L 50.00,5.80 L 60.00,5.80 L 60.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<text x="64.00" y="10.80" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> pacific</text>
+<path d="M 110.00,15.80 L 110.00,5.80 L 120.00,5.80 L 120.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffe599;"/>
+<path d="M 110.00,15.80 L 110.00,5.80 L 120.00,5.80 L 120.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<text x="124.00" y="10.80" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> mountain</text>
+<path d="M 170.00,15.80 L 170.00,5.80 L 180.00,5.80 L 180.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: #afe0e5;"/>
+<path d="M 170.00,15.80 L 170.00,5.80 L 180.00,5.80 L 180.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<text x="184.00" y="10.80" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> central</text>
+<path d="M 230.00,15.80 L 230.00,5.80 L 240.00,5.80 L 240.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ffa500;"/>
+<path d="M 230.00,15.80 L 230.00,5.80 L 240.00,5.80 L 240.00,15.80 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<text x="244.00" y="10.80" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> eastern</text>
 </svg>

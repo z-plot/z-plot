@@ -1,0 +1,293 @@
+<!-- Include into html file with following line: -->
+<!-- <img width="335.00" height="40.00" src="example-pattern"> -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="335.00" height="40.00">
+<defs>
+<clipPath id="zplot_pattern_0"> <polyline points="35.00,25.00 35.00,5.00 55.00,5.00 55.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <polyline points="65.00,25.00 65.00,5.00 85.00,5.00 85.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <polyline points="95.00,25.00 95.00,5.00 115.00,5.00 115.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <polyline points="125.00,25.00 125.00,5.00 145.00,5.00 145.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <polyline points="155.00,25.00 155.00,5.00 175.00,5.00 175.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <polyline points="185.00,25.00 185.00,5.00 205.00,5.00 205.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_6"> <polyline points="215.00,25.00 215.00,5.00 235.00,5.00 235.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_7"> <polyline points="245.00,25.00 245.00,5.00 265.00,5.00 265.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_8"> <polyline points="275.00,25.00 275.00,5.00 295.00,5.00 295.00,25.00"/> </clipPath>
+<clipPath id="zplot_pattern_9"> <polyline points="305.00,25.00 305.00,5.00 325.00,5.00 325.00,25.00"/> </clipPath>
+</defs>
+<text x="15.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> solid</text>
+<path d="M 5.00,25.00 L 5.00,5.00 L 25.00,5.00 L 25.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: black;"/>
+<path d="M 5.00,25.00 L 5.00,5.00 L 25.00,5.00 L 25.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="45.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> hline</text>
+<path d="M 25.00,35.00 L 25.00,33.00 L 65.00,33.00 L 65.00,35.00 L 25.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,29.00 L 25.00,27.00 L 65.00,27.00 L 65.00,29.00 L 25.00,29.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,23.00 L 25.00,21.00 L 65.00,21.00 L 65.00,23.00 L 25.00,23.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,17.00 L 25.00,15.00 L 65.00,15.00 L 65.00,17.00 L 25.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,11.00 L 25.00,9.00 L 65.00,9.00 L 65.00,11.00 L 25.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,5.00 L 25.00,3.00 L 65.00,3.00 L 65.00,5.00 L 25.00,5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 25.00,-1.00 L 25.00,-3.00 L 65.00,-3.00 L 65.00,-1.00 L 25.00,-1.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_0)"/>
+<path d="M 35.00,25.00 L 35.00,5.00 L 55.00,5.00 L 55.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="75.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> vline</text>
+<path d="M 55.00,35.00 L 55.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 61.00,35.00 L 61.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 67.00,35.00 L 67.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 73.00,35.00 L 73.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 79.00,35.00 L 79.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 85.00,35.00 L 85.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 91.00,35.00 L 91.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_1)"/>
+<path d="M 65.00,25.00 L 65.00,5.00 L 85.00,5.00 L 85.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="105.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> hvline</text>
+<path d="M 85.00,35.00 L 85.00,33.00 L 125.00,33.00 L 125.00,35.00 L 85.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,29.00 L 85.00,27.00 L 125.00,27.00 L 125.00,29.00 L 85.00,29.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,23.00 L 85.00,21.00 L 125.00,21.00 L 125.00,23.00 L 85.00,23.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,17.00 L 85.00,15.00 L 125.00,15.00 L 125.00,17.00 L 85.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,11.00 L 85.00,9.00 L 125.00,9.00 L 125.00,11.00 L 85.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,5.00 L 85.00,3.00 L 125.00,3.00 L 125.00,5.00 L 85.00,5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,-1.00 L 85.00,-3.00 L 125.00,-3.00 L 125.00,-1.00 L 85.00,-1.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 85.00,35.00 L 85.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 91.00,35.00 L 91.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 97.00,35.00 L 97.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 103.00,35.00 L 103.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 109.00,35.00 L 109.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 115.00,35.00 L 115.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 121.00,35.00 L 121.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_2)"/>
+<path d="M 95.00,25.00 L 95.00,5.00 L 115.00,5.00 L 115.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="135.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> dline1</text>
+<path d="M 115.00,35.00 L 155.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,29.00 L 155.00,-11.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,23.00 L 155.00,-17.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,17.00 L 155.00,-23.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,11.00 L 155.00,-29.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,5.00 L 155.00,-35.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,-1.00 L 155.00,-41.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 115.00,35.00 L 155.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 121.00,35.00 L 161.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 127.00,35.00 L 167.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 133.00,35.00 L 173.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 139.00,35.00 L 179.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 145.00,35.00 L 185.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 151.00,35.00 L 191.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_3)"/>
+<path d="M 125.00,25.00 L 125.00,5.00 L 145.00,5.00 L 145.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="165.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> dline2</text>
+<path d="M 185.00,35.00 L 145.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,29.00 L 145.00,-11.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,23.00 L 145.00,-17.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,17.00 L 145.00,-23.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,11.00 L 145.00,-29.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,5.00 L 145.00,-35.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,-1.00 L 145.00,-41.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 185.00,35.00 L 145.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 179.00,35.00 L 139.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 173.00,35.00 L 133.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 167.00,35.00 L 127.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 161.00,35.00 L 121.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 155.00,35.00 L 115.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 149.00,35.00 L 109.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_4)"/>
+<path d="M 155.00,25.00 L 155.00,5.00 L 175.00,5.00 L 175.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="195.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> dline12</text>
+<path d="M 175.00,35.00 L 215.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,29.00 L 215.00,-11.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,23.00 L 215.00,-17.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,17.00 L 215.00,-23.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,11.00 L 215.00,-29.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,5.00 L 215.00,-35.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,-1.00 L 215.00,-41.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 175.00,35.00 L 215.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 181.00,35.00 L 221.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 187.00,35.00 L 227.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 193.00,35.00 L 233.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 199.00,35.00 L 239.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 205.00,35.00 L 245.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 211.00,35.00 L 251.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,35.00 L 175.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,29.00 L 175.00,-11.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,23.00 L 175.00,-17.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,17.00 L 175.00,-23.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,11.00 L 175.00,-29.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,5.00 L 175.00,-35.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,-1.00 L 175.00,-41.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 215.00,35.00 L 175.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 209.00,35.00 L 169.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 203.00,35.00 L 163.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 197.00,35.00 L 157.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 191.00,35.00 L 151.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 185.00,35.00 L 145.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 179.00,35.00 L 139.00,-5.00 " style="stroke: #000000; stroke-width: 2.00; fill: none;" clip-path="url(#zplot_pattern_5)"/>
+<path d="M 185.00,25.00 L 185.00,5.00 L 205.00,5.00 L 205.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="225.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> circle</text>
+<circle cx="205.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="205.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="211.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="217.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="223.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="229.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="235.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="35.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="29.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="23.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="17.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="11.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="5.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<circle cx="241.00" cy="-1.00" r="2.00" style="stroke: #000000; stroke-width: 1.00; fill: #000000;" clip-path="url(#zplot_pattern_6)"/>
+<path d="M 215.00,25.00 L 215.00,5.00 L 235.00,5.00 L 235.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="255.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> square</text>
+<path d="M 235.00,35.00 L 235.00,33.00 L 237.00,33.00 L 237.00,35.00 L 235.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,29.00 L 235.00,27.00 L 237.00,27.00 L 237.00,29.00 L 235.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,23.00 L 235.00,21.00 L 237.00,21.00 L 237.00,23.00 L 235.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,17.00 L 235.00,15.00 L 237.00,15.00 L 237.00,17.00 L 235.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,11.00 L 235.00,9.00 L 237.00,9.00 L 237.00,11.00 L 235.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,5.00 L 235.00,3.00 L 237.00,3.00 L 237.00,5.00 L 235.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 235.00,-1.00 L 235.00,-3.00 L 237.00,-3.00 L 237.00,-1.00 L 235.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,35.00 L 241.00,33.00 L 243.00,33.00 L 243.00,35.00 L 241.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,29.00 L 241.00,27.00 L 243.00,27.00 L 243.00,29.00 L 241.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,23.00 L 241.00,21.00 L 243.00,21.00 L 243.00,23.00 L 241.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,17.00 L 241.00,15.00 L 243.00,15.00 L 243.00,17.00 L 241.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,11.00 L 241.00,9.00 L 243.00,9.00 L 243.00,11.00 L 241.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,5.00 L 241.00,3.00 L 243.00,3.00 L 243.00,5.00 L 241.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 241.00,-1.00 L 241.00,-3.00 L 243.00,-3.00 L 243.00,-1.00 L 241.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,35.00 L 247.00,33.00 L 249.00,33.00 L 249.00,35.00 L 247.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,29.00 L 247.00,27.00 L 249.00,27.00 L 249.00,29.00 L 247.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,23.00 L 247.00,21.00 L 249.00,21.00 L 249.00,23.00 L 247.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,17.00 L 247.00,15.00 L 249.00,15.00 L 249.00,17.00 L 247.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,11.00 L 247.00,9.00 L 249.00,9.00 L 249.00,11.00 L 247.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,5.00 L 247.00,3.00 L 249.00,3.00 L 249.00,5.00 L 247.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 247.00,-1.00 L 247.00,-3.00 L 249.00,-3.00 L 249.00,-1.00 L 247.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,35.00 L 253.00,33.00 L 255.00,33.00 L 255.00,35.00 L 253.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,29.00 L 253.00,27.00 L 255.00,27.00 L 255.00,29.00 L 253.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,23.00 L 253.00,21.00 L 255.00,21.00 L 255.00,23.00 L 253.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,17.00 L 253.00,15.00 L 255.00,15.00 L 255.00,17.00 L 253.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,11.00 L 253.00,9.00 L 255.00,9.00 L 255.00,11.00 L 253.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,5.00 L 253.00,3.00 L 255.00,3.00 L 255.00,5.00 L 253.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 253.00,-1.00 L 253.00,-3.00 L 255.00,-3.00 L 255.00,-1.00 L 253.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,35.00 L 259.00,33.00 L 261.00,33.00 L 261.00,35.00 L 259.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,29.00 L 259.00,27.00 L 261.00,27.00 L 261.00,29.00 L 259.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,23.00 L 259.00,21.00 L 261.00,21.00 L 261.00,23.00 L 259.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,17.00 L 259.00,15.00 L 261.00,15.00 L 261.00,17.00 L 259.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,11.00 L 259.00,9.00 L 261.00,9.00 L 261.00,11.00 L 259.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,5.00 L 259.00,3.00 L 261.00,3.00 L 261.00,5.00 L 259.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 259.00,-1.00 L 259.00,-3.00 L 261.00,-3.00 L 261.00,-1.00 L 259.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,35.00 L 265.00,33.00 L 267.00,33.00 L 267.00,35.00 L 265.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,29.00 L 265.00,27.00 L 267.00,27.00 L 267.00,29.00 L 265.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,23.00 L 265.00,21.00 L 267.00,21.00 L 267.00,23.00 L 265.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,17.00 L 265.00,15.00 L 267.00,15.00 L 267.00,17.00 L 265.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,11.00 L 265.00,9.00 L 267.00,9.00 L 267.00,11.00 L 265.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,5.00 L 265.00,3.00 L 267.00,3.00 L 267.00,5.00 L 265.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 265.00,-1.00 L 265.00,-3.00 L 267.00,-3.00 L 267.00,-1.00 L 265.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,35.00 L 271.00,33.00 L 273.00,33.00 L 273.00,35.00 L 271.00,35.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,29.00 L 271.00,27.00 L 273.00,27.00 L 273.00,29.00 L 271.00,29.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,23.00 L 271.00,21.00 L 273.00,21.00 L 273.00,23.00 L 271.00,23.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,17.00 L 271.00,15.00 L 273.00,15.00 L 273.00,17.00 L 271.00,17.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,11.00 L 271.00,9.00 L 273.00,9.00 L 273.00,11.00 L 271.00,11.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,5.00 L 271.00,3.00 L 273.00,3.00 L 273.00,5.00 L 271.00,5.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 271.00,-1.00 L 271.00,-3.00 L 273.00,-3.00 L 273.00,-1.00 L 271.00,-1.00 " style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_7)"/>
+<path d="M 245.00,25.00 L 245.00,5.00 L 265.00,5.00 L 265.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="285.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> triangle</text>
+<path d="M 263.00,35.00 L 267.00,35.00 L 265.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 263.00,28.00 L 267.00,28.00 L 265.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 263.00,21.00 L 267.00,21.00 L 265.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 263.00,14.00 L 267.00,14.00 L 265.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 263.00,7.00 L 267.00,7.00 L 265.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 263.00,0.00 L 267.00,0.00 L 265.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,35.00 L 274.00,35.00 L 272.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,28.00 L 274.00,28.00 L 272.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,21.00 L 274.00,21.00 L 272.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,14.00 L 274.00,14.00 L 272.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,7.00 L 274.00,7.00 L 272.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 270.00,0.00 L 274.00,0.00 L 272.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,35.00 L 281.00,35.00 L 279.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,28.00 L 281.00,28.00 L 279.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,21.00 L 281.00,21.00 L 279.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,14.00 L 281.00,14.00 L 279.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,7.00 L 281.00,7.00 L 279.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 277.00,0.00 L 281.00,0.00 L 279.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,35.00 L 288.00,35.00 L 286.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,28.00 L 288.00,28.00 L 286.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,21.00 L 288.00,21.00 L 286.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,14.00 L 288.00,14.00 L 286.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,7.00 L 288.00,7.00 L 286.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 284.00,0.00 L 288.00,0.00 L 286.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,35.00 L 295.00,35.00 L 293.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,28.00 L 295.00,28.00 L 293.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,21.00 L 295.00,21.00 L 293.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,14.00 L 295.00,14.00 L 293.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,7.00 L 295.00,7.00 L 293.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 291.00,0.00 L 295.00,0.00 L 293.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,35.00 L 302.00,35.00 L 300.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,28.00 L 302.00,28.00 L 300.00,24.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,21.00 L 302.00,21.00 L 300.00,17.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,14.00 L 302.00,14.00 L 300.00,10.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,7.00 L 302.00,7.00 L 300.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 298.00,0.00 L 302.00,0.00 L 300.00,-4.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_8)"/>
+<path d="M 275.00,25.00 L 275.00,5.00 L 295.00,5.00 L 295.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="315.00" y="29.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: hanging; "> utriangle</text>
+<path d="M 293.00,31.00 L 297.00,31.00 L 295.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 293.00,23.00 L 297.00,23.00 L 295.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 293.00,15.00 L 297.00,15.00 L 295.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 293.00,7.00 L 297.00,7.00 L 295.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 293.00,-1.00 L 297.00,-1.00 L 295.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 293.00,-9.00 L 297.00,-9.00 L 295.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,31.00 L 304.00,31.00 L 302.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,23.00 L 304.00,23.00 L 302.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,15.00 L 304.00,15.00 L 302.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,7.00 L 304.00,7.00 L 302.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,-1.00 L 304.00,-1.00 L 302.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 300.00,-9.00 L 304.00,-9.00 L 302.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,31.00 L 311.00,31.00 L 309.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,23.00 L 311.00,23.00 L 309.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,15.00 L 311.00,15.00 L 309.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,7.00 L 311.00,7.00 L 309.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,-1.00 L 311.00,-1.00 L 309.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 307.00,-9.00 L 311.00,-9.00 L 309.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,31.00 L 318.00,31.00 L 316.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,23.00 L 318.00,23.00 L 316.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,15.00 L 318.00,15.00 L 316.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,7.00 L 318.00,7.00 L 316.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,-1.00 L 318.00,-1.00 L 316.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 314.00,-9.00 L 318.00,-9.00 L 316.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,31.00 L 325.00,31.00 L 323.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,23.00 L 325.00,23.00 L 323.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,15.00 L 325.00,15.00 L 323.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,7.00 L 325.00,7.00 L 323.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,-1.00 L 325.00,-1.00 L 323.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 321.00,-9.00 L 325.00,-9.00 L 323.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,31.00 L 332.00,31.00 L 330.00,35.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,23.00 L 332.00,23.00 L 330.00,27.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,15.00 L 332.00,15.00 L 330.00,19.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,7.00 L 332.00,7.00 L 330.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,-1.00 L 332.00,-1.00 L 330.00,3.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 328.00,-9.00 L 332.00,-9.00 L 330.00,-5.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #000000;" clip-path="url(#zplot_pattern_9)"/>
+<path d="M 305.00,25.00 L 305.00,5.00 L 325.00,5.00 L 325.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+</svg>

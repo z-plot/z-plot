@@ -1,161 +1,158 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
-<!-- <img width="400.00" height="340.00" src="devol.svg"> -->
+<!-- <img width="400.00" height="340.00" src="devol"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400.00" height="340.00">
 <defs>
-
-
 </defs>
-<path d="M 40.00,300.00 L 40.00,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 52.96,300.00 L 52.96,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 65.93,300.00 L 65.93,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 78.89,300.00 L 78.89,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 91.85,300.00 L 91.85,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 104.81,300.00 L 104.81,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 117.78,300.00 L 117.78,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 130.74,300.00 L 130.74,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 143.70,300.00 L 143.70,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 156.67,300.00 L 156.67,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 169.63,300.00 L 169.63,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 182.59,300.00 L 182.59,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 195.56,300.00 L 195.56,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 208.52,300.00 L 208.52,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 221.48,300.00 L 221.48,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 234.44,300.00 L 234.44,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 247.41,300.00 L 247.41,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 260.37,300.00 L 260.37,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 273.33,300.00 L 273.33,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 286.30,300.00 L 286.30,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 299.26,300.00 L 299.26,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 312.22,300.00 L 312.22,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 325.19,300.00 L 325.19,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 338.15,300.00 L 338.15,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 351.11,300.00 L 351.11,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 364.07,300.00 L 364.07,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 377.04,300.00 L 377.04,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 390.00,300.00 L 390.00,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,300.00 L 390.00,300.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,273.00 L 390.00,273.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,246.00 L 390.00,246.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,219.00 L 390.00,219.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,192.00 L 390.00,192.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,165.00 L 390.00,165.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,138.00 L 390.00,138.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,111.00 L 390.00,111.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,84.00 L 390.00,84.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,57.00 L 390.00,57.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,30.00 L 390.00,30.00 " stroke="#d3d3d3" stroke-width="0.50px" fill="none" ></path>
-<path d="M 40.00,300.50 L 40.00,29.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,300.00 L 40.00,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,273.00 L 40.00,273.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,246.00 L 40.00,246.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,219.00 L 40.00,219.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,192.00 L 40.00,192.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,165.00 L 40.00,165.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,138.00 L 40.00,138.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,111.00 L 40.00,111.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,84.00 L 40.00,84.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,57.00 L 40.00,57.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,30.00 L 40.00,30.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="33.00" y="300.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
-<text x="33.00" y="273.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 200</text>
-<text x="33.00" y="246.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 400</text>
-<text x="33.00" y="219.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 600</text>
-<text x="33.00" y="192.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 800</text>
-<text x="33.00" y="165.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 1000</text>
-<text x="33.00" y="138.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 1200</text>
-<text x="33.00" y="111.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 1400</text>
-<text x="33.00" y="84.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 1600</text>
-<text x="33.00" y="57.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 1800</text>
-<text x="33.00" y="30.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 2000</text>
-<path d="M 39.50,300.00 L 390.50,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 52.96,304.00 L 52.96,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 65.93,304.00 L 65.93,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 78.89,304.00 L 78.89,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 91.85,304.00 L 91.85,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 104.81,304.00 L 104.81,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 117.78,304.00 L 117.78,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 130.74,304.00 L 130.74,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 143.70,304.00 L 143.70,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 156.67,304.00 L 156.67,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 169.63,304.00 L 169.63,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 182.59,304.00 L 182.59,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 195.56,304.00 L 195.56,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 208.52,304.00 L 208.52,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 221.48,304.00 L 221.48,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 234.44,304.00 L 234.44,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 247.41,304.00 L 247.41,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 260.37,304.00 L 260.37,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 273.33,304.00 L 273.33,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 286.30,304.00 L 286.30,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 299.26,304.00 L 299.26,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 312.22,304.00 L 312.22,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 325.19,304.00 L 325.19,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 338.15,304.00 L 338.15,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 351.11,304.00 L 351.11,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 364.07,304.00 L 364.07,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 377.04,304.00 L 377.04,300.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="52.96" y="307.00" transform="rotate(-90.00 52.96,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 01</text>
-<text x="65.93" y="307.00" transform="rotate(-90.00 65.93,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 02</text>
-<text x="78.89" y="307.00" transform="rotate(-90.00 78.89,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 03</text>
-<text x="91.85" y="307.00" transform="rotate(-90.00 91.85,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 04</text>
-<text x="104.81" y="307.00" transform="rotate(-90.00 104.81,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 05</text>
-<text x="117.78" y="307.00" transform="rotate(-90.00 117.78,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 06</text>
-<text x="130.74" y="307.00" transform="rotate(-90.00 130.74,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 07</text>
-<text x="143.70" y="307.00" transform="rotate(-90.00 143.70,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 08</text>
-<text x="156.67" y="307.00" transform="rotate(-90.00 156.67,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 09</text>
-<text x="169.63" y="307.00" transform="rotate(-90.00 169.63,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 10</text>
-<text x="182.59" y="307.00" transform="rotate(-90.00 182.59,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 11</text>
-<text x="195.56" y="307.00" transform="rotate(-90.00 195.56,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 12</text>
-<text x="208.52" y="307.00" transform="rotate(-90.00 208.52,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 01</text>
-<text x="221.48" y="307.00" transform="rotate(-90.00 221.48,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 02</text>
-<text x="234.44" y="307.00" transform="rotate(-90.00 234.44,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 03</text>
-<text x="247.41" y="307.00" transform="rotate(-90.00 247.41,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 04</text>
-<text x="260.37" y="307.00" transform="rotate(-90.00 260.37,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 05</text>
-<text x="273.33" y="307.00" transform="rotate(-90.00 273.33,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 06</text>
-<text x="286.30" y="307.00" transform="rotate(-90.00 286.30,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 07</text>
-<text x="299.26" y="307.00" transform="rotate(-90.00 299.26,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 08</text>
-<text x="312.22" y="307.00" transform="rotate(-90.00 312.22,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 09</text>
-<text x="325.19" y="307.00" transform="rotate(-90.00 325.19,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 10</text>
-<text x="338.15" y="307.00" transform="rotate(-90.00 338.15,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 11</text>
-<text x="351.11" y="307.00" transform="rotate(-90.00 351.11,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 12</text>
-<text x="364.07" y="307.00" transform="rotate(-90.00 364.07,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 01</text>
-<text x="377.04" y="307.00" transform="rotate(-90.00 377.04,307.00)" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 02</text>
-<text x="215.00" y="22.50" style="font-family: Courier-Bold; font-size: 8; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Number of Inquiries Per Month</text>
-<text x="215.00" y="328.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Year and Month</text>
-<path d="M 40.00,300.00 L 390.00,300.00 " stroke="#000000" stroke-width="0.00px" fill="none" ></path>
-<path d="M 52.96,304.00 L 52.96,300.00 " stroke="#000000" stroke-width="0.00px" fill="none" ></path>
-<path d="M 208.52,304.00 L 208.52,300.00 " stroke="#000000" stroke-width="0.00px" fill="none" ></path>
-<path d="M 364.07,304.00 L 364.07,300.00 " stroke="#000000" stroke-width="0.00px" fill="none" ></path>
-<text x="57.96" y="322.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> '87</text>
-<text x="213.52" y="322.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> '88</text>
-<text x="369.07" y="322.00" style="font-family: Helvetica; font-size: 7; fill: #000000; text-anchor: end; alignment-baseline: middle; "> '89</text>
-<text x="58.96" y="297.00" transform="rotate(-90.00 58.96,297.00)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 0</text>
-<text x="71.93" y="297.00" transform="rotate(-90.00 71.93,297.00)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 0</text>
-<text x="84.89" y="293.89" transform="rotate(-90.00 84.89,293.89)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 23</text>
-<text x="97.85" y="284.72" transform="rotate(-90.00 97.85,284.72)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 91</text>
-<text x="110.81" y="260.01" transform="rotate(-90.00 110.81,260.01)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 274</text>
-<text x="123.78" y="224.91" transform="rotate(-90.00 123.78,224.91)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 534</text>
-<text x="136.74" y="209.66" transform="rotate(-90.00 136.74,209.66)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 647</text>
-<text x="149.70" y="124.47" transform="rotate(-90.00 149.70,124.47)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1278</text>
-<text x="162.67" y="198.85" transform="rotate(-90.00 162.67,198.85)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 727</text>
-<text x="175.63" y="99.49" transform="rotate(-90.00 175.63,99.49)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1463</text>
-<text x="188.59" y="234.50" transform="rotate(-90.00 188.59,234.50)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 463</text>
-<text x="201.56" y="171.72" transform="rotate(-90.00 201.56,171.72)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 928</text>
-<text x="214.52" y="106.38" transform="rotate(-90.00 214.52,106.38)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1412</text>
-<text x="227.48" y="174.01" transform="rotate(-90.00 227.48,174.01)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 911</text>
-<text x="240.44" y="101.52" transform="rotate(-90.00 240.44,101.52)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1448</text>
-<text x="253.41" y="97.74" transform="rotate(-90.00 253.41,97.74)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1476</text>
-<text x="266.37" y="50.76" transform="rotate(-90.00 266.37,50.76)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1824</text>
-<text x="279.33" y="42.52" transform="rotate(-90.00 279.33,42.52)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1885</text>
-<text x="292.30" y="78.43" transform="rotate(-90.00 292.30,78.43)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1619</text>
-<text x="305.26" y="68.31" transform="rotate(-90.00 305.26,68.31)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1694</text>
-<text x="318.22" y="98.95" transform="rotate(-90.00 318.22,98.95)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1467</text>
-<text x="331.19" y="77.22" transform="rotate(-90.00 331.19,77.22)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1628</text>
-<text x="344.15" y="49.95" transform="rotate(-90.00 344.15,49.95)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1830</text>
-<text x="357.11" y="111.38" transform="rotate(-90.00 357.11,111.38)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1375</text>
-<text x="370.07" y="123.93" transform="rotate(-90.00 370.07,123.93)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1282</text>
-<text x="383.04" y="158.49" transform="rotate(-90.00 383.04,158.49)" style="font-family: Helvetica; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1026</text>
-<path d="M 52.96,300.00 L 65.93,300.00 L 65.93,300.00 L 78.89,300.00 L 78.89,296.89 L 91.85,296.89 L 91.85,287.72 L 104.81,287.72 L 104.81,263.01 L 117.78,263.01 L 117.78,227.91 L 130.74,227.91 L 130.74,212.66 L 143.70,212.66 L 143.70,127.47 L 156.67,127.47 L 156.67,201.85 L 169.63,201.85 L 169.63,102.49 L 182.59,102.49 L 182.59,237.50 L 195.56,237.50 L 195.56,174.72 L 208.52,174.72 L 208.52,109.38 L 221.48,109.38 L 221.48,177.01 L 234.44,177.01 L 234.44,104.52 L 247.41,104.52 L 247.41,100.74 L 260.37,100.74 L 260.37,53.76 L 273.33,53.76 L 273.33,45.52 L 286.30,45.52 L 286.30,81.43 L 299.26,81.43 L 299.26,71.31 L 312.22,71.31 L 312.22,101.95 L 325.19,101.95 L 325.19,80.22 L 338.15,80.22 L 338.15,52.95 L 351.11,52.95 L 351.11,114.38 L 364.07,114.38 L 364.07,126.93 L 377.04,126.93 L 377.04,161.49 " stroke="#7f007f" stroke-width="1.00px" fill="none" ></path>
-<circle cx="189.07" cy="237.50" r="20.00" stroke="#ff0000" stroke-width="1" fill="none"></circle>
+<path d="M 40.00,300.00 L 40.00,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 52.96,300.00 L 52.96,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 65.93,300.00 L 65.93,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 78.89,300.00 L 78.89,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 91.85,300.00 L 91.85,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 104.81,300.00 L 104.81,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 117.78,300.00 L 117.78,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 130.74,300.00 L 130.74,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 143.70,300.00 L 143.70,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 156.67,300.00 L 156.67,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 169.63,300.00 L 169.63,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 182.59,300.00 L 182.59,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 195.56,300.00 L 195.56,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 208.52,300.00 L 208.52,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 221.48,300.00 L 221.48,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 234.44,300.00 L 234.44,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 247.41,300.00 L 247.41,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 260.37,300.00 L 260.37,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 273.33,300.00 L 273.33,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 286.30,300.00 L 286.30,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 299.26,300.00 L 299.26,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 312.22,300.00 L 312.22,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 325.19,300.00 L 325.19,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 338.15,300.00 L 338.15,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 351.11,300.00 L 351.11,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 364.07,300.00 L 364.07,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 377.04,300.00 L 377.04,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 390.00,300.00 L 390.00,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,300.00 L 390.00,300.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,273.00 L 390.00,273.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,246.00 L 390.00,246.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,219.00 L 390.00,219.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,192.00 L 390.00,192.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,165.00 L 390.00,165.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,138.00 L 390.00,138.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,111.00 L 390.00,111.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,84.00 L 390.00,84.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,57.00 L 390.00,57.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,30.00 L 390.00,30.00 " style="stroke: #d3d3d3; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.00,300.50 L 40.00,29.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,300.00 L 40.00,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,273.00 L 40.00,273.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,246.00 L 40.00,246.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,219.00 L 40.00,219.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,192.00 L 40.00,192.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,165.00 L 40.00,165.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,138.00 L 40.00,138.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,111.00 L 40.00,111.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,84.00 L 40.00,84.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,57.00 L 40.00,57.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,30.00 L 40.00,30.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="33.00" y="300.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="33.00" y="273.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 200</text>
+<text x="33.00" y="246.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 400</text>
+<text x="33.00" y="219.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 600</text>
+<text x="33.00" y="192.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 800</text>
+<text x="33.00" y="165.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 1000</text>
+<text x="33.00" y="138.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 1200</text>
+<text x="33.00" y="111.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 1400</text>
+<text x="33.00" y="84.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 1600</text>
+<text x="33.00" y="57.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 1800</text>
+<text x="33.00" y="30.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 2000</text>
+<path d="M 39.50,300.00 L 390.50,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 52.96,304.00 L 52.96,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 65.93,304.00 L 65.93,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 78.89,304.00 L 78.89,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 91.85,304.00 L 91.85,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 104.81,304.00 L 104.81,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 117.78,304.00 L 117.78,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 130.74,304.00 L 130.74,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 143.70,304.00 L 143.70,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 156.67,304.00 L 156.67,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 169.63,304.00 L 169.63,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 182.59,304.00 L 182.59,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 195.56,304.00 L 195.56,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 208.52,304.00 L 208.52,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 221.48,304.00 L 221.48,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 234.44,304.00 L 234.44,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 247.41,304.00 L 247.41,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 260.37,304.00 L 260.37,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 273.33,304.00 L 273.33,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 286.30,304.00 L 286.30,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 299.26,304.00 L 299.26,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 312.22,304.00 L 312.22,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 325.19,304.00 L 325.19,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 338.15,304.00 L 338.15,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 351.11,304.00 L 351.11,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 364.07,304.00 L 364.07,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 377.04,304.00 L 377.04,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="52.96" y="307.00" transform="rotate(-90.00 52.96,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 01</text>
+<text x="65.93" y="307.00" transform="rotate(-90.00 65.93,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 02</text>
+<text x="78.89" y="307.00" transform="rotate(-90.00 78.89,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 03</text>
+<text x="91.85" y="307.00" transform="rotate(-90.00 91.85,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 04</text>
+<text x="104.81" y="307.00" transform="rotate(-90.00 104.81,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 05</text>
+<text x="117.78" y="307.00" transform="rotate(-90.00 117.78,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 06</text>
+<text x="130.74" y="307.00" transform="rotate(-90.00 130.74,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 07</text>
+<text x="143.70" y="307.00" transform="rotate(-90.00 143.70,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 08</text>
+<text x="156.67" y="307.00" transform="rotate(-90.00 156.67,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 09</text>
+<text x="169.63" y="307.00" transform="rotate(-90.00 169.63,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 10</text>
+<text x="182.59" y="307.00" transform="rotate(-90.00 182.59,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 11</text>
+<text x="195.56" y="307.00" transform="rotate(-90.00 195.56,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 12</text>
+<text x="208.52" y="307.00" transform="rotate(-90.00 208.52,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 01</text>
+<text x="221.48" y="307.00" transform="rotate(-90.00 221.48,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 02</text>
+<text x="234.44" y="307.00" transform="rotate(-90.00 234.44,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 03</text>
+<text x="247.41" y="307.00" transform="rotate(-90.00 247.41,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 04</text>
+<text x="260.37" y="307.00" transform="rotate(-90.00 260.37,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 05</text>
+<text x="273.33" y="307.00" transform="rotate(-90.00 273.33,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 06</text>
+<text x="286.30" y="307.00" transform="rotate(-90.00 286.30,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 07</text>
+<text x="299.26" y="307.00" transform="rotate(-90.00 299.26,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 08</text>
+<text x="312.22" y="307.00" transform="rotate(-90.00 312.22,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 09</text>
+<text x="325.19" y="307.00" transform="rotate(-90.00 325.19,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 10</text>
+<text x="338.15" y="307.00" transform="rotate(-90.00 338.15,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 11</text>
+<text x="351.11" y="307.00" transform="rotate(-90.00 351.11,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 12</text>
+<text x="364.07" y="307.00" transform="rotate(-90.00 364.07,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 01</text>
+<text x="377.04" y="307.00" transform="rotate(-90.00 377.04,307.00)" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> 02</text>
+<text x="215.00" y="22.50" style="font-family: Courier-Bold; font-size: 8; text-anchor: middle; alignment-baseline: baseline; "> Number of Inquiries Per Month</text>
+<text x="215.00" y="328.50" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> Year and Month</text>
+<path d="M 40.00,300.00 L 390.00,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 52.96,304.00 L 52.96,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 208.52,304.00 L 208.52,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 364.07,304.00 L 364.07,300.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="57.96" y="322.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> '87</text>
+<text x="213.52" y="322.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> '88</text>
+<text x="369.07" y="322.00" style="font-family: default; font-size: 7; text-anchor: end; alignment-baseline: middle; "> '89</text>
+<text x="58.96" y="297.00" transform="rotate(-90.00 58.96,297.00)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 0</text>
+<text x="71.93" y="297.00" transform="rotate(-90.00 71.93,297.00)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 0</text>
+<text x="84.89" y="293.89" transform="rotate(-90.00 84.89,293.89)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 23</text>
+<text x="97.85" y="284.72" transform="rotate(-90.00 97.85,284.72)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 91</text>
+<text x="110.81" y="260.01" transform="rotate(-90.00 110.81,260.01)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 274</text>
+<text x="123.78" y="224.91" transform="rotate(-90.00 123.78,224.91)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 534</text>
+<text x="136.74" y="209.66" transform="rotate(-90.00 136.74,209.66)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 647</text>
+<text x="149.70" y="124.47" transform="rotate(-90.00 149.70,124.47)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1278</text>
+<text x="162.67" y="198.85" transform="rotate(-90.00 162.67,198.85)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 727</text>
+<text x="175.63" y="99.49" transform="rotate(-90.00 175.63,99.49)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1463</text>
+<text x="188.59" y="234.50" transform="rotate(-90.00 188.59,234.50)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 463</text>
+<text x="201.56" y="171.72" transform="rotate(-90.00 201.56,171.72)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 928</text>
+<text x="214.52" y="106.38" transform="rotate(-90.00 214.52,106.38)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1412</text>
+<text x="227.48" y="174.01" transform="rotate(-90.00 227.48,174.01)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 911</text>
+<text x="240.44" y="101.52" transform="rotate(-90.00 240.44,101.52)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1448</text>
+<text x="253.41" y="97.74" transform="rotate(-90.00 253.41,97.74)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1476</text>
+<text x="266.37" y="50.76" transform="rotate(-90.00 266.37,50.76)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1824</text>
+<text x="279.33" y="42.52" transform="rotate(-90.00 279.33,42.52)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1885</text>
+<text x="292.30" y="78.43" transform="rotate(-90.00 292.30,78.43)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1619</text>
+<text x="305.26" y="68.31" transform="rotate(-90.00 305.26,68.31)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1694</text>
+<text x="318.22" y="98.95" transform="rotate(-90.00 318.22,98.95)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1467</text>
+<text x="331.19" y="77.22" transform="rotate(-90.00 331.19,77.22)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1628</text>
+<text x="344.15" y="49.95" transform="rotate(-90.00 344.15,49.95)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1830</text>
+<text x="357.11" y="111.38" transform="rotate(-90.00 357.11,111.38)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1375</text>
+<text x="370.07" y="123.93" transform="rotate(-90.00 370.07,123.93)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1282</text>
+<text x="383.04" y="158.49" transform="rotate(-90.00 383.04,158.49)" style="font-family: default; font-size: 7; fill: #7f007f; text-anchor: start; alignment-baseline: middle; "> 1026</text>
+<path d="M 52.96,300.00 L 65.93,300.00 L 65.93,300.00 L 78.89,300.00 L 78.89,296.89 L 91.85,296.89 L 91.85,287.72 L 104.81,287.72 L 104.81,263.01 L 117.78,263.01 L 117.78,227.91 L 130.74,227.91 L 130.74,212.66 L 143.70,212.66 L 143.70,127.47 L 156.67,127.47 L 156.67,201.85 L 169.63,201.85 L 169.63,102.49 L 182.59,102.49 L 182.59,237.50 L 195.56,237.50 L 195.56,174.72 L 208.52,174.72 L 208.52,109.38 L 221.48,109.38 L 221.48,177.01 L 234.44,177.01 L 234.44,104.52 L 247.41,104.52 L 247.41,100.74 L 260.37,100.74 L 260.37,53.76 L 273.33,53.76 L 273.33,45.52 L 286.30,45.52 L 286.30,81.43 L 299.26,81.43 L 299.26,71.31 L 312.22,71.31 L 312.22,101.95 L 325.19,101.95 L 325.19,80.22 L 338.15,80.22 L 338.15,52.95 L 351.11,52.95 L 351.11,114.38 L 364.07,114.38 L 364.07,126.93 L 377.04,126.93 L 377.04,161.49 " style="stroke: #7f007f; stroke-width: 1.00; fill: none;"/>
+<circle cx="189.07" cy="237.50" r="20.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
 </svg>

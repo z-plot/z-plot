@@ -1,49 +1,61 @@
-<!-- Creator: zplot version python version 1.3 script: /Users/remzi/Projects/Zplot/z-plot/zplot/zplot.pyc host: Remzis-MacBook-Pro.local -->
 <!-- Include into html file with following line: -->
-<!-- <img width="216.00" height="144.00" src="verticalbars.svg"> -->
+<!-- <img width="216.00" height="144.00" src="verticalbars"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="216.00" height="144.00">
 <defs>
-
-
 </defs>
-<path d="M 35.50,108.00 L 201.50,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 36.00,108.50 L 36.00,14.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 56.62,112.00 L 56.62,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 97.88,112.00 L 97.88,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 139.12,112.00 L 139.12,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 180.38,112.00 L 180.38,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,108.00 L 36.00,108.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,84.75 L 36.00,84.75 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,61.50 L 36.00,61.50 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,38.25 L 36.00,38.25 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<path d="M 32.00,15.00 L 36.00,15.00 " stroke="#000000" stroke-width="1.00px" fill="none" ></path>
-<text x="56.62" y="115.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> A</text>
-<text x="97.88" y="115.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> B</text>
-<text x="139.12" y="115.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> C</text>
-<text x="180.38" y="115.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> D</text>
-<text x="29.00" y="108.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 0</text>
-<text x="29.00" y="84.75" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 20</text>
-<text x="29.00" y="61.50" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 40</text>
-<text x="29.00" y="38.25" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 60</text>
-<text x="29.00" y="15.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: end; alignment-baseline: middle; "> 80</text>
-<text x="118.50" y="128.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: hanging; "> Operation</text>
-<text x="14.88" y="61.50" transform="rotate(-90.00 14.88,61.50)" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: middle; alignment-baseline: baseline; "> Latency (ms)</text>
-<rect x="40.12" y="49.88" height="58.12" width="33.00" stroke="#000000" stroke-width="0.5" fill="#ff0000" ></rect>
-<rect x="81.38" y="55.69" height="52.31" width="33.00" stroke="#000000" stroke-width="0.5" fill="#ff0000" ></rect>
-<rect x="122.62" y="96.38" height="11.62" width="33.00" stroke="#000000" stroke-width="0.5" fill="#ff0000" ></rect>
-<rect x="163.88" y="90.56" height="17.44" width="33.00" stroke="#000000" stroke-width="0.5" fill="#ff0000" ></rect>
-<rect x="40.12" y="44.06" height="5.81" width="33.00" stroke="#000000" stroke-width="0.5" fill="#007f00" ></rect>
-<rect x="81.38" y="48.71" height="6.97" width="33.00" stroke="#000000" stroke-width="0.5" fill="#007f00" ></rect>
-<rect x="122.62" y="90.56" height="5.81" width="33.00" stroke="#000000" stroke-width="0.5" fill="#007f00" ></rect>
-<rect x="163.88" y="55.69" height="34.88" width="33.00" stroke="#000000" stroke-width="0.5" fill="#007f00" ></rect>
-<rect x="40.12" y="32.44" height="11.62" width="33.00" stroke="#000000" stroke-width="0.5" fill="#0000ff" ></rect>
-<rect x="81.38" y="34.76" height="13.95" width="33.00" stroke="#000000" stroke-width="0.5" fill="#0000ff" ></rect>
-<rect x="122.62" y="61.50" height="29.06" width="33.00" stroke="#000000" stroke-width="0.5" fill="#0000ff" ></rect>
-<rect x="163.88" y="44.06" height="11.62" width="33.00" stroke="#000000" stroke-width="0.5" fill="#0000ff" ></rect>
-<rect x="66.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="#ff0000" ></rect>
-<text x="80.00" y="20.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> CPU</text>
-<rect x="106.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="#007f00" ></rect>
-<text x="120.00" y="20.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Net</text>
-<rect x="146.00" y="15.00" height="10.00" width="10.00" stroke="#000000" stroke-width="0.25" fill="#0000ff" ></rect>
-<text x="160.00" y="20.00" style="font-family: Helvetica; font-size: 10; fill: #000000; text-anchor: start; alignment-baseline: middle; "> Disk</text>
+<path d="M 35.50,108.00 L 201.50,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 36.00,108.50 L 36.00,14.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 56.62,112.00 L 56.62,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 97.88,112.00 L 97.88,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 139.12,112.00 L 139.12,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 180.38,112.00 L 180.38,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,108.00 L 36.00,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,84.75 L 36.00,84.75 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,61.50 L 36.00,61.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,38.25 L 36.00,38.25 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<path d="M 32.00,15.00 L 36.00,15.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
+<text x="56.62" y="115.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> A</text>
+<text x="97.88" y="115.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> B</text>
+<text x="139.12" y="115.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> C</text>
+<text x="180.38" y="115.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> D</text>
+<text x="29.00" y="108.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 0</text>
+<text x="29.00" y="84.75" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 20</text>
+<text x="29.00" y="61.50" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 40</text>
+<text x="29.00" y="38.25" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 60</text>
+<text x="29.00" y="15.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 80</text>
+<text x="118.50" y="128.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> Operation</text>
+<text x="14.88" y="61.50" transform="rotate(-90.00 14.88,61.50)" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> Latency (ms)</text>
+<path d="M 40.12,108.00 L 40.12,49.88 L 73.12,49.88 L 73.12,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ff0000;"/>
+<path d="M 40.12,108.00 L 40.12,49.88 L 73.12,49.88 L 73.12,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 81.38,108.00 L 81.38,55.69 L 114.38,55.69 L 114.38,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ff0000;"/>
+<path d="M 81.38,108.00 L 81.38,55.69 L 114.38,55.69 L 114.38,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 122.62,108.00 L 122.62,96.38 L 155.62,96.38 L 155.62,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ff0000;"/>
+<path d="M 122.62,108.00 L 122.62,96.38 L 155.62,96.38 L 155.62,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 163.88,108.00 L 163.88,90.56 L 196.88,90.56 L 196.88,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: #ff0000;"/>
+<path d="M 163.88,108.00 L 163.88,90.56 L 196.88,90.56 L 196.88,108.00 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.12,49.88 L 40.12,44.06 L 73.12,44.06 L 73.12,49.88 Z" style="stroke: #000000; stroke-width: 0.50; fill: #007f00;"/>
+<path d="M 40.12,49.88 L 40.12,44.06 L 73.12,44.06 L 73.12,49.88 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 81.38,55.69 L 81.38,48.71 L 114.38,48.71 L 114.38,55.69 Z" style="stroke: #000000; stroke-width: 0.50; fill: #007f00;"/>
+<path d="M 81.38,55.69 L 81.38,48.71 L 114.38,48.71 L 114.38,55.69 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 122.62,96.38 L 122.62,90.56 L 155.62,90.56 L 155.62,96.38 Z" style="stroke: #000000; stroke-width: 0.50; fill: #007f00;"/>
+<path d="M 122.62,96.38 L 122.62,90.56 L 155.62,90.56 L 155.62,96.38 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 163.88,90.56 L 163.88,55.69 L 196.88,55.69 L 196.88,90.56 Z" style="stroke: #000000; stroke-width: 0.50; fill: #007f00;"/>
+<path d="M 163.88,90.56 L 163.88,55.69 L 196.88,55.69 L 196.88,90.56 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 40.12,44.06 L 40.12,32.44 L 73.12,32.44 L 73.12,44.06 Z" style="stroke: #000000; stroke-width: 0.50; fill: #0000ff;"/>
+<path d="M 40.12,44.06 L 40.12,32.44 L 73.12,32.44 L 73.12,44.06 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 81.38,48.71 L 81.38,34.76 L 114.38,34.76 L 114.38,48.71 Z" style="stroke: #000000; stroke-width: 0.50; fill: #0000ff;"/>
+<path d="M 81.38,48.71 L 81.38,34.76 L 114.38,34.76 L 114.38,48.71 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 122.62,90.56 L 122.62,61.50 L 155.62,61.50 L 155.62,90.56 Z" style="stroke: #000000; stroke-width: 0.50; fill: #0000ff;"/>
+<path d="M 122.62,90.56 L 122.62,61.50 L 155.62,61.50 L 155.62,90.56 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 163.88,55.69 L 163.88,44.06 L 196.88,44.06 L 196.88,55.69 Z" style="stroke: #000000; stroke-width: 0.50; fill: #0000ff;"/>
+<path d="M 163.88,55.69 L 163.88,44.06 L 196.88,44.06 L 196.88,55.69 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
+<path d="M 66.00,25.00 L 66.00,15.00 L 76.00,15.00 L 76.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: #ff0000;"/>
+<path d="M 66.00,25.00 L 66.00,15.00 L 76.00,15.00 L 76.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="80.00" y="20.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> CPU</text>
+<path d="M 106.00,25.00 L 106.00,15.00 L 116.00,15.00 L 116.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: #007f00;"/>
+<path d="M 106.00,25.00 L 106.00,15.00 L 116.00,15.00 L 116.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="120.00" y="20.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Net</text>
+<path d="M 146.00,25.00 L 146.00,15.00 L 156.00,15.00 L 156.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: #0000ff;"/>
+<path d="M 146.00,25.00 L 146.00,15.00 L 156.00,15.00 L 156.00,25.00 Z" style="stroke: #000000; stroke-width: 0.25; fill: none;"/>
+<text x="160.00" y="20.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Disk</text>
 </svg>
