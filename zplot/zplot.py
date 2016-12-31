@@ -948,20 +948,20 @@ class postscript_drawer:
         self.writer.out('clip')
         return
 
-    # postscript_drawer: clipbox
-    def clipbox(self, x1, y1, x2, y2):
-        self.newpath()
-        self.rectangle(x1, y1, x2, y2)
-        self.closepath()
-        self.clip()
-        return
-
     # postscript_drawer: clippoly
     def clippoly(self, coord):
         self.newpath()
         self.moveto(coord[0][0], coord[0][1])
         for i in range(1, len(coord)):
             self.lineto(coord[i][0], coord[i][1])
+        self.closepath()
+        self.clip()
+        return ''
+
+    # postscript_drawer: clipcircle
+    def clipcircle(self, x, y, radius):
+        self.newpath()
+        self.circle(x, y, radius)
         self.closepath()
         self.clip()
         return ''
@@ -1302,17 +1302,6 @@ class pdf_drawer:
     # pdf_drawer: clip
     def clip(self):
         self.__out('W')
-        return
-
-    # pdf_drawer: clipbox
-    def clipbox(self, x1, y1, x2, y2):
-        self.moveto(x1, y1)
-        self.lineto(x1, y2)
-        self.lineto(x2, y2)
-        self.lineto(x2, y1)
-        self.lineto(x1, y1)
-        self.closepath()
-        self.clip()
         self.__out('n')
         return
 
@@ -1323,7 +1312,12 @@ class pdf_drawer:
             self.lineto(coord[i][0], coord[i][1])
         self.closepath()
         self.clip()
-        self.__out('n')
+        return ''
+
+    # pdf_drawer: clipcircle
+    def clipcircle(self, x, y, radius):
+        self.circle(x, y, radius)
+        self.clip()
         return ''
 
     # pdf_drawer: setpattern
@@ -1383,27 +1377,33 @@ class svg_drawer:
     def make_trailer(self):
         self.__out('</svg>')
 
-        # now, add in patterns, at the point near the beginning of
-        # this SVG's definition.
-        # patternString = self.__makepatterns()
-        # arrowString = self.__makearrows()
-
-        # now insert defs into beginning of SVG
+        # insert clip definitions into beginning of SVG
         index = self.__out_after('<defs>', self.defsIndex)
         for i in range(len(self.poly_clip_list)):
             pattern_name = self.__pattern_num_to_name(i)
             out_str = '<clipPath id="%s"> ' % pattern_name
-            coord_list = self.poly_clip_list[i]
-            x, y = coord_list[0][0], self.__converty(coord_list[0][1])
-            out_str += '<polyline points="%.2f,%.2f' % (x, y)
-            for j in range(1, len(coord_list)):
-                coord = self.poly_clip_list[i][j]
-                out_str += ' %.2f,%.2f' % (coord[0],
-                                           self.__converty(coord[1]))
-            out_str += '"/> </clipPath>'
+            element = self.poly_clip_list[i]
+
+            # figure out which type of clipping this is...
+            # options right now are just polygon or circle
+            if element[0] == 'poly':
+                coord_list = self.poly_clip_list[i][1]
+                x, y = coord_list[0][0], self.__converty(coord_list[0][1])
+                out_str += '<polyline points="%.2f,%.2f' % (x, y)
+                for j in range(1, len(coord_list)):
+                    coord = self.poly_clip_list[i][1][j]
+                    out_str += ' %.2f,%.2f' % (coord[0],
+                                               self.__converty(coord[1]))
+                out_str += '"/> </clipPath>'
+            elif element[0] == 'circle':
+                x, y, radius = self.poly_clip_list[i][1]
+                out_str += '<circle cx="%.2f" cy="%.2f" r="%.2f"/> </clipPath>' % \
+                           (x, self.__converty(y), radius)
+            else:
+                abort('bad svg definition [%s]' % element[0])
+
+            # now add out_str to the output in the right location
             index = self.__out_after(out_str, index)
-        # index = self.__out_after(patternString, index)
-        # index = self.__out_after(arrowString, index)
         self.__out_after('</defs>', index)
         return
 
@@ -1635,7 +1635,13 @@ class svg_drawer:
     # svg_drawer: clippoly
     def clippoly(self, coord):
         self.poly_clip_counter += 1 
-        self.poly_clip_list.append(coord)
+        self.poly_clip_list.append(('poly', coord))
+        return self.__pattern_num_to_name(self.poly_clip_counter - 1)
+
+    # svg_drawer: clipcircle
+    def clipcircle(self, x, y, radius):
+        self.poly_clip_counter += 1 
+        self.poly_clip_list.append(('circle', [x, y, radius]))
         return self.__pattern_num_to_name(self.poly_clip_counter - 1)
 
 #
@@ -1879,6 +1885,7 @@ class canvas:
             drawer.rectangle(x1, y1, x2, y2)
 	    drawer.closepath()
 	    drawer.setfillcolor(fillcolor)
+            drawer.setpattern(pattern_name)
 	    drawer.fill()
             drawer.stroke()
             return
@@ -2465,11 +2472,14 @@ class canvas:
             self.__circle(drawer, coord, radius, linecolor, 0, 0,
                           fill, bgcolor, 'solid', 0, 0)
         if fill:
-            # CLIP HERE
-            # XXX
-            # PATTERN HERE
-            self.__circle(drawer, coord, radius, linecolor, 0, 0,
-                          fill, fillcolor, fillstyle, fillsize, fillskip)
+            self.drawer.gsave()
+            x, y = coord[0], coord[1]
+            pattern_name = drawer.clipcircle(x, y, radius)
+            self.__make_pattern(pattern_name=pattern_name,
+                                coord=[[x-radius,y-radius],[x+radius,y+radius]],
+                                fillcolor=fillcolor, fillstyle=fillstyle, fillsize=fillsize,
+                                fillskip=fillskip)
+            self.drawer.grestore()
         if linewidth != 0:
             self.__circle(drawer, coord, radius, linecolor, linewidth, linedash,
                           False, fillcolor, fillstyle, fillsize, fillskip)
