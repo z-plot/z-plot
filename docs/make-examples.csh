@@ -37,6 +37,9 @@ foreach d ( ../examples/* )
 	    if (-e ../${target_base}.eps) then
 		echo -n "<a href=../examples/${currd}/${base}.eps> eps</a>"
 	    endif 
+	    if (-e ../${target_base}.pdf) then
+		echo -n "<a href=../examples/${currd}/${base}.pdf> pdf</a>"
+	    endif 
 	    if (-e ../${target_base}.svg) then
 		echo -n "<a href=../examples/${currd}/${base}.svg> svg</a>"
 	    endif 
