@@ -3,7 +3,7 @@
 from zplot import *
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='example-arrow', dimensions=[180, 180])
+c = canvas(ctype, title='example-arrow', dimensions=[180, 180])
 
 off = 90
 L = 60

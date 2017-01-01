@@ -1,4 +1,4 @@
-#! /bin/csh -f
+#! /bin/csh -fv
 
 # first, extract all docs from zplot.py 
 ./make-docs-single.py > /tmp/docs.out

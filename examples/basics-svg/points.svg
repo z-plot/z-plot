@@ -2,6 +2,12 @@
 <!-- <img width="216.00" height="144.00" src="points"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="216.00" height="144.00">
 <defs>
+<clipPath id="zplot_pattern_0"> <circle cx="58.00" cy="15.00" r="3.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <circle cx="80.00" cy="22.44" r="3.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <circle cx="69.00" cy="52.20" r="3.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <circle cx="135.00" cy="70.80" r="3.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <circle cx="201.00" cy="85.68" r="3.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <circle cx="179.00" cy="93.12" r="3.00"/> </clipPath>
 </defs>
 <path d="M 35.50,108.00 L 201.50,108.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
 <path d="M 36.00,108.50 L 36.00,14.50 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
@@ -31,16 +37,16 @@
 <text x="29.00" y="15.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> 25</text>
 <text x="118.50" y="128.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> Cost ($)</text>
 <text x="14.88" y="61.50" transform="rotate(-90.00 14.88,61.50)" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> Latency (ms)</text>
-<circle cx="58.00" cy="15.00" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 55.00,18.00 L 55.00,12.00 L 61.00,12.00 L 61.00,18.00 L 55.00,18.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_0)"/>
 <circle cx="58.00" cy="15.00" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="80.00" cy="22.44" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 77.00,25.44 L 77.00,19.44 L 83.00,19.44 L 83.00,25.44 L 77.00,25.44 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_1)"/>
 <circle cx="80.00" cy="22.44" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="69.00" cy="52.20" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 66.00,55.20 L 66.00,49.20 L 72.00,49.20 L 72.00,55.20 L 66.00,55.20 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_2)"/>
 <circle cx="69.00" cy="52.20" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="135.00" cy="70.80" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 132.00,73.80 L 132.00,67.80 L 138.00,67.80 L 138.00,73.80 L 132.00,73.80 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_3)"/>
 <circle cx="135.00" cy="70.80" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="201.00" cy="85.68" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 198.00,88.68 L 198.00,82.68 L 204.00,82.68 L 204.00,88.68 L 198.00,88.68 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_4)"/>
 <circle cx="201.00" cy="85.68" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="179.00" cy="93.12" r="3.00" style="stroke: #000000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 176.00,96.12 L 176.00,90.12 L 182.00,90.12 L 182.00,96.12 L 176.00,96.12 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_5)"/>
 <circle cx="179.00" cy="93.12" r="3.00" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
 </svg>

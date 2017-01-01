@@ -31,7 +31,7 @@ bartypes = [('hline', 1, 1),
 L = len(bartypes)
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='manybars', dimensions=[L*10, 110])
+c = canvas(ctype, title='manybars', dimensions=[L*10, 110])
 
 d = drawable(canvas=c, xrange=[0,L+1], yrange=[0,10], coord=[0,5],
              dimensions=[L*10,100])

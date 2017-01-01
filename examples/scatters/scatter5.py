@@ -4,7 +4,7 @@
 from zplot import *
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='scatter5', dimensions=[300,300])
+c = canvas(ctype, title='scatter5', dimensions=[300,300])
 t = table(file='scatter5.data')
 d = drawable(canvas=c, xrange=[0,80], yrange=[0,80], coord=[30,30],
              dimensions=[260,260])

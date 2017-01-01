@@ -5,7 +5,7 @@ from zplot import *
 # describe the drawing surface
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='example-anchor-rotate', dimensions=[200,300])
+c = canvas(ctype, title='example-anchor-rotate', dimensions=[200,300])
 
 y = 80 
 s = 80

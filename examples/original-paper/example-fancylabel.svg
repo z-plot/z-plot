@@ -2,107 +2,154 @@
 <!-- <img width="600.00" height="600.00" src="example-fancylabel"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600.00" height="600.00">
 <defs>
+<clipPath id="zplot_pattern_0"> <circle cx="566.78" cy="84.32" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <circle cx="434.51" cy="457.98" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <circle cx="201.77" cy="175.99" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <circle cx="477.89" cy="580.30" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <circle cx="106.68" cy="70.67" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <circle cx="78.51" cy="209.91" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_6"> <circle cx="201.23" cy="215.61" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_7"> <circle cx="510.12" cy="252.72" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_8"> <circle cx="236.86" cy="403.05" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_9"> <circle cx="370.43" cy="225.58" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_10"> <circle cx="247.56" cy="319.52" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_11"> <circle cx="321.07" cy="440.16" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_12"> <circle cx="114.23" cy="260.22" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_13"> <circle cx="68.16" cy="243.29" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_14"> <circle cx="475.04" cy="109.72" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_15"> <circle cx="156.32" cy="349.42" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_16"> <circle cx="545.57" cy="387.06" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_17"> <circle cx="585.10" cy="474.02" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_18"> <circle cx="497.63" cy="566.24" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_19"> <circle cx="397.19" cy="122.78" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_20"> <circle cx="327.60" cy="223.03" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_21"> <circle cx="539.99" cy="12.13" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_22"> <circle cx="114.01" cy="286.84" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_23"> <circle cx="33.12" cy="370.45" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_24"> <circle cx="94.15" cy="497.05" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_25"> <circle cx="372.41" cy="541.00" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_26"> <circle cx="99.32" cy="584.32" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_27"> <circle cx="481.85" cy="448.66" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_28"> <circle cx="51.93" cy="229.81" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_29"> <circle cx="426.19" cy="224.29" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_30"> <circle cx="327.50" cy="279.94" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_31"> <circle cx="427.36" cy="410.05" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_32"> <circle cx="498.72" cy="187.56" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_33"> <circle cx="507.75" cy="73.47" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_34"> <circle cx="496.99" cy="288.88" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_35"> <circle cx="312.96" cy="164.46" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_36"> <circle cx="345.86" cy="573.81" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_37"> <circle cx="541.81" cy="474.53" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_38"> <circle cx="290.96" cy="327.62" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_39"> <circle cx="64.11" cy="254.61" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_40"> <circle cx="352.39" cy="118.40" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_41"> <circle cx="365.06" cy="412.19" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_42"> <circle cx="337.65" cy="33.68" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_43"> <circle cx="379.26" cy="100.60" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_44"> <circle cx="16.56" cy="190.04" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_45"> <circle cx="270.00" cy="435.00" r="7.00"/> </clipPath>
+<clipPath id="zplot_pattern_46"> <circle cx="375.00" cy="180.00" r="7.00"/> </clipPath>
 </defs>
-<circle cx="566.78" cy="84.32" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 559.78,91.32 L 559.78,77.32 L 573.78,77.32 L 573.78,91.32 L 559.78,91.32 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_0)"/>
 <text x="566.78" y="84.32" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="434.51" cy="457.98" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 427.51,464.98 L 427.51,450.98 L 441.51,450.98 L 441.51,464.98 L 427.51,464.98 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_1)"/>
 <text x="434.51" y="457.98" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="201.77" cy="175.99" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 194.77,182.99 L 194.77,168.99 L 208.77,168.99 L 208.77,182.99 L 194.77,182.99 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_2)"/>
 <text x="201.77" y="175.99" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="477.89" cy="580.30" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 470.89,587.30 L 470.89,573.30 L 484.89,573.30 L 484.89,587.30 L 470.89,587.30 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_3)"/>
 <text x="477.89" y="580.30" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="106.68" cy="70.67" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 99.68,77.67 L 99.68,63.67 L 113.68,63.67 L 113.68,77.67 L 99.68,77.67 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_4)"/>
 <text x="106.68" y="70.67" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="78.51" cy="209.91" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 71.51,216.91 L 71.51,202.91 L 85.51,202.91 L 85.51,216.91 L 71.51,216.91 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_5)"/>
 <text x="78.51" y="209.91" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="201.23" cy="215.61" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 194.23,222.61 L 194.23,208.61 L 208.23,208.61 L 208.23,222.61 L 194.23,222.61 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_6)"/>
 <text x="201.23" y="215.61" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="510.12" cy="252.72" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 503.12,259.72 L 503.12,245.72 L 517.12,245.72 L 517.12,259.72 L 503.12,259.72 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_7)"/>
 <text x="510.12" y="252.72" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="236.86" cy="403.05" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 229.86,410.05 L 229.86,396.05 L 243.86,396.05 L 243.86,410.05 L 229.86,410.05 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_8)"/>
 <text x="236.86" y="403.05" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="370.43" cy="225.58" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 363.43,232.58 L 363.43,218.58 L 377.43,218.58 L 377.43,232.58 L 363.43,232.58 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_9)"/>
 <text x="370.43" y="225.58" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="247.56" cy="319.52" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 240.56,326.52 L 240.56,312.52 L 254.56,312.52 L 254.56,326.52 L 240.56,326.52 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_10)"/>
 <text x="247.56" y="319.52" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="321.07" cy="440.16" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 314.07,447.16 L 314.07,433.16 L 328.07,433.16 L 328.07,447.16 L 314.07,447.16 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_11)"/>
 <text x="321.07" y="440.16" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="114.23" cy="260.22" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 107.23,267.22 L 107.23,253.22 L 121.23,253.22 L 121.23,267.22 L 107.23,267.22 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_12)"/>
 <text x="114.23" y="260.22" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="68.16" cy="243.29" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 61.16,250.29 L 61.16,236.29 L 75.16,236.29 L 75.16,250.29 L 61.16,250.29 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_13)"/>
 <text x="68.16" y="243.29" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="475.04" cy="109.72" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 468.04,116.72 L 468.04,102.72 L 482.04,102.72 L 482.04,116.72 L 468.04,116.72 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_14)"/>
 <text x="475.04" y="109.72" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="156.32" cy="349.42" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 149.32,356.42 L 149.32,342.42 L 163.32,342.42 L 163.32,356.42 L 149.32,356.42 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_15)"/>
 <text x="156.32" y="349.42" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="545.57" cy="387.06" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 538.57,394.06 L 538.57,380.06 L 552.57,380.06 L 552.57,394.06 L 538.57,394.06 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_16)"/>
 <text x="545.57" y="387.06" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="585.10" cy="474.02" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 578.10,481.02 L 578.10,467.02 L 592.10,467.02 L 592.10,481.02 L 578.10,481.02 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_17)"/>
 <text x="585.10" y="474.02" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="497.63" cy="566.24" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 490.63,573.24 L 490.63,559.24 L 504.63,559.24 L 504.63,573.24 L 490.63,573.24 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_18)"/>
 <text x="497.63" y="566.24" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="397.19" cy="122.78" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 390.19,129.78 L 390.19,115.78 L 404.19,115.78 L 404.19,129.78 L 390.19,129.78 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_19)"/>
 <text x="397.19" y="122.78" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="327.60" cy="223.03" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 320.60,230.03 L 320.60,216.03 L 334.60,216.03 L 334.60,230.03 L 320.60,230.03 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_20)"/>
 <text x="327.60" y="223.03" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="539.99" cy="12.13" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 532.99,19.13 L 532.99,5.13 L 546.99,5.13 L 546.99,19.13 L 532.99,19.13 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_21)"/>
 <text x="539.99" y="12.13" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="114.01" cy="286.84" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 107.01,293.84 L 107.01,279.84 L 121.01,279.84 L 121.01,293.84 L 107.01,293.84 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_22)"/>
 <text x="114.01" y="286.84" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="33.12" cy="370.45" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 26.12,377.45 L 26.12,363.45 L 40.12,363.45 L 40.12,377.45 L 26.12,377.45 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_23)"/>
 <text x="33.12" y="370.45" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="94.15" cy="497.05" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 87.15,504.05 L 87.15,490.05 L 101.15,490.05 L 101.15,504.05 L 87.15,504.05 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_24)"/>
 <text x="94.15" y="497.05" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="372.41" cy="541.00" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 365.41,548.00 L 365.41,534.00 L 379.41,534.00 L 379.41,548.00 L 365.41,548.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_25)"/>
 <text x="372.41" y="541.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="99.32" cy="584.32" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 92.32,591.32 L 92.32,577.32 L 106.32,577.32 L 106.32,591.32 L 92.32,591.32 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_26)"/>
 <text x="99.32" y="584.32" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="481.85" cy="448.66" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 474.85,455.66 L 474.85,441.66 L 488.85,441.66 L 488.85,455.66 L 474.85,455.66 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_27)"/>
 <text x="481.85" y="448.66" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="51.93" cy="229.81" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 44.93,236.81 L 44.93,222.81 L 58.93,222.81 L 58.93,236.81 L 44.93,236.81 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_28)"/>
 <text x="51.93" y="229.81" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="426.19" cy="224.29" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 419.19,231.29 L 419.19,217.29 L 433.19,217.29 L 433.19,231.29 L 419.19,231.29 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_29)"/>
 <text x="426.19" y="224.29" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="327.50" cy="279.94" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 320.50,286.94 L 320.50,272.94 L 334.50,272.94 L 334.50,286.94 L 320.50,286.94 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_30)"/>
 <text x="327.50" y="279.94" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="427.36" cy="410.05" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 420.36,417.05 L 420.36,403.05 L 434.36,403.05 L 434.36,417.05 L 420.36,417.05 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_31)"/>
 <text x="427.36" y="410.05" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="498.72" cy="187.56" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 491.72,194.56 L 491.72,180.56 L 505.72,180.56 L 505.72,194.56 L 491.72,194.56 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_32)"/>
 <text x="498.72" y="187.56" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="507.75" cy="73.47" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 500.75,80.47 L 500.75,66.47 L 514.75,66.47 L 514.75,80.47 L 500.75,80.47 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_33)"/>
 <text x="507.75" y="73.47" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="496.99" cy="288.88" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 489.99,295.88 L 489.99,281.88 L 503.99,281.88 L 503.99,295.88 L 489.99,295.88 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_34)"/>
 <text x="496.99" y="288.88" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="312.96" cy="164.46" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 305.96,171.46 L 305.96,157.46 L 319.96,157.46 L 319.96,171.46 L 305.96,171.46 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_35)"/>
 <text x="312.96" y="164.46" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="345.86" cy="573.81" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 338.86,580.81 L 338.86,566.81 L 352.86,566.81 L 352.86,580.81 L 338.86,580.81 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_36)"/>
 <text x="345.86" y="573.81" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="541.81" cy="474.53" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 534.81,481.53 L 534.81,467.53 L 548.81,467.53 L 548.81,481.53 L 534.81,481.53 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_37)"/>
 <text x="541.81" y="474.53" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="290.96" cy="327.62" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 283.96,334.62 L 283.96,320.62 L 297.96,320.62 L 297.96,334.62 L 283.96,334.62 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_38)"/>
 <text x="290.96" y="327.62" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="64.11" cy="254.61" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 57.11,261.61 L 57.11,247.61 L 71.11,247.61 L 71.11,261.61 L 57.11,261.61 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_39)"/>
 <text x="64.11" y="254.61" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="352.39" cy="118.40" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 345.39,125.40 L 345.39,111.40 L 359.39,111.40 L 359.39,125.40 L 345.39,125.40 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_40)"/>
 <text x="352.39" y="118.40" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="365.06" cy="412.19" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 358.06,419.19 L 358.06,405.19 L 372.06,405.19 L 372.06,419.19 L 358.06,419.19 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_41)"/>
 <text x="365.06" y="412.19" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="337.65" cy="33.68" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 330.65,40.68 L 330.65,26.68 L 344.65,26.68 L 344.65,40.68 L 330.65,40.68 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_42)"/>
 <text x="337.65" y="33.68" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="379.26" cy="100.60" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 372.26,107.60 L 372.26,93.60 L 386.26,93.60 L 386.26,107.60 L 372.26,107.60 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_43)"/>
 <text x="379.26" y="100.60" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
-<circle cx="16.56" cy="190.04" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #8eed8e;"/>
+<path d="M 9.56,197.04 L 9.56,183.04 L 23.56,183.04 L 23.56,197.04 L 9.56,197.04 Z" style="stroke: #000000; stroke-width: 0.00; fill: #8eed8e;" clip-path="url(#zplot_pattern_44)"/>
 <text x="16.56" y="190.04" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> g</text>
 <text x="150.00" y="540.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> Here is the orange one</text>
 <path d="M 150.00,532.00 L 254.00,446.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
 <path d="M 257.08,443.45 L 253.04,444.84 L 254.96,447.16 Z" style="stroke: #000000; stroke-width: 0.50; fill: black;"/>
 <path d="M 257.08,443.45 L 253.04,444.84 L 254.96,447.16 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="270.00" cy="435.00" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #ffa500;"/>
+<path d="M 263.00,442.00 L 263.00,428.00 L 277.00,428.00 L 277.00,442.00 L 263.00,442.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ffa500;" clip-path="url(#zplot_pattern_45)"/>
 <text x="270.00" y="435.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> r</text>
 <text x="240.00" y="60.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> And here, the blue one</text>
 <path d="M 240.00,68.00 L 360.00,170.00 " style="stroke: #000000; stroke-width: 1.00; fill: none;"/>
 <path d="M 363.05,172.59 L 360.97,168.86 L 359.03,171.14 Z" style="stroke: #000000; stroke-width: 0.50; fill: black;"/>
 <path d="M 363.05,172.59 L 360.97,168.86 L 359.03,171.14 Z" style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
-<circle cx="375.00" cy="180.00" r="7.00" style="stroke: #000000; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 368.00,187.00 L 368.00,173.00 L 382.00,173.00 L 382.00,187.00 L 368.00,187.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_46)"/>
 <text x="375.00" y="180.00" style="font-family: default; font-size: 8; text-anchor: middle; alignment-baseline: middle; "> b</text>
 </svg>

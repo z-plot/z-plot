@@ -5,7 +5,7 @@ from zplot import *
 # describe the drawing surface
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='example-multi', dimensions=[300,210])
+c = canvas(ctype, title='example-multi', dimensions=[300,210])
 
 t = table(file='example-multi.data')
 t.addcolumns(columns=['ylower','yhigher'])

@@ -25,8 +25,6 @@ def remove_until_last(str, c):
         return r
 
 def end_class(fd):
-    # fd.write('</html>\n')
-    # fd.close()
     return
 
 def output_comments_para(class_fd, comments):
@@ -41,6 +39,8 @@ def output_comments_para(class_fd, comments):
 # FORMAT of this line is:
 #   PARAMETER = DEFAULT ,
 def get_parameter(class_fd, line, comments):
+    global ignore_class
+    
     parameter = line.split('=')[0].strip()
     print '  parameter [%s]' % parameter
 
@@ -48,6 +48,9 @@ def get_parameter(class_fd, line, comments):
         return
     else:
         default = remove_until_last(line.split('=')[1], ',').strip()
+
+    if ignore_class:
+        return
 
     class_fd.write('<tr>')
     class_fd.write('<td style="width:150px"><b>%s</b></td>' % parameter)
@@ -71,9 +74,10 @@ fd = open('../zplot/zplot.py')
 
 class_fd = open('./in.docs.html', 'w')
 
-in_class  = False
-in_init   = False
-in_method = False
+in_class     = False
+in_init      = False
+in_method    = False
+ignore_class = False
 
 comments = []
 
@@ -89,12 +93,18 @@ for line in fd:
 
     if tmp[0] == '#' and len(tmp) > 1 and \
            (tmp[1] == '--class--' or tmp[1] == '--method--'):
+        ignore_class = False
+        if len(tmp) > 3 and tmp[3] == 'IGNORE':
+            ignore_class = True
+            print 'ignore', line
         comments = []
-    
+
+    # look for actual beginning of "class" 
     if tmp[0] == 'class':
         if in_class:
             end_class(class_fd)
         in_class = True
+
         class_name = remove_char(tmp[1], '(')
         class_name = remove_char(class_name, ':')
         print '\nclass', class_name
@@ -103,18 +113,21 @@ for line in fd:
         # just simple HTML to begin.
         # class_fd = open(class_name + '.html', 'w')
         # class_fd.write('<html>\n')
-        class_fd.write('\n')
-        class_fd.write('<h2 id=%s> Class %s</h2>' % (class_name, class_name))
-        class_fd.write('\n')
-        output_comments_para(class_fd, comments)
+        if ignore_class == False:
+            class_fd.write('\n')
+            class_fd.write('<h2 id=%s> </h2><p>.</p>' % class_name)
+            class_fd.write('<h2> Class %s</h2>' % class_name)
+            class_fd.write('\n')
+            output_comments_para(class_fd, comments)
 
     if len(tmp) == 3 and tmp[0] == '#' and tmp[1] == '--method--':
         method_name = tmp[2]
         print 'class %s: method %s()' % (class_name, method_name)
-        class_fd.write('\n')
-        class_fd.write('<h3 id=%s_%s> %s.%s()</h3>' % (class_name, method_name,
-                                                       class_name, method_name))
-        class_fd.write('<table>\n')
+        if ignore_class == False:
+            class_fd.write('\n')
+            class_fd.write('<h3 id=%s_%s> %s.%s()</h3>' % (class_name, method_name,
+                                                           class_name, method_name))
+            class_fd.write('<table>\n')
         in_method = True
 
     if in_init or in_method:
@@ -122,21 +135,16 @@ for line in fd:
         # gather needed info about arguments
         if tmp[0] == 'def':
             # seeing 'def' means we are done with the comments
-            output_comments_para(class_fd, comments)
-            
-        # if tmp[0] == '#':
-            # potential_comment = line.strip()[2:]
-            # if len(tmp) > 1 and tmp[1] != '--method--':
-            #     comments.append(potential_comment)
-            # if len(tmp) == 1:
-            #     comments.append('\n')
+            if ignore_class == False:
+                output_comments_para(class_fd, comments)
         if tmp[0] != '#' and tmp[0] != '):':
             get_parameter(class_fd, line, comments)
             comments = []
         if tmp[0] == '):':
             in_init, in_method = False, False
-            class_fd.write('</table>\n')
-            class_fd.write('</p>\n')
+            if ignore_class == False:
+                class_fd.write('</table>\n')
+                class_fd.write('</p>\n')
             print ''
 
     if in_class:
@@ -145,9 +153,10 @@ for line in fd:
             # looking for __init__
             func_name = remove_char(tmp[1], '(')
             if func_name == '__init__':
-                class_fd.write('<p>\n')
-                class_fd.write('<b>Initialize with following parameters:</b>\n')
-                class_fd.write('<table>\n')
+                if ignore_class == False:
+                    class_fd.write('<p>\n')
+                    class_fd.write('<b>Initialize with following parameters:</b>\n')
+                    class_fd.write('<table>\n')
                 in_init = True
                 comments = []
 

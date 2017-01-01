@@ -2,32 +2,41 @@
 <!-- <img width="200.00" height="60.00" src="example-anchor"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.00" height="60.00">
 <defs>
+<clipPath id="zplot_pattern_0"> <circle cx="10.00" cy="50.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <circle cx="10.00" cy="30.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <circle cx="10.00" cy="10.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <circle cx="100.00" cy="50.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <circle cx="100.00" cy="30.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <circle cx="100.00" cy="10.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_6"> <circle cx="190.00" cy="50.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_7"> <circle cx="190.00" cy="30.00" r="1.00"/> </clipPath>
+<clipPath id="zplot_pattern_8"> <circle cx="190.00" cy="10.00" r="1.00"/> </clipPath>
 </defs>
 <text x="10.00" y="50.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: baseline; "> Anchor Is l,l</text>
 <text x="10.00" y="30.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: middle; "> Anchor Is l,c</text>
 <text x="10.00" y="10.00" style="font-family: default; font-size: 10; text-anchor: start; alignment-baseline: hanging; "> Anchor Is l,h</text>
-<circle cx="10.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 9.00,51.00 L 9.00,49.00 L 11.00,49.00 L 11.00,51.00 L 9.00,51.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_0)"/>
 <circle cx="10.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="10.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 9.00,31.00 L 9.00,29.00 L 11.00,29.00 L 11.00,31.00 L 9.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_1)"/>
 <circle cx="10.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="10.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 9.00,11.00 L 9.00,9.00 L 11.00,9.00 L 11.00,11.00 L 9.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_2)"/>
 <circle cx="10.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
 <text x="100.00" y="50.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: baseline; "> Anchor Is c,l</text>
 <text x="100.00" y="30.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: middle; "> Anchor Is c,c</text>
 <text x="100.00" y="10.00" style="font-family: default; font-size: 10; text-anchor: middle; alignment-baseline: hanging; "> Anchor Is c,h</text>
-<circle cx="100.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 99.00,51.00 L 99.00,49.00 L 101.00,49.00 L 101.00,51.00 L 99.00,51.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_3)"/>
 <circle cx="100.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="100.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 99.00,31.00 L 99.00,29.00 L 101.00,29.00 L 101.00,31.00 L 99.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_4)"/>
 <circle cx="100.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="100.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 99.00,11.00 L 99.00,9.00 L 101.00,9.00 L 101.00,11.00 L 99.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_5)"/>
 <circle cx="100.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
 <text x="190.00" y="50.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: baseline; "> Anchor Is r,l</text>
 <text x="190.00" y="30.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: middle; "> Anchor Is r,c</text>
 <text x="190.00" y="10.00" style="font-family: default; font-size: 10; text-anchor: end; alignment-baseline: hanging; "> Anchor Is r,h</text>
-<circle cx="190.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 189.00,51.00 L 189.00,49.00 L 191.00,49.00 L 191.00,51.00 L 189.00,51.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_6)"/>
 <circle cx="190.00" cy="50.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="190.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 189.00,31.00 L 189.00,29.00 L 191.00,29.00 L 191.00,31.00 L 189.00,31.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_7)"/>
 <circle cx="190.00" cy="30.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
-<circle cx="190.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: #ff0000;"/>
+<path d="M 189.00,11.00 L 189.00,9.00 L 191.00,9.00 L 191.00,11.00 L 189.00,11.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #ff0000;" clip-path="url(#zplot_pattern_8)"/>
 <circle cx="190.00" cy="10.00" r="1.00" style="stroke: #ff0000; stroke-width: 1.00; fill: none;"/>
 </svg>

@@ -2,6 +2,15 @@
 <!-- <img width="252.00" height="212.40" src="examples"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="252.00" height="212.40">
 <defs>
+<clipPath id="zplot_pattern_0"> <circle cx="36.00" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_1"> <circle cx="64.80" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_2"> <circle cx="93.60" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_3"> <circle cx="122.40" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_4"> <circle cx="151.20" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_5"> <circle cx="180.00" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_6"> <circle cx="208.80" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_7"> <circle cx="237.60" cy="171.00" r="2.00"/> </clipPath>
+<clipPath id="zplot_pattern_8"> <circle cx="44.26" cy="47.60" r="2.50"/> </clipPath>
 </defs>
 <path d="M 35.75,176.40 L 237.85,176.40 " style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
 <path d="M 36.00,176.65 L 36.00,32.15 " style="stroke: #000000; stroke-width: 0.50; fill: none;"/>
@@ -99,21 +108,21 @@
 <path d="M 235.60,178.40 L 235.60,174.40 L 239.60,174.40 L 239.60,178.40 Z" style="stroke: #ffa500; stroke-width: 0.50; fill: #ffa500;"/>
 <path d="M 235.60,178.40 L 235.60,174.40 L 239.60,174.40 L 239.60,178.40 Z" style="stroke: #ffa500; stroke-width: 0.50; fill: none;"/>
 <path d="M 36.00,171.00 L 64.80,171.00 L 93.60,171.00 L 122.40,171.00 L 151.20,171.00 L 180.00,171.00 L 208.80,171.00 L 237.60,171.00 " style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="36.00" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 34.00,173.00 L 34.00,169.00 L 38.00,169.00 L 38.00,173.00 L 34.00,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_0)"/>
 <circle cx="36.00" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="64.80" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 62.80,173.00 L 62.80,169.00 L 66.80,169.00 L 66.80,173.00 L 62.80,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_1)"/>
 <circle cx="64.80" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="93.60" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 91.60,173.00 L 91.60,169.00 L 95.60,169.00 L 95.60,173.00 L 91.60,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_2)"/>
 <circle cx="93.60" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="122.40" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 120.40,173.00 L 120.40,169.00 L 124.40,169.00 L 124.40,173.00 L 120.40,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_3)"/>
 <circle cx="122.40" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="151.20" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 149.20,173.00 L 149.20,169.00 L 153.20,169.00 L 153.20,173.00 L 149.20,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_4)"/>
 <circle cx="151.20" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="180.00" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 178.00,173.00 L 178.00,169.00 L 182.00,169.00 L 182.00,173.00 L 178.00,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_5)"/>
 <circle cx="180.00" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="208.80" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 206.80,173.00 L 206.80,169.00 L 210.80,169.00 L 210.80,173.00 L 206.80,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_6)"/>
 <circle cx="208.80" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
-<circle cx="237.60" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 235.60,173.00 L 235.60,169.00 L 239.60,169.00 L 239.60,173.00 L 235.60,173.00 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_7)"/>
 <circle cx="237.60" cy="171.00" r="2.00" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
 <path d="M 36.00,165.60 L 64.80,165.60 L 93.60,165.60 L 122.40,165.60 L 151.20,165.60 L 180.00,165.60 L 208.80,165.60 L 237.60,165.60 " style="stroke: #00008c; stroke-width: 0.50; fill: none;"/>
 <path d="M 34.00,167.60 L 36.00,163.60 L 38.00,167.60 Z" style="stroke: #00008c; stroke-width: 0.50; fill: #00008c;"/>
@@ -334,7 +343,7 @@
 <path d="M 41.76,42.10 L 41.76,37.10 L 46.76,37.10 L 46.76,42.10 Z" style="stroke: #ffa500; stroke-width: 0.50; fill: #ffa500;"/>
 <path d="M 41.76,42.10 L 41.76,37.10 L 46.76,37.10 L 46.76,42.10 Z" style="stroke: #ffa500; stroke-width: 0.50; fill: none;"/>
 <text x="50.76" y="39.60" style="font-family: default; font-size: 8; text-anchor: start; alignment-baseline: middle; "> square</text>
-<circle cx="44.26" cy="47.60" r="2.50" style="stroke: #add8e5; stroke-width: 1.00; fill: #add8e5;"/>
+<path d="M 41.76,50.10 L 41.76,45.10 L 46.76,45.10 L 46.76,50.10 L 41.76,50.10 Z" style="stroke: #000000; stroke-width: 0.00; fill: #add8e5;" clip-path="url(#zplot_pattern_8)"/>
 <circle cx="44.26" cy="47.60" r="2.50" style="stroke: #add8e5; stroke-width: 0.50; fill: none;"/>
 <text x="50.76" y="47.60" style="font-family: default; font-size: 8; text-anchor: start; alignment-baseline: middle; "> circle</text>
 <path d="M 41.76,58.10 L 44.26,53.10 L 46.76,58.10 Z" style="stroke: #00008c; stroke-width: 0.50; fill: #00008c;"/>

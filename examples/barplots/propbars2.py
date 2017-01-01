@@ -13,7 +13,7 @@ t.update(set='France_2 = USSR_2 + France')
 t.update(set='Other_2 = France_2 + Other')
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='propbars2', dimensions=[100, 200])
+c = canvas(ctype, title='propbars2', dimensions=[100, 200])
 d = drawable(canvas=c, xrange=[-0.6,0.6], yrange=[0,100], coord=[4,4],
              dimensions=[92,180])
 

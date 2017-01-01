@@ -9,7 +9,7 @@ a = table(table=all, where='c1 == \'a\'')
 b = table(table=all, where='c1 == \'b\'')
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='rangesweep2', dimensions=[300, 250])
+c = canvas(ctype, title='rangesweep2', dimensions=[300, 250])
 d = drawable(canvas=c, xrange=[0,120], yrange=[0,100], coord=[40,40],
              dimensions=[250,200])
 

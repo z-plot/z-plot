@@ -5,7 +5,7 @@ from zplot import *
 # define the canvas
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='belmont', dimensions=['8.5in', '3.6in'])
+c = canvas(ctype, title='belmont', dimensions=['8.5in', '3.6in'])
 
 colors = {}
 colors['runavg'] = 'forestgreen'

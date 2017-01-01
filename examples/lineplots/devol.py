@@ -5,7 +5,7 @@ import sys
 
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='devol', dimensions=['400','340'])
+c = canvas(ctype, title='devol', dimensions=['400','340'])
 
 t = table(file='devol.data')
 t.addcolumns(['month','year'])

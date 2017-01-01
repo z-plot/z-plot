@@ -6,7 +6,7 @@ import sys
 ctype = 'eps'
 if len(sys.argv) == 2:
     ctype = sys.argv[1]
-c = make_canvas(ctype, title='dgraid', dimensions=[400,290])
+c = canvas(ctype, title='dgraid', dimensions=[400,290])
 
 p = plotter()
 

@@ -3,7 +3,7 @@
 from zplot import *
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='bars6', dimensions=[300,140])
+c = canvas(ctype, title='bars6', dimensions=[300,140])
 d = drawable(canvas=c, xrange=[-0.5,2.5], yrange=[-5000,15000],
              dimensions=[260,80])
 t = table(file='bars6.data')

@@ -36,9 +36,7 @@
            Docs<span class="caret"></span></a>
         <ul class="dropdown-menu">
            <li><a href="docs.html"> [main]</a> </li>
-           <li><a href="docs.html#svg"> svg</a> </li>
-           <li><a href="docs.html#postscript"> postscript</a> </li>
-           <li><a href="docs.html#drawable"> drawable</a> </li>
+           <li><a href="docs.html#canvas"> canvas</a> </li>
            <li><a href="docs.html#table"> table</a> </li>
            <li><a href="docs.html#plotter"> plotter</a> </li>
            <li><a href="docs.html#axis"> axis</a> </li>
@@ -67,8 +65,8 @@ We introduce Zplot, a Python library for making two-dimensional data
 plots.  Zplot provides a simple set of primitives that allow users to input
 and manipulate data, plot said data in a variety of formats, and decorate the
 resulting graphs with axes, labels, and other textual accents. Zplot then
-outputs encapsulated PostScript for ease of inclusion in technical documents;
-rudimentary support for SVG is also provided.
+outputs encapsulated PostScript and PDF for ease of inclusion in technical
+documents, and SVG for inclusion of generated plots in modern web pages.
 </p>
 
 <h2> Introduction</h2>
@@ -86,10 +84,11 @@ loops, and useful primitives can be encapsulated in functions.
 tool and the basic primitives it provides. Then, we describe each of the basic
 routines in more detail, showing how they can be combined to produce a wide
 range of interesting graphs. Zplot drawing routines are all built upon a set
-of low-level PostScript-generating commands (there is also a new SVG driver);
-these commands hide many of the details of generating correct PostScript (or
-SVG) from the rest of Zplot, boiling down most activities to simple drawing
-commands that place lines, shapes, and text on the drawing surface.
+of low-level generic drawing commands that can produce PostScript, PDF, or SVG
+graphic formats; these commands hide many of the details of generating correct
+PostScript, PDF, or SVG from the rest of Zplot, boiling down most activities
+to simple drawing commands that place lines, shapes, and text on the drawing
+surface.
 </p> 
 
 <h2> Overview</h2>
@@ -104,9 +103,11 @@ as follows:
 <pre>
 # import the library
 from zplot import *
+import sys
 
 # describe the drawing surface
-c = postscript(title='example1.eps', dimensions=['3in', '2.4in'])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = canvas(ctype, title='example1', dimensions=['3in', '2.4in'])
 
 # load some data
 t = table(file='example1.data')
@@ -139,47 +140,63 @@ c.render()
 
 <p>
 The EPS version of this graph is
-shown <a href="../examples/original-paper/example1.eps"> here;</a> it is made
+shown <a href="../examples/original-paper/example1.eps"> here;</a> a PDF
+version of this graph is
+shown <a href="../examples/original-paper/example1.pdf"> here;</a> it is made
 from <a href="../examples/original-paper/example1.data"> this data set</a>
 using <a href="../examples/original-paper/example1.py"> this script.</a>
 </p>
 
 <p> In this example, the user creates a graph by first describing the drawing
-surface by creating a <a href="postscript.html">postscript object</a> and
-specifying its dimensions. Then, the user creates a <a href="table.html">table
-object</a> to load data from a file, getting the data from a file
-file.data. The user, wishing to plot the data, now creates a drawable region
-by creating a <a href="drawable.html">drawable object</a>; doing so defines
+surface by creating a <a href="docs.html#canvas">canvas object</a> and
+specifying its dimensions; the user at this point specifies the type of the
+canvas, which can currently be 'eps' (for PostScript), 'pdf' (for PDF), or
+'svg' (for SVG graphics format). Here, as in many of the example graphs, the
+script will generate the output file 'example1.eps' if no arguments are passed
+to the script, but can be directed to generate PDF or SVG formats simply by
+passing in the 'pdf' or 'svg' argument to the canvas (and thus generate
+'example1.pdf' or 'example1.svg', respectively). </p>
+
+
+<p> Then, the user creates a <a href="docs.html#table">table object</a> to
+load data from a file, getting the data from a file called
+<code>example.data.</code> The table object provides some simple ways to read
+input files, and later plotting routines expect to input data from such
+tables. </p>
+
+<p>The user, now wishing to plot the data, now creates a drawable region by
+creating a <a href="docs.html#drawable">drawable object</a>; doing so defines
 where on the canvas the drawable is, and also how to map data points onto the
 drawing surface (e.g., the range of x values and y values that map onto this
 drawable); note that interesting graphs can use more than one drawable to
-great effect. With a drawable defined, the user can create
-a <a href="plotter.html"> plotter object</a>, call one of a variety of
-plotting routines (e.g., <a href="plotter.html#points">points()</a>) to plot
-the data onto the drawable. The plotting routines generally take a large
-number of arguments, enabling a wide variety of plots to be produced; in this
-case, the user chooses to draw a red triangle at each (x,y) point of the
-graph. Finally, the user adds some graphical and textual decorations to help
-clarify the graph (in this case, by simply creating
-an <a href="axis.html">axis object</a>), and then renders the PostScript to a
-file by calling the <a href="postscript.html#render">render()</a> method of
-the postscript object.  We now describe each of these primitives in more
-detail.
-</p> 
+great effect.</p>
 
-<p> 
-Note that each of these routines takes a large number of optional parameters.
-Read more about them in the documentation page.
-</p> 
+<p>With a drawable defined, the user can create a <a href="docs.html#plotter">
+plotter object</a>, call one of a variety of plotting routines
+(e.g., <a href="docs.html#plotter_points">points()</a>) to plot the data onto
+the drawable. The plotting routines generally take a large number of
+arguments, enabling a wide variety of plots to be produced; in this case, the
+user chooses to draw a red triangle at each (x,y) point of the graph.</p>
+
+<p>Finally, the user adds some graphical and textual decorations to help
+clarify the graph (in this case, by simply creating
+an <a href="docs.html#axis">axis object</a>), and then renders the PostScript
+to a file by calling the <a href="docs.html#canvas_render">render()</a> method
+of the canvas object.  We now describe each of these primitives in more
+detail.</p> 
+
+<p> Note that each of these routines takes a large number of optional
+parameters.  Read more about them in the 
+<a href="docs.html">documentation</a>. </p> 
 
 <h2> Tables</h2>
 
 <p> There are numerous routines available to users to input and manipulate
-data; these are found in the <a href="table.html">table object</a> and related
-methods. The most commonly used approach is simply to create a table object
-and pass in a file name; creating a table in this way will read the file into
-memory and thus make it ready to be plotted. A typical data file (such 
-as <a href="../examples/original-paper/example1.data"> example1.data</a>
+data; these are found in the <a href="docs.html#table">table object</a> and
+related methods. The most commonly used approach is simply to create a table
+object and pass in a file name; creating a table in this way will read the
+file into memory and thus make it ready to be plotted. A typical data file
+(such as <a href="../examples/original-paper/example1.data"> example1.data</a>
 above) looks like this:
 
 <p> 
@@ -244,31 +261,32 @@ points are plotted as green circles.
 
 
 <p> This example is shown in
-postscript <a href="../examples/original-paper/example2.eps"> here;</a> it is
+PostScript <a href="../examples/original-paper/example2.eps"> here;</a> it is
 made from <a href="../examples/original-paper/example2.data"> this data
 set</a> using <a href="../examples/original-paper/example2.py"> this
 script.</a>
 </p> 
 
 <p> There are a number of other useful table functions which are not covered
-here, mostly for manipulating and summarizing data; see <a href="table.html">
-the table method APIs</a> for more information. For example,
-the <a href="table.html#update">update()</a> method allows arbitrary SQL
-updates to be performed.
+here, mostly for manipulating and summarizing data;
+see <a href="docs.html#table"> the table method APIs</a> for more
+information. For example, the <a href="docs.html#table_update">update()</a>
+method allows arbitrary SQL updates to be performed.
 </p> 
 
 <h2>Drawable</h2>
 
 <p> The drawable is likely the most important abstraction that Zplot
-implements. A drawable is created by instantiating a <a href="drawable.html">
-drawable object. </a> The powerful aspect of a drawable is that it enables a
-user to place multiple (potentially overlapping) drawable regions onto the
-drawing surface. This feature can be used to implement a number of interesting
-graphs. For example, in the figure below (Figure 5 in this 
+implements. A drawable is created by instantiating
+a <a href="docs.html#drawable"> drawable object. </a> The powerful aspect of a
+drawable is that it enables a user to place multiple (potentially overlapping)
+drawable regions onto the drawing surface. This feature can be used to
+implement a number of interesting graphs. For example, in the figure below
+(Figure 5 in this
 a <a href="http://research.cs.wisc.edu/adsl/Publications/dgraid-fast04.pdf">FAST
 paper</a>), two regions of the graph are of interest but hard to see due to
 their small size. Thus, one can create two additional drawables and plot
-closeups of the data in those regions. 
+closeups of the data in those regions.
 </p> 
 
 <p>
@@ -328,9 +346,11 @@ on both drawables, but with different scales.
 <pre>
 # import the library
 from zplot import *
+import sys
 
 # describe the drawing surface
-c = postscript(title='example3.eps', dimensions=['3.3in', '2.4in'])
+ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
+c = canvas(ctype, title='example3', dimensions=['3.3in', '2.4in'])
 
 # load some data
 t = table(file='example3.data')
@@ -363,25 +383,25 @@ c.render()
 
 <p> 
 
-The <a href="plotter.html"> plotter object</a> is used to plot data onto
+The <a href="docs.html#plotter"> plotter object</a> is used to plot data onto
 drawables. It provides numerous plotting methods to get this job done:
 <ul>
-<li> <a href="plotter.html#points"> points()</a>, which plots points onto a drawable</li>
-<li> <a href="plotter.html#line"> line()</a>, which plots a line</li>
-<li> <a href="plotter.html#horizontalbars"> horizontalbars()</a>, which can be
+<li> <a href="docs.html#plotter_points"> points()</a>, which plots points onto a drawable</li>
+<li> <a href="docs.html#plotter_line"> line()</a>, which plots a line</li>
+<li> <a href="docs.html#plotter_horizontalbars"> horizontalbars()</a>, which can be
   used to make horizontal bar graphs</li>
-<li> <a href="plotter.html#verticalbars"> verticalbars()</a>, which can be
+<li> <a href="docs.html#plotter_verticalbars"> verticalbars()</a>, which can be
   used to make vertical bar graphs </li>
-<li> <a href="plotter.html#horizontalintervals"> horizontalintervals()</a>,
+<li> <a href="docs.html#plotter_horizontalintervals"> horizontalintervals()</a>,
   which can make short intervals (lines between two points, perhaps to show
   confidence intervals) in a horizontal direction</li>
-<li> <a href="plotter.html#verticalintervals"> verticalintervals()</a>, as
+<li> <a href="docs.html#plotter_verticalintervals"> verticalintervals()</a>, as
   above, but in the vertical direction</li>
-<li> <a href="plotter.html#verticalfill"> verticalfill()</a>, which can
+<li> <a href="docs.html#plotter_verticalfill"> verticalfill()</a>, which can
   create a filled graph (as one would use in a stacked line graph)</li>
-<li> <a href="plotter.html#function"> function()</a>, which can plot an
+<li> <a href="docs.html#plotter_function"> function()</a>, which can plot an
   arbitrary function over an interval</li>
-<li> <a href="plotter.html#heat"> heat()</a>, which can make a heat map
+<li> <a href="docs.html#plotter_heat"> heat()</a>, which can make a heat map
   (a form of a 3D graph)</li>
 </ul>
 </p> 
@@ -401,9 +421,10 @@ other variations are possible.
 <p>
 This next example, shown in Figure 5 above, presents a number of different
 possibilities from the above, all combined into a single script. The EPS graph
-is shown <a href="../examples/original-paper/example-multi.eps"> here;</a> it
-is made from <a href="../examples/original-paper/example-multi.data"> this
-data set</a> using <a href="../examples/original-paper/example-multi.py"> this
+is shown <a href="../examples/original-paper/example-multi.eps"> here;</a>
+PDF <a href="../examples/original-paper/example-multi.pdf"> here</a>; it is
+made from <a href="../examples/original-paper/example-multi.data"> this data
+set</a> using <a href="../examples/original-paper/example-multi.py"> this
 script.</a> One interesting point is that multiple types from above can be
 combined to make more interesting plots; for example, a box-and-whiskers type
 plot is simply a combination of vertical intervals, vertical bars, and points.
@@ -438,10 +459,10 @@ a region. The example also includes a legend.
 
 <p>
 A single complex object supports the generation of axes, tic marks, and labels
-for a graph. It is (not surprisingly) called the <a href="axis.html">axis
+for a graph. It is (not surprisingly) called the <a href="docs.html#axis">axis
 object</a>. It has too many arguments to describe here in any detail; see
-the <a href="axis.html"> documentation page</a> for details. However, it is
-often quite simple to use. For example, to specify the title, label for the
+the <a href="docs.html#axis"> documentation page</a> for details. However, it
+is often quite simple to use. For example, to specify the title, label for the
 x-axis, and label for the y-axis, one simple do the following:
 </p> 
 
@@ -464,13 +485,14 @@ with customizations such as font selection, rotation, color, and so forth.
 
 <p>
 Finally, Zplot provides support in most plotting routines for the addition of
-a legend via a legend object; see documentation <a href="legend.html">
+a legend via a legend object; see documentation <a href="docs.html#legend">
 here.</a> Each given plot method (such
-as <a href="plotter.html#line">line()</a>) takes an optional <b>legend</b>
-parameter which specifies the legend object, and a <b>legendtext</b> parameter
-which indicates the name to be associated with the data. The script should
-subsequently call the <a href="legend.html#draw">draw()</a> method to place
-the legend on the screen and control its appearance.
+as <a href="docs.html#plotter_line">line()</a>) takes an
+optional <b>legend</b> parameter which specifies the legend object, and
+a <b>legendtext</b> parameter which indicates the name to be associated with
+the data. The script should subsequently call
+the <a href="docs.html#legend_draw">draw()</a> method to place the legend on the
+screen and control its appearance.
 This <a href="../examples/original-paper/example4.py"> script</a> contains the
 following example (some lines omitted for brevity):
 </p> 
@@ -491,29 +513,32 @@ c.render()
 </p>
 
 
-<h2>PostScript Generation</h2>
+<h2>PostScript, PDF, and SVG Generation</h2>
 
 <p>
-Zplot is built on top of a number of underlying canvas primitives. Two types
-of canvases are currently supported: a <a href="postscript.html"> postscript
-object</a> and a (currently rudimentary) <a href="svg.html"> svg object</a>,
-which output graphs in postscript and SVG formats respectively.  The former is
-useful for inclusion in LaTeX papers, whereas the latter can be useful for web
-pages. Each of these provide the basic ability to draw shapes as well as place
-text into the figure the user is making. Furthermore, the primitives provided
-by the canvases are used by the plotting routines and thus make said plotting
-code canvas-neutral.
+Zplot is built on top of a number of underlying canvas primitives. Three types
+of canvases are currently supported: PostScript (actually, embedded
+Postscript, or EPS for short), PDF, and SVG graphics. The user can select
+which to output by simply specifying it when creating
+a <a href="docs.html#canvas"> canvas object.</a> The EPS format is
+particularly useful for inclusion in LaTeX-generated papers, whereas SVG can
+be useful for web pages; PDF is useful in many scenarios. Each type of canvas
+provides the basic ability to draw shapes as well as place text into the
+figure the user is making. Furthermore, the primitives provided by the
+canvases are used by the plotting routines and thus make said plotting code
+(such as that found in the creation of the different types of plots)
+canvas-neutral.
 </p> 
 
-<p> One method found in these classes is <a href="postscript.html#line">
+<p> One method found in these classes is <a href="docs.html#canvas_line">
 <code>line()</code></a>, which lets the user draw a line directly on the
 canvas.  The method is passed a set of coordinates, some basic information
 about the line, and then produces a line that connects the coordinates in the
-resulting PostScript. All PostScript (and SVG) primitives take coordinates in
+resulting PostScript, PDF, or SVG. All primitives take coordinates in
 PostScript <i>ems</i>, each of which is 1/72nd of an inch.  The line method
 takes additional arguments that allow the addition of an arrow to the end of
 the line; we omit these parameters for the sake of space;
-see <a href="postscript.html#line"> this</a> for more information.
+see <a href="docs.html#canvas_line"> this</a> for more information.
 </p> 
 
 <p> An example of some of the subtle differences in lines is
@@ -523,11 +548,10 @@ script.</a>
 </p> 
 
 <p> There are a few other raw drawing methods, such as 
-<a href="postscript.html#box"> <code>box()</code></a>,
-<a href="postscript.html#arc"> <code>arc()</code></a>,
-<a href="postscript.html#circle"> <code>circle()</code></a>,
-<a href="postscript.html#polygon"> <code>polygon()</code></a>, all of which
-make the shape one might expect.
+<a href="docs.html#canvas_box"> <code>box()</code></a>,
+<a href="docs.html#canvas_circle"> <code>circle()</code></a>,
+<a href="docs.html#canvas_polygon"> <code>polygon()</code></a>, all of which
+make the shape one might expect, given the name.
 </p>
 
 Each of these shape routines take a variety of arguments that describe their
@@ -544,15 +568,16 @@ provided by the pattern descriptions.
 <p> Parameters further allow users to specify a fill pattern for a region. The
 most important parameter is <code>fillstyle</code>, which determines how the
 region is filled. Current styles that are supported include <code>solid,
-hline, vline, dline1, dline2, circle, square, triangle, utriangle</code>; more
-are added from time to time. Each pattern takes two arguments to determine its
-contents: a <code>fillsize</code> and <code>fillskip</code>. Within a given
-pattern, <code>fillsize</code> determines the size of each element in the
-pattern, and <code>fillskip</code> the space between each element. </p>
+hline, vline, dline1, dline2, circle, square, triangle, utriangle</code>. Each
+pattern takes two arguments to determine its contents: a <code>fillsize</code>
+and <code>fillskip</code>. Within a given pattern, <code>fillsize</code>
+determines the size of each element in the pattern, and <code>fillskip</code>
+the space between each element. </p>
 
 
-<p> An example shape and pattern collection is
-shown <a href="../examples/original-paper/example-pattern.eps"> here;</a> data
+<p> An example shape and pattern collection is shown in
+EPS <a href="../examples/original-paper/example-pattern.eps"> here;</a> in
+PDF <a href="../examples/original-paper/example-pattern.pdf"> here;</a> data
 is available <a href="../examples/original-paper/example-pattern.data">
 here;</a> it is made
 using <a href="../examples/original-paper/example-pattern.py"> this
@@ -560,7 +585,7 @@ script.</a>
 </p> 
 
 <p> The last canvas method we describe
-is <a href="postscript.html#text">text()</a>, which draws text onto the
+is <a href="docs.html#canvas_text">text()</a>, which draws text onto the
 screen. Most of its parameters are straightforward. However, the most crucial
 argument to understand is the <code>anchor</code>. This parameter describes
 how the text should be anchored relative to the coordinate that was passed to
@@ -569,9 +594,9 @@ string <code>'xanchor,yanchor'</code>, where xanchor specifies the anchoring
 of the text in the x direction (either <code>l</code> for left, <code>c</code>
 for center, or <code>r</code> for right), and yanchor the anchoring in the y
 direction (<code>l</code> for low, <code>c</code> for center,
-and <code>h</code> for high). The figure below shows the different
-possible anchors (the coordinates passed to the text drawing routine are
-highlighted with a red circle).
+and <code>h</code> for high). The figure below shows the different possible
+anchors (the coordinates passed to the text drawing routine are highlighted
+with a red circle).
 </p>
 
 <p>
@@ -584,11 +609,11 @@ This example shows how to specify text anchors.
 </center>
 </p>
 
-<p> 
-The anchoring EPS graph is 
-shown <a href="../examples/original-paper/example-anchor.eps"> here;</a> it is made
-using <a href="../examples/original-paper/example-anchor.py"> this script.</a>
-</p> 
+<p> The anchoring EPS graph is
+shown <a href="../examples/original-paper/example-anchor.eps"> here;
+PDF <a href="../examples/original-paper/example-anchor.pdf"> here;</a> it is
+made using <a href="../examples/original-paper/example-anchor.py"> this
+script.</a> </p>
 
 <h3> Programmability</h3>
 
@@ -611,8 +636,9 @@ random dots via a simple loop.
 
 <p> 
 The EPS graph is
-shown <a href="../examples/original-paper/example-fancylabel.eps"> here;</a> it is
-made using <a href="../examples/original-paper/example-fancylabel.py"> this
+shown <a href="../examples/original-paper/example-fancylabel.eps"> here;</a>
+PDF <a href="../examples/original-paper/example-fancylabel.pdf"> here;</a>
+it is made using <a href="../examples/original-paper/example-fancylabel.py"> this
 script.</a> The SVG is shown below in Figure 8.
 </p> 
 
@@ -646,21 +672,35 @@ the <a href="https://www-cdf.fnal.gov/offline/PostScript/BLUEBOOK.PDF"> blue
 book</a>, <a href="https://www.adobe.com/products/postscript/pdfs/PLRM.pdf">red
 book</a>, and (to some extent),
 the <a href="https://www-cdf.fnal.gov/offline/PostScript/GREENBK.PDF">green
-book</a>; all are available online.
+book</a>; all are available online. 
 </p>
 
+<p> A number of good SVG resources are also available online. We found
+<a href="http://tutorials.jenkov.com/svg/index.html"> Jenkov's tutorials</a>
+to be particularly useful. </p>
+
+<p> It is somewhat harder to find good resources for generating raw PDFs; PDF
+files are a bit intricate in that they force the inclusion of many precise
+byte offsets for fast lookup of objects, and there generally is a lack of
+examples (as compared to PostScript, for which there are numerous good
+resources). The <a href="http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf">PDF
+reference</a> is useful and covers everything, but does not include many
+detailed examples; the SyncFusion
+<a href="https://www.syncfusion.com/resources/techportal/ebooks/pdf" PDF
+Succinctly</a> book is quite useful in this regard.</p>
+
 <p>
-As Zplot was demonstrated to others, many people were reminded of
+As Zplot was demonstrated to others, some were reminded of
 <a href="http://ploticus.sourceforge.net/doc/welcome.html">Ploticus</a>, which
 is a more powerful and complete tool than gnuplot and is capable of producing
 a large variety of interesting graph types. Many of the features found in
 Zplot are also found in ploticus (e.g., a ploticus <code>area</code> is akin
 to a Zplot <code>drawable</code>), and we often use examples from the Ploticus
 web page to determine whether Zplot can easily do what Ploticus already
-does. However, Ploticus is complex, and harder to modify, comprised of over
+does. However, Ploticus is complex and harder to modify, comprised of over
 60,000 lines of C code. Zplot, in contrast, consists of a few thousand lines
-of Python. This comparison is certainly unfair, as Zplot is not as powerful as
-Ploticus, but the point remains.</p>
+of Python. This comparison is certainly unfair, as Zplot is not as
+feature-rich as Ploticus, but the point remains.</p>
 
 
 <h3> Conclusions</h3>

@@ -36,9 +36,7 @@
            Docs<span class="caret"></span></a>
         <ul class="dropdown-menu">
            <li><a href="docs.html"> [main]</a> </li>
-           <li><a href="docs.html#svg"> svg</a> </li>
-           <li><a href="docs.html#postscript"> postscript</a> </li>
-           <li><a href="docs.html#drawable"> drawable</a> </li>
+           <li><a href="docs.html#canvas"> canvas</a> </li>
            <li><a href="docs.html#table"> table</a> </li>
            <li><a href="docs.html#plotter"> plotter</a> </li>
            <li><a href="docs.html#axis"> axis</a> </li>
@@ -54,47 +52,39 @@
 <div class="container">
 
 
-<h2 id=color> Class color</h2>
+<h2 id=canvas> </h2><p>.</p><h2> Class canvas</h2>
 
-<p>  Separate class just to map color names to RGB values. Not of general use. </p>
+<p>  Use this to make a drawing surface of type eps, pdf, or svg (for now). Most simple plots use a single canvas and one or more drawables to get their work done. </p>
 <p>
 <b>Initialize with following parameters:</b>
 <table>
+<tr><td style="width:150px"><b>canvas_type</b></td><td style="width:10px"></td><td style="width:150px">default: 'eps'</td><td style="width:10px"></td><td> Canvas type: Can be eps, pdf, svg (for now).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default'</td><td style="width:10px"></td><td> Base name of the output file. Output will be</td></tr><tr><td></td><td></td><td></td><td></td><td> of the form: 'title.canvas_type'</td> </tr>
+<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> Size of the drawing surface.</td> </tr>
+<tr><td style="width:150px"><b>default_font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> Default font for text.</td> </tr>
+<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Whether to add more info into output file.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> Name of the file calling into zplot; recorded in header.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 </table>
 </p>
 
-<h2 id=util> Class util</h2>
+<h3 id=canvas_text> canvas.text()</h3><table>
 
-<p>  Class util has a number of shared utility methods for use across all real canvas types; thus, each should inherit from here to use them. </p>
-<p>
-<b>Initialize with following parameters:</b>
-<table>
+<p>  Use this routine to place text on the canvas. Most options are obvious: the expected coordinate pair, color, text, font, size - the size of the font, rotation - which way the text should be rotated, but the anchor can be a bit confusing. Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed. Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h), and middle (m), again all determining the placement of the text relative to the y coordinate specified. </p>
+<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates for text on the canvas.</td> </tr>
+<tr><td style="width:150px"><b>text</b></td><td style="width:10px"></td><td style="width:150px">default: 'text'</td><td style="width:10px"></td><td> Actual text to place on the canvas.</td> </tr>
+<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'default'</td><td style="width:10px"></td><td> Typeface to use.</td> </tr>
+<tr><td style="width:150px"><b>color</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of letters.</td> </tr>
+<tr><td style="width:150px"><b>size</b></td><td style="width:10px"></td><td style="width:150px">default: 10</td><td style="width:10px"></td><td> Font size.</td> </tr>
+<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate text by this many degrees.</td> </tr>
+<tr><td style="width:150px"><b>anchor</b></td><td style="width:10px"></td><td style="width:150px">default: 'c'</td><td style="width:10px"></td><td> Anchor: can either just specify left/right</td></tr><tr><td></td><td></td><td></td><td></td><td> (e.g., 'c' for center, 'l' for left justify, 'r' for right)</td></tr><tr><td></td><td></td><td></td><td></td><td> or can also specify vertical alignment (e.g., 'l,h' for left justify and high justify,</td></tr><tr><td></td><td></td><td></td><td></td><td> 'r,c' for right and center, 'l,l' for left and low).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind text? Empty means no.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>bgborder</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Border (black) around background color?</td> </tr>
 </table>
 </p>
 
-<h2 id=svg> Class svg</h2>
+<h3 id=canvas_line> canvas.line()</h3><table>
 
-<p>  Use this to make an SVG drawing surface. A good source of info on SVG: https://www.w3.org/TR/SVG. Also useful: http://tutorials.jenkov.com/svg.  Also a good source of info on markers:   http://vanseodesign.com/web-design/svg-markers/ (useful for drawing arrowheads, for example)  Not super complete right now, in particular in support of making arbitrary shapes and things like that inside of boxes. </p>
-<p>
-<b>Initialize with following parameters:</b>
-<table>
-<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.svg'</td><td style="width:10px"></td><td> name of the output file</td> </tr>
-<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> size of the drawing surface</td> </tr>
-<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> default font for text</td> </tr>
-<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> whether to add more info into output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> name of the file calling into zplot; recorded in header of output file</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-</table>
-</p>
-
-<h3 id=svg_render> svg.render()</h3><table>
-
-<p>  Use this routine when all done with making graphics to print out all the commands you've been queueing up to a file. </p>
-</table>
-</p>
-
-<h3 id=svg_line> svg.line()</h3><table>
-
-<p>  Use this to draw a line on the canvas. Can also add an optional arrow. </p>
+<p>  Use this to draw a line on the canvas. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of the line. A list of [x,y] pairs. Can</td></tr><tr><td></td><td></td><td></td><td></td><td> be as long as you like (not just two points).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the line.</td> </tr>
 <tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of the line.</td> </tr>
@@ -113,22 +103,7 @@
 </table>
 </p>
 
-<h3 id=svg_text> svg.text()</h3><table>
-
-<p>  Use this routine to place text on the canvas. Most options are obvious: the expected coordinate pair, color, text, font, size - the size of the font, rotation - which way the text should be rotated, but the anchor can be a bit confusing. Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed. Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h), and middle (m), again all determining the placement of the text relative to the y coordinate specified. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates for text on the canvas.</td> </tr>
-<tr><td style="width:150px"><b>text</b></td><td style="width:10px"></td><td style="width:150px">default: 'text'</td><td style="width:10px"></td><td> Actual text to place on the canvas.</td> </tr>
-<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'default'</td><td style="width:10px"></td><td> Typeface to use.</td> </tr>
-<tr><td style="width:150px"><b>color</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of letters.</td> </tr>
-<tr><td style="width:150px"><b>size</b></td><td style="width:10px"></td><td style="width:150px">default: 10</td><td style="width:10px"></td><td> Font size.</td> </tr>
-<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate text by this many degrees.</td> </tr>
-<tr><td style="width:150px"><b>anchor</b></td><td style="width:10px"></td><td style="width:150px">default: 'c'</td><td style="width:10px"></td><td> Anchor: can either just specify left/right</td></tr><tr><td></td><td></td><td></td><td></td><td> (e.g., 'c' for center, 'l' for left justify, 'r' for right)</td></tr><tr><td></td><td></td><td></td><td></td><td> or can also specify vertical alignment (e.g., 'l,h' for left justify and high justify,</td></tr><tr><td></td><td></td><td></td><td></td><td> 'r,c' for right and center, 'l,l' for left and low).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind text? Empty means no.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>bgborder</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Border (black) around background color?</td> </tr>
-</table>
-</p>
-
-<h3 id=svg_box> svg.box()</h3><table>
+<h3 id=canvas_box> canvas.box()</h3><table>
 
 <p>  Makes a box at coords specifying the bottom-left and upper-right corners. Can change the width of the surrounding line (linewidth=0 removes it). Can fill with solid or pattern. When filling with non-solid pattern, can add a background color so as not to be see-through. </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of box, from [x1,y1] to [x2,y2].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -136,6 +111,7 @@
 <tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of those lines. 0 means unlined box.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern in lines around box?</td> </tr>
 <tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default; 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
+<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> For turns in the line, how turn should be rounded.</td></tr><tr><td></td><td></td><td></td><td></td><td> Options include 0->'miter', 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is just do hard turns (miter).</td> </tr>
 <tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Should box be filled? If so, specify here.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the fill pattern.</td> </tr>
 <tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Type of fill pattern. Right now, all are 'solid'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -146,7 +122,7 @@
 </table>
 </p>
 
-<h3 id=svg_circle> svg.circle()</h3><table>
+<h3 id=canvas_circle> canvas.circle()</h3><table>
 
 <p>  Can just make circles with this. Can fill them too. Exciting! </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates of center of circle in [x,y].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
@@ -164,117 +140,14 @@
 </table>
 </p>
 
-<h2 id=postscript> Class postscript</h2>
-
-<p>  Use this class to make a postscript drawing surface. </p>
-<p>
-<b>Initialize with following parameters:</b>
-<table>
-<tr><td style="width:150px"><b>title</b></td><td style="width:10px"></td><td style="width:150px">default: 'default.eps'</td><td style="width:10px"></td><td> Name of the output file.</td> </tr>
-<tr><td style="width:150px"><b>dimensions</b></td><td style="width:10px"></td><td style="width:150px">default: ['3in','2in']</td><td style="width:10px"></td><td> Size of the drawing surface.</td> </tr>
-<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'Helvetica'</td><td style="width:10px"></td><td> Default font for text.</td> </tr>
-<tr><td style="width:150px"><b>verbose</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Whether to add more info into output file.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>script</b></td><td style="width:10px"></td><td style="width:150px">default: __file__</td><td style="width:10px"></td><td> Name of the file calling into zplot; recorded in header.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_render> postscript.render()</h3><table>
-
-<p>  Use this routine to print out all the postscript commands you've been queueing up to a file or 'stdout' (default). </p>
-</table>
-</p>
-
-<h3 id=postscript_line> postscript.line()</h3><table>
-
-<p>  Use this to draw a line on the canvas. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of the line. A list of [x,y] pairs. Can</td></tr><tr><td></td><td></td><td></td><td></td><td> be as long as you like (not just two points).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the line.</td> </tr>
-<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of the line.</td> </tr>
-<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> For turns in the line, how turn should be rounded.</td></tr><tr><td></td><td></td><td></td><td></td><td> Options include 0->'miter', 1->'round', 2->'bevel'</td></tr><tr><td></td><td></td><td></td><td></td><td> Default is miter</td> </tr>
-<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Shape used at end of line (0->'butt', 1->'round', 2->'square')</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern of the line. '0' means no dashes.</td></tr><tr><td></td><td></td><td></td><td></td><td> Otherwise, a list describing the on/off pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> of the dashes, e.g., [2,2] means 2 on, 2 off, repeating.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>closepath</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Can use this to close the path (and perhaps fill it).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>arrow</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Turn an arrow at last segment on or off.</td> </tr>
-<tr><td style="width:150px"><b>arrowheadlength</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Length of arrow head.</td> </tr>
-<tr><td style="width:150px"><b>arrowheadwidth</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Width of arrow head.</td> </tr>
-<tr><td style="width:150px"><b>arrowlinecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of arrow head line.</td> </tr>
-<tr><td style="width:150px"><b>arrowlinewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 0.5</td><td style="width:10px"></td><td> Width of line that makes arrow head.</td> </tr>
-<tr><td style="width:150px"><b>arrowfill</b></td><td style="width:10px"></td><td style="width:150px">default: True</td><td style="width:10px"></td><td> Fill arrow head with solid color?</td> </tr>
-<tr><td style="width:150px"><b>arrowfillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color to fill arrow head with.</td> </tr>
-<tr><td style="width:150px"><b>arrowstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'normal'</td><td style="width:10px"></td><td> Style to use. 'normal' is one option. There are no others.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_text> postscript.text()</h3><table>
-
-<p>  Use this routine to place text on the canvas. Most options are obvious: the expected coordinate pair, color, text, font, size - the size of the font, rotation - which way the text should be rotated, but the anchor can be a bit confusing. Basically, the anchor determines where, relative to the coordinate pair (x,y), the text should be placed. Simple anchoring includes left (l), center (c), or right (r), which determines whether the text starts at the x position specified (left), ends at x (right), or is centered on the x (center). Adding a second anchor (xanchor,yanchor) specifies a y position anchoring as well. The three options there are low (l), which is the default if none is specified, high (h), and middle (m), again all determining the placement of the text relative to the y coordinate specified. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates for text on the canvas.</td> </tr>
-<tr><td style="width:150px"><b>text</b></td><td style="width:10px"></td><td style="width:150px">default: 'text'</td><td style="width:10px"></td><td> Actual text to place on the canvas.</td> </tr>
-<tr><td style="width:150px"><b>font</b></td><td style="width:10px"></td><td style="width:150px">default: 'default'</td><td style="width:10px"></td><td> Typeface to use.</td> </tr>
-<tr><td style="width:150px"><b>color</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of letters.</td> </tr>
-<tr><td style="width:150px"><b>size</b></td><td style="width:10px"></td><td style="width:150px">default: 10</td><td style="width:10px"></td><td> Font size.</td> </tr>
-<tr><td style="width:150px"><b>anchor</b></td><td style="width:10px"></td><td style="width:150px">default: 'c'</td><td style="width:10px"></td><td> Anchor: can either just specify left/right</td></tr><tr><td></td><td></td><td></td><td></td><td> (e.g., 'c' for center, 'l' for left justify, 'r' for right)</td></tr><tr><td></td><td></td><td></td><td></td><td> or can also specify vertical alignment (e.g., 'l,h' for left justify and high justify,</td></tr><tr><td></td><td></td><td></td><td></td><td> 'r,c' for right and center, 'l,l' for left and low).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate text by this many degrees.</td> </tr>
-<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind text? Empty means no.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>bgborder</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Border (black) around background color?</td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_box> postscript.box()</h3><table>
-
-<p>  Makes a box at coords specifying the bottom-left and upper-right corners. Can change the width of the surrounding line (linewidth=0 removes it). Can fill with solid or pattern. When filling with non-solid pattern, can add a background color so as not to be see-through. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [[0,0],[0,0]]</td><td style="width:10px"></td><td> Coordinates of box, from [x1,y1] to [x2,y2].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines that draws box.</td> </tr>
-<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of those lines. 0 means unlined box.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern in lines around box?</td> </tr>
-<tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> How should corners be done? 0 is default; 1->'round', 2->'bevel'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Should box be filled? If so, specify here.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of the fill pattern.</td> </tr>
-<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Type of fill pattern. Right now, all are 'solid'.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of fill pattern includes size of each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Also includes spacing between each marker in pattern.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>rotate</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Rotate the box by this many degrees.</td> </tr>
-<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Put a background color behind the box. Useful when pattern has</td></tr><tr><td></td><td></td><td></td><td></td><td> see-through parts in it.</td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_arc> postscript.arc()</h3><table>
-
-<p>  Can make circles, or partial circles (arcs), with this. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> Coordinates of arc center [x, y].</td> </tr>
-<tr><td style="width:150px"><b>angle</b></td><td style="width:10px"></td><td style="width:150px">default: [0.0,360.0]</td><td style="width:10px"></td><td> What angle to draw arc (from X degrees to Y degrees).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>radius</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Radius of arc.</td> </tr>
-<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Line color of arc.</td> </tr>
-<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of line of arc.</td> </tr>
-<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Dash pattern for arc line.</td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_circle> postscript.circle()</h3><table>
-
-<p>  Can just make circles with this. Filled or not. </p>
-<tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: [0,0]</td><td style="width:10px"></td><td> Coordinates of center of circle in [x,y].</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>radius</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Radius of circle.</td> </tr>
-<tr><td style="width:150px"><b>scale</b></td><td style="width:10px"></td><td style="width:150px">default: [1,1]</td><td style="width:10px"></td><td> Scale in x direction and y direction, to make</td></tr><tr><td></td><td></td><td></td><td></td><td> an ellipse, for example.</td> </tr>
-<tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Color of lines of circle.</td> </tr>
-<tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> Width of lines of circle.</td> </tr>
-<tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> Whether line is dashed or not.</td> </tr>
-<tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Fill circle with colored pattern?</td> </tr>
-<tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> Which color?</td> </tr>
-<tr><td style="width:150px"><b>fillstyle</b></td><td style="width:10px"></td><td style="width:150px">default: 'solid'</td><td style="width:10px"></td><td> Which pattern?</td> </tr>
-<tr><td style="width:150px"><b>fillsize</b></td><td style="width:10px"></td><td style="width:150px">default: 3</td><td style="width:10px"></td><td> Details of pattern: size of each marker.</td> </tr>
-<tr><td style="width:150px"><b>fillskip</b></td><td style="width:10px"></td><td style="width:150px">default: 4</td><td style="width:10px"></td><td> Details of pattern: space between each marker.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
-<tr><td style="width:150px"><b>bgcolor</b></td><td style="width:10px"></td><td style="width:150px">default: ''</td><td style="width:10px"></td><td> Background color behind circle, useful if fill pattern</td></tr><tr><td></td><td></td><td></td><td></td><td> has some holes in it.</td> </tr>
-</table>
-</p>
-
-<h3 id=postscript_polygon> postscript.polygon()</h3><table>
+<h3 id=canvas_polygon> canvas.polygon()</h3><table>
 
 <p>  Use this method to make an arbitrary polygon, by passing in its coordinates. All the usual arguments are specified.  </p>
 <tr><td style="width:150px"><b>coord</b></td><td style="width:10px"></td><td style="width:150px">default: []</td><td style="width:10px"></td><td> The list of [x,y] pairs that form the coordinates.</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linecolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> The color of the surrounding line (if width > 0).</td></tr><tr><td></td><td></td><td></td><td></td><td></td> </tr>
 <tr><td style="width:150px"><b>linewidth</b></td><td style="width:10px"></td><td style="width:150px">default: 1</td><td style="width:10px"></td><td> The width of the line (0 for no line).</td> </tr>
 <tr><td style="width:150px"><b>linecap</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> The linecap.</td> </tr>
+<tr><td style="width:150px"><b>linejoin</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> The linejoin.</td> </tr>
 <tr><td style="width:150px"><b>linedash</b></td><td style="width:10px"></td><td style="width:150px">default: 0</td><td style="width:10px"></td><td> The line dash pattern.</td> </tr>
 <tr><td style="width:150px"><b>fill</b></td><td style="width:10px"></td><td style="width:150px">default: False</td><td style="width:10px"></td><td> Fill the polygon?</td> </tr>
 <tr><td style="width:150px"><b>fillcolor</b></td><td style="width:10px"></td><td style="width:150px">default: 'black'</td><td style="width:10px"></td><td> What color to fill it?</td> </tr>
@@ -285,7 +158,7 @@
 </table>
 </p>
 
-<h2 id=drawable> Class drawable</h2>
+<h2 id=drawable> </h2><p>.</p><h2> Class drawable</h2>
 
 <p>  Creates a drawable region onto which graphs can be drawn. Must define the xrange and yrange, which are each min,max pairs, so that the drawable can translate data in table into points on the graph. Also, must select which type of scale each axis is, e.g., linear, log10, and so forth. If unspecified, coordinates (the x,y location of the lower left of the drawable) and dimensions (the width, height of the drawable) will be guessed at; specifying these allows control over where and how big the drawable is. Other options do things like place a background color behind the entire drawable or make an outline around it. </p>
 <p>
@@ -308,7 +181,7 @@
 </table>
 </p>
 
-<h2 id=table> Class table</h2>
+<h2 id=table> </h2><p>.</p><h2> Class table</h2>
 
 <p>  Tables store data to be plotted, and provide a thin layer over SQLite to select subsets of the data to plot. A table can be created and filled with contents of a file (the 'file' parameter) OR created and filled with data from another table (the 'table' parameter). When filling with data from a file, it is useful to pass in a 'separator' which tells the table class how the rows in the file are split. Default is whitespace. </p>
 <p>
@@ -415,7 +288,7 @@
 </table>
 </p>
 
-<h2 id=plotter> Class plotter</h2>
+<h2 id=plotter> </h2><p>.</p><h2> Class plotter</h2>
 
 <p>  Use this to draw some points on a drawable. There are some obvious parameters: which drawable, which table, which x and y columns from the table to use, the color of the point, its linewidth, and the size of the marker. 'style' is a more interesting parameter, allowing one to pick a box, circle, horizontal line (hline), and 'x' that marks the spot, and so forth. However, if you set 'style' to label, PlotPoints will instead use a column from the table (as specified by the 'label' flag) to plot an arbitrary label at each (x,y) point. Virtually all the rest of the flags pertain to these text labels: whether to rotate them, how to anchor them, how to place them, font, size, and color. </p>
 <p>
@@ -642,7 +515,7 @@
 </table>
 </p>
 
-<h2 id=axis> Class axis</h2>
+<h2 id=axis> </h2><p>.</p><h2> Class axis</h2>
 
 <p>  Use this to draw some axes. There are a huge number of options. A first decision might be which 'style' to use: 'x' (x axis only), 'y' (y axis), 'xy' (for x and y axes), and 'box' to put a box around the entire thing. Making multiple axes is nice if you have, for example, two y axes for different data sets plotting onto the same drawable. </p>
 <p>
@@ -727,7 +600,7 @@
 </table>
 </p>
 
-<h2 id=grid> Class grid</h2>
+<h2 id=grid> </h2><p>.</p><h2> Class grid</h2>
 
 <p>  Just a simple way to draw grids onto graphs. While we generally don't like grids, some people do. </p>
 <p>
@@ -746,7 +619,7 @@
 </table>
 </p>
 
-<h2 id=legend> Class legend</h2>
+<h2 id=legend> </h2><p>.</p><h2> Class legend</h2>
 
 <p>  Minimal support for legends is provided. Initialize it first (e.g., L = Legend()). Then pass 'L' and other info into plotters. (e.g., legend=L, legendtext='foo'). Finally, call legend.draw() to make the legend on the plot. </p>
 <p>

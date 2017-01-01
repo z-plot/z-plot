@@ -3,7 +3,7 @@
 from zplot import *
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='scatter1', dimensions=['300','300'])
+c = canvas(ctype, title='scatter1', dimensions=['300','300'])
 
 t = table(file='scatter1.data')
 t.addcolumn(column='z', value=0)

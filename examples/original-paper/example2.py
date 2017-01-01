@@ -6,7 +6,7 @@ from zplot import *
 # describe the drawing surface
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='example2', dimensions=['3in', '2.4in'])
+c = canvas(ctype, title='example2', dimensions=['3in', '2.4in'])
 
 # load some data
 t = table(file='example2.data')

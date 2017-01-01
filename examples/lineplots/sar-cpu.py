@@ -4,7 +4,7 @@ from zplot import *
 import sys
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='sar-cpu', dimensions=['7in','4in'])
+c = canvas(ctype, title='sar-cpu', dimensions=['7in','4in'])
 t = table(file='sar-cpu.data')
 
 # convert time into just seconds for easy plotting

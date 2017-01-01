@@ -4,7 +4,7 @@ from zplot import *
 
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='lineplot20', dimensions=['5.5in','4.75in'])
+c = canvas(ctype, title='lineplot20', dimensions=['5.5in','4.75in'])
 
 t = table(file='lineplot20.data')
 tlo = table(table=t, where='cast(x as decimal) < 8')

@@ -3,7 +3,7 @@
 from zplot import *
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, 'ggplot', dimensions=['3.75in','4.75in'])
+c = canvas(ctype, 'ggplot', dimensions=['3.75in','4.75in'])
 
 t1 = table(file='ggplot.1.data')
 t2 = table(file='ggplot.2.data')

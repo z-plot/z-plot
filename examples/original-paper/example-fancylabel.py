@@ -30,7 +30,7 @@ def circle_with_text(canvas, x, y, radius, fillcolor, text, size):
 # main script
 # 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, 'example-fancylabel', dimensions=[600, 600])
+c = canvas(ctype, 'example-fancylabel', dimensions=[600, 600])
 
 random.seed(104)
 

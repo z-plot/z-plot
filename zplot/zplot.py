@@ -36,7 +36,25 @@
 # from this file. Thus, you need to follow its style if you want make-docs
 # to keep working.
 #
-# (more useful info here)
+# The markup is simple to follow. Basically, for an important class,
+# mark it with a header that says in the comment before the class:
+#
+# --class-- class_name
+#
+# (description of class)
+# 
+# Then, to keep the parsing of the doc generator simple, puts arguments
+# of each method on a separate line, with a comment that precedes it, e.g.:
+#
+# def fub(self,
+#         # bar is used to pass in the number of bars
+#         bar = 10,
+#
+#         # foo is used for the number of foos
+#         foo = 1,
+#        ):
+#
+# This auto-generates the docs in a way that is easy to read.
 #
 # Thanks!
 # The Zplot Team
@@ -68,7 +86,8 @@ def abort(str):
 # Not of general use.
 #
 class color:
-    def __init__(self):
+    def __init__(self,
+                 ):
         self.color_list = {
             'aliceblue'              :  '0.94 0.97 1.00',
             'antiquewhite'           :  '0.98 0.92 0.84',
@@ -257,7 +276,8 @@ class color:
 # from a bunch of .afm files found on the "internet".
 #
 class fontsize:
-    def __init__(self):
+    def __init__(self,
+                 ):
         self.font_width = {}
         self.font_width['Courier-Bold'] = {' ':600, '!':600, '"':600, '#':600, 
                                            '$':600, '%':600, '&':600, "'":600, 
@@ -640,7 +660,8 @@ class fontsize:
 # Not of general use.
 #
 class writer:
-    def __init__(self):
+    def __init__(self,
+                 ):
         self.commands = []
         return
 
@@ -680,8 +701,18 @@ class writer:
 # Used by upper-level 'canvas' class to make eps plots.
 #
 class postscript_drawer:
-    def __init__(self, colors, fontinfo, default_font, writer,
-                 title, program, version, script, width, height):
+    def __init__(self,
+                 colors,
+                 fontinfo,
+                 default_font,
+                 writer,
+                 title,
+                 program,
+                 version,
+                 script,
+                 width,
+                 height,
+                 ):
         self.colors = colors
         self.fontinfo = fontinfo
         self.default_font = default_font
@@ -995,8 +1026,18 @@ class postscript_drawer:
 # Used by upper-level 'canvas' class to make PDF plots.
 #
 class pdf_drawer:
-    def __init__(self, colors, fontinfo, default_font, writer,
-                 title, program, version, script, width, height):
+    def __init__(self,
+                 colors,
+                 fontinfo,
+                 default_font,
+                 writer,
+                 title,
+                 program,
+                 version,
+                 script,
+                 width,
+                 height
+                 ):
         self.colors = colors
         self.fontinfo = fontinfo
         self.default_font = default_font
@@ -1331,8 +1372,18 @@ class pdf_drawer:
 # Used by upper-level 'canvas' class to make SVG plots.
 #
 class svg_drawer:
-    def __init__(self, colors, fontinfo, default_font, writer,
-                 title, program, version, script, width, height):
+    def __init__(self,
+                 colors,
+                 fontinfo,
+                 default_font,
+                 writer,
+                 title,
+                 program,
+                 version,
+                 script,
+                 width,
+                 height
+                 ):
         self.colors = colors
         self.fontinfo = fontinfo
         self.default_font = default_font
@@ -2608,22 +2659,7 @@ class canvas:
 #END: class canvas        
         
 #
-# general canvas factory
-#
-def make_canvas(canvas_type='eps', title='default', dimensions=['3in','2in'],
-                font='Helvetica', verbose=False, script=__file__):
-    if canvas_type == 'eps':
-        return canvas('eps', title, dimensions, font, verbose, script)
-    elif canvas_type == 'svg':
-        return canvas('svg', title, dimensions, font, verbose, script)
-    elif canvas_type == 'pdf':
-        return canvas('pdf', title, dimensions, font, verbose, script)
-    else:
-        abort('canvas type [%s] not supported' % canvas)
-    return
-
-#
-# For backwards compatability, we provide these as well.
+# For backwards compatability, we provide these canvas-creation wrappers.
 # (they used to be separate classes; now all handled by unified 'canvas' class)
 # 
 def postscript(title='default', dimensions=['3in','2in'],

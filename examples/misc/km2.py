@@ -9,7 +9,7 @@ t = table(file='km2.data')
 
 # canvas and a single drawable
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='km2', dimensions=['4in','2.5in'])
+c = canvas(ctype, title='km2', dimensions=['4in','2.5in'])
 d = drawable(canvas=c, dimensions=['3.5in','2.0in'],
              coord=['0.4in','0.4in'], xrange=[0,36], yrange=[0.3,1])
 

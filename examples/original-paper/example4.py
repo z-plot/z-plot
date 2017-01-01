@@ -6,7 +6,7 @@ from zplot import *
 # describe the drawing surface
 import sys
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
-c = make_canvas(ctype, title='example4', dimensions=[380, 240])
+c = canvas(ctype, title='example4', dimensions=[380, 240])
 
 # make a drawable region for a graph
 d = drawable(canvas=c, xrange=[0,6], yrange=[0,11],
