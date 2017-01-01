@@ -1731,7 +1731,7 @@ class canvas:
         self.script = script
 
         self.program = 'zplot'
-        self.version = 'python version 1.3'
+        self.version = 'python version 1.4'
 
         self.colors = color()
         self.fontinfo = fontsize()
