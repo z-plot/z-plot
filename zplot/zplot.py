@@ -76,7 +76,7 @@ import string
 # UTILITY function(s)
 #
 def abort(str):
-    print 'Abort! Reason: (%s)' % str
+    print('Abort! Reason: (%s)' % str)
     exit(1)
 
 #
@@ -244,7 +244,7 @@ class color:
     # Get the color as three values "R G B"
     def get(self, color):
         if color not in self.color_list:
-            print 'color [%s] not valid; returning 0 0 0' % color
+            print('color [%s] not valid; returning 0 0 0' % color)
             return '0 0 0'
         return self.color_list[color]
 
@@ -260,7 +260,7 @@ class color:
         else:
             # assume that it is a color name
             if color not in self.color_list:
-                print 'color [%s] not valid; returning 0 0 0' % color
+                print('color [%s] not valid; returning 0 0 0' % color)
                 r, g, b = 0.0, 0.0, 0.0
             else:
                 r, g, b = self.color_list[color].split()
@@ -646,7 +646,7 @@ class fontsize:
         if font == 'default':
             font = 'Helvetica'
         if font not in self.font_list:
-            print 'font not supported', font
+            print('font not supported', font)
             return
         total_width = 0
         for s in string:
@@ -686,7 +686,7 @@ class writer:
     def dump(self, outfile):
         if outfile == 'stdout':
             for line in self.commands:
-                print line
+                print(line)
         else:
             fd = open(outfile, 'w')
             for line in self.commands:
@@ -866,12 +866,12 @@ class postscript_drawer:
     def show(self, text, anchor):
         if anchor == 'c':
             self.writer.out('('+text+') cshow')
-	elif anchor == 'l':
+        elif anchor == 'l':
             self.writer.out('('+text+') lshow')
         elif anchor == 'r':
             self.writer.out('('+text+') rshow')
         else:
-	    abort('bad anchor: ' + anchor)
+            abort('bad anchor: ' + anchor)
         return
 
     # postscript_drawer: begintext
@@ -1176,7 +1176,7 @@ class pdf_drawer:
     def setlinecap(self, value):
         value = int(value)
         if value != 0 and value != 1 and value != 2:
-            print 'bad linecap', value
+            print('bad linecap', value)
             return
         self.__out('%d J' % value)
         return
@@ -1185,7 +1185,7 @@ class pdf_drawer:
     def setlinejoin(self, value):
         value = int(value)
         if value != 0 and value != 1 and value != 2:
-            print '+ bad linejoin', value
+            print('+ bad linejoin', value)
             return
         self.__out('%d j' % value)
         return
@@ -1334,7 +1334,7 @@ class pdf_drawer:
         if font == 'default':
             font = self.default_font
         if font not in self.fontmap:
-            print 'font %s not found' % font
+            print('font %s not found' % font)
             return
         fontnum = self.fontmap[font]
         self.__out('/F%d %.2f Tf' % (fontnum, size))
@@ -1496,13 +1496,13 @@ class svg_drawer:
     # svg_drawer: setfillcolor
     def setfillcolor(self, value):
         self.current_fillcolor = self.colors.get_as_hex(value)
-        # print 'setting FILL color', self.current_fillcolor
+        # print('setting FILL color', self.current_fillcolor)
         return
 
     # svg_drawer: setlinecolor
     def setlinecolor(self, value):
         self.current_linecolor = self.colors.get_as_hex(value)
-        # print 'setting LINE color', self.current_linecolor
+        # print('setting LINE color', self.current_linecolor)
         return
 
     # svg_drawer: setlinewidth
@@ -1519,7 +1519,7 @@ class svg_drawer:
         elif linejoin == 2:
             self.current_linejoin = 'bevel'
         else:
-            print 'bad linejoin [%s]' % value
+            print('bad linejoin [%s]' % value)
         return
 
     # svg_drawer: setlinecap
@@ -1531,7 +1531,7 @@ class svg_drawer:
         elif value == 2:
             self.current_linecap = 'square'
         else:
-            print 'bad linecap [%s]' % value
+            print('bad linecap [%s]' % value)
         return
 
     # svg_drawer: setlinedash
@@ -1823,82 +1823,82 @@ class canvas:
               fillskip  = 4.0,     # space between object in pattern
               ):
         if style == 'square':
-	    self.box(coord=[[x-size,y-size],[x+size,y+size]], 
+            self.box(coord=[[x-size,y-size],[x+size,y+size]], 
                      linecolor=linecolor, linewidth=linewidth,  fill=fill,
                      fillcolor=fillcolor, fillstyle=fillstyle,
                      fillsize=fillsize, fillskip=fillskip) 
         elif style == 'circle':
-	    self.circle(coord=[x,y], radius=size, linecolor=linecolor,
+            self.circle(coord=[x,y], radius=size, linecolor=linecolor,
                         linewidth=linewidth, fill=fill, fillcolor=fillcolor,
                         fillstyle=fillstyle, fillsize=fillsize,
                         fillskip=fillskip) 
-	elif style == 'triangle':
-	    self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
+        elif style == 'triangle':
+            self.polygon(coord=[[x-size,y-size], [x,y+size], [x+size, y-size]],
                          linecolor=linecolor, linewidth=linewidth,
                          fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'utriangle':
-	    self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
+        elif style == 'utriangle':
+            self.polygon(coord=[[x-size,y+size],[x,y-size],[x+size,y+size]],
                          linecolor=linecolor, linewidth=linewidth, fill=fill,
                          fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'plusline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+        elif style == 'plusline':
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
                       linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+            self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
                       linewidth=linewidth) 
-	elif style == 'xline':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+        elif style == 'xline':
+            self.line(coord=[[x-size,y-size],[x+size,y+size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+            self.line(coord=[[x-size,y+size],[x+size,y-size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline1':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+        elif style == 'dline1':
+            self.line(coord=[[x-size,y-size],[x+size,y+size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline2':
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+        elif style == 'dline2':
+            self.line(coord=[[x-size,y+size],[x+size,y-size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'dline12':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+        elif style == 'dline12':
+            self.line(coord=[[x-size,y-size],[x+size,y+size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+            self.line(coord=[[x-size,y+size],[x+size,y-size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	elif style == 'hline': 
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+        elif style == 'hline': 
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
                       linewidth=linewidth, linedash=linedash)
-	elif style == 'vline': 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+        elif style == 'vline': 
+            self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
                       linewidth=linewidth)
         elif style == 'hvline':
-	    self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
+            self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
                       linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+            self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
                       linewidth=linewidth)
-	elif style == 'diamond':
-	    self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
+        elif style == 'diamond':
+            self.polygon(coord=[[x-size,y],[x,y+size],[x+size,y],[x,y-size]], 
                          linecolor=linecolor, linewidth=linewidth, fill=fill,
                          fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
-	elif style == 'star':
+        elif style == 'star':
             s2 = size / 2.0
             xp  = s2 * math.cos(math.radians(18.0))
             yp  = s2 * math.sin(math.radians(18.0))
             xp2 = s2 * math.cos(math.radians(54.0))
             yp2 = s2 * math.sin(math.radians(54.0))
-	    self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],
+            self.polygon(coord=[[x,y+s2],[x+xp2,y-yp2],
                                 [x-xp,y+yp],[x+xp,y+yp],
                                 [x-xp2,y-yp2],[x,y+s2]],
                          linecolor=linecolor, linewidth=linewidth,
                          fill=fill, fillcolor=fillcolor, fillstyle=fillstyle,
                          fillsize=fillsize, fillskip=fillskip) 
         elif style == 'asterisk':
-	    self.line(coord=[[x-size,y-size],[x+size,y+size]],
+            self.line(coord=[[x-size,y-size],[x+size,y+size]],
                       linecolor=linecolor, linewidth=linewidth) 
-	    self.line(coord=[[x-size,y+size],[x+size,y-size]],
+            self.line(coord=[[x-size,y+size],[x+size,y-size]],
                       linecolor=linecolor, linewidth=linewidth)
             self.line(coord=[[x-size,y],[x+size,y]], linecolor=linecolor,
                       linewidth=linewidth) 
-	    self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
+            self.line(coord=[[x,y+size],[x,y-size]], linecolor=linecolor,
                       linewidth=linewidth)
         else:
             abort('bad choice of point style: ' + style)
@@ -1934,10 +1934,10 @@ class canvas:
             drawer.newpath()
             drawer.setlinewidth(0)
             drawer.rectangle(x1, y1, x2, y2)
-	    drawer.closepath()
-	    drawer.setfillcolor(fillcolor)
+            drawer.closepath()
+            drawer.setfillcolor(fillcolor)
             drawer.setpattern(pattern_name)
-	    drawer.fill()
+            drawer.fill()
             drawer.stroke()
             return
             
@@ -1967,137 +1967,137 @@ class canvas:
             style_list += 'hline '
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(0)
                 drawer.setfillcolor(fillcolor)
-		drawer.rectangle(x1, cy, x2, cy + fillsize)
-		drawer.closepath()
-		drawer.fill()
+                drawer.rectangle(x1, cy, x2, cy + fillsize)
+                drawer.closepath()
+                drawer.fill()
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillsize + fillskip
-	elif fillstyle == 'vline':
+        elif fillstyle == 'vline':
             style_list += 'vline '
             cx = x1
             while cx <= x2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx, y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx, y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx + fillsize + fillskip
         elif fillstyle == 'hvline':
             style_list += 'hvline '
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(0)
                 drawer.setfillcolor(fillcolor)
-		drawer.rectangle(x1, cy, x2, cy + fillsize)
-		drawer.closepath()
-		drawer.fill()
+                drawer.rectangle(x1, cy, x2, cy + fillsize)
+                drawer.closepath()
+                drawer.fill()
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillsize + fillskip
             cx = x1
             while cx <= x2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx, y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx, y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx + fillsize + fillskip
-	elif fillstyle == 'dline1':
+        elif fillstyle == 'dline1':
             style_list += 'dline1 '
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinecolor(fillcolor)
                 drawer.setlinewidth(fillsize)
-		drawer.moveto(x1, cy)
-		drawer.lineto(x2, (x2-x1)+cy)
+                drawer.moveto(x1, cy)
+                drawer.lineto(x2, (x2-x1)+cy)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillskip + fillsize
             cx = x1
             while cx <= x2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinecolor(fillcolor)
                 drawer.setlinewidth(fillsize)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx+(y2-y1), y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx+(y2-y1), y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx + fillskip + fillsize
-	elif fillstyle == 'dline2':
+        elif fillstyle == 'dline2':
             style_list += 'dline2 '
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinecolor(fillcolor)
                 drawer.setlinewidth(fillsize)
-		drawer.moveto(x2, cy)
-		drawer.lineto(x1, (x2-x1)+cy)
+                drawer.moveto(x2, cy)
+                drawer.lineto(x1, (x2-x1)+cy)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillskip + fillsize
             cx = x2
             while cx >= x1:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinecolor(fillcolor)
                 drawer.setlinewidth(fillsize)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx-(y2-y1), y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx-(y2-y1), y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx - (fillskip + fillsize)
-	elif fillstyle == 'dline12':
+        elif fillstyle == 'dline12':
             style_list += 'dline12 '
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(x1, cy)
-		drawer.lineto(x2, (x2-x1)+cy)
+                drawer.moveto(x1, cy)
+                drawer.lineto(x2, (x2-x1)+cy)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillskip + fillsize
             cx = x1
             while cx <= x2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx+(y2-y1), y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx+(y2-y1), y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx + fillskip + fillsize
             cy = y1
             while cy <= y2:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(x2, cy)
-		drawer.lineto(x1, (x2-x1)+cy)
+                drawer.moveto(x2, cy)
+                drawer.lineto(x1, (x2-x1)+cy)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cy = cy + fillskip + fillsize
             cx = x2
             while cx >= x1:
-		drawer.newpath()
+                drawer.newpath()
                 drawer.setlinewidth(fillsize)
                 drawer.setlinecolor(fillcolor)
-		drawer.moveto(cx, y1)
-		drawer.lineto(cx-(y2-y1), y2)
+                drawer.moveto(cx, y1)
+                drawer.lineto(cx-(y2-y1), y2)
                 drawer.setpattern(pattern_name)
-		drawer.stroke()
+                drawer.stroke()
                 cx = cx - (fillskip + fillsize)
-	elif fillstyle == 'circle':
+        elif fillstyle == 'circle':
             style_list += 'circle '
             cx = x1
             while cx <= x2:
@@ -2105,45 +2105,45 @@ class canvas:
                 while cy <= y2:
                     drawer.newpath('circle')
                     drawer.setfillcolor(fillcolor)
-		    drawer.circle(cx, cy, fillsize)
-		    drawer.fill()
+                    drawer.circle(cx, cy, fillsize)
+                    drawer.fill()
                     drawer.setpattern(pattern_name)
-		    drawer.stroke()
+                    drawer.stroke()
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
-	elif fillstyle == 'square':
+        elif fillstyle == 'square':
             style_list += 'square '
             cx = x1
             while cx <= x2:
                 cy = y1
                 while cy <= y2:
-		    drawer.newpath()
+                    drawer.newpath()
                     drawer.setlinewidth(0)
                     drawer.setlinecolor(fillcolor)
                     drawer.setfillcolor(fillcolor)
-		    drawer.rectangle(cx, cy, cx+fillsize, cy+fillsize)
-		    drawer.fill()
+                    drawer.rectangle(cx, cy, cx+fillsize, cy+fillsize)
+                    drawer.fill()
                     drawer.setpattern(pattern_name)
-		    drawer.stroke()
+                    drawer.stroke()
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
-	elif fillstyle == 'triangle':
+        elif fillstyle == 'triangle':
             style_list += 'triangle '
             cx = x1
             while cx <= x2:
                 cy = y1
                 while cy <= y2:
-		    drawer.newpath()
+                    drawer.newpath()
                     drawer.setlinewidth(0)
                     drawer.setlinecolor(fillcolor)
                     drawer.setfillcolor(fillcolor)
-		    drawer.moveto(cx-fillsize/2.0, cy)
-		    drawer.lineto(cx+fillsize/2.0, cy)
-		    drawer.lineto(cx, cy+fillsize)
-		    drawer.closepath()
-		    drawer.fill()
+                    drawer.moveto(cx-fillsize/2.0, cy)
+                    drawer.lineto(cx+fillsize/2.0, cy)
+                    drawer.lineto(cx, cy+fillsize)
+                    drawer.closepath()
+                    drawer.fill()
                     drawer.setpattern(pattern_name)
-		    drawer.stroke()
+                    drawer.stroke()
                     cy = cy + fillskip + fillsize
                 cx = cx + fillsize + fillskip
         elif fillstyle == 'utriangle':
@@ -2152,22 +2152,22 @@ class canvas:
             while cx <= x2:
                 cy = y1
                 while cy <= y2:
-		    drawer.newpath()
+                    drawer.newpath()
                     drawer.setlinewidth(0)
                     drawer.setlinecolor(fillcolor)
                     drawer.setfillcolor(fillcolor)
-		    drawer.moveto(cx-fillsize/2.0, cy+fillsize)
-		    drawer.lineto(cx+fillsize/2.0, cy+fillsize)
-		    drawer.lineto(cx, cy)
-		    drawer.closepath()
-		    drawer.fill()
+                    drawer.moveto(cx-fillsize/2.0, cy+fillsize)
+                    drawer.lineto(cx+fillsize/2.0, cy+fillsize)
+                    drawer.lineto(cx, cy)
+                    drawer.closepath()
+                    drawer.fill()
                     drawer.setpattern(pattern_name)
-		    drawer.stroke()
+                    drawer.stroke()
                     cy = cy + fillsize + fillsize
                 cx = cx + fillsize + fillskip
-	else:
-            print 'Bad fill style: [%s]' % fillstyle
-	    abort('Should be one of %s' % style_list)
+        else:
+            print('Bad fill style: [%s]' % fillstyle)
+            abort('Should be one of %s' % style_list)
         return
     # END: makepattern()
 
@@ -2764,10 +2764,10 @@ class drawable:
 
             if gscale == 'linear':
                 self.scaletype[axisnum]  = 'linear'
-		self.linearMin[axisnum]  = float(grange[0])
-		self.linearMax[axisnum]  = float(grange[1])
-		self.virtualMin[axisnum] = float(grange[0])
-		self.virtualMax[axisnum] = float(grange[1])
+                self.linearMin[axisnum]  = float(grange[0])
+                self.linearMax[axisnum]  = float(grange[1])
+                self.virtualMin[axisnum] = float(grange[0])
+                self.virtualMax[axisnum] = float(grange[1])
 
             else:
                 idx = gscale.find('log')
@@ -2782,12 +2782,12 @@ class drawable:
                 assert(float(grange[0]) > 0)
                 assert(float(grange[1]) > 0)
                 
-		self.linearMin[axisnum]  = math.log(float(grange[0]),
+                self.linearMin[axisnum]  = math.log(float(grange[0]),
                                                     self.logbase[axisnum])
-		self.linearMax[axisnum]  = math.log(float(grange[1]),
+                self.linearMax[axisnum]  = math.log(float(grange[1]),
                                                     self.logbase[axisnum])
-		self.virtualMin[axisnum] = float(grange[0])
-		self.virtualMax[axisnum] = float(grange[1])
+                self.virtualMin[axisnum] = float(grange[0])
+                self.virtualMax[axisnum] = float(grange[1])
 
             # and record the linear range (for use in scaling)
             self.linearRange[axisnum] = self.linearMax[axisnum] - \
@@ -2867,7 +2867,7 @@ class drawable:
         if scale == 'linear':
             i = min
             while i <= max:
-		tlist.append(i)
+                tlist.append(i)
                 i = i + step
         elif scale == 'log':
             i = min
@@ -3126,7 +3126,7 @@ class table:
         if canvas:
             canvas.comment(s)
         else:
-            print s
+            print(s)
         return
 
     #
@@ -3188,11 +3188,11 @@ class table:
                cmax='',
                ):
         if column == '':
-            print 'No column specified.'
+            print('No column specified.')
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
         idx    = rindex[column]
-        # print column, idx
+        # print(column, idx)
         for row in self.cursor:
             value = float(row[idx])
             if cmax == '':
@@ -3215,7 +3215,7 @@ class table:
                cmin='',
                ):
         if column == '':
-            print 'No column specified.'
+            print('No column specified.')
             return 0
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
@@ -3243,7 +3243,7 @@ class table:
                  crange='',
                  ):
         if column == '':
-            print 'No column specified.'
+            print('No column specified.')
             return [0, 0]
         if crange != '':
             return [self.getmin(column, crange[0]),
@@ -3261,12 +3261,12 @@ class table:
                   column='',
                   ):
         if column == '':
-            print 'No column specified.'
+            print('No column specified.')
             return []
         self.cursor.execute('select * from %s' % (self.dbname))
         rindex = self.getrindex()
         idx    = rindex[column]
-        # print column, idx
+        # print(column, idx)
         return_values = []
         for row in self.cursor:
             return_values.append(row[idx])
@@ -3285,7 +3285,7 @@ class table:
                where='',
                ):
         if column == '':
-            print 'Column not specified in call to getavg().'
+            print('Column not specified in call to getavg().')
             return 0
         if where == '':
             self.cursor.execute('select * from %s' % self.dbname)
@@ -3562,7 +3562,7 @@ class plotter:
                             anchor=labelanchor, rotate=labelrotate,
                             font=labelfont, size=labelsize, color=labelcolor,
                             bgcolor=labelbgcolor)
-		
+                
             else:
                 canvas.shape(style=style, x=x+shift[0], y=y+shift[1], size=size,
                              linecolor=linecolor, linewidth=linewidth,
@@ -3866,14 +3866,14 @@ class plotter:
         
         # if using loval (and not lofield)
         if yloval == '':
-	    ylo = drawable.virtualmin('y')
+            ylo = drawable.virtualmin('y')
         else:
-	    ylo = yloval
+            ylo = yloval
 
-        # print 'rows', rows
+        # print('rows', rows)
 
         for r in rows:
-            # print 'plot', r
+            # print('plot', r)
             x = r[xindex]
             y = r[yindex]
             if ylofield != '':
@@ -4229,13 +4229,13 @@ class plotter:
             hlw  = linewidth / 2.0
             
             if align == 'c':
-		canvas.line(coord=[[xlop,yp],[xhip,yp]], linecolor=linecolor,
+                canvas.line(coord=[[xlop,yp],[xhip,yp]], linecolor=linecolor,
                             linewidth=linewidth)
             elif align == 'l':
-		canvas.line(coord=[[xlop,yp-dw+hlw],[xhip,yp-dw+hlw]],
+                canvas.line(coord=[[xlop,yp-dw+hlw],[xhip,yp-dw+hlw]],
                             linecolor=linecolor, linewidth=linewidth)
             elif align == 'u':
-		canvas.line(coord=[[xlop,yp+dw-hlw],[xhip,yp+dw-hlw]],
+                canvas.line(coord=[[xlop,yp+dw-hlw],[xhip,yp+dw-hlw]],
                             linecolor=linecolor, linewidth=linewidth)
             elif align != 'n':
                 abort('Bad alignment: %s; should be c, l, or r' % align)
@@ -4296,17 +4296,17 @@ class plotter:
             hlw  = linewidth / 2.0
 
             if align == 'c':
-		canvas.line(coord=[[xp,ylop],[xp,yhip]], linecolor=linecolor,
+                canvas.line(coord=[[xp,ylop],[xp,yhip]], linecolor=linecolor,
                             linewidth=linewidth)
             elif align == 'l':
-		canvas.line(coord=[[xp-dw+hlw,ylop],[xp-dw+hlw,yhip]],
+                canvas.line(coord=[[xp-dw+hlw,ylop],[xp-dw+hlw,yhip]],
                             linecolor=linecolor, linewidth=linewidth)
             elif align == 'r':
-		canvas.line(coord=[[xp+dw-hlw,ylop],[xp+dw-hlw,yhip]],
+                canvas.line(coord=[[xp+dw-hlw,ylop],[xp+dw-hlw,yhip]],
                             linecolor=linecolor, linewidth=linewidth)
-	    elif align != 'n':
+            elif align != 'n':
                 # n is the only other reasonable choice...
-		abort('Bad alignment (%s): should be c, l, r, or n' % align)
+                abort('Bad alignment (%s): should be c, l, r, or n' % align)
 
             # vertical line between two end marks
             canvas.line(coord=[[xp-dw,yhip],[xp+dw,yhip]], linecolor=linecolor,
@@ -4836,14 +4836,14 @@ class axis:
 
         if doaxis == True:
             if style == 'x' or style == 'xy':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                canvas.line(coord=[[tvalues['xaxis,min']-half,
                                     tvalues['xaxis,ypos']],
                                    [tvalues['xaxis,max']+half,
                                     tvalues['xaxis,ypos']]],
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
             if style == 'y' or style == 'xy':
-		canvas.line(coord=[[tvalues['yaxis,xpos'],
+                canvas.line(coord=[[tvalues['yaxis,xpos'],
                                     tvalues['yaxis,min']-half],
                                    [tvalues['yaxis,xpos'],
                                     tvalues['yaxis,max']+half]],
@@ -4851,25 +4851,25 @@ class axis:
                             linedash=linedash)
 
             if style == 'box':
-		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                canvas.line(coord=[[tvalues['xaxis,min']-half,
                                     tvalues['yrange,min']],
                                    [tvalues['xaxis,max']+half,
                                     tvalues['yrange,min']]],
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,min'],
+                canvas.line(coord=[[tvalues['xrange,min'],
                                     tvalues['yaxis,min']-half],
                                    [tvalues['xrange,min'],
                                     tvalues['yaxis,max']+half]],
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
-		canvas.line(coord=[[tvalues['xaxis,min']-half,
+                canvas.line(coord=[[tvalues['xaxis,min']-half,
                                     tvalues['yrange,max']],
                                    [tvalues['xaxis,max']+half,
                                     tvalues['yrange,max']]],
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
-		canvas.line(coord=[[tvalues['xrange,max'],
+                canvas.line(coord=[[tvalues['xrange,max'],
                                     tvalues['yaxis,min']-half],
                                    [tvalues['xrange,max'],
                                     tvalues['yaxis,max']+half]],
@@ -5139,15 +5139,15 @@ class axis:
             value  = labels[i][1]
             movpos = drawable.translate(axis, value)
             if axis == 'x':
-		x = movpos + labelshift[0]
-		y = fixpos + labelshift[1]
-		canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
+                x = movpos + labelshift[0]
+                y = fixpos + labelshift[1]
+                canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
                             color=fontcolor, anchor=anchor, rotate=labelrotate,
                             bgcolor=labelbgcolor)
-	    elif axis == 'y':
-		x = fixpos + labelshift[0]
-		y = movpos + labelshift[1]
-		canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
+            elif axis == 'y':
+                x = fixpos + labelshift[0]
+                y = movpos + labelshift[1]
+                canvas.text(coord=[x,y], text=label, font=font, size=fontsize,
                             color=fontcolor, anchor=anchor, rotate=labelrotate,
                             bgcolor=labelbgcolor)
             else:
@@ -5168,14 +5168,14 @@ class axis:
                    linecolor,
                    linewidth):
         if ticstyle == 'in':
-	    hipos = axispos + ticsize
-	    lopos = axispos
+            hipos = axispos + ticsize
+            lopos = axispos
         elif ticstyle == 'out':
-	    hipos = axispos
-	    lopos = axispos - ticsize
+            hipos = axispos
+            lopos = axispos - ticsize
         elif ticstyle == 'centered':
-	    hipos = axispos + (ticsize/2.0)
-	    lopos = axispos - (ticsize/2.0)
+            hipos = axispos + (ticsize/2.0)
+            lopos = axispos - (ticsize/2.0)
         else:
             abort('bad tic style: ' + ticstyle)
 
@@ -5187,10 +5187,10 @@ class axis:
             value  = labels[i][1]
             tvalue = drawable.translate(axis, value)
             if axis == 'x':
-		canvas.line(coord=[[tvalue,lopos],[tvalue,hipos]],
+                canvas.line(coord=[[tvalue,lopos],[tvalue,hipos]],
                             linecolor=linecolor, linewidth=linewidth)
             elif axis == 'y':
-		canvas.line(coord=[[lopos,tvalue],[hipos,tvalue]],
+                canvas.line(coord=[[lopos,tvalue],[hipos,tvalue]],
                             linecolor=linecolor, linewidth=linewidth)
         return
     # END: maketics()
@@ -5278,7 +5278,7 @@ class axis:
             init = values[axis+',min']
             assert(values[axis+',min'] < values[axis+',max'])
             assert(values[axis+',step'] > 0)
-            # print 'AUTO', auto
+            # print('AUTO', auto)
             while init <= values[axis+',max']:
                 if labeltimes != 1:
                     labels.append([labelformat % (init * labeltimes), init])
@@ -5304,15 +5304,15 @@ class axis:
         if title != '':
             values['title,y'] = tvalues['yrange,max'] + (2.5 * offset)
             if titleplace == 'c':
-		values['title,x']      = (tvalues['xrange,min'] + \
+                values['title,x']      = (tvalues['xrange,min'] + \
                                           tvalues['xrange,max']) / 2.0
-		values['title,anchor'] = 'c,l'
+                values['title,anchor'] = 'c,l'
             elif titleplace == 'l':
-		values['title,x']      = tvalues['xrange,min'] + offset
-		values['title,anchor'] = 'l,l'
+                values['title,x']      = tvalues['xrange,min'] + offset
+                values['title,anchor'] = 'l,l'
             elif titleplace == 'r':
-		values['title,x']      = tvalues['xrange,max'] - offset
-		values['title,anchor'] = 'r,l'
+                values['title,x']      = tvalues['xrange,max'] - offset
+                values['title,anchor'] = 'r,l'
             else:
                 abort('bad titleanchor: Must be c, l, or r')
 
@@ -5323,24 +5323,24 @@ class axis:
                 
         if ytitle != '':
             if labelstyle == 'in':
-		values['ytitle,x']  = tvalues['yaxis,xpos'] + offset
-		yanchor             = 'h'
+                values['ytitle,x']  = tvalues['yaxis,xpos'] + offset
+                yanchor             = 'h'
             elif labelstyle == 'out':
-		values['ytitle,x']  = tvalues['yaxis,xpos'] - offset
-		yanchor             = 'l'
+                values['ytitle,x']  = tvalues['yaxis,xpos'] - offset
+                yanchor             = 'l'
             else:
                 abort('bad labelstyle')
-	
+        
             if ytitleplace == 'c':
-		values['ytitle,y']  = (tvalues['yrange,max'] + \
+                values['ytitle,y']  = (tvalues['yrange,max'] + \
                                        tvalues['yrange,min']) / 2.0
-		xanchor             = 'c'
+                xanchor             = 'c'
             elif ytitleplace == 'l':
-		values['ytitle,y']  = tvalues['yrange,min'] + offset
-		xanchor             = 'l'
+                values['ytitle,y']  = tvalues['yrange,min'] + offset
+                xanchor             = 'l'
             elif ytitleplace == 'u':
-		values['ytitle,y']  = tvalues['yrange,max'] - offset
-		xanchor             = 'r'
+                values['ytitle,y']  = tvalues['yrange,max'] - offset
+                xanchor             = 'r'
             else:
                 abort('Bad titleanchor: Must be c, l, or u')
 
@@ -5538,7 +5538,7 @@ class grid:
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
             if axis == 'y':
-		canvas.line(coord=drawable.map([[othermin,v],[othermax,v]]),
+                canvas.line(coord=drawable.map([[othermin,v],[othermax,v]]),
                             linecolor=linecolor, linewidth=linewidth,
                             linedash=linedash)
     # END __dogrid()
@@ -5595,7 +5595,7 @@ class legend:
              # false goes upward
              down        = True,
 
-             # if non-empty, how many rows of legend to print before
+             # if non-empty, how many rows of legend to print(before)
              # skipping to a new column
              skipnext    = '',
 
@@ -5615,8 +5615,8 @@ class legend:
              ):
 
         if canvas == '':
-            print 'error: must specify canvas when drawing legend', 
-            print '(legend not drawn as result)'
+            print('error: must specify canvas when drawing legend', )
+            print('(legend not drawn as result)')
             return
         assert(len(coord) == 2)
         x = coord[0]
@@ -5635,11 +5635,11 @@ class legend:
                 i = order[i]
 
             if style == 'left':
-		cx = x + hspace + (w/2.0)
-		tx = x
+                cx = x + hspace + (w/2.0)
+                tx = x
             elif style == 'right':
-		cx = x + (w/2.0)
-		tx = x + w + hspace
+                cx = x + (w/2.0)
+                tx = x + w + hspace
             else:
                 abort('bad style: ', style)
 
@@ -5658,13 +5658,13 @@ class legend:
                                     __Yph=(y+(h/2.0)))
 
             if style == 'left':
-		canvas.text(coord=[tx,y], anchor='r,c', text=text, font=font,
+                canvas.text(coord=[tx,y], anchor='r,c', text=text, font=font,
                             color=fontcolor, size=fontsize)
-		eval(mapped)
+                eval(mapped)
             elif style == 'right':
                 for m in mapped.split(';'):
                     eval(m)
-		canvas.text(coord=[tx,y], anchor='l,c', text=text, font=font,
+                canvas.text(coord=[tx,y], anchor='l,c', text=text, font=font,
                             color=fontcolor, size=fontsize)
 
             if down == True:
