@@ -999,8 +999,6 @@ class postscript_drawer:
 
     # postscript_drawer: addfont
     def addfont(self, font):
-        if font == 'default':
-            font = self.default_font
         if font not in self.all_fonts:
             abort('bad font: %s' % font)
         if font not in self.font_list:
@@ -1011,6 +1009,7 @@ class postscript_drawer:
     def setfont(self, face, size):
         if face == 'default':
             face = self.default_font
+        self.addfont(face)
         self.writer.out('(' + face + ') findfont ' + str(size) +
                    ' scalefont setfont')
         return
