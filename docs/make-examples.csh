@@ -31,7 +31,9 @@ foreach d ( ../examples/* )
 		echo -n "<a href=../examples/${currd}/${base}.py> script</a>"
 	    endif 
 	    foreach dfile (../${target_base}*data) 
-		echo -n "<a href=$dfile> data</a>"
+		# this is an ugly hack to peel off the first '../' of each dfile
+		set dfile2 = `echo $dfile | awk '{print substr($0,4,length($0));}'`
+		echo -n "<a href=$dfile2> data</a>"
 	    end
 	    echo " &nbsp; &nbsp; output:"
 	    if (-e ../${target_base}.eps) then
