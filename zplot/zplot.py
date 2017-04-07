@@ -1730,7 +1730,7 @@ class canvas:
         self.script = script
 
         self.program = 'zplot'
-        self.version = 'python version 1.4'
+        self.version = 'python version 1.41'
 
         self.colors = color()
         self.fontinfo = fontsize()
@@ -1771,6 +1771,12 @@ class canvas:
         self.drawer.make_trailer()
         self.writer.dump(self.output_file)
         return
+
+    #
+    # A version string
+    #
+    def version(self):
+        return self.version
 
     #
     # Used to convert from whatever into points
@@ -3869,10 +3875,7 @@ class plotter:
         else:
             ylo = yloval
 
-        # print('rows', rows)
-
         for r in rows:
-            # print('plot', r)
             x = r[xindex]
             y = r[yindex]
             if ylofield != '':
@@ -5277,7 +5280,6 @@ class axis:
             init = values[axis+',min']
             assert(values[axis+',min'] < values[axis+',max'])
             assert(values[axis+',step'] > 0)
-            # print('AUTO', auto)
             while init <= values[axis+',max']:
                 if labeltimes != 1:
                     labels.append([labelformat % (init * labeltimes), init])

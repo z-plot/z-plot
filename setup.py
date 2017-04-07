@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name = 'zplot',
     packages = ['zplot'], 
-    version = '1.4',
+    version = '1.41',
     description = 'A simple graph-creation library',
     author = 'Remzi H. Arpaci-Dusseau',
     author_email = 'remzi.arpacidusseau@gmail.com',

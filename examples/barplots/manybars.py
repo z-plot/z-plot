@@ -32,6 +32,7 @@ L = len(bartypes)
 
 ctype = 'eps' if len(sys.argv) < 2 else sys.argv[1]
 c = canvas(ctype, title='manybars', dimensions=[L*10, 110])
+print(c.version)
 
 d = drawable(canvas=c, xrange=[0,L+1], yrange=[0,10], coord=[0,5],
              dimensions=[L*10,100])
@@ -44,7 +45,6 @@ for btype, fsize, fskip in bartypes:
                    fillcolor='darkgray', fillstyle=btype, barwidth=0.9,
                    fillsize=fsize, fillskip=fskip)
     t.update(set='c0=c0+1')
-
 
 c.render()
 
