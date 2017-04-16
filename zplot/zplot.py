@@ -3691,6 +3691,18 @@ class plotter:
                        linecolor=linecolor, linewidth=linewidth, fill=fill,
                        fillcolor=fillcolor, fillstyle=fillstyle,
                        fillsize=fillsize, fillskip=fillskip, bgcolor=bgcolor)
+
+        if legend != '':
+            if fillcolor=='white' and linewidth==0:
+                linewidth=1
+            s = 'canvas.box(coord=[[$__Xmm,$__Ymm],[$__Xpm,$__Ypm]], fill=' + \
+                str(fill) + ', fillcolor=\'' + str(fillcolor) + \
+                '\', fillstyle=\'' + str(fillstyle) + '\', fillsize=\'' + \
+                str(fillsize) + '\', fillskip=\'' + str(fillskip) + \
+                '\', linewidth=\'' + str(linewidth/2.0) + '\', linecolor=\'' + \
+                str(linecolor) + '\')'
+            t = string.Template(s)
+            legend.add(text=legendtext, picture=t)
         return
     # END: horizontalbars()
 

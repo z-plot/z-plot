@@ -21,7 +21,7 @@ d = drawable(canvas, xrange=[0,80], yrange=[-0.5,t.getmax('rownumber')+0.5])
 # We want to use the "op" field from the data file as our labels
 # and use "rownumber" as our y coordinate.
 axis(d, xtitle='Latency (ms)', xauto=[0,80,20],
-         ytitle='Operation', ymanual=t.query(select='op,rownumber'))
+     ytitle='Operation', ymanual=t.query(select='op,rownumber'))
 
 # we are going to create several bars with similar arguments.  One
 # easy way to do this is to put all the arguments in a dict, and
@@ -61,7 +61,7 @@ p.horizontalbars(**barargs)
 # we want legend entries to be all on one line.  Thus, we use
 # skipnext=1 to get one row.  We specify the horizontal space
 # between legend symbols (not considering text) with skipspace.
-L.draw(canvas, coord=[d.left()+30, d.top()-5], skipnext=1, skipspace=40)
+L.draw(canvas, coord=[d.left()+30, d.top()+7], skipnext=1, skipspace=40)
   
 canvas.render()
 
