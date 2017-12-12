@@ -3918,7 +3918,7 @@ class plotter:
 
             if labelfield != '':
                 label  = labelformat % r[labelindex]
-                xlabel = x1 + ubarwidth + labelshift[0]
+                xlabel = x1 + ubarwidth/2.0 + labelshift[0]
                 ylabel = drawable.translate('y', y) + place + labelshift[1]
                 canvas.text(coord=[xlabel,ylabel], text=label, anchor=anchor,
                             rotate=labelrotate, font=labelfont, size=labelsize,
