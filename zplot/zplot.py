@@ -2915,10 +2915,10 @@ class drawable:
             # [x,y] or, for e.g. a line, a list of points [[x1,y1],[x2,y2]].
             coord=['',''],
             ):
-        if type(coord) == types.ListType:
+        if type(coord) == list:
             # need to figure out: is this a simple list, or a list of lists?
             first = coord[0]
-            if type(first) == types.ListType:
+            if type(first) == list:
                 return self.translatecoord(coord)
             else:
                 return self.translatecoordsingle(coord)
